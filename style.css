@@ -1,0 +1,22 @@
+*{box-sizing:border-box} :root{--blue:#123b72;--blue2:#1f5ba7;--bg:#f3f6fb;--ink:#172338;--muted:#65738a;--line:#dce4ef;--white:#fff;--green:#167647;--red:#b3261e;--amber:#8a5700}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Gurmukhi",Arial,sans-serif;line-height:1.45}
+.top{background:var(--blue);color:#fff;padding:16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 10px #0b2c5b30}
+.brand-mark{width:48px;height:48px;border-radius:15px;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:20px;flex-shrink:0}
+h1{font-size:21px;margin:0} .top p{margin:2px 0 0;font-size:12px;color:#e4edff}.top #langBtn{margin-left:auto}
+.notice{margin:12px 12px 0;padding:11px 12px;border-radius:12px;background:#fff2d7;border:1px solid #f3d18b;color:#694600;font-size:13px}
+.tabs{display:flex;gap:7px;padding:12px;position:sticky;top:80px;background:var(--bg);z-index:4}
+button{font:inherit;border:0;cursor:pointer;border-radius:10px;padding:10px 13px;font-weight:700}
+.tab{background:#e4eaf4;color:#3d4b60;flex:1;font-size:13px;padding:10px 5px}.tab.active{background:var(--blue);color:#fff}
+main{padding:0 12px 18px;max-width:760px;margin:0 auto}.view{display:block}.hidden{display:none!important}
+h2{font-size:21px;margin:10px 0 3px}h3{font-size:16px;margin:0 0 8px}.muted{color:var(--muted);font-size:13px;margin:0 0 10px}.tiny{font-size:12px}
+.heading-row,.admin-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.pill{background:#e5eefc;color:var(--blue);font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}.pill.amber{background:#fff0d2;color:var(--amber)}
+.search-label,label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,textarea{width:100%;padding:12px;border:1px solid #cbd6e5;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:15px;outline:none}input:focus,textarea:focus{border-color:var(--blue2);box-shadow:0 0 0 3px #1f5ba71a}
+.list{margin-top:12px}.empty{padding:18px 12px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #c9d4e4;border-radius:14px}.empty h3{color:var(--ink);margin-top:4px}.empty-icon{font-size:27px}
+.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;margin:13px 0;box-shadow:0 3px 10px #1a35580a}
+.warning{background:#fff4dc;color:#6b4a06;border:1px solid #f2d48e;border-radius:12px;padding:12px;font-size:12px;margin:12px 0}
+form label{margin-top:13px}form label:first-of-type{margin-top:8px}.check{display:flex;align-items:center;gap:8px;font-weight:500!important}.check input{width:18px;height:18px}
+.primary{background:var(--blue);color:#fff}.full{width:100%;margin-top:14px}.ghost{background:#ffffff20;color:#fff;border:1px solid #ffffff55}.small{font-size:12px;padding:8px 10px}.danger{background:#a82824;color:#fff}.danger-card{border-color:#efc8c5}
+.job-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0}.job-card h3{margin:0 0 4px}.job-meta{font-size:12px;color:var(--muted);margin:3px 0}.job-description{font-size:13px;margin:8px 0;white-space:pre-wrap}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{font-size:12px;padding:9px 10px}.approve{background:#e0f4e8;color:#11643b}.reject{background:#fee9e7;color:#9b211c}.secondary{background:#e8eef8;color:#214a80}.external{color:#1555a3;text-decoration:underline;font-size:13px;overflow-wrap:anywhere}
+footer{text-align:center;padding:18px 14px 28px;color:var(--muted);font-size:12px}.toast{position:fixed;bottom:18px;left:12px;right:12px;max-width:700px;margin:auto;background:#14233a;color:#fff;border-radius:12px;padding:13px 15px;z-index:20;box-shadow:0 8px 30px #0003}
+@media(min-width:600px){main{padding-left:20px;padding-right:20px}.notice{max-width:720px;margin-left:auto;margin-right:auto}.tabs{max-width:760px;margin:auto}.top{padding-left:max(16px,calc((100% - 720px)/2));padding-right:max(16px,calc((100% - 720px)/2))}}
