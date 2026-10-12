@@ -1,0 +1,10 @@
+{
+  "name": "Jaimalwala Govt Jobs",
+  "short_name": "Jaimalwala Jobs",
+  "description": "Punjabi and English government job information portal",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#153e75",
+  "icons": []
+}

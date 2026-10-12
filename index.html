@@ -2,74 +2,90 @@
 <html lang="pa">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#123b72">
-  <title>Govt Jobs | ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153e75">
+  <meta name="description" content="Jaimalwala Govt Jobs — Punjabi and English government job information portal. Always verify official notifications.">
+  <title>Jaimalwala Govt Jobs | ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <div class="brand-mark">GJ</div>
-  <div><h1>Govt Jobs</h1><p id="subtitle">ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਪੰਜਾਬੀ + English</p></div>
-  <button id="langBtn" class="small ghost" type="button">English</button>
-</header>
-<div class="notice"><strong>ਟੈਸਟ ਵਰਜਨ:</strong> ਇਸ ਵਿੱਚ ਕੋਈ ਅਸਲੀ ਨੌਕਰੀ ਪਬਲਿਸ਼ ਨਹੀਂ ਹੈ। ਅਸਲੀ ਨੋਟਿਸ ਦੀ ਜਾਂਚ ਅਤੇ ਮਨਜ਼ੂਰੀ ਤੋਂ ਬਾਅਦ ਹੀ ਪਬਲਿਸ਼ ਕਰੋ।</div>
-<nav class="tabs" aria-label="Main navigation">
-  <button class="tab active" data-view="jobs" id="jobsTab">ਨੌਕਰੀਆਂ</button>
-  <button class="tab" data-view="saved" id="savedTab">ਸੇਵ ਕੀਤੀਆਂ</button>
-  <button class="tab" data-view="admin" id="adminTab">Admin Panel</button>
-</nav>
-<main>
-  <section id="jobsView" class="view">
-    <div class="heading-row"><div><h2 id="jobsHeading">ਨੌਕਰੀਆਂ</h2><p class="muted" id="jobsIntro">ਮਨਜ਼ੂਰ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ ਇੱਥੇ ਦਿਖਣਗੀਆਂ।</p></div><span class="pill" id="publishedCount">0 ਪਬਲਿਸ਼</span></div>
-    <label class="search-label" for="searchInput" id="searchLabel">ਨੌਕਰੀ ਖੋਜੋ</label>
-    <input id="searchInput" type="search" placeholder="ਵਿਭਾਗ, ਅਹੁਦਾ ਜਾਂ ਯੋਗਤਾ">
-    <div id="jobsList" class="list empty"><div class="empty-icon">🔎</div><h3 id="emptyJobsTitle">ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ</h3><p id="emptyJobsText">ਨਵੀਆਂ ਭਰਤੀਆਂ ਦੀ ਜਾਂਚ ਕਰਕੇ Admin Panel ਰਾਹੀਂ ਮਨਜ਼ੂਰ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ।</p></div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Jaimalwala Govt Jobs home">
+      <span class="brand-icon">JG</span>
+      <span><strong>Jaimalwala Govt Jobs</strong><small id="tagline">ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਪੰਜਾਬੀ + English</small></span>
+    </a>
+    <button id="langBtn" class="btn btn-outline" type="button">English</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow" id="eyebrow">ਤੁਹਾਡੇ ਕਰੀਅਰ ਲਈ</span>
+      <h1 id="heroTitle">ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ ਲੱਭੋ, ਸਹੀ ਜਾਣਕਾਰੀ ਨਾਲ।</h1>
+      <p id="heroText">ਪੰਜਾਬ ਅਤੇ ਭਾਰਤ ਦੀਆਂ ਭਰਤੀਆਂ ਲਈ ਜਾਣਕਾਰੀ ਵੇਖੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਜ਼ਰੂਰ ਪੜ੍ਹੋ।</p>
+      <a href="#jobs" class="btn btn-light" id="browseBtn">ਨੌਕਰੀਆਂ ਵੇਖੋ ↓</a>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="art-card"><span>✓</span><b>Verify first</b><small>Official notification</small></div><div class="art-orbit">✦</div></div>
   </section>
 
-  <section id="savedView" class="view hidden">
-    <h2 id="savedHeading">ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ</h2>
-    <div id="savedList" class="list empty"><p>ਤੁਸੀਂ ਹਾਲੇ ਕੋਈ ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਕੀਤੀ।</p></div>
-  </section>
+  <div class="notice"><strong id="noticeTitle">ਜ਼ਰੂਰੀ ਨੋਟ:</strong> <span id="noticeText">ਇਹ ਵੈੱਬਸਾਈਟ ਇਸ ਵੇਲੇ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਹੇਠਾਂ ਕੋਈ ਅਸਲੀ vacancy ਨਹੀਂ ਦਿੱਤੀ ਗਈ। ਕਿਸੇ ਵੀ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।</span></div>
 
-  <section id="adminView" class="view hidden">
-    <div class="admin-head"><div><h2>Admin Panel</h2><p class="muted">ਨੌਕਰੀ ਜੋੜੋ, ਜਾਂਚੋ, ਫਿਰ Approve ਕਰੋ।</p></div><span class="pill amber">Owner only</span></div>
-    <div class="warning"><strong>ਜ਼ਰੂਰੀ:</strong> ਇਹ ਪਹਿਲਾ ਮੋਬਾਈਲ-ਟੈਸਟ ਪੜਾਅ ਹੈ। ਡਾਟਾ ਇਸੇ ਬ੍ਰਾਊਜ਼ਰ/ਮੋਬਾਈਲ ਵਿੱਚ ਰਹਿੰਦਾ ਹੈ। PIN ਜਾਂ ਇਸ ਪੇਜ ਨੂੰ ਲੁਕਾਉਣਾ ਸੁਰੱਖਿਅਤ ਲੌਗਇਨ ਨਹੀਂ ਹੈ। ਲਾਈਵ ਵਰਤੋਂ ਤੋਂ ਪਹਿਲਾਂ ਅਸਲੀ Admin authentication ਅਤੇ cloud database ਜੋੜਨਾ ਲਾਜ਼ਮੀ ਹੈ।</div>
-    <div class="card">
-      <h3>ਨਵੀਂ ਨੌਕਰੀ ਦਰਜ ਕਰੋ</h3>
-      <p class="muted tiny">ਇਹ ਫਾਰਮ ਸਿਰਫ਼ Draft/Pending ਬਣਾਉਂਦਾ ਹੈ। ਨੌਕਰੀ ਜਨਤਕ ਸੂਚੀ ਵਿੱਚ ਤਦ ਹੀ ਆਵੇਗੀ ਜਦੋਂ ਤੁਸੀਂ Approve ਕਰੋਗੇ।</p>
-      <form id="jobForm">
-        <label for="title">ਅਹੁਦੇ ਦਾ ਨਾਮ / Job title *</label><input id="title" required maxlength="120" placeholder="ਉਦਾਹਰਨ: ਅਹੁਦੇ ਦਾ ਨਾਮ (ਟੈਸਟ ਲਈ)">
-        <label for="department">ਵਿਭਾਗ / Department *</label><input id="department" required maxlength="120" placeholder="ਵਿਭਾਗ ਦਾ ਨਾਮ">
-        <label for="location">ਸਥਾਨ / Location</label><input id="location" maxlength="120" placeholder="ਪੰਜਾਬ / All India">
-        <label for="eligibility">ਯੋਗਤਾ / Eligibility</label><textarea id="eligibility" rows="2" maxlength="500" placeholder="ਘੱਟੋ-ਘੱਟ ਯੋਗਤਾ"></textarea>
-        <label for="age">ਉਮਰ ਹੱਦ / Age limit</label><input id="age" maxlength="100" placeholder="ਨੋਟਿਸ ਮੁਤਾਬਕ">
-        <label for="deadline">ਆਖ਼ਰੀ ਮਿਤੀ / Last date</label><input id="deadline" type="date">
-        <label for="noticeUrl">ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਲਿੰਕ *</label><input id="noticeUrl" type="url" required placeholder="https://official.gov.in/..." inputmode="url">
-        <label for="applyUrl">ਅਪਲਾਈ ਲਿੰਕ (ਜੇ ਵੱਖਰਾ ਹੋਵੇ)</label><input id="applyUrl" type="url" placeholder="https://..." inputmode="url">
-        <label for="sourceChecked">ਨੋਟਿਸ ਜਾਂਚਣ ਦੀ ਮਿਤੀ *</label><input id="sourceChecked" type="date" required>
-        <label class="check"><input id="isTest" type="checkbox"> ਇਹ ਸਿਰਫ਼ ਟੈਸਟ ਐਂਟਰੀ ਹੈ (ਅਸਲੀ ਡਾਟਾ ਨਹੀਂ)</label>
-        <button class="primary full" type="submit">Pending ਵਿੱਚ ਸੇਵ ਕਰੋ</button>
-      </form>
-    </div>
-    <div class="card">
-      <div class="heading-row"><h3>Pending ਨੌਕਰੀਆਂ</h3><span class="pill" id="pendingCount">0</span></div>
-      <p class="muted tiny">ਪਬਲਿਸ਼ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ, ਯੋਗਤਾ, ਫੀਸ ਅਤੇ ਮਿਤੀਆਂ ਖੁਦ ਚੈੱਕ ਕਰੋ।</p>
-      <div id="pendingList" class="list empty"><p>ਕੋਈ Pending ਐਂਟਰੀ ਨਹੀਂ।</p></div>
-    </div>
-    <div class="card">
-      <div class="heading-row"><h3>ਮਨਜ਼ੂਰ / Published</h3><span class="pill" id="adminPublishedCount">0</span></div>
-      <div id="adminPublishedList" class="list empty"><p>ਹਾਲੇ ਕੁਝ ਪਬਲਿਸ਼ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।</p></div>
-    </div>
-    <div class="card danger-card">
-      <h3>ਟੈਸਟ ਡਾਟਾ ਰੀਸੈੱਟ</h3><p class="muted tiny">ਇਸ ਮੋਬਾਈਲ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਸੇਵ ਕੀਤੀਆਂ ਸਾਰੀਆਂ ਐਂਟਰੀਆਂ ਮਿਟ ਜਾਣਗੀਆਂ।</p>
-      <button id="resetBtn" class="danger full" type="button">ਸਾਰਾ ਲੋਕਲ ਡਾਟਾ ਮਿਟਾਓ</button>
-    </div>
-  </section>
-</main>
-<footer><p>Govt Jobs • Stage 1 Mobile Prototype</p><p class="tiny">Official notice ਨੂੰ ਅੰਤਿਮ ਮੰਨੋ। ਐਪ ਵਿੱਚ ਦਿੱਤੀ ਜਾਣਕਾਰੀ ਦੀ ਸੁਤੰਤਰ ਜਾਂਚ ਕਰੋ।</p></footer>
-<div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
-<script src="app.js"></script>
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-view="jobsView" id="jobsTab">ਨੌਕਰੀਆਂ</button>
+    <button class="tab" data-view="savedView" id="savedTab">ਸੇਵ ਕੀਤੀਆਂ <span id="savedNavCount">0</span></button>
+    <button class="tab" data-view="adminView" id="adminTab">Admin Panel</button>
+  </nav>
+
+  <main>
+    <section id="jobsView" class="view">
+      <div class="section-head"><div><span class="eyebrow" id="listingEyebrow">JOB BOARD</span><h2 id="jobsHeading">ਨਵੀਆਂ ਨੌਕਰੀਆਂ</h2><p class="muted" id="jobsIntro">ਆਪਣੀ ਲੋੜ ਮੁਤਾਬਕ ਖੋਜੋ ਅਤੇ ਫਿਲਟਰ ਕਰੋ।</p></div><span class="count-pill"><b id="publishedCount">0</b> <span id="publishedLabel">ਪਬਲਿਸ਼</span></span></div>
+      <div class="filters">
+        <label class="searchbox"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="ਅਹੁਦਾ, ਵਿਭਾਗ ਜਾਂ ਯੋਗਤਾ ਖੋਜੋ"></label>
+        <select id="locationFilter" aria-label="Filter by location"><option value="">ਸਾਰੇ ਸਥਾਨ</option><option>Punjab</option><option>All India</option><option>Chandigarh</option></select>
+        <select id="categoryFilter" aria-label="Filter by category"><option value="">ਸਾਰੀਆਂ ਸ਼੍ਰੇਣੀਆਂ</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option><option>Other</option></select>
+      </div>
+      <div id="jobsList" class="jobs-grid"></div>
+      <div id="emptyJobs" class="empty-state"><div class="empty-symbol">⌕</div><h3 id="emptyTitle">ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ</h3><p id="emptyText">ਨਵੀਆਂ ਭਰਤੀਆਂ ਦੀ ਜਾਂਚ ਕਰਕੇ Admin Panel ਰਾਹੀਂ ਜੋੜੋ।</p></div>
+    </section>
+
+    <section id="savedView" class="view hidden">
+      <div class="section-head"><div><span class="eyebrow">YOUR SHORTLIST</span><h2 id="savedHeading">ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ</h2><p class="muted" id="savedIntro">ਆਪਣੀਆਂ ਪਸੰਦੀਦਾ ਨੌਕਰੀਆਂ ਇੱਥੇ ਵੇਖੋ।</p></div></div>
+      <div id="savedList" class="jobs-grid"></div>
+      <div id="emptySaved" class="empty-state"><div class="empty-symbol">♡</div><h3 id="emptySavedTitle">ਹਾਲੇ ਕੋਈ ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਕੀਤੀ</h3><p id="emptySavedText">ਨੌਕਰੀ ਦੇ ਕਾਰਡ ਉੱਤੇ Save ਬਟਨ ਦਬਾਓ।</p></div>
+    </section>
+
+    <section id="adminView" class="view hidden">
+      <div class="section-head"><div><span class="eyebrow">SITE MANAGEMENT</span><h2>Admin Panel</h2><p class="muted">ਨੌਕਰੀ ਦੀ ਜਾਣਕਾਰੀ ਦਰਜ ਕਰੋ, ਜਾਂਚੋ ਅਤੇ ਫਿਰ ਮਨਜ਼ੂਰ ਕਰੋ।</p></div><span class="count-pill">Prototype</span></div>
+      <div class="warning"><strong>ਧਿਆਨ ਦਿਓ:</strong> ਇਹ demo admin panel ਹੈ। Data ਸਿਰਫ਼ ਇਸ browser ਵਿੱਚ save ਹੁੰਦਾ ਹੈ ਅਤੇ ਹਰ visitor ਨੂੰ ਨਹੀਂ ਦਿਸੇਗਾ। ਇਸ ਵਿੱਚ secure login ਜਾਂ cloud database ਨਹੀਂ ਹੈ। Public/live job portal ਲਈ secure backend ਅਤੇ authentication ਲਾਜ਼ਮੀ ਹਨ।</div>
+      <div class="admin-grid">
+        <form id="jobForm" class="panel">
+          <h3>ਨਵੀਂ ਨੌਕਰੀ ਦਰਜ ਕਰੋ</h3>
+          <p class="muted">ਸਿਰਫ਼ official notice ਤੋਂ verify ਕੀਤੀ ਜਾਣਕਾਰੀ ਭਰੋ।</p>
+          <label for="jobTitle">ਅਹੁਦੇ ਦਾ ਨਾਮ / Job title *</label><input id="jobTitle" required maxlength="120" placeholder="ਉਦਾਹਰਨ: Clerk Recruitment">
+          <label for="department">ਵਿਭਾਗ / Department *</label><input id="department" required maxlength="120" placeholder="Recruiting department">
+          <div class="two-col"><div><label for="location">ਸਥਾਨ</label><select id="location"><option>Punjab</option><option>All India</option><option>Chandigarh</option></select></div><div><label for="category">ਸ਼੍ਰੇਣੀ</label><select id="category"><option>Other</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option></select></div></div>
+          <label for="eligibility">ਯੋਗਤਾ / Eligibility</label><textarea id="eligibility" rows="3" maxlength="500" placeholder="Official notice ਅਨੁਸਾਰ"></textarea>
+          <label for="deadline">ਆਖ਼ਰੀ ਮਿਤੀ / Last date</label><input id="deadline" type="date">
+          <label for="noticeUrl">ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਲਿੰਕ *</label><input id="noticeUrl" type="url" required placeholder="https://official-website.gov.in/..." inputmode="url">
+          <label for="applyUrl">Apply link (ਜੇ ਵੱਖਰਾ ਹੋਵੇ)</label><input id="applyUrl" type="url" placeholder="https://..." inputmode="url">
+          <label for="sourceChecked">ਨੋਟਿਸ ਜਾਂਚਣ ਦੀ ਮਿਤੀ *</label><input id="sourceChecked" type="date" required>
+          <button class="btn btn-primary full" type="submit">Pending ਵਿੱਚ ਸੇਵ ਕਰੋ</button>
+        </form>
+        <div class="panel">
+          <h3>Pending ਨੌਕਰੀਆਂ <span class="mini-count" id="pendingCount">0</span></h3>
+          <p class="muted">Publish ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ official notice, eligibility ਅਤੇ dates ਚੈੱਕ ਕਰੋ।</p>
+          <div id="pendingList" class="stack"></div>
+          <hr>
+          <h3>Published ਨੌਕਰੀਆਂ <span class="mini-count" id="adminPublishedCount">0</span></h3>
+          <div id="adminPublishedList" class="stack"></div>
+          <button id="resetBtn" class="btn btn-danger full" type="button">ਇਸ browser ਦਾ demo data ਮਿਟਾਓ</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><strong>Jaimalwala Govt Jobs</strong><p id="footerText">ਜਾਣਕਾਰੀ ਲਈ ਪੋਰਟਲ — ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।</p><p>© <span id="year"></span> Jaimalwala Govt Jobs</p></footer>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
 </body>
 </html>
