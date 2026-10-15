@@ -105,6 +105,7 @@
       notification: "Official Notification ↗",
       applyOnline: "Apply Online ↗",
       admitCard: "ਰੋਲ ਨੰਬਰ / ਐਡਮਿਟ ਕਾਰਡ ਡਾਊਨਲੋਡ ↗",
+      admitCardUnavailable: "ਐਡਮਿਟ ਕਾਰਡ ਹਾਲੇ ਜਾਰੀ ਨਹੀਂ",
       applyUnavailable: "ਫਾਰਮ ਦਾ ਸਿੱਧਾ ਲਿੰਕ ਹਾਲੇ ਨਹੀਂ",
       deadline: "ਆਖ਼ਰੀ ਮਿਤੀ",
       location: "ਸਥਾਨ",
@@ -161,6 +162,7 @@
       notification: "Official Notification ↗",
       applyOnline: "Apply Online ↗",
       admitCard: "Download Roll Number / Admit Card ↗",
+      admitCardUnavailable: "Admit card link not released yet",
       applyUnavailable: "Direct form link not added yet",
       deadline: "Last date",
       location: "Location",
@@ -359,7 +361,7 @@
 
           ${!apply || apply === notice ? `<span class="apply-unavailable">${escapeHtml(t("applyUnavailable"))}</span>` : ""}
 
-          ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("admitCard"))}</a>` : ""}
+          ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("admitCard"))}</a>` : `<span class="admit-card-unavailable" aria-disabled="true">${escapeHtml(t("admitCardUnavailable"))}</span>`}
 
           <button
             class="save-btn"
