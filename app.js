@@ -798,45 +798,53 @@
       );
     });
 
-  /* Homepage feature shortcuts */
-  document.querySelectorAll("[data-benefit]").forEach(button => {
-    button.addEventListener("click", () => {
-      const action = button.dataset.benefit;
+  /* Homepage feature shortcuts: delegated so the cards keep working reliably */
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-benefit]");
+    if (!button) return;
 
-      if (action === "search") {
-        switchView("jobsView");
-        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
-        window.setTimeout(() => $("searchInput")?.focus(), 250);
-      }
+    const action = button.dataset.benefit;
 
-      if (action === "notice") {
-        switchView("jobsView");
-        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (action === "search") {
+      switchView("jobsView");
+      $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.setTimeout(() => $("searchInput")?.focus(), 350);
+      return;
+    }
+
+    if (action === "notice") {
+      switchView("jobsView");
+      $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.setTimeout(() => {
         const firstNotice = $("jobsList")?.querySelector(".apply-link");
         if (firstNotice) {
           firstNotice.focus({ preventScroll: true });
+          firstNotice.click();
         } else {
           toast(language === "pa"
-            ? "ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ। ਨੋਟੀਫਿਕੇਸ਼ਨ ਇੱਥੇ ਦਿਖਣਗੇ।"
+            ? "ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ। ਅਧਿਕਾਰਤ ਨੋਟੀਫਿਕੇਸ਼ਨ ਇੱਥੇ ਦਿਖਣਗੇ।"
             : "No approved jobs yet. Official notifications will appear here.");
         }
-      }
+      }, 350);
+      return;
+    }
 
-      if (action === "deadline") {
-        deadlineSort = !deadlineSort;
-        switchView("jobsView");
-        renderJobs();
-        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
-        toast(language === "pa"
-          ? (deadlineSort ? "ਨੌਕਰੀਆਂ ਆਖ਼ਰੀ ਮਿਤੀ ਮੁਤਾਬਕ ਲਗਾ ਦਿੱਤੀਆਂ ਹਨ।" : "ਨੌਕਰੀਆਂ ਮੁੜ ਆਮ ਤਰਤੀਬ ਵਿੱਚ ਹਨ।")
-          : (deadlineSort ? "Jobs sorted by closing date." : "Default job order restored."));
-      }
+    if (action === "deadline") {
+      deadlineSort = !deadlineSort;
+      switchView("jobsView");
+      renderJobs();
+      $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      toast(language === "pa"
+        ? (deadlineSort ? "ਨੌਕਰੀਆਂ ਆਖ਼ਰੀ ਮਿਤੀ ਮੁਤਾਬਕ ਲਗਾ ਦਿੱਤੀਆਂ ਹਨ।" : "ਨੌਕਰੀਆਂ ਮੁੜ ਆਮ ਤਰਤੀਬ ਵਿੱਚ ਹਨ।")
+        : (deadlineSort ? "Jobs sorted by closing date." : "Default job order restored."));
+      return;
+    }
 
-      if (action === "language") {
-        setLanguage(language === "pa" ? "en" : "pa");
-        toast(language === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
-      }
-    });
+    if (action === "language") {
+      const nextLanguage = language === "pa" ? "en" : "pa";
+      setLanguage(nextLanguage);
+      toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
+    }
   });
 
   /* Language */
