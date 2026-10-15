@@ -37,3 +37,7 @@ async function loadAutomaticJobs() {
     console.log("Automatic jobs could not be loaded:", error);
   }
 }
+setLanguage("pa");
+loadAutomaticJobs();
+})();
+loadAutomaticJobs();
