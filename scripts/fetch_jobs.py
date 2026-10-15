@@ -16,7 +16,7 @@ CURATED_JOBS = [
         "location": "Punjab",
         "category": "Other",
         "eligibility": "BA/BSc or equivalent degree, Matriculation with Punjabi, and computer proficiency. Read the official notice for full eligibility and category-wise conditions.",
-        "url": "https://www.sssc.gov.in/notice-board",
+        "url": "https://sssc.gov.in/storage/notices/Advt%20dated%2003.10.2026%20Pb%20Clerk.pdf",
         "applyUrl": "https://www.sssc.gov.in/",
         "deadline": "2026-11-04",
         "verified": True,
@@ -52,6 +52,7 @@ SKIP_WORDS = (
     "apply online", "application form", "login", "register", "home",
     "answer key", "result", "admit card", "objection", "exam date"
 )
+GENERIC_LABELS = {"recruitment", "advertisement", "view all", "official website", "portal"}
 
 candidates = []
 seen_urls = {job["url"] for job in CURATED_JOBS}
@@ -69,7 +70,7 @@ for source in SOURCES:
         for anchor in soup.find_all("a", href=True):
             title = " ".join(anchor.get_text(" ", strip=True).split())
             lowered = title.lower()
-            if len(title) < 10 or any(word in lowered for word in SKIP_WORDS):
+            if len(title) < 10 or lowered in GENERIC_LABELS or any(word in lowered for word in SKIP_WORDS):
                 continue
             if not any(word in lowered for word in NOTICE_WORDS):
                 continue
