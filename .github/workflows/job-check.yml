@@ -2,6 +2,9 @@
 name: Daily Government Job Check
 
 on:
+  push:
+    paths:
+      - "scripts/fetch_jobs.py"
   schedule:
     - cron: "30 2 * * *"
   workflow_dispatch:
