@@ -79,3 +79,13 @@ footer>p{width:100%}
  .jobs-toolbar{flex-direction:column;gap:5px}
  .jobs-toolbar span:last-child{max-width:100%;text-align:left}
 }
+
+
+/* Make homepage feature tiles real, keyboard-accessible controls */
+.benefit{font:inherit;text-align:left;color:inherit;background:#fff;border:0;cursor:pointer;width:100%;min-height:60px;transition:background .16s ease,transform .16s ease}
+.benefit:hover,.benefit:focus-visible{background:#f4fbf6;outline:2px solid #9dcfb5;outline-offset:-2px}
+.benefit:active{transform:translateY(1px)}
+.benefit-copy{display:block;min-width:0}
+.document-card{display:block;text-decoration:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.document-card:hover,.document-card:focus-visible{transform:rotate(0deg) translateY(-3px);box-shadow:0 25px 50px #061e2d60;outline:2px solid #a8e5c7;outline-offset:3px}
+@media(max-width:850px){.benefit{min-height:58px}}
