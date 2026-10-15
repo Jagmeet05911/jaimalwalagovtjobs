@@ -93,3 +93,5 @@ footer>p{width:100%}
 /* Official roll number / admit card action */
 .admit-card-link{background:#eaf1ff;color:#1d4ed8!important;border-color:#bfdbfe!important}
 .admit-card-link:hover{background:#d6f3de}
+
+.admit-card-unavailable{display:inline-block;background:#f1f5f9;color:#64748b;border:1px solid #cbd5e1;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;cursor:not-allowed}
