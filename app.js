@@ -9,7 +9,7 @@
   };
 
   let language = "pa";
-  let jobs = read(KEYS.jobs, []);
+  let jobs = read(KEYS.jobs, []).filter(job => !/official jobs\/notifications/i.test(String(job?.title || "")));
   let saved = read(KEYS.saved, []);
 
   function read(key, fallback) {
@@ -101,7 +101,9 @@
         "ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।",
       save: "♡ Save",
       unsave: "♥ Saved",
-      apply: "Official notice ↗",
+      notification: "Official Notification ↗",
+      applyOnline: "Apply Online ↗",
+      applyUnavailable: "ਫਾਰਮ ਦਾ ਸਿੱਧਾ ਲਿੰਕ ਹਾਲੇ ਨਹੀਂ",
       deadline: "ਆਖ਼ਰੀ ਮਿਤੀ",
       location: "ਸਥਾਨ",
       eligibility: "ਯੋਗਤਾ",
@@ -154,7 +156,9 @@
         "Always rely on the recruiting organisation's official notice.",
       save: "♡ Save",
       unsave: "♥ Saved",
-      apply: "Official notice ↗",
+      notification: "Official Notification ↗",
+      applyOnline: "Apply Online ↗",
+      applyUnavailable: "Direct form link not added yet",
       deadline: "Last date",
       location: "Location",
       eligibility: "Eligibility",
@@ -274,7 +278,7 @@
     const isSaved = saved.includes(job.id);
 
     const notice = safeUrl(job.noticeUrl);
-    const apply = safeUrl(job.applyUrl) || notice;
+    const apply = safeUrl(job.applyUrl);
 
     return `
       <article class="job-card">
@@ -303,7 +307,7 @@
           </span>
 
           <span>
-            ◷ ${escapeHtml(job.deadline || t("noDate"))}
+            ◷ ${escapeHtml(t("deadline"))}: ${escapeHtml(job.deadline || t("noDate"))}
           </span>
         </div>
 
@@ -333,7 +337,7 @@
                    href="${escapeHtml(notice)}"
                    target="_blank"
                    rel="noopener noreferrer">
-                   ${escapeHtml(t("apply"))}
+                   ${escapeHtml(t("notification"))}
                  </a>`
               : ""
           }
@@ -344,10 +348,12 @@
                    href="${escapeHtml(apply)}"
                    target="_blank"
                    rel="noopener noreferrer">
-                   Apply ↗
+                   ${escapeHtml(t("applyOnline"))}
                  </a>`
               : ""
           }
+
+          ${!apply || apply === notice ? `<span class="apply-unavailable">${escapeHtml(t("applyUnavailable"))}</span>` : ""}
 
           <button
             class="save-btn"
@@ -717,7 +723,7 @@
 
       candidates.forEach(item => {
 
-        if (!item || !item.url) return;
+        if (!item || !item.url || !item.title || /official jobs\/notifications/i.test(item.title)) return;
 
         const source =
           item.source || "Government";
@@ -754,13 +760,13 @@
               "Check the official notification for eligibility.",
 
             deadline:
-              "",
+              item.deadline || "",
 
             noticeUrl:
               safeUrl(item.url),
 
             applyUrl:
-              safeUrl(item.url),
+              safeUrl(item.applyUrl),
 
             sourceChecked:
               new Date()
