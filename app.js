@@ -744,20 +744,19 @@
             id: id,
 
             title:
-              item.title ||
-              `${source} - Official Jobs/Notifications`,
+              item.title,
 
             department:
-              source,
+              item.department || source,
 
             location:
-              "India",
+              item.location || "India",
 
             category:
-              "Government",
+              item.category || "Other",
 
             eligibility:
-              "Check the official notification for eligibility.",
+              item.eligibility || "Eligibility ਅਤੇ ਹੋਰ ਸ਼ਰਤਾਂ ਲਈ official notification ਪੜ੍ਹੋ।",
 
             deadline:
               item.deadline || "",
@@ -774,7 +773,7 @@
                 .slice(0, 10),
 
             status:
-              "pending"
+              item.verified === true ? "published" : "pending"
           });
 
           changed = true;
