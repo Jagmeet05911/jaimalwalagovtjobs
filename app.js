@@ -693,108 +693,87 @@
    */
 
   async function loadAutomaticJobs() {
+    const dataUrl = new URL("./data/pending_jobs.json", document.baseURI);
 
     try {
-
-      const response = await fetch(
-        "./data/pending_jobs.json",
-        {
-          cache: "no-store"
-        }
-      );
+      const response = await fetch(dataUrl.href + "?v=20261015", {
+        cache: "no-store"
+      });
 
       if (!response.ok) {
-        console.log(
-          "pending_jobs.json could not be loaded."
-        );
-        return;
+        throw new Error("Job data request failed: " + response.status);
       }
 
       const candidates = await response.json();
-
       if (!Array.isArray(candidates)) {
-        console.log(
-          "pending_jobs.json is not an array."
-        );
-        return;
+        throw new Error("Job data is not a list.");
       }
 
       let changed = false;
 
       candidates.forEach(item => {
+        if (!item || !item.url || !item.title ||
+            /official jobs\/notifications/i.test(item.title)) return;
 
-        if (!item || !item.url || !item.title || /official jobs\/notifications/i.test(item.title)) return;
+        // Only verified entries belong on the public jobs page.
+        const source = item.source || "Government";
+        const id = "auto-" + source + "-" + item.url;
+        const noticeUrl = safeUrl(item.url);
+        if (!noticeUrl) return;
 
-        const source =
-          item.source || "Government";
+        const nextJob = {
+          id,
+          title: item.title,
+          department: item.department || source,
+          location: item.location || "India",
+          category: item.category || "Other",
+          eligibility: item.eligibility ||
+            "Eligibility ਅਤੇ ਹੋਰ ਸ਼ਰਤਾਂ ਲਈ official notification ਪੜ੍ਹੋ।",
+          deadline: item.deadline || "",
+          noticeUrl,
+          applyUrl: safeUrl(item.applyUrl || ""),
+          sourceChecked: new Date().toISOString().slice(0, 10),
+          status: item.verified === true ? "published" : "pending"
+        };
 
-        const id =
-          "auto-" +
-          source +
-          "-" +
-          item.url;
+        // Older versions may already have saved this same automatic job as
+        // pending. Update it in place instead of skipping it forever.
+        const index = jobs.findIndex(job =>
+          job.id === id ||
+          (String(job.id || "").startsWith("auto-") &&
+           safeUrl(job.noticeUrl) === noticeUrl)
+        );
 
-        const exists =
-          jobs.some(job => job.id === id);
-
-        if (!exists) {
-
-          jobs.unshift({
-
-            id: id,
-
-            title:
-              item.title,
-
-            department:
-              item.department || source,
-
-            location:
-              item.location || "India",
-
-            category:
-              item.category || "Other",
-
-            eligibility:
-              item.eligibility || "Eligibility ਅਤੇ ਹੋਰ ਸ਼ਰਤਾਂ ਲਈ official notification ਪੜ੍ਹੋ।",
-
-            deadline:
-              item.deadline || "",
-
-            noticeUrl:
-              safeUrl(item.url),
-
-            applyUrl:
-              safeUrl(item.applyUrl),
-
-            sourceChecked:
-              new Date()
-                .toISOString()
-                .slice(0, 10),
-
-            status:
-              item.verified === true ? "published" : "pending"
-          });
-
+        if (index === -1) {
+          jobs.unshift(nextJob);
           changed = true;
+        } else {
+          const previous = jobs[index];
+          const updated = {
+            ...previous,
+            ...nextJob,
+            // Keep a verified listing published even if an old browser copy
+            // saved it as pending. Unverified links stay pending.
+            status: item.verified === true ? "published" : "pending"
+          };
+
+          if (JSON.stringify(previous) !== JSON.stringify(updated)) {
+            jobs[index] = updated;
+            changed = true;
+          }
         }
       });
 
       if (changed) {
         persist();
-        renderAll();
       }
 
-      console.log(
-        `Automatic job check loaded ${candidates.length} candidate(s).`
-      );
-
+      renderAll();
+      console.log("Automatic job data loaded:", candidates.length, "candidate(s).");
     } catch (error) {
-
-      console.log(
-        "Automatic jobs could not be loaded:",
-        error
-      );
+      console.error("Automatic jobs could not be loaded:", error);
+      // Existing locally saved jobs still render if the network request fails.
+      renderAll();
     }
   }
 
