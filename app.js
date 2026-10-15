@@ -11,6 +11,7 @@
   let language = "pa";
   let jobs = read(KEYS.jobs, []).filter(job => !/official jobs\/notifications/i.test(String(job?.title || "")));
   let saved = read(KEYS.saved, []);
+  let deadlineSort = false;
 
   function read(key, fallback) {
     try {
@@ -441,6 +442,14 @@
         );
       });
 
+    if (deadlineSort) {
+      visible.sort((a, b) => {
+        const da = a.deadline ? Date.parse(a.deadline) : Number.MAX_SAFE_INTEGER;
+        const db = b.deadline ? Date.parse(b.deadline) : Number.MAX_SAFE_INTEGER;
+        return da - db;
+      });
+    }
+
     if ($("publishedCount")) {
       $("publishedCount").textContent =
         jobs.filter(
@@ -788,6 +797,47 @@
         () => switchView(button.dataset.view)
       );
     });
+
+  /* Homepage feature shortcuts */
+  document.querySelectorAll("[data-benefit]").forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.benefit;
+
+      if (action === "search") {
+        switchView("jobsView");
+        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => $("searchInput")?.focus(), 250);
+      }
+
+      if (action === "notice") {
+        switchView("jobsView");
+        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const firstNotice = $("jobsList")?.querySelector(".apply-link");
+        if (firstNotice) {
+          firstNotice.focus({ preventScroll: true });
+        } else {
+          toast(language === "pa"
+            ? "ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ। ਨੋਟੀਫਿਕੇਸ਼ਨ ਇੱਥੇ ਦਿਖਣਗੇ।"
+            : "No approved jobs yet. Official notifications will appear here.");
+        }
+      }
+
+      if (action === "deadline") {
+        deadlineSort = !deadlineSort;
+        switchView("jobsView");
+        renderJobs();
+        $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        toast(language === "pa"
+          ? (deadlineSort ? "ਨੌਕਰੀਆਂ ਆਖ਼ਰੀ ਮਿਤੀ ਮੁਤਾਬਕ ਲਗਾ ਦਿੱਤੀਆਂ ਹਨ।" : "ਨੌਕਰੀਆਂ ਮੁੜ ਆਮ ਤਰਤੀਬ ਵਿੱਚ ਹਨ।")
+          : (deadlineSort ? "Jobs sorted by closing date." : "Default job order restored."));
+      }
+
+      if (action === "language") {
+        setLanguage(language === "pa" ? "en" : "pa");
+        toast(language === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
+      }
+    });
+  });
 
   /* Language */
 
