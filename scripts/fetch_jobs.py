@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Curated active listings. Keep only when official source and closing date
+# Updated 2026-10-15: refresh public listings after improving the homepage loader.
 # have been checked; dates use YYYY-MM-DD.
 CURATED_JOBS = [
     {
