@@ -104,6 +104,7 @@
       unsave: "♥ Saved",
       notification: "Official Notification ↗",
       applyOnline: "Apply Online ↗",
+      admitCard: "ਰੋਲ ਨੰਬਰ / ਐਡਮਿਟ ਕਾਰਡ ਡਾਊਨਲੋਡ ↗",
       applyUnavailable: "ਫਾਰਮ ਦਾ ਸਿੱਧਾ ਲਿੰਕ ਹਾਲੇ ਨਹੀਂ",
       deadline: "ਆਖ਼ਰੀ ਮਿਤੀ",
       location: "ਸਥਾਨ",
@@ -159,6 +160,7 @@
       unsave: "♥ Saved",
       notification: "Official Notification ↗",
       applyOnline: "Apply Online ↗",
+      admitCard: "Download Roll Number / Admit Card ↗",
       applyUnavailable: "Direct form link not added yet",
       deadline: "Last date",
       location: "Location",
@@ -280,6 +282,7 @@
 
     const notice = safeUrl(job.noticeUrl);
     const apply = safeUrl(job.applyUrl);
+    const admitCard = safeUrl(job.admitCardUrl);
 
     return `
       <article class="job-card">
@@ -355,6 +358,8 @@
           }
 
           ${!apply || apply === notice ? `<span class="apply-unavailable">${escapeHtml(t("applyUnavailable"))}</span>` : ""}
+
+          ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("admitCard"))}</a>` : ""}
 
           <button
             class="save-btn"
@@ -741,6 +746,7 @@
           deadline: item.deadline || "",
           noticeUrl,
           applyUrl: safeUrl(item.applyUrl || ""),
+          admitCardUrl: safeUrl(item.admitCardUrl || ""),
           sourceChecked: new Date().toISOString().slice(0, 10),
           status: item.verified === true ? "published" : "pending"
         };
@@ -913,9 +919,18 @@
             ? safeUrl(applyValue)
             : "";
 
+        const admitCardValue =
+          $("admitCardUrl").value.trim();
+
+        const admitCardUrl =
+          admitCardValue
+            ? safeUrl(admitCardValue)
+            : "";
+
         if (
           !noticeUrl ||
-          (applyValue && !applyUrl)
+          (applyValue && !applyUrl) ||
+          (admitCardValue && !admitCardUrl)
         ) {
 
           toast(
@@ -971,6 +986,9 @@
 
           applyUrl:
             applyUrl,
+
+          admitCardUrl:
+            admitCardUrl,
 
           sourceChecked:
             sourceChecked,
