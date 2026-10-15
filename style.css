@@ -29,3 +29,53 @@ footer{background:#0d2639;color:#a9bdc3;border:0;text-align:left;padding:27px ma
 @media(max-width:850px){.hero{padding:34px 30px}.hero-visual{width:190px;transform:scale(.9);transform-origin:center right}.quick-benefits{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px}.benefit{padding:10px 12px;border-right:0}.benefit:nth-child(odd){border-right:1px solid #e8efec}.benefit:nth-child(-n+2){border-bottom:1px solid #e8efec}.topline-right{display:none}}
 @media(max-width:700px){.topline-inner{padding:8px 0;font-size:10px}.site-header{min-height:72px;padding-top:11px;padding-bottom:11px}.brand strong{font-size:14px}.brand small{font-size:10px}.brand-icon{width:42px;height:42px}.header-actions{gap:8px}.header-link{display:none}.hero{margin-top:14px;padding:29px 22px;border-radius:18px;min-height:0}.hero-visual{display:none}.hero h1{font-size:31px;letter-spacing:-.8px}.hero p{font-size:13px;line-height:1.8}.hero-trust{gap:10px;margin-top:20px}.hero-trust span{font-size:9px}.hero-actions{gap:12px}.hero-note{font-size:10px}.quick-benefits{margin-top:12px}.benefit{gap:8px;padding:10px 8px}.benefit-icon{width:32px;height:32px;font-size:16px}.benefit b{font-size:10px}.benefit small{font-size:8px}.notice{margin-top:12px}.tabs{margin-top:17px;gap:3px}.tabs-label{display:none}.tab{padding:10px 8px;font-size:11px;flex:1}.tab span{display:none}main{padding-top:22px}.section-head h2{font-size:24px}.filters{grid-template-columns:1fr 1fr}.searchbox{grid-column:1/-1}.jobs-toolbar span:last-child{max-width:48%;text-align:right;line-height:1.5}.jobs-grid,.admin-grid{grid-template-columns:1fr}.job-card,.panel{padding:16px}.safety-band{margin-bottom:22px;padding:15px}.two-col{grid-template-columns:1fr 1fr}footer{padding:24px 20px}}
 @media(max-width:380px){.two-col{grid-template-columns:1fr}.section-head{align-items:flex-start}.count-pill{font-size:10px;padding:6px 8px}.quick-benefits{grid-template-columns:1fr}.benefit,.benefit:nth-child(odd){border-right:0}.benefit:not(:last-child){border-bottom:1px solid #e8efec}.hero h1{font-size:28px}}
+
+
+/* Final layout alignment and notification hierarchy */
+:root{--content-width:1120px}
+.topline-inner,.quick-benefits,.hero,.notice,.tabs,main,.safety-band{width:calc(100% - 40px);max-width:var(--content-width)}
+.topline-inner{padding-top:9px;padding-bottom:9px}
+.hero{margin-top:22px}
+.quick-benefits{margin-top:14px}
+.notice{position:relative;align-items:flex-start;padding:14px 17px;box-shadow:0 5px 16px #75591b08}
+.notice-icon{margin-top:1px}
+.notice strong{font-size:12px;letter-spacing:.1px}
+.notice #noticeText{font-size:12px}
+.tabs{gap:8px}
+.tabs-label{display:flex;align-items:center;white-space:nowrap}
+main{padding-top:25px}
+.section-head{align-items:flex-end}
+.section-head>div{min-width:0}
+.jobs-toolbar{padding:10px 12px;background:#edf5f0;border:1px solid #e0ece4;border-radius:9px;margin-top:15px;margin-bottom:13px}
+.job-card{height:100%}
+.job-top{align-items:center}
+.job-top .job-badge:last-child:empty{display:none}
+.job-card h3{overflow-wrap:anywhere}
+.job-actions a,.job-actions button{min-height:36px;display:inline-flex;align-items:center;justify-content:center}
+.safety-band{margin-top:0}
+footer .footer-brand{max-width:var(--content-width);margin-left:auto;margin-right:auto}
+footer>p{width:100%}
+@media(max-width:1160px){
+ .topline-inner,.quick-benefits,.hero,.notice,.tabs,main,.safety-band{width:calc(100% - 40px)}
+}
+@media(max-width:700px){
+ .hero{width:calc(100% - 24px);margin-top:13px}
+ .quick-benefits,.notice,.tabs,main,.safety-band{width:calc(100% - 24px)}
+ .topline-inner{width:calc(100% - 24px)}
+ .quick-benefits{padding:7px}
+ .notice{padding:12px}
+ .notice #noticeText{font-size:11px}
+ .tabs{gap:3px}
+ .tabs-label{display:none}
+ .section-head{align-items:flex-start}
+ .section-head h2{line-height:1.35}
+ .jobs-toolbar{align-items:flex-start;font-size:9px}
+ .job-top{gap:7px}
+ .job-badge{max-width:58%;overflow-wrap:anywhere}
+}
+@media(max-width:380px){
+ .topline-inner,.quick-benefits,.notice,.tabs,main,.safety-band{width:calc(100% - 20px)}
+ .hero{width:calc(100% - 20px)}
+ .jobs-toolbar{flex-direction:column;gap:5px}
+ .jobs-toolbar span:last-child{max-width:100%;text-align:left}
+}
