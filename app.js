@@ -16,7 +16,7 @@
     try {
       const value = JSON.parse(localStorage.getItem(key));
       return value ?? fallback;
-    } catch (_) {
+    } catch (error) {
       return fallback;
     }
   }
@@ -25,10 +25,15 @@
     try {
       localStorage.setItem(key, JSON.stringify(value));
       return true;
-    } catch (_) {
-      toast("Browser storage is unavailable.");
+    } catch (error) {
+      console.log("Storage error:", error);
       return false;
     }
+  }
+
+  function persist() {
+    write(KEYS.jobs, jobs);
+    write(KEYS.saved, saved);
   }
 
   function escapeHtml(value) {
@@ -43,15 +48,16 @@
 
   function safeUrl(value) {
     try {
-      const u = new URL(value);
-      return ["https:", "http:"].includes(u.protocol) ? u.href : "";
-    } catch (_) {
+      const url = new URL(value);
+      return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+    } catch (error) {
       return "";
     }
   }
 
   function toast(message) {
     const node = $("toast");
+
     if (!node) return;
 
     node.textContent = message;
@@ -64,20 +70,17 @@
     }, 2800);
   }
 
-  function persist() {
-    write(KEYS.jobs, jobs);
-    write(KEYS.saved, saved);
-  }
-
   const translations = {
     pa: {
       tagline: "ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਪੰਜਾਬੀ + English",
       eyebrow: "ਤੁਹਾਡੇ ਕਰੀਅਰ ਲਈ",
       heroTitle: "ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ ਲੱਭੋ, ਸਹੀ ਜਾਣਕਾਰੀ ਨਾਲ।",
-      heroText: "ਪੰਜਾਬ ਅਤੇ ਭਾਰਤ ਦੀਆਂ ਭਰਤੀਆਂ ਲਈ ਜਾਣਕਾਰੀ ਵੇਖੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
+      heroText:
+        "ਪੰਜਾਬ ਅਤੇ ਭਾਰਤ ਦੀਆਂ ਭਰਤੀਆਂ ਲਈ ਜਾਣਕਾਰੀ ਵੇਖੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
       browseBtn: "ਨੌਕਰੀਆਂ ਵੇਖੋ ↓",
       noticeTitle: "ਜ਼ਰੂਰੀ ਨੋਟ:",
-      noticeText: "ਇਹ ਵੈੱਬਸਾਈਟ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਕਿਸੇ ਵੀ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।",
+      noticeText:
+        "ਇਹ ਵੈੱਬਸਾਈਟ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਹਰ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।",
       jobsTab: "ਨੌਕਰੀਆਂ",
       savedTab: "ਸੇਵ ਕੀਤੀਆਂ",
       jobsHeading: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ",
@@ -87,12 +90,15 @@
       allLocations: "ਸਾਰੇ ਸਥਾਨ",
       allCategories: "ਸਾਰੀਆਂ ਸ਼੍ਰੇਣੀਆਂ",
       emptyTitle: "ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ",
-      emptyText: "ਨਵੀਆਂ ਭਰਤੀਆਂ ਦੀ ਜਾਂਚ ਕਰਕੇ Admin Panel ਰਾਹੀਂ ਜੋੜੋ।",
+      emptyText:
+        "ਨਵੀਆਂ ਭਰਤੀਆਂ ਦੀ ਜਾਂਚ ਕਰਕੇ Admin Panel ਰਾਹੀਂ ਜੋੜੋ।",
       savedHeading: "ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ",
       savedIntro: "ਆਪਣੀਆਂ ਪਸੰਦੀਦਾ ਨੌਕਰੀਆਂ ਇੱਥੇ ਵੇਖੋ।",
       emptySavedTitle: "ਹਾਲੇ ਕੋਈ ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਕੀਤੀ",
-      emptySavedText: "ਨੌਕਰੀ ਦੇ ਕਾਰਡ ਉੱਤੇ Save ਬਟਨ ਦਬਾਓ।",
-      footerText: "ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।",
+      emptySavedText:
+        "ਨੌਕਰੀ ਦੇ ਕਾਰਡ ਉੱਤੇ Save ਬਟਨ ਦਬਾਓ।",
+      footerText:
+        "ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।",
       save: "♡ Save",
       unsave: "♥ Saved",
       apply: "Official notice ↗",
@@ -109,11 +115,12 @@
       delete: "Delete",
       submitted: "ਨੌਕਰੀ pending ਵਿੱਚ ਸੇਵ ਹੋ ਗਈ।",
       approved: "ਨੌਕਰੀ publish ਹੋ ਗਈ।",
-      rejected: "Pending ਨੌਕਰੀ ਹਟਾ ਦਿੱਤੀ ਗਈ।",
+      rejected: "ਨੌਕਰੀ ਹਟਾ ਦਿੱਤੀ ਗਈ।",
       savedToast: "ਨੌਕਰੀ saved list ਵਿੱਚ ਜੋੜੀ ਗਈ।",
       removedToast: "Saved list ਤੋਂ ਹਟਾ ਦਿੱਤੀ ਗਈ।",
       noDate: "ਨਹੀਂ ਦਿੱਤੀ",
-      confirmReset: "ਕੀ ਤੁਸੀਂ ਇਸ browser ਦਾ ਸਾਰਾ demo job data ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+      confirmReset:
+        "ਕੀ ਤੁਸੀਂ ਇਸ browser ਦਾ ਸਾਰਾ demo job data ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
       resetDone: "Demo data ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ।"
     },
 
@@ -121,25 +128,30 @@
       tagline: "Government jobs • Punjabi + English",
       eyebrow: "FOR YOUR CAREER",
       heroTitle: "Find government jobs with clearer information.",
-      heroText: "Explore recruitment information for Punjab and India. Always read the official notification before applying.",
+      heroText:
+        "Explore recruitment information for Punjab and India. Always read the official notification before applying.",
       browseBtn: "Browse jobs ↓",
       noticeTitle: "Important:",
-      noticeText: "This is an early website version. Verify every official notification and deadline yourself.",
+      noticeText:
+        "This website is an early version. Always verify the official notification and deadline.",
       jobsTab: "Jobs",
       savedTab: "Saved",
       jobsHeading: "Latest jobs",
-      jobsIntro: "Search and filter opportunities to match your needs.",
+      jobsIntro: "Search and filter opportunities.",
       publishedLabel: "published",
       searchPlaceholder: "Search title, department or eligibility",
       allLocations: "All locations",
       allCategories: "All categories",
       emptyTitle: "No approved jobs yet",
-      emptyText: "Verify official recruitment notices before adding jobs.",
+      emptyText:
+        "Verify official recruitment notices before publishing jobs.",
       savedHeading: "Saved jobs",
       savedIntro: "Your shortlisted jobs appear here.",
       emptySavedTitle: "No saved jobs yet",
-      emptySavedText: "Press Save on a job card to keep it here.",
-      footerText: "Always rely on the recruiting organisation's official notice for final details.",
+      emptySavedText:
+        "Press Save on a job card to keep it here.",
+      footerText:
+        "Always rely on the recruiting organisation's official notice.",
       save: "♡ Save",
       unsave: "♥ Saved",
       apply: "Official notice ↗",
@@ -156,17 +168,20 @@
       delete: "Delete",
       submitted: "Job saved as pending.",
       approved: "Job published.",
-      rejected: "Pending job removed.",
+      rejected: "Job removed.",
       savedToast: "Job added to saved list.",
       removedToast: "Removed from saved list.",
       noDate: "Not specified",
-      confirmReset: "Delete all demo job data saved in this browser?",
+      confirmReset:
+        "Delete all demo job data saved in this browser?",
       resetDone: "Demo data cleared."
     }
   };
 
   function t(key) {
-    return translations[language][key] || translations.en[key] || key;
+    return translations[language][key] ||
+      translations.en[key] ||
+      key;
   }
 
   function setText(id, value) {
@@ -177,7 +192,8 @@
   function setLanguage(lang) {
     language = lang;
 
-    document.documentElement.lang = lang === "pa" ? "pa" : "en";
+    document.documentElement.lang =
+      lang === "pa" ? "pa" : "en";
 
     const map = {
       tagline: "tagline",
@@ -211,51 +227,67 @@
     }
 
     if ($("searchInput")) {
-      $("searchInput").placeholder = t("searchPlaceholder");
+      $("searchInput").placeholder =
+        t("searchPlaceholder");
     }
 
-    if ($("locationFilter")) {
-      $("locationFilter").options[0].textContent = t("allLocations");
+    if ($("locationFilter") &&
+        $("locationFilter").options.length) {
+      $("locationFilter").options[0].textContent =
+        t("allLocations");
     }
 
-    if ($("categoryFilter")) {
-      $("categoryFilter").options[0].textContent = t("allCategories");
+    if ($("categoryFilter") &&
+        $("categoryFilter").options.length) {
+      $("categoryFilter").options[0].textContent =
+        t("allCategories");
     }
 
     renderAll();
   }
 
   function switchView(id) {
-    document.querySelectorAll(".view").forEach(v => {
-      v.classList.toggle("hidden", v.id !== id);
+    document.querySelectorAll(".view").forEach(view => {
+      view.classList.toggle(
+        "hidden",
+        view.id !== id
+      );
     });
 
-    document.querySelectorAll(".tab").forEach(b => {
-      b.classList.toggle("active", b.dataset.view === id);
+    document.querySelectorAll(".tab").forEach(button => {
+      button.classList.toggle(
+        "active",
+        button.dataset.view === id
+      );
     });
 
-    if (id === "savedView") renderSaved();
-    if (id === "adminView") renderAdmin();
+    if (id === "savedView") {
+      renderSaved();
+    }
+
+    if (id === "adminView") {
+      renderAdmin();
+    }
   }
 
   function jobCard(job) {
     const isSaved = saved.includes(job.id);
+
     const notice = safeUrl(job.noticeUrl);
     const apply = safeUrl(job.applyUrl) || notice;
 
     return `
       <article class="job-card">
+
         <div class="job-top">
           <span class="job-badge">
-            ${escapeHtml(job.category || "Other")}
+            ${escapeHtml(job.category || "Government")}
           </span>
 
           <span class="job-badge">
-            ${escapeHtml(
-              job.status === "published"
-                ? "Verified by admin"
-                : ""
-            )}
+            ${job.status === "published"
+              ? "Verified by admin"
+              : ""}
           </span>
         </div>
 
@@ -266,22 +298,29 @@
         </p>
 
         <div class="job-meta">
-          <span>⌖ ${escapeHtml(job.location || "—")}</span>
-          <span>◷ ${escapeHtml(job.deadline || t("noDate"))}</span>
+          <span>
+            ⌖ ${escapeHtml(job.location || "India")}
+          </span>
+
+          <span>
+            ◷ ${escapeHtml(job.deadline || t("noDate"))}
+          </span>
         </div>
 
         ${
           job.eligibility
             ? `<p class="job-description">
                 ${escapeHtml(job.eligibility)}
-              </p>`
+               </p>`
             : ""
         }
 
         <p class="job-meta">
           <span>
             ${escapeHtml(t("checked"))}:
-            ${escapeHtml(job.sourceChecked || t("noDate"))}
+            ${escapeHtml(
+              job.sourceChecked || t("noDate")
+            )}
           </span>
         </p>
 
@@ -289,7 +328,8 @@
 
           ${
             notice
-              ? `<a class="apply-link"
+              ? `<a
+                   class="apply-link"
                    href="${escapeHtml(notice)}"
                    target="_blank"
                    rel="noopener noreferrer">
@@ -300,7 +340,8 @@
 
           ${
             apply && apply !== notice
-              ? `<a href="${escapeHtml(apply)}"
+              ? `<a
+                   href="${escapeHtml(apply)}"
                    target="_blank"
                    rel="noopener noreferrer">
                    Apply ↗
@@ -334,59 +375,71 @@
           const id = button.dataset.save;
 
           if (saved.includes(id)) {
-            saved = saved.filter(x => x !== id);
+
+            saved = saved.filter(
+              item => item !== id
+            );
+
             toast(t("removedToast"));
+
           } else {
+
             saved.push(id);
+
             toast(t("savedToast"));
           }
 
           write(KEYS.saved, saved);
+
           renderAll();
         });
-
       });
   }
 
   function renderJobs() {
     if (!$("jobsList")) return;
 
-    const q = $("searchInput")
-      ? $("searchInput").value.trim().toLowerCase()
-      : "";
+    const q =
+      $("searchInput")
+        ? $("searchInput").value.trim().toLowerCase()
+        : "";
 
-    const loc = $("locationFilter")
-      ? $("locationFilter").value
-      : "";
+    const loc =
+      $("locationFilter")
+        ? $("locationFilter").value
+        : "";
 
-    const cat = $("categoryFilter")
-      ? $("categoryFilter").value
-      : "";
+    const cat =
+      $("categoryFilter")
+        ? $("categoryFilter").value
+        : "";
 
     const visible = jobs
-      .filter(j => j.status === "published")
-      .filter(j => {
+      .filter(job => job.status === "published")
+      .filter(job => {
 
         const text = [
-          j.title,
-          j.department,
-          j.eligibility,
-          j.location,
-          j.category
+          job.title,
+          job.department,
+          job.eligibility,
+          job.location,
+          job.category
         ]
           .join(" ")
           .toLowerCase();
 
         return (
           (!q || text.includes(q)) &&
-          (!loc || j.location === loc) &&
-          (!cat || j.category === cat)
+          (!loc || job.location === loc) &&
+          (!cat || job.category === cat)
         );
       });
 
     if ($("publishedCount")) {
       $("publishedCount").textContent =
-        jobs.filter(j => j.status === "published").length;
+        jobs.filter(
+          job => job.status === "published"
+        ).length;
     }
 
     $("jobsList").innerHTML =
@@ -414,10 +467,9 @@
   function renderSaved() {
     if (!$("savedList")) return;
 
-    const items = jobs.filter(
-      j =>
-        saved.includes(j.id) &&
-        j.status === "published"
+    const items = jobs.filter(job =>
+      saved.includes(job.id) &&
+      job.status === "published"
     );
 
     $("savedList").innerHTML =
@@ -437,15 +489,16 @@
     if (!$("pendingList")) return;
 
     const pending = jobs.filter(
-      j => j.status === "pending"
+      job => job.status === "pending"
     );
 
     const published = jobs.filter(
-      j => j.status === "published"
+      job => job.status === "published"
     );
 
     if ($("pendingCount")) {
-      $("pendingCount").textContent = pending.length;
+      $("pendingCount").textContent =
+        pending.length;
     }
 
     if ($("adminPublishedCount")) {
@@ -455,25 +508,24 @@
 
     $("pendingList").innerHTML =
       pending.length
-
-        ? pending.map(j => `
+        ? pending.map(job => `
             <div class="pending-card">
 
               <strong>
-                ${escapeHtml(j.title)}
+                ${escapeHtml(job.title)}
               </strong>
 
               <p>
-                ${escapeHtml(j.department)}
+                ${escapeHtml(job.department)}
                 ·
-                ${escapeHtml(j.location)}
+                ${escapeHtml(job.location)}
               </p>
 
               <p>
                 Official notice:
                 <a
                   href="${escapeHtml(
-                    safeUrl(j.noticeUrl)
+                    safeUrl(job.noticeUrl)
                   )}"
                   target="_blank"
                   rel="noopener noreferrer">
@@ -485,13 +537,13 @@
 
                 <button
                   class="approve"
-                  data-approve="${escapeHtml(j.id)}">
+                  data-approve="${escapeHtml(job.id)}">
                   ${escapeHtml(t("approve"))}
                 </button>
 
                 <button
                   class="reject"
-                  data-reject="${escapeHtml(j.id)}">
+                  data-reject="${escapeHtml(job.id)}">
                   ${escapeHtml(t("reject"))}
                 </button>
 
@@ -499,26 +551,24 @@
 
             </div>
           `).join("")
-
         : `<p class="tiny-empty">
              ${escapeHtml(t("pendingEmpty"))}
            </p>`;
 
     $("adminPublishedList").innerHTML =
       published.length
-
-        ? published.map(j => `
+        ? published.map(job => `
             <div class="pending-card">
 
               <strong>
-                ${escapeHtml(j.title)}
+                ${escapeHtml(job.title)}
               </strong>
 
               <p>
-                ${escapeHtml(j.department)}
+                ${escapeHtml(job.department)}
                 ·
                 ${escapeHtml(
-                  j.deadline || t("noDate")
+                  job.deadline || t("noDate")
                 )}
               </p>
 
@@ -526,7 +576,7 @@
 
                 <button
                   class="reject"
-                  data-delete="${escapeHtml(j.id)}">
+                  data-delete="${escapeHtml(job.id)}">
                   ${escapeHtml(t("delete"))}
                 </button>
 
@@ -534,56 +584,58 @@
 
             </div>
           `).join("")
-
         : `<p class="tiny-empty">
              ${escapeHtml(t("publishedEmpty"))}
            </p>`;
 
     $("pendingList")
       .querySelectorAll("[data-approve]")
-      .forEach(b => {
+      .forEach(button => {
 
-        b.addEventListener("click", () => {
+        button.addEventListener("click", () => {
+
           changeStatus(
-            b.dataset.approve,
+            button.dataset.approve,
             "published"
           );
         });
-
       });
 
     $("pendingList")
       .querySelectorAll("[data-reject]")
-      .forEach(b => {
+      .forEach(button => {
 
-        b.addEventListener("click", () => {
-          removeJob(b.dataset.reject);
+        button.addEventListener("click", () => {
+
+          removeJob(
+            button.dataset.reject
+          );
         });
-
       });
 
     $("adminPublishedList")
       .querySelectorAll("[data-delete]")
-      .forEach(b => {
+      .forEach(button => {
 
-        b.addEventListener("click", () => {
-          removeJob(b.dataset.delete);
+        button.addEventListener("click", () => {
+
+          removeJob(
+            button.dataset.delete
+          );
         });
-
       });
   }
 
   function changeStatus(id, status) {
 
-    jobs = jobs.map(j =>
-      j.id === id
-        ? { ...j, status }
-        : j
+    jobs = jobs.map(job =>
+      job.id === id
+        ? { ...job, status }
+        : job
     );
 
     persist();
     renderAll();
-    renderAdmin();
 
     toast(
       status === "published"
@@ -595,16 +647,15 @@
   function removeJob(id) {
 
     jobs = jobs.filter(
-      j => j.id !== id
+      job => job.id !== id
     );
 
     saved = saved.filter(
-      x => x !== id
+      item => item !== id
     );
 
     persist();
     renderAll();
-    renderAdmin();
 
     toast(t("rejected"));
   }
@@ -613,10 +664,9 @@
 
     if ($("savedNavCount")) {
       $("savedNavCount").textContent =
-        jobs.filter(
-          j =>
-            j.status === "published" &&
-            saved.includes(j.id)
+        jobs.filter(job =>
+          job.status === "published" &&
+          saved.includes(job.id)
         ).length;
     }
 
@@ -625,10 +675,16 @@
     renderAdmin();
   }
 
-
-  /* ==========================================
-     AUTOMATIC GOVERNMENT JOB LOADER
-     ========================================== */
+  /*
+   * AUTOMATIC GOVERNMENT JOB LOADER
+   *
+   * GitHub Actions creates:
+   * data/pending_jobs.json
+   *
+   * This function reads that file and
+   * adds new official sources to the
+   * Pending section.
+   */
 
   async function loadAutomaticJobs() {
 
@@ -648,8 +704,7 @@
         return;
       }
 
-      const candidates =
-        await response.json();
+      const candidates = await response.json();
 
       if (!Array.isArray(candidates)) {
         console.log(
@@ -658,18 +713,23 @@
         return;
       }
 
+      let changed = false;
+
       candidates.forEach(item => {
 
-        if (!item.url) return;
+        if (!item || !item.url) return;
+
+        const source =
+          item.source || "Government";
 
         const id =
           "auto-" +
-          item.source +
+          source +
           "-" +
           item.url;
 
         const exists =
-          jobs.some(j => j.id === id);
+          jobs.some(job => job.id === id);
 
         if (!exists) {
 
@@ -679,11 +739,10 @@
 
             title:
               item.title ||
-              `${item.source} - Official Jobs/Notifications`,
+              `${source} - Official Jobs/Notifications`,
 
             department:
-              item.source ||
-              "Government",
+              source,
 
             location:
               "India",
@@ -698,10 +757,10 @@
               "",
 
             noticeUrl:
-              item.url,
+              safeUrl(item.url),
 
             applyUrl:
-              item.url,
+              safeUrl(item.url),
 
             sourceChecked:
               new Date()
@@ -712,15 +771,17 @@
               "pending"
           });
 
+          changed = true;
         }
-
       });
 
-      persist();
-      renderAll();
+      if (changed) {
+        persist();
+        renderAll();
+      }
 
       console.log(
-        `Loaded ${candidates.length} automatic job sources.`
+        `Automatic job check loaded ${candidates.length} candidate(s).`
       );
 
     } catch (error) {
@@ -729,15 +790,10 @@
         "Automatic jobs could not be loaded:",
         error
       );
-
     }
-
   }
 
-
-  /* ==========================================
-     BUTTONS / FORMS
-     ========================================== */
+  /* Navigation */
 
   document
     .querySelectorAll(".tab")
@@ -747,8 +803,9 @@
         "click",
         () => switchView(button.dataset.view)
       );
-
     });
+
+  /* Language */
 
   if ($("langBtn")) {
 
@@ -761,28 +818,37 @@
             ? "en"
             : "pa"
         );
-
       }
     );
-
   }
 
-  ["searchInput", "locationFilter", "categoryFilter"]
-    .forEach(id => {
+  /* Search */
 
-      if ($(id)) {
+  if ($("searchInput")) {
 
-        $(id).addEventListener(
-          id === "searchInput"
-            ? "input"
-            : "change",
-          renderJobs
-        );
+    $("searchInput").addEventListener(
+      "input",
+      renderJobs
+    );
+  }
 
-      }
+  if ($("locationFilter")) {
 
-    });
+    $("locationFilter").addEventListener(
+      "change",
+      renderJobs
+    );
+  }
 
+  if ($("categoryFilter")) {
+
+    $("categoryFilter").addEventListener(
+      "change",
+      renderJobs
+    );
+  }
+
+  /* Manual Job Form */
 
   if ($("jobForm")) {
 
@@ -797,19 +863,17 @@
             $("noticeUrl").value.trim()
           );
 
+        const applyValue =
+          $("applyUrl").value.trim();
+
         const applyUrl =
-          $("applyUrl").value.trim()
-            ? safeUrl(
-                $("applyUrl").value.trim()
-              )
+          applyValue
+            ? safeUrl(applyValue)
             : "";
 
         if (
           !noticeUrl ||
-          (
-            $("applyUrl").value.trim() &&
-            !applyUrl
-          )
+          (applyValue && !applyUrl)
         ) {
 
           toast(
@@ -834,10 +898,8 @@
         const job = {
 
           id:
-            (
-              window.crypto &&
-              crypto.randomUUID
-            )
+            window.crypto &&
+            crypto.randomUUID
               ? crypto.randomUUID()
               : String(Date.now()) +
                 Math.random()
@@ -881,20 +943,22 @@
 
         $("jobForm").reset();
 
-        $("sourceChecked").value =
-          new Date()
-            .toISOString()
-            .slice(0, 10);
+        if ($("sourceChecked")) {
+
+          $("sourceChecked").value =
+            new Date()
+              .toISOString()
+              .slice(0, 10);
+        }
 
         renderAll();
 
         toast(t("submitted"));
-
       }
     );
-
   }
 
+  /* Reset */
 
   if ($("resetBtn")) {
 
@@ -914,35 +978,34 @@
           persist();
           renderAll();
 
-          toast(
-            t("resetDone")
-          );
+          toast(t("resetDone"));
         }
-
       }
     );
-
   }
 
+  /* Footer year */
 
   if ($("year")) {
     $("year").textContent =
       new Date().getFullYear();
   }
 
+  /* Date */
+
   if ($("sourceChecked")) {
+
     $("sourceChecked").value =
       new Date()
         .toISOString()
         .slice(0, 10);
   }
 
-
-  /* ==========================================
-     START WEBSITE
-     ========================================== */
+  /* Start website */
 
   setLanguage("pa");
+
+  /* Load automatic government jobs */
 
   loadAutomaticJobs();
 
