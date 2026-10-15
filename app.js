@@ -805,11 +805,9 @@
     });
 
   /* Homepage feature shortcuts: delegated so the cards keep working reliably */
-  document.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-benefit]");
-    if (!button) return;
-
-    const action = button.dataset.benefit;
+  document.querySelectorAll("[data-benefit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.benefit;
 
     if (action === "search") {
       switchView("jobsView");
@@ -846,11 +844,12 @@
       return;
     }
 
-    if (action === "language") {
-      const nextLanguage = language === "pa" ? "en" : "pa";
-      setLanguage(nextLanguage);
-      toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
-    }
+      if (action === "language") {
+        const nextLanguage = language === "pa" ? "en" : "pa";
+        setLanguage(nextLanguage);
+        toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
+      }
+    });
   });
 
   /* Language */
