@@ -12,5 +12,19 @@
     "verified": false,
     "needsReview": true,
     "sourceChecked": "2026-10-16"
+  },
+  {
+    "source": "HSSC",
+    "title": "Recruitment",
+    "department": "Haryana Staff Selection Commission",
+    "location": "Haryana",
+    "category": "Other",
+    "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
+    "url": "https://hssc.gov.in/advertisement",
+    "applyUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-16"
   }
 ]
