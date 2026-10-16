@@ -140,10 +140,26 @@ def is_valid_https_url(value):
     except Exception:
         return False
 
-def add_private_candidate(candidates, seen, company, title, location, department, url, apply_url, checked):
+def is_india_relevant(location, default_location):
+    loc = str(location or "").lower()
+    india_markers = (
+        "india", "bengaluru", "bangalore", "hyderabad", "pune", "chennai",
+        "mumbai", "new delhi", "delhi", "gurugram", "gurgaon", "noida",
+        "mohali", "chandigarh", "punjab", "ahmedabad", "kolkata", "kochi",
+        "jaipur", "indore", "lucknow", "thiruvananthapuram"
+    )
+    if any(marker in loc for marker in india_markers):
+        return True
+    # Only accept a generic remote location for companies explicitly marked
+    # as India-focused in the source list.
+    return default_location == "India" and ("remote" in loc or not loc)
+
+def add_private_candidate(candidates, seen, company, title, location, department, url, apply_url, checked, default_location="All India"):
     title = " ".join(str(title or "").split())
     url = str(url or "").strip()
     if not title or len(title) < 3 or not is_valid_https_url(url):
+        return
+    if not is_india_relevant(location, default_location):
         return
     if EXCLUDE.search(title) or title.lower().strip(" -") in GENERIC_PAGE_TITLES:
         return
@@ -180,7 +196,7 @@ def scan_private(candidates, seen, successful_sources, checked):
                 depts = job.get("departments") or []
                 dept = ", ".join(str(d.get("name", "")) for d in depts if d.get("name")) or company
                 url = job.get("absolute_url") or ""
-                add_private_candidate(candidates, seen, company, job.get("title"), loc, dept, url, url, checked)
+                add_private_candidate(candidates, seen, company, job.get("title"), loc, dept, url, url, checked, default_location)
             print(f"Scanned {company} (Greenhouse): {len(data['jobs'])} listing(s)")
         except Exception as exc:
             print(f"Skipped {company} (Greenhouse): {exc}")
@@ -200,7 +216,7 @@ def scan_private(candidates, seen, successful_sources, checked):
                     loc = str(loc) + " (Remote)"
                 dept = job.get("departmentName") or job.get("teamName") or company
                 url = job.get("jobUrl") or ""
-                add_private_candidate(candidates, seen, company, job.get("title"), loc, dept, url, job.get("applyUrl") or url, checked)
+                add_private_candidate(candidates, seen, company, job.get("title"), loc, dept, url, job.get("applyUrl") or url, checked, default_location)
             print(f"Scanned {company} (Ashby): {len(data['jobs'])} listing(s)")
         except Exception as exc:
             print(f"Skipped {company} (Ashby): {exc}")
@@ -219,7 +235,7 @@ def scan_private(candidates, seen, successful_sources, checked):
                 loc = categories.get("location") or default_location
                 dept = categories.get("team") or categories.get("department") or company
                 url = job.get("hostedUrl") or ""
-                add_private_candidate(candidates, seen, company, job.get("text"), loc, dept, url, job.get("applyUrl") or url, checked)
+                add_private_candidate(candidates, seen, company, job.get("text"), loc, dept, url, job.get("applyUrl") or url, checked, default_location)
             print(f"Scanned {company} (Lever): {len(data)} listing(s)")
         except Exception as exc:
             print(f"Skipped {company} (Lever): {exc}")
