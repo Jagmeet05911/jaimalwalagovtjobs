@@ -51,10 +51,19 @@ def main():
     candidates = []
     seen = set()
     checked = datetime.now(timezone.utc).date().isoformat()
+    feed_path = Path("data/pending_jobs.json")
+    try:
+        previous_candidates = json.loads(feed_path.read_text(encoding="utf-8"))
+        if not isinstance(previous_candidates, list):
+            previous_candidates = []
+    except (OSError, json.JSONDecodeError):
+        previous_candidates = []
+    successful_sources = set()
     for source, page, location in SOURCES:
         try:
             parser = Links()
             parser.feed(fetch(page))
+            successful_sources.add(source)
             count = 0
             host = urlparse(page).netloc.lower()
             for title, href in parser.items:
@@ -93,8 +102,19 @@ def main():
                     break
         except Exception as exc:
             print(f"Could not scan {source} ({page}): {exc}")
+    # Keep prior candidates for sources that were blocked or timed out.
+    # Keep their original sourceChecked date so old entries are not treated as fresh.
+    preserved = 0
+    for item in previous_candidates:
+        source = item.get("source") if isinstance(item, dict) else None
+        if isinstance(item, dict) and source not in successful_sources and item.get("url") and item["url"] not in seen:
+            candidates.append(item)
+            seen.add(item["url"])
+            preserved += 1
     Path("data").mkdir(exist_ok=True)
-    Path("data/pending_jobs.json").write_text(json.dumps(candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    feed_path.write_text(json.dumps(candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("Successful sources:", ", ".join(sorted(successful_sources)) or "none")
+    print(f"Preserved {preserved} candidate(s) from sources that could not be scanned.")
     print(f"Wrote {len(candidates)} review-only candidates.")
     if not candidates:
         print("Warning: no candidates found; inspect source pages and workflow logs.")
