@@ -17,7 +17,7 @@ SOURCES = [
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
 ]
 JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advertisement no|apply online|career|post of|posts of|job opening|direct recruitment", re.I)
-EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report", re.I)
+EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|date of examination|examination date|exam date|roll number|status of|recruitment requisition", re.I)
 MAX_PER_SOURCE = 20
 
 class Links(HTMLParser):
@@ -78,7 +78,7 @@ def main():
                     "source": source,
                     "title": title[:180],
                     "department": {"SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts", "UPSC": "Union Public Service Commission", "SSC": "Staff Selection Commission", "PPSC": "Punjab Public Service Commission"}[source],
-                    "location": location,
+                    "location": ("Haryana" if "SSSC/HR" in title.upper() or "haryana" in title.lower() else location),
                     "category": "Other",
                     "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
                     "url": url,
