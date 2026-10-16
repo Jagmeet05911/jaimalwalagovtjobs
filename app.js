@@ -886,7 +886,7 @@
     const dataUrl = new URL("./data/pending_jobs.json", document.baseURI);
 
     try {
-      const response = await fetch(dataUrl.href + "?v=20261015", {
+      const response = await fetch(dataUrl.href + "?v=20261016", {
         cache: "no-store"
       });
 
@@ -901,11 +901,20 @@
 
       let changed = false;
 
+      const now = new Date();
+      const todayKey = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, "0"),
+        String(now.getDate()).padStart(2, "0")
+      ].join("-");
+
       candidates.forEach(item => {
         if (!item || !item.url || !item.title ||
             /official jobs\/notifications/i.test(item.title)) return;
 
-        // Only verified entries belong on the public jobs page.
+        // Only verified, non-expired entries belong on the public jobs page.
+        const isActiveVerified = item.verified === true &&
+          (!item.deadline || item.deadline >= todayKey);
         const source = item.source || "Government";
         const id = "auto-" + source + "-" + item.url;
         const noticeUrl = safeUrl(item.url);
@@ -924,7 +933,7 @@
           applyUrl: safeUrl(item.applyUrl || ""),
           admitCardUrl: safeUrl(item.admitCardUrl || ""),
           sourceChecked: new Date().toISOString().slice(0, 10),
-          status: item.verified === true ? "published" : "pending"
+          status: isActiveVerified ? "published" : "pending"
         };
 
         // Older versions may already have saved this same automatic job as
@@ -979,6 +988,15 @@
         () => switchView(button.dataset.view)
       );
     });
+
+  /* Make every jobs shortcut switch views and scroll reliably. */
+  document.querySelectorAll('a[href="#jobsView"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      switchView("jobsView");
+      $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 
   /* Help visitors bookmark this website in their browser */
   if ($("siteBookmarkBtn")) {
