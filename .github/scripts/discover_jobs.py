@@ -190,7 +190,7 @@ def scan_private(candidates, seen, successful_sources, checked):
             data = json.loads(fetch(api))
             if not isinstance(data, dict) or not isinstance(data.get("jobs"), list):
                 raise ValueError("Unexpected Greenhouse response")
-            successful_sources.add(source)
+            successful_sources.add(company)
             for job in data["jobs"][:MAX_PER_SOURCE]:
                 loc = (job.get("location") or {}).get("name") or default_location
                 depts = job.get("departments") or []
@@ -305,10 +305,15 @@ def main():
     # Keep older entries only when their source could not be reached, avoiding
     # stale deletions during temporary outages. Fresh entries are always deduped.
     preserved = 0
+    private_defaults = {company: default for company, _, default in GREENHOUSE_BOARDS + ASHBY_BOARDS + LEVER_BOARDS}
     for item in previous_candidates:
         source = item.get("source") if isinstance(item, dict) else None
-        if (isinstance(item, dict) and source not in successful_sources and
-                item.get("url") and item["url"] not in seen):
+        if not isinstance(item, dict):
+            continue
+        if item.get("category") == "Private Jobs" and not is_india_relevant(
+                item.get("location"), private_defaults.get(source, "All India")):
+            continue
+        if (source not in successful_sources and item.get("url") and item["url"] not in seen):
             candidates.append(item)
             seen.add(item["url"])
             preserved += 1
