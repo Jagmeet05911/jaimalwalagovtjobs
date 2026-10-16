@@ -1092,7 +1092,8 @@
         if (!Number.isFinite(checkedAt) || ageDays > 3 || ageDays < -1) continue;
         const titleForReview = String(item.title);
         if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition/i.test(titleForReview)) continue;
-        if (!/recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|posts? of|job opening|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b/i.test(titleForReview)) continue;
+        if (/^(recruitment|career|careers|career tools(?: & learning)?|career article|career schemes|career guidance|web advertisement|job opportunities|current openings|view all jobs|all jobs)$/i.test(titleForReview.trim())) continue;
+        if (String(item.category || "").toLowerCase() !== "private jobs" && !/recruit|vacanc|advertisement|advt\\.?\\s*(no\\.?|number)|apply online|career|posts? of|job opening|employment notice|centralised employment notice|\\bCEN\\s*\\d|group[- ]?[CD]\\b/i.test(titleForReview)) continue;
         const noticeUrl = safeUrl(item.url);
         if (!noticeUrl || existingUrls.has(noticeUrl) || seen.has(noticeUrl)) continue;
         seen.add(noticeUrl);
