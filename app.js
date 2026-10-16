@@ -1423,7 +1423,7 @@
         await loadAutomaticJobs(true);
       } finally {
         refreshCandidatesButton.disabled = false;
-        refreshCandidatesButton.textContent = "Check for New Candidates";
+        refreshCandidatesButton.textContent = "Import Latest Scan Results";
       }
     });
   }
