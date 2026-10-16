@@ -17,7 +17,7 @@ SOURCES = [
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
 ]
 JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advertisement no|apply online|career|post of|posts of|job opening|direct recruitment", re.I)
-EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|date of examination|examination date|exam date|roll number|status of|recruitment requisition", re.I)
+EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition", re.I)
 MAX_PER_SOURCE = 20
 
 class Links(HTMLParser):
