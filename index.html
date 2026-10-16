@@ -50,6 +50,7 @@
     <div class="tabs-label"><span class="nav-dot"></span> JOB PORTAL</div>
     <button class="tab active" data-view="jobsView" id="jobsTab">ਨੌਕਰੀਆਂ</button>
     <button class="tab" data-view="savedView" id="savedTab">♡ ਸੇਵ ਕੀਤੀਆਂ <span id="savedNavCount">0</span></button>
+    <button class="tab" data-view="admitView" id="admitTab">ਐਡਮਿਟ ਕਾਰਡ</button>
     <button class="tab" data-view="adminView" id="adminTab">Admin Panel ⚙</button>
   </nav>
 
@@ -70,6 +71,12 @@
       <div class="section-head"><div><span class="eyebrow">YOUR SHORTLIST</span><h2 id="savedHeading">ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ</h2><p class="muted" id="savedIntro">ਆਪਣੀਆਂ ਪਸੰਦੀਦਾ ਨੌਕਰੀਆਂ ਇੱਥੇ ਵੇਖੋ।</p></div></div>
       <div id="savedList" class="jobs-grid"></div>
       <div id="emptySaved" class="empty-state"><div class="empty-symbol">♡</div><h3 id="emptySavedTitle">ਹਾਲੇ ਕੋਈ ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਕੀਤੀ</h3><p id="emptySavedText">ਨੌਕਰੀ ਦੇ ਕਾਰਡ ਉੱਤੇ Save ਬਟਨ ਦਬਾਓ।</p></div>
+    </section>
+
+    <section id="admitView" class="view hidden">
+      <div class="section-head"><div><span class="eyebrow">ADMIT CARD UPDATES</span><h2 id="admitHeading">ਐਡਮਿਟ ਕਾਰਡ / ਰੋਲ ਨੰਬਰ</h2><p class="muted" id="admitIntro">ਜਿਨ੍ਹਾਂ ਨੌਕਰੀਆਂ ਦੇ ਐਡਮਿਟ ਕਾਰਡ ਦਾ official link ਜਾਰੀ ਹੋਇਆ ਹੈ, ਉਹ ਇੱਥੇ ਵੇਖੋ।</p></div></div>
+      <div id="admitList" class="jobs-grid"></div>
+      <div id="emptyAdmit" class="empty-state"><div class="empty-symbol">▤</div><h3 id="emptyAdmitTitle">ਹਾਲੇ ਕੋਈ ਐਡਮਿਟ ਕਾਰਡ ਲਿੰਕ ਨਹੀਂ</h3><p id="emptyAdmitText">ਐਡਮਿਟ ਕਾਰਡ ਜਾਰੀ ਹੋਣ ਅਤੇ Admin Panel ਵਿੱਚ official link ਜੋੜਨ ਤੋਂ ਬਾਅਦ ਇੱਥੇ ਦਿਖੇਗਾ।</p></div>
     </section>
 
     <section id="adminView" class="view hidden">
@@ -97,6 +104,6 @@
   <section class="safety-band"><div class="safety-icon">✓</div><div><b>ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਪਹਿਲਾਂ</b><p>ਕਿਸੇ ਨੂੰ ਨੌਕਰੀ ਲਗਵਾਉਣ ਲਈ ਪੈਸੇ ਨਾ ਦਿਓ। ਫੀਸ, ਉਮਰ ਹੱਦ ਅਤੇ ਯੋਗਤਾ ਸਿਰਫ਼ official notification ਤੋਂ ਪੱਕੀ ਕਰੋ।</p></div></section>
   <footer><div class="footer-brand"><span class="brand-icon">JG</span><div><strong>Jaimalwala Govt Jobs</strong><small>ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਸਹੀ ਜਾਣਕਾਰੀ</small></div></div><p id="footerText">ਜਾਣਕਾਰੀ ਲਈ ਪੋਰਟਲ — ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।</p><p>© <span id="year"></span> Jaimalwala Govt Jobs</p></footer>
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261016-6"></script>
+  <script src="app.js?v=20261016-7"></script>
 </body>
 </html>
