@@ -174,7 +174,7 @@
     saved: "jg_saved_v1"
   };
 
-  let language = "pa";
+  let language = "en";
   let jobs = [];
   let saved = read(KEYS.saved, []);
   let deadlineSort = false;
@@ -1400,7 +1400,7 @@
 
   /* Start website */
 
-  setLanguage("pa");
+  setLanguage("en");
 
   /* Load shared jobs from Supabase, not browser-local demo data. */
   initializeCloud();
