@@ -183,3 +183,14 @@ footer>p{width:100%}
 .btn-bookmark{background:#fff;color:#174d7d;border:1px solid #91bce2;box-shadow:0 4px 12px #2d6ca010}
 .btn-bookmark:hover,.btn-bookmark:focus-visible{background:#e8f4ff;border-color:#397eb9;outline:2px solid #b9dafa;outline-offset:2px}
 @media(max-width:520px){.home-action-row{align-items:stretch;flex-direction:column}.home-action-row .btn{width:100%}}
+
+
+/* Multilingual translation selector */
+.translate-wrap{display:flex;flex-direction:column;gap:4px;align-items:flex-start;min-width:150px}
+.translate-label{font-size:10px;font-weight:700;color:#35536a}
+#google_translate_element{max-width:210px;min-height:28px}
+#google_translate_element .goog-te-gadget{font-family:inherit!important;font-size:11px!important;color:#35536a!important}
+#google_translate_element .goog-te-gadget-simple{border:1px solid #9fc3e5!important;border-radius:9px!important;background:#edf6ff!important;padding:5px 7px!important}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value{color:#225b91!important}
+#google_translate_element img{display:inline!important}
+@media(max-width:700px){.translate-wrap{min-width:0;max-width:138px}.translate-label{font-size:9px}#google_translate_element{max-width:138px}#google_translate_element .goog-te-gadget-simple{padding:4px 5px!important}}
