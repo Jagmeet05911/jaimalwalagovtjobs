@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Sample Private Company Job — Customer Support Executive",
+    "department": "Sample Company Pvt. Ltd.",
+    "location": "Chandigarh",
+    "category": "Private Jobs",
+    "eligibility": "Sample entry only. Replace with the employer's verified eligibility details.",
+    "deadline": "2026-12-31",
+    "notice_url": "https://example.com/careers",
+    "apply_url": "https://example.com/careers",
+    "admit_card_url": null,
+    "source_checked": "2026-10-16",
+    "status": "pending"
+  },
+  {
+    "title": "Sample Private Company Job — Data Entry Operator",
+    "department": "Sample Technologies Pvt. Ltd.",
+    "location": "Mohali",
+    "category": "Private Jobs",
+    "eligibility": "Sample entry only. Replace with the employer's verified eligibility details.",
+    "deadline": "2026-12-31",
+    "notice_url": "https://example.com/careers",
+    "apply_url": "https://example.com/careers",
+    "admit_card_url": null,
+    "source_checked": "2026-10-16",
+    "status": "pending"
+  }
+]
