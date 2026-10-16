@@ -173,7 +173,7 @@
   };
 
   let language = "pa";
-  let jobs = read(KEYS.jobs, []).filter(job => !/official jobs\/notifications/i.test(String(job?.title || "")));
+  let jobs = [];
   let saved = read(KEYS.saved, []);
   let deadlineSort = false;
 
@@ -197,7 +197,7 @@
   }
 
   function persist() {
-    write(KEYS.jobs, jobs);
+    // Jobs live in Supabase; only visitor-specific saved IDs stay in this browser.
     write(KEYS.saved, saved);
   }
 
@@ -985,38 +985,26 @@
       });
   }
 
-  function changeStatus(id, status) {
-
-    jobs = jobs.map(job =>
-      job.id === id
-        ? { ...job, status }
-        : job
-    );
-
-    persist();
-    renderAll();
-
-    toast(
-      status === "published"
-        ? t("approved")
-        : t("submitted")
-    );
+  async function changeStatus(id, status) {
+    try {
+      await supa("/rest/v1/jobs?id=eq." + encodeURIComponent(id), {
+        method: "PATCH", headers: { Prefer: "return=minimal" }, body: JSON.stringify({ status })
+      }, true);
+      await loadCloudJobs();
+      toast(status === "published" ? t("approved") : t("submitted"));
+    } catch (error) { toast("Update ਨਹੀਂ ਹੋਈ: " + error.message); }
   }
 
-  function removeJob(id) {
-
-    jobs = jobs.filter(
-      job => job.id !== id
-    );
-
-    saved = saved.filter(
-      item => item !== id
-    );
-
-    persist();
-    renderAll();
-
-    toast(t("rejected"));
+  async function removeJob(id) {
+    try {
+      await supa("/rest/v1/jobs?id=eq." + encodeURIComponent(id), {
+        method: "DELETE", headers: { Prefer: "return=minimal" }
+      }, true);
+      saved = saved.filter(item => item !== id);
+      persist();
+      await loadCloudJobs();
+      toast(t("rejected"));
+    } catch (error) { toast("Delete ਨਹੀਂ ਹੋਇਆ: " + error.message); }
   }
 
   function renderAll() {
@@ -1275,7 +1263,7 @@
 
     $("jobForm").addEventListener(
       "submit",
-      event => {
+      async event => {
 
         event.preventDefault();
 
@@ -1370,9 +1358,12 @@
             "pending"
         };
 
-        jobs.unshift(job);
-
-        persist();
+        try {
+          await supa("/rest/v1/jobs", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify(jobRow(job)) }, true);
+        } catch (error) {
+          toast("ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਹੋਈ: " + error.message);
+          return;
+        }
 
         $("jobForm").reset();
 
@@ -1384,7 +1375,7 @@
               .slice(0, 10);
         }
 
-        renderAll();
+        await loadCloudJobs();
 
         toast(t("submitted"));
       }
@@ -1438,8 +1429,7 @@
 
   setLanguage("pa");
 
-  /* Load automatic government jobs */
-
-  loadAutomaticJobs();
+  /* Load shared jobs from Supabase, not browser-local demo data. */
+  initializeCloud();
 
 })();
