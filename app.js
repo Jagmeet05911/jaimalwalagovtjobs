@@ -40,7 +40,7 @@
       ...(options.headers || {})
     };
     if (authenticated) {
-      if (!accessToken) throw new Error("ਕਿਰਪਾ ਕਰਕੇ ਪਹਿਲਾਂ Admin Login ਕਰੋ।");
+      if (!accessToken) throw new Error("Please sign in to the Admin Panel first.");
       headers.Authorization = "Bearer " + accessToken;
     } else if (accessToken) {
       headers.Authorization = "Bearer " + accessToken;
@@ -62,7 +62,7 @@
     box.style.marginBottom = "18px";
     box.innerHTML = `
       <h3>Secure Admin Login</h3>
-      <p class="muted">Admin account ਨਾਲ sign in ਕਰੋ। Password ਇਸ website ਦੇ database ਵਿੱਚ save ਨਹੀਂ ਹੁੰਦਾ।</p>
+      <p class="muted">Sign in with your administrator account. Your password is not stored in this website code.</p>
       <form id="supabaseLoginForm">
         <label for="adminEmail">Admin email</label>
         <input id="adminEmail" type="email" autocomplete="username" required value="jaimalwalajobpoint@gmail.com">
@@ -89,7 +89,7 @@
           })
         });
         if (!result?.access_token || result?.user?.email?.toLowerCase() !== "jaimalwalajobpoint@gmail.com") {
-          throw new Error("ਇਹ Admin account ਮਨਜ਼ੂਰ ਨਹੀਂ ਹੈ।");
+          throw new Error("This account is not authorized for the Admin Panel.");
         }
         accessToken = result.access_token;
         adminUser = result.user;
@@ -102,9 +102,9 @@
         await loadCloudJobs();
         updateAdminSession();
         await loadAutomaticJobs();
-        toast("Admin Login ਸਫਲ ਹੋ ਗਿਆ।");
+        toast("Admin login successful.");
       } catch (error) {
-        toast("Login ਨਹੀਂ ਹੋਇਆ: " + error.message);
+        toast("Login failed: " + error.message);
       } finally {
         button.disabled = false;
       }
@@ -120,7 +120,7 @@
     if (info) {
       info.innerHTML = adminUser
         ? 'Signed in as <strong>' + escapeHtml(adminUser.email) + '</strong> <button type="button" id="adminLogoutBtn" class="btn btn-danger">Logout</button>'
-        : "Login ਕਰਕੇ pending jobs approve ਜਾਂ ਨਵੀਆਂ jobs add ਕਰੋ।";
+        : "Sign in to review pending jobs or add a new job."; 
     }
     const logout = $("adminLogoutBtn");
     if (logout) logout.addEventListener("click", async () => {
@@ -130,7 +130,7 @@
       localStorage.removeItem(SESSION_KEY);
       await loadCloudJobs();
       updateAdminSession();
-      toast("Logout ਹੋ ਗਿਆ।");
+      toast("You have been signed out.");
     });
   }
 
@@ -145,7 +145,7 @@
       console.error("Supabase load failed:", error);
       if (!cloudReady) jobs = [];
       renderAll();
-      toast("Jobs load ਨਹੀਂ ਹੋਈਆਂ: " + error.message);
+      toast("Could not load jobs: " + error.message);
     }
   }
 
@@ -994,7 +994,7 @@
       }, true);
       await loadCloudJobs();
       toast(status === "published" ? t("approved") : t("submitted"));
-    } catch (error) { toast("Update ਨਹੀਂ ਹੋਈ: " + error.message); }
+    } catch (error) { toast("Update failed: " + error.message); }
   }
 
   async function removeJob(id) {
@@ -1006,7 +1006,7 @@
       persist();
       await loadCloudJobs();
       toast(t("rejected"));
-    } catch (error) { toast("Delete ਨਹੀਂ ਹੋਇਆ: " + error.message); }
+    } catch (error) { toast("Delete failed: " + error.message); }
   }
 
   function renderAll() {
@@ -1091,14 +1091,14 @@
           body: JSON.stringify(rows)
         }, true);
         await loadCloudJobs();
-        toast(rows.length + " ਨਵੀਆਂ candidate jobs Pending ਵਿੱਚ ਆ ਗਈਆਂ। Official notice ਚੈੱਕ ਕਰਕੇ ਹੀ Approve ਕਰੋ।");
+        toast(rows.length + " job candidates added to Pending. Verify the official notice before approval.");
       } else {
         renderAdmin();
       }
       console.log("Official-page candidates checked:", candidates.length, "new rows:", rows.length);
     } catch (error) {
       console.error("Automatic candidate import failed:", error);
-      toast("Automatic jobs load ਨਹੀਂ ਹੋਈਆਂ: " + error.message);
+      toast("Could not load automatic job candidates: " + error.message);
     }
   }
 
@@ -1127,7 +1127,7 @@
   if ($("siteBookmarkBtn")) {
     $("siteBookmarkBtn").addEventListener("click", () => {
       toast(language === "pa"
-        ? "⭐ ਇਸ ਸਾਈਟ ਨੂੰ Bookmark ਕਰਨ ਲਈ Ctrl + D ਦਬਾਓ, ਫਿਰ Done ਕਰੋ।"
+        ? "⭐ To bookmark this website, press Ctrl + D and confirm."
         : "⭐ Press Ctrl + D to bookmark this website, then choose Done.");
     });
   }
@@ -1163,7 +1163,7 @@
           firstNotice.click();
         } else {
           toast(language === "pa"
-            ? "ਹਾਲੇ ਕੋਈ ਮਨਜ਼ੂਰ ਨੌਕਰੀ ਨਹੀਂ। ਅਧਿਕਾਰਤ ਨੋਟੀਫਿਕੇਸ਼ਨ ਇੱਥੇ ਦਿਖਣਗੇ।"
+            ? "No approved jobs yet. Verified official notices will appear here."
             : "No approved jobs yet. Official notifications will appear here.");
         }
       }, 350);
@@ -1176,7 +1176,7 @@
       renderJobs();
       $("jobsView")?.scrollIntoView({ behavior: "smooth", block: "start" });
       toast(language === "pa"
-        ? (deadlineSort ? "ਨੌਕਰੀਆਂ ਆਖ਼ਰੀ ਮਿਤੀ ਮੁਤਾਬਕ ਲਗਾ ਦਿੱਤੀਆਂ ਹਨ।" : "ਨੌਕਰੀਆਂ ਮੁੜ ਆਮ ਤਰਤੀਬ ਵਿੱਚ ਹਨ।")
+        ? (deadlineSort ? "Jobs sorted by application deadline." : "Jobs returned to the default order.")
         : (deadlineSort ? "Jobs sorted by closing date." : "Default job order restored."));
       return;
     }
@@ -1334,7 +1334,7 @@
         try {
           await supa("/rest/v1/jobs", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify(jobRow(job)) }, true);
         } catch (error) {
-          toast("ਨੌਕਰੀ ਸੇਵ ਨਹੀਂ ਹੋਈ: " + error.message);
+          toast("Could not save the job: " + error.message);
           return;
         }
 
