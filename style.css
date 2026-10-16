@@ -205,3 +205,21 @@ footer>p{width:100%}
 .language-globe{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border-radius:11px;background:#e0efff;font-size:18px}
 .home-language-panel .translate-wrap{min-width:150px}
 @media(max-width:700px){.home-language-panel{gap:9px;padding:11px;margin-top:14px}.home-language-copy strong{font-size:11px}.home-language-copy small{font-size:9px}.home-language-panel .translate-wrap{min-width:0;max-width:100%}}
+
+
+/* Language selector moved to the right side of the header */
+.header-actions{display:flex;align-items:center;gap:14px}
+.header-language{display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0}
+.header-language-label{font-size:9px;font-weight:800;letter-spacing:.3px;color:#5d7480}
+.header-language #google_translate_element{max-width:160px;min-height:28px}
+.header-language #google_translate_element .goog-te-gadget{font-family:inherit!important;font-size:10px!important;color:#35536a!important}
+.header-language #google_translate_element .goog-te-gadget-simple{border:1px solid #cfe0e8!important;border-radius:8px!important;background:#f5faff!important;padding:4px 6px!important}
+.header-language #google_translate_element .goog-te-gadget-simple .goog-te-menu-value{color:#225b91!important}
+@media(max-width:700px){
+  .header-actions{gap:0}
+  .header-language{max-width:124px}
+  .header-language-label{display:none}
+  .header-language #google_translate_element{max-width:124px}
+  .header-language #google_translate_element .goog-te-gadget-simple{padding:3px 4px!important}
+  .header-language #google_translate_element .goog-te-menu-value span{font-size:10px!important}
+}
