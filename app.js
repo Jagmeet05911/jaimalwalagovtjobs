@@ -954,7 +954,7 @@
             ...nextJob,
             // Keep a verified listing published even if an old browser copy
             // saved it as pending. Unverified links stay pending.
-            status: item.verified === true ? "published" : "pending"
+            status: isActiveVerified ? "published" : "pending"
           };
 
           if (JSON.stringify(previous) !== JSON.stringify(updated)) {
