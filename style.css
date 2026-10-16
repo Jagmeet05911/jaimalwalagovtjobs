@@ -97,28 +97,28 @@ footer>p{width:100%}
 .admit-card-unavailable{display:inline-block;background:#f1f5f9;color:#64748b;border:1px solid #cbd5e1;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;cursor:not-allowed}
 
 
-/* 2026-10-16: refreshed Jaimalwala Govt Jobs theme — deep green + teal */
+/* Facebook-style blue theme */
 :root{
-  --navy:#123f36;
-  --blue:#0f766e;
-  --blue-light:#e6f6f2;
-  --green:#16704a;
-  --bg:#f3f8f6;
-  --line:#d6e7e1;
-  --shadow:0 10px 30px #123f3612;
+  --navy:#0866ff;
+  --blue:#1877f2;
+  --blue-light:#e7f0ff;
+  --green:#1877f2;
+  --bg:#f4f7fb;
+  --line:#dce5f2;
+  --shadow:0 10px 30px #173b7212;
 }
-.site-header{border-bottom-color:#d6e7e1}
-.brand-icon{background:linear-gradient(135deg,#123f36,#0f766e)}
-.btn-outline{color:#123f36;border-color:#c8dfd7}
-.btn-primary{background:linear-gradient(135deg,#123f36,#0f766e)}
-.btn-primary:hover{background:#0b5c53}
-.hero{background:radial-gradient(circle at 80% 10%,#5eead4 0,transparent 34%),linear-gradient(120deg,#123f36,#0f766e)}
-.hero .eyebrow{color:#ccfbf1}
-.hero p{color:#e2fff7}
-.art-card span{background:#d1fae5;color:#0f766e}
-.tab.active{background:#123f36;color:#fff}
-.admit-card-link{background:#e6f6f2;color:#0f766e!important;border-color:#a7ded1!important}
-.admit-card-link:hover{background:#d1fae5}
-.benefit:hover,.benefit:focus-visible{background:#effcf7;outline-color:#83cbb5}
-.document-card:hover,.document-card:focus-visible{outline-color:#83cbb5}
-.safety-band{background:#effaf5;border-color:#cde8da}
+.site-header{border-bottom-color:#dce5f2}
+.brand-icon{background:linear-gradient(135deg,#0866ff,#1877f2)}
+.btn-outline{color:#0866ff;border-color:#cbdaf4}
+.btn-primary{background:linear-gradient(135deg,#0866ff,#1877f2)}
+.btn-primary:hover{background:#075bd8}
+.hero{background:radial-gradient(circle at 80% 10%,#60a5fa 0,transparent 34%),linear-gradient(120deg,#0866ff,#1877f2)}
+.hero .eyebrow{color:#dbeafe}
+.hero p{color:#eff6ff}
+.art-card span{background:#e7f0ff;color:#0866ff}
+.tab.active{background:#0866ff;color:#fff}
+.admit-card-link{background:#e7f0ff;color:#0866ff!important;border-color:#bfd4ff!important}
+.admit-card-link:hover{background:#dbeafe}
+.benefit:hover,.benefit:focus-visible{background:#f0f6ff;outline-color:#9bbcff}
+.document-card:hover,.document-card:focus-visible{outline-color:#9bbcff}
+.safety-band{background:#f0f6ff;border-color:#cbdaf4}
