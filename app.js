@@ -1061,8 +1061,12 @@
         // Import only fresh records from the new scheduled scanner.
         // Older JSON entries are intentionally ignored because they may be stale.
         if (!item || !item.title || !item.url || !item.sourceChecked || item.needsReview !== true) continue;
+        // Ignore stale feed entries if a scheduled scan has stopped updating the candidate file.
+        const checkedAt = Date.parse(String(item.sourceChecked) + "T00:00:00Z");
+        const ageDays = (Date.now() - checkedAt) / 86400000;
+        if (!Number.isFinite(checkedAt) || ageDays > 3 || ageDays < -1) continue;
         const titleForReview = String(item.title);
-        if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|date of examination|examination date|exam date|roll number|status of|recruitment requisition/i.test(titleForReview)) continue;
+        if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition/i.test(titleForReview)) continue;
         if (!/recruit|vacanc|advertisement|apply online|career|posts? of|job opening/i.test(titleForReview)) continue;
         const noticeUrl = safeUrl(item.url);
         if (!noticeUrl || existingUrls.has(noticeUrl) || seen.has(noticeUrl)) continue;
