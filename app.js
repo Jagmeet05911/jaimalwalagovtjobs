@@ -593,6 +593,10 @@
       renderSaved();
     }
 
+    if (id === "privateJobsView") {
+      renderPrivateJobs();
+    }
+
     if (id === "admitView") {
       renderAdmitCards();
     }
@@ -752,7 +756,7 @@
         : "";
 
     const visible = jobs
-      .filter(job => job.status === "published")
+      .filter(job => job.status === "published" && String(job.category || "").toLowerCase() !== "private jobs")
       .filter(job => {
 
         const text = [
@@ -783,7 +787,7 @@
     if ($("publishedCount")) {
       $("publishedCount").textContent =
         jobs.filter(
-          job => job.status === "published"
+          job => job.status === "published" && String(job.category || "").toLowerCase() !== "private jobs"
         ).length;
     }
 
@@ -807,6 +811,26 @@
     }
 
     attachSaveButtons($("jobsList"));
+  }
+
+  function renderPrivateJobs() {
+    if (!$("privateJobsList")) return;
+
+    const items = jobs.filter(job =>
+      job.status === "published" &&
+      String(job.category || "").toLowerCase() === "private jobs"
+    );
+
+    $("privateJobsList").innerHTML = items.map(jobCard).join("");
+
+    if ($("privateJobsCount")) {
+      $("privateJobsCount").textContent = String(items.length);
+    }
+    if ($("emptyPrivateJobs")) {
+      $("emptyPrivateJobs").classList.toggle("hidden", items.length > 0);
+    }
+
+    attachSaveButtons($("privateJobsList"));
   }
 
   function renderSaved() {
@@ -1020,6 +1044,7 @@
     }
 
     renderJobs();
+    renderPrivateJobs();
     renderSaved();
     renderAdmitCards();
     renderAdmin();
