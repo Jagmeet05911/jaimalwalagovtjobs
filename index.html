@@ -18,7 +18,7 @@
       <span class="brand-icon" aria-hidden="true"><span>JG</span><i>✓</i></span>
       <span class="brand-copy"><strong>Jaimalwala <em>Govt Jobs</em></strong><small id="tagline">ਸਹੀ ਜਾਣਕਾਰੀ • ਸਹੀ ਮੌਕਾ</small></span>
     </a>
-    <div class="header-actions"><a class="header-link" href="#jobs">ਨਵੀਆਂ ਨੌਕਰੀਆਂ</a><button id="langBtn" class="btn btn-outline" type="button">English</button></div>
+    <div class="header-actions"><a class="header-link" href="#jobs">ਨਵੀਆਂ ਨੌਕਰੀਆਂ</a><div class="translate-wrap"><span class="translate-label">🌐 ਭਾਸ਼ਾ / Language</span><div id="google_translate_element" aria-label="Choose website language"></div></div></div>
   </header>
 
   <section class="hero">
@@ -122,6 +122,18 @@
   <section class="safety-band"><div class="safety-icon">✓</div><div><b>ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਪਹਿਲਾਂ</b><p>ਕਿਸੇ ਨੂੰ ਨੌਕਰੀ ਲਗਵਾਉਣ ਲਈ ਪੈਸੇ ਨਾ ਦਿਓ। ਫੀਸ, ਉਮਰ ਹੱਦ ਅਤੇ ਯੋਗਤਾ ਸਿਰਫ਼ official notification ਤੋਂ ਪੱਕੀ ਕਰੋ।</p></div></section>
   <footer><div class="footer-brand"><span class="brand-icon">JG</span><div><strong>Jaimalwala Govt Jobs</strong><small>ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਸਹੀ ਜਾਣਕਾਰੀ</small></div></div><p id="footerText">ਜਾਣਕਾਰੀ ਲਈ ਪੋਰਟਲ — ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।</p><p>© <span id="year"></span> Jaimalwala Govt Jobs</p></footer>
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261016-13"></script>
+
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pa',
+        includedLanguages: 'as,bn,brx,doi,gu,hi,kn,ks,gom,mai,ml,mni-Mtei,mr,ne,or,pa,sa,sat,sd,ta,te,ur,en',
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+  <script src="app.js?v=20261016-14"></script>
 </body>
 </html>
