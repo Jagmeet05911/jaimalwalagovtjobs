@@ -126,31 +126,31 @@ footer>p{width:100%}
 
 /* Light blue theme requested by the site owner */
 :root{
-  --navy:#2878bf;
-  --blue:#347fca;
-  --blue-light:#e1f0ff;
-  --green:#347fca;
-  --bg:#e8f3ff;
-  --line:#bad5ef;
+  --navy:#246eae;
+  --blue:#2d76bd;
+  --blue-light:#d9eaff;
+  --green:#2d76bd;
+  --bg:#e1effd;
+  --line:#b0cdea;
   --ink:#17365d;
-  --muted:#486687;
+  --muted:#456383;
   --shadow:0 10px 30px #3677b512;
 }
-.site-header{background:#f7fbff;border-bottom-color:#bad5ef}
-.brand-icon{background:linear-gradient(135deg,#4c9bdd,#2878bf)}
-.btn-outline{color:#245f98;border-color:#a9cbea;background:#f1f8ff}
-.btn-primary{background:linear-gradient(135deg,#438fd2,#286fb4);color:#fff}
-.btn-primary:hover{background:#2267a8}
-.hero{background:radial-gradient(circle at 80% 10%,#a9d2f5 0,transparent 38%),linear-gradient(120deg,#c8e3ff,#8ebce9)}
+.site-header{background:#f3f8ff;border-bottom-color:#bad5ef}
+.brand-icon{background:linear-gradient(135deg,#438dce,#246eae)}
+.btn-outline{color:#225b91;border-color:#9fc3e5;background:#edf6ff}
+.btn-primary{background:linear-gradient(135deg,#3b83c3,#2468a7);color:#fff}
+.btn-primary:hover{background:#205f9b}
+.hero{background:radial-gradient(circle at 80% 10%,#91c1ed 0,transparent 38%),linear-gradient(120deg,#b9d9f7,#80b0e0)}
 .hero h1,.hero h1 span,.hero .hero-kicker,.hero .eyebrow{color:#103557}
 .hero p{color:#1f456b}
 .tab.active{background:#347fca;color:#fff}
-.art-card span{background:#d9ebfc;color:#245f98}
-.admit-card-link{background:#e1f0ff;color:#245f98!important;border-color:#b7d6f2!important}
-.admit-card-link:hover{background:#b9daf7}
-.benefit:hover,.benefit:focus-visible{background:#dceeff;outline-color:#69a8df}
+.art-card span{background:#d1e6fa;color:#225b91}
+.admit-card-link{background:#e1f0ff;color:#225b91!important;border-color:#b7d6f2!important}
+.admit-card-link:hover{background:#a9d0f3}
+.benefit:hover,.benefit:focus-visible{background:#d2e7fa;outline-color:#69a8df}
 .document-card:hover,.document-card:focus-visible{outline-color:#69a8df}
-.safety-band{background:#e0efff;border-color:#a9cbea}
+.safety-band{background:#d7e9fb;border-color:#9fc3e5}
 
 
 /* Final cleanup: remove remaining green-tinted interface accents */
