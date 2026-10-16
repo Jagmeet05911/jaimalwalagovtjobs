@@ -17,10 +17,28 @@ SOURCES = [
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
     ("HSSC", "https://hssc.gov.in/advertisement", "Haryana"),
     ("RRB Chandigarh", "https://www.rrbcdg.gov.in/employment-notices.php", "Chandigarh"),
+    ("Employment News", "https://employmentnews.gov.in/newemp/AllJobs.aspx?k=All", "All India"),
+    ("India Post", "https://www.indiapost.gov.in/VAS/Pages/Content/Recruitments.aspx?Category=Recruitment", "All India"),
+    ("ISRO", "https://www.isro.gov.in/Careers.html", "All India"),
+    ("DRDO", "https://www.drdo.gov.in/drdo/ceptam/ceptam-notice-board", "All India"),
+    ("NCS", "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx", "All India"),
 ]
-JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|post of|posts of|job opening|direct recruitment|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b", re.I)
+DEPARTMENTS = {
+    "SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts",
+    "UPSC": "Union Public Service Commission",
+    "SSC": "Staff Selection Commission",
+    "PPSC": "Punjab Public Service Commission",
+    "HSSC": "Haryana Staff Selection Commission",
+    "RRB Chandigarh": "Railway Recruitment Board, Chandigarh",
+    "Employment News": "Employment News, Government of India",
+    "India Post": "Department of Posts, Government of India",
+    "ISRO": "Indian Space Research Organisation",
+    "DRDO": "Defence Research and Development Organisation",
+    "NCS": "National Career Service, Ministry of Labour and Employment",
+}
+JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|post of|posts of|job opening|direct recruitment|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b|apprentice|fellowship|scientist|technician|clerk|constable|assistant|engineer|officer|teacher|lecturer|driver|staff nurse", re.I)
 EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition", re.I)
-MAX_PER_SOURCE = 20
+MAX_PER_SOURCE = 30
 
 class Links(HTMLParser):
     def __init__(self):
@@ -44,7 +62,7 @@ class Links(HTMLParser):
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": "JaimalwalaGovtJobsBot/1.0 (official notice discovery; manual review required)"})
-    with urllib.request.urlopen(req, timeout=25) as response:
+    with urllib.request.urlopen(req, timeout=20) as response:
         if response.status != 200:
             raise RuntimeError(f"HTTP {response.status}")
         return response.read().decode("utf-8", "replace")
@@ -69,7 +87,7 @@ def main():
             count = 0
             host = urlparse(page).netloc.lower()
             for title, href in parser.items:
-                if not title or len(title) < 8 or not href:
+                if not title or len(title) < 6 or not href:
                     continue
                 url = urljoin(page, href)
                 parsed = urlparse(url)
@@ -88,7 +106,7 @@ def main():
                 candidates.append({
                     "source": source,
                     "title": title[:180],
-                    "department": {"SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts", "UPSC": "Union Public Service Commission", "SSC": "Staff Selection Commission", "PPSC": "Punjab Public Service Commission", "HSSC": "Haryana Staff Selection Commission", "RRB Chandigarh": "Railway Recruitment Board, Chandigarh"}[source],
+                    "department": DEPARTMENTS[source],
                     "location": ("Haryana" if "SSSC/HR" in title.upper() or "haryana" in title.lower() else location),
                     "category": "Other",
                     "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
