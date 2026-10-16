@@ -87,6 +87,7 @@
       homeHeading: "ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ",
       homeIntro: "ਨਵੀਆਂ ਭਰਤੀਆਂ, ਐਡਮਿਟ ਕਾਰਡ ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਜਾਣਕਾਰੀ ਇੱਕੋ ਥਾਂ ਲੱਭੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ official notification ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
       homeBrowseBtn: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਵੇਖੋ ↗",
+      siteBookmarkBtn: "⭐ ਵੈੱਬਸਾਈਟ Bookmark ਕਰੋ",
       homeJobsLabel: "ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ",
       homeJobsHint: "ਨਵੀਆਂ ਭਰਤੀਆਂ ਅਤੇ ਆਖ਼ਰੀ ਮਿਤੀਆਂ",
       homeAdmitLabel: "ਐਡਮਿਟ ਕਾਰਡ",
@@ -162,6 +163,7 @@
       homeHeading: "Your Government Jobs Portal",
       homeIntro: "Find recruitment updates, admit cards and results in one place. Always read the official notification before applying.",
       homeBrowseBtn: "Browse Latest Jobs ↗",
+      siteBookmarkBtn: "⭐ Bookmark This Website",
       homeJobsLabel: "Government Jobs",
       homeJobsHint: "Latest recruitment and closing dates",
       homeAdmitLabel: "Admit Cards",
@@ -253,6 +255,7 @@
       homeHeading: "homeHeading",
       homeIntro: "homeIntro",
       homeBrowseBtn: "homeBrowseBtn",
+      siteBookmarkBtn: "siteBookmarkBtn",
       homeJobsLabel: "homeJobsLabel",
       homeJobsHint: "homeJobsHint",
       homeAdmitLabel: "homeAdmitLabel",
@@ -880,6 +883,15 @@
         () => switchView(button.dataset.view)
       );
     });
+
+  /* Help visitors bookmark this website in their browser */
+  if ($("siteBookmarkBtn")) {
+    $("siteBookmarkBtn").addEventListener("click", () => {
+      toast(language === "pa"
+        ? "⭐ ਇਸ ਸਾਈਟ ਨੂੰ Bookmark ਕਰਨ ਲਈ Ctrl + D ਦਬਾਓ, ਫਿਰ Done ਕਰੋ।"
+        : "⭐ Press Ctrl + D to bookmark this website, then choose Done.");
+    });
+  }
 
   /* Home dashboard shortcuts */
   document.querySelectorAll("[data-home-view]").forEach((button) => {
