@@ -122,3 +122,32 @@ footer>p{width:100%}
 .benefit:hover,.benefit:focus-visible{background:#f0f6ff;outline-color:#9bbcff}
 .document-card:hover,.document-card:focus-visible{outline-color:#9bbcff}
 .safety-band{background:#f0f6ff;border-color:#cbdaf4}
+
+
+/* Light blue theme requested by the site owner */
+:root{
+  --navy:#5aa9f8;
+  --blue:#79bdff;
+  --blue-light:#eaf5ff;
+  --green:#5aa9f8;
+  --bg:#f5faff;
+  --line:#d8eaff;
+  --ink:#17365d;
+  --muted:#58718e;
+  --shadow:0 10px 30px #3677b512;
+}
+.site-header{background:#fff;border-bottom-color:#d8eaff}
+.brand-icon{background:linear-gradient(135deg,#8bc9ff,#5aa9f8)}
+.btn-outline{color:#367fc8;border-color:#c6e1ff;background:#f7fbff}
+.btn-primary{background:linear-gradient(135deg,#82c5ff,#5aa9f8);color:#12365b}
+.btn-primary:hover{background:#a0d2ff}
+.hero{background:radial-gradient(circle at 80% 10%,#d9efff 0,transparent 38%),linear-gradient(120deg,#eaf6ff,#c7e6ff)}
+.hero h1,.hero h1 span,.hero .hero-kicker,.hero .eyebrow{color:#17416c}
+.hero p{color:#315c82}
+.tab.active{background:#8bc9ff;color:#12365b}
+.art-card span{background:#eaf5ff;color:#367fc8}
+.admit-card-link{background:#eaf5ff;color:#286bb0!important;border-color:#c6e1ff!important}
+.admit-card-link:hover{background:#d9edff}
+.benefit:hover,.benefit:focus-visible{background:#f0f8ff;outline-color:#9acfff}
+.document-card:hover,.document-card:focus-visible{outline-color:#9acfff}
+.safety-band{background:#eef8ff;border-color:#c6e1ff}
