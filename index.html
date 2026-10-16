@@ -43,7 +43,7 @@
     <button class="benefit" type="button" data-benefit="search" aria-label="Search jobs"><span class="benefit-icon">⌕</span><span class="benefit-copy"><b id="benefitSearchTitle">Easy Search</b><small id="benefitSearchText">By post and eligibility</small></span></button>
     <button class="benefit" type="button" data-benefit="notice" aria-label="View official notifications"><span class="benefit-icon">▤</span><span class="benefit-copy"><b id="benefitNoticeTitle">Official Notices</b><small id="benefitNoticeText">Recruiting authority website</small></span></button>
     <button class="benefit" type="button" data-benefit="deadline" aria-label="Filter jobs by deadline"><span class="benefit-icon">◷</span><span class="benefit-copy"><b id="benefitDeadlineTitle">Deadlines</b><small id="benefitDeadlineText">Check before applying</small></span></button>
-    <button class="benefit" type="button" data-benefit="language" aria-label="Switch website language"><span class="benefit-icon">ਪੰ</span><span class="benefit-copy"><b id="benefitLanguageTitle">Language Options</b><small id="benefitLanguageText">Choose your preferred language</small></span></button>
+    <button class="benefit" type="button" data-benefit="language" aria-label="Switch website language"><span class="benefit-icon">EN</span><span class="benefit-copy"><b id="benefitLanguageTitle">Language Options</b><small id="benefitLanguageText">Choose your preferred language</small></span></button>
   </section>
 
   <div class="notice"><span class="notice-icon">i</span><div><strong id="noticeTitle">Important Information</strong><span id="noticeText">Always verify the official notification, eligibility and deadline before applying.</span></div></div>
@@ -105,10 +105,10 @@
       <div class="admin-grid">
         <form id="jobForm" class="panel">
           <h3>Add a Job</h3><p class="muted">Enter information verified from the official notice.</p>
-          <label for="jobTitle">Job Title *</label><input id="jobTitle" required maxlength="120" placeholder="ਉਦਾਹਰਨ: Clerk Recruitment">
+          <label for="jobTitle">Job Title *</label><input id="jobTitle" required maxlength="120" placeholder="Example: Clerk Recruitment">
           <label for="department">Department *</label><input id="department" required maxlength="120" placeholder="Recruiting department">
           <div class="two-col"><div><label for="location">Location</label><select id="location"><option>Punjab</option><option>All India</option><option>Chandigarh</option></select></div><div><label for="category">Category</label><select id="category"><option>Other</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option></select></div></div>
-          <label for="eligibility">Eligibility</label><textarea id="eligibility" rows="3" maxlength="500" placeholder="Official notice ਅਨੁਸਾਰ"></textarea>
+          <label for="eligibility">Eligibility</label><textarea id="eligibility" rows="3" maxlength="500" placeholder="As stated in the official notice"></textarea>
           <label for="deadline">Application Deadline</label><input id="deadline" type="date">
           <label for="noticeUrl">Official Notice URL *</label><input id="noticeUrl" type="url" required placeholder="https://official-website.gov.in/..." inputmode="url">
           <label for="applyUrl">Application URL (if different)</label><input id="applyUrl" type="url" placeholder="https://..." inputmode="url">
