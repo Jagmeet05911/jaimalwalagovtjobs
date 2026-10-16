@@ -101,6 +101,7 @@
         $("adminPassword").value = "";
         await loadCloudJobs();
         updateAdminSession();
+        await loadAutomaticJobs();
         toast("Admin Login ਸਫਲ ਹੋ ਗਿਆ।");
       } catch (error) {
         toast("Login ਨਹੀਂ ਹੋਇਆ: " + error.message);
@@ -165,6 +166,7 @@
     }
     await loadCloudJobs();
     updateAdminSession();
+    if (adminUser) await loadAutomaticJobs();
   }
 
   const KEYS = {
@@ -1035,97 +1037,63 @@
    */
 
   async function loadAutomaticJobs() {
-    const dataUrl = new URL("./data/pending_jobs.json", document.baseURI);
-
+    // Import discovered official-page links only into the admin review queue.
+    // Never auto-publish: every candidate stays pending until the admin approves it.
+    if (!adminUser || !accessToken) return;
     try {
-      const response = await fetch(dataUrl.href + "?v=20261016", {
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error("Job data request failed: " + response.status);
-      }
-
+      const dataUrl = new URL("./data/pending_jobs.json", document.baseURI);
+      const response = await fetch(dataUrl.href + "?v=" + Date.now(), { cache: "no-store" });
+      if (!response.ok) throw new Error("Job candidate feed request failed: " + response.status);
       const candidates = await response.json();
-      if (!Array.isArray(candidates)) {
-        throw new Error("Job data is not a list.");
-      }
+      if (!Array.isArray(candidates)) throw new Error("Job candidate feed is not a list.");
 
-      let changed = false;
+      const existingUrls = new Set(jobs.map(job => safeUrl(job.noticeUrl)).filter(Boolean));
+      const seen = new Set();
+      const rows = [];
+      const today = new Date().toISOString().slice(0, 10);
+      const hash = (value) => {
+        let h = 2166136261;
+        for (let i = 0; i < value.length; i++) h = Math.imul(h ^ value.charCodeAt(i), 16777619);
+        return (h >>> 0).toString(16);
+      };
 
-      const now = new Date();
-      const todayKey = [
-        now.getFullYear(),
-        String(now.getMonth() + 1).padStart(2, "0"),
-        String(now.getDate()).padStart(2, "0")
-      ].join("-");
-
-      candidates.forEach(item => {
-        if (!item || !item.url || !item.title ||
-            /official jobs\/notifications/i.test(item.title)) return;
-
-        // Only verified, non-expired entries belong on the public jobs page.
-        const isActiveVerified = item.verified === true &&
-          (!item.deadline || item.deadline >= todayKey);
-        const source = item.source || "Government";
-        const id = "auto-" + source + "-" + item.url;
+      for (const item of candidates) {
+        if (!item || !item.title || !item.url) continue;
         const noticeUrl = safeUrl(item.url);
-        if (!noticeUrl) return;
-
-        const nextJob = {
-          id,
-          title: item.title,
-          department: item.department || source,
-          location: item.location || "India",
+        if (!noticeUrl || existingUrls.has(noticeUrl) || seen.has(noticeUrl)) continue;
+        seen.add(noticeUrl);
+        const source = String(item.source || "Government").replace(/[^a-z0-9]/gi, "").slice(0, 18) || "Gov";
+        rows.push({
+          id: "auto-" + source + "-" + hash(noticeUrl),
+          title: String(item.title).slice(0, 240),
+          department: String(item.department || item.source || "Government department").slice(0, 240),
+          location: item.location || "All India",
           category: item.category || "Other",
-          eligibility: item.eligibility ||
-            "Eligibility ਅਤੇ ਹੋਰ ਸ਼ਰਤਾਂ ਲਈ official notification ਪੜ੍ਹੋ।",
-          deadline: item.deadline || "",
-          noticeUrl,
-          applyUrl: safeUrl(item.applyUrl || ""),
-          admitCardUrl: safeUrl(item.admitCardUrl || ""),
-          sourceChecked: new Date().toISOString().slice(0, 10),
-          status: isActiveVerified ? "published" : "pending"
-        };
-
-        // Older versions may already have saved this same automatic job as
-        // pending. Update it in place instead of skipping it forever.
-        const index = jobs.findIndex(job =>
-          job.id === id ||
-          (String(job.id || "").startsWith("auto-") &&
-           safeUrl(job.noticeUrl) === noticeUrl)
-        );
-
-        if (index === -1) {
-          jobs.unshift(nextJob);
-          changed = true;
-        } else {
-          const previous = jobs[index];
-          const updated = {
-            ...previous,
-            ...nextJob,
-            // Keep a verified listing published even if an old browser copy
-            // saved it as pending. Unverified links stay pending.
-            status: isActiveVerified ? "published" : "pending"
-          };
-
-          if (JSON.stringify(previous) !== JSON.stringify(updated)) {
-            jobs[index] = updated;
-            changed = true;
-          }
-        }
-      });
-
-      if (changed) {
-        persist();
+          eligibility: item.eligibility || "Auto-discovered candidate. Read the official notice and verify eligibility, dates and application link before publishing.",
+          deadline: item.deadline || null,
+          notice_url: noticeUrl,
+          apply_url: safeUrl(item.applyUrl || "") || null,
+          admit_card_url: safeUrl(item.admitCardUrl || "") || null,
+          source_checked: item.sourceChecked || today,
+          status: "pending"
+        });
       }
 
-      renderAll();
-      console.log("Automatic job data loaded:", candidates.length, "candidate(s).");
+      if (rows.length) {
+        await supa("/rest/v1/jobs?on_conflict=id", {
+          method: "POST",
+          headers: { Prefer: "resolution=ignore-duplicates,return=minimal" },
+          body: JSON.stringify(rows)
+        }, true);
+        await loadCloudJobs();
+        toast(rows.length + " ਨਵੀਆਂ candidate jobs Pending ਵਿੱਚ ਆ ਗਈਆਂ। Official notice ਚੈੱਕ ਕਰਕੇ ਹੀ Approve ਕਰੋ।");
+      } else {
+        renderAdmin();
+      }
+      console.log("Official-page candidates checked:", candidates.length, "new rows:", rows.length);
     } catch (error) {
-      console.error("Automatic jobs could not be loaded:", error);
-      // Existing locally saved jobs still render if the network request fails.
-      renderAll();
+      console.error("Automatic candidate import failed:", error);
+      toast("Automatic jobs load ਨਹੀਂ ਹੋਈਆਂ: " + error.message);
     }
   }
 
