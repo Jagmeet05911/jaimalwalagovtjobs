@@ -30,5 +30,7 @@ jobs:
             echo "No candidate-list changes."
           else
             git commit -m "Refresh automatically discovered job candidates"
+            # Other site updates may land while the scan is running.
+            git pull --rebase origin main
             git push
           fi
