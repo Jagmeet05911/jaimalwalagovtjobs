@@ -62,7 +62,12 @@ def main():
                     continue
                 url = urljoin(page, href)
                 parsed = urlparse(url)
-                if parsed.scheme != "https" or not parsed.netloc.lower().endswith(host) and parsed.netloc.lower() != host:
+                candidate_host = parsed.netloc.lower()
+                source_host = host[4:] if host.startswith("www.") else host
+                if parsed.scheme != "https" or not (
+                    candidate_host == source_host or candidate_host == host or
+                    candidate_host.endswith("." + source_host)
+                ):
                     continue
                 if not JOB_TERMS.search(title) or EXCLUDE.search(title):
                     continue
