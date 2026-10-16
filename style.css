@@ -95,3 +95,30 @@ footer>p{width:100%}
 .admit-card-link:hover{background:#d6f3de}
 
 .admit-card-unavailable{display:inline-block;background:#f1f5f9;color:#64748b;border:1px solid #cbd5e1;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;cursor:not-allowed}
+
+
+/* 2026-10-16: refreshed Jaimalwala Govt Jobs theme — deep green + teal */
+:root{
+  --navy:#123f36;
+  --blue:#0f766e;
+  --blue-light:#e6f6f2;
+  --green:#16704a;
+  --bg:#f3f8f6;
+  --line:#d6e7e1;
+  --shadow:0 10px 30px #123f3612;
+}
+.site-header{border-bottom-color:#d6e7e1}
+.brand-icon{background:linear-gradient(135deg,#123f36,#0f766e)}
+.btn-outline{color:#123f36;border-color:#c8dfd7}
+.btn-primary{background:linear-gradient(135deg,#123f36,#0f766e)}
+.btn-primary:hover{background:#0b5c53}
+.hero{background:radial-gradient(circle at 80% 10%,#5eead4 0,transparent 34%),linear-gradient(120deg,#123f36,#0f766e)}
+.hero .eyebrow{color:#ccfbf1}
+.hero p{color:#e2fff7}
+.art-card span{background:#d1fae5;color:#0f766e}
+.tab.active{background:#123f36;color:#fff}
+.admit-card-link{background:#e6f6f2;color:#0f766e!important;border-color:#a7ded1!important}
+.admit-card-link:hover{background:#d1fae5}
+.benefit:hover,.benefit:focus-visible{background:#effcf7;outline-color:#83cbb5}
+.document-card:hover,.document-card:focus-visible{outline-color:#83cbb5}
+.safety-band{background:#effaf5;border-color:#cde8da}
