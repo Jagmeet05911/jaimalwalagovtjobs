@@ -48,6 +48,7 @@
 
   <nav class="tabs" aria-label="Main navigation">
     <div class="tabs-label"><span class="nav-dot"></span> JOB PORTAL</div>
+    <button class="tab" data-view="homeView" id="homeTab">🏠 ਹੋਮ</button>
     <button class="tab active" data-view="jobsView" id="jobsTab">ਨੌਕਰੀਆਂ</button>
     <button class="tab" data-view="savedView" id="savedTab">♡ ਸੇਵ ਕੀਤੀਆਂ <span id="savedNavCount">0</span></button>
     <button class="tab" data-view="admitView" id="admitTab">ਐਡਮਿਟ ਕਾਰਡ</button>
@@ -55,6 +56,20 @@
   </nav>
 
   <main>
+    <section id="homeView" class="view hidden">
+      <div class="home-welcome">
+        <span class="eyebrow" id="homeEyebrow">JAIMALWALA GOVT JOBS</span>
+        <h2 id="homeHeading">ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ</h2>
+        <p id="homeIntro">ਨਵੀਆਂ ਭਰਤੀਆਂ, ਐਡਮਿਟ ਕਾਰਡ ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਜਾਣਕਾਰੀ ਇੱਕੋ ਥਾਂ ਲੱਭੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ official notification ਜ਼ਰੂਰ ਪੜ੍ਹੋ।</p>
+        <button type="button" class="btn btn-primary" data-home-view="jobsView" id="homeBrowseBtn">ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਵੇਖੋ ↗</button>
+      </div>
+      <div class="home-shortcuts">
+        <button type="button" class="home-shortcut" data-home-view="jobsView"><span class="home-shortcut-icon">▤</span><span><b id="homeJobsLabel">ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ</b><small id="homeJobsHint">ਨਵੀਆਂ ਭਰਤੀਆਂ ਅਤੇ ਆਖ਼ਰੀ ਮਿਤੀਆਂ</small></span><span class="home-arrow">↗</span></button>
+        <button type="button" class="home-shortcut" data-home-view="admitView"><span class="home-shortcut-icon">🎫</span><span><b id="homeAdmitLabel">ਐਡਮਿਟ ਕਾਰਡ</b><small id="homeAdmitHint">ਰੋਲ ਨੰਬਰ ਅਤੇ ਡਾਊਨਲੋਡ ਲਿੰਕ</small></span><span class="home-arrow">↗</span></button>
+        <button type="button" class="home-shortcut" data-home-view="savedView"><span class="home-shortcut-icon">♡</span><span><b id="homeSavedLabel">ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ</b><small id="homeSavedHint">ਆਪਣੀ ਪਸੰਦ ਦੀਆਂ ਨੌਕਰੀਆਂ ਸੰਭਾਲੋ</small></span><span class="home-arrow">↗</span></button>
+      </div>
+      <div class="home-trust-note"><b id="homeTrustTitle">✓ ਅਧਿਕਾਰਤ ਜਾਣਕਾਰੀ ਨੂੰ ਪਹਿਲ</b><p id="homeTrustText">ਨੌਕਰੀ ਦੀ ਯੋਗਤਾ, ਫੀਸ, ਆਖ਼ਰੀ ਮਿਤੀ ਅਤੇ ਅਰਜ਼ੀ ਦਾ ਲਿੰਕ ਸਬੰਧਤ ਵਿਭਾਗ ਦੀ official website ਤੋਂ ਪੱਕਾ ਕਰੋ।</p></div>
+    </section>
     <section id="jobsView" class="view">
       <div class="section-head"><div><span class="eyebrow" id="listingEyebrow">FIND YOUR NEXT STEP</span><h2 id="jobsHeading">ਨਵੀਆਂ ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ</h2><p class="muted" id="jobsIntro">ਨੌਕਰੀ ਖੋਜੋ, ਯੋਗਤਾ ਵੇਖੋ ਅਤੇ official notification ਖੋਲ੍ਹੋ।</p></div><span class="count-pill"><b id="publishedCount">0</b> <span id="publishedLabel">ਨੌਕਰੀਆਂ</span></span></div>
       <div class="filters">
@@ -104,6 +119,6 @@
   <section class="safety-band"><div class="safety-icon">✓</div><div><b>ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਪਹਿਲਾਂ</b><p>ਕਿਸੇ ਨੂੰ ਨੌਕਰੀ ਲਗਵਾਉਣ ਲਈ ਪੈਸੇ ਨਾ ਦਿਓ। ਫੀਸ, ਉਮਰ ਹੱਦ ਅਤੇ ਯੋਗਤਾ ਸਿਰਫ਼ official notification ਤੋਂ ਪੱਕੀ ਕਰੋ।</p></div></section>
   <footer><div class="footer-brand"><span class="brand-icon">JG</span><div><strong>Jaimalwala Govt Jobs</strong><small>ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ • ਸਹੀ ਜਾਣਕਾਰੀ</small></div></div><p id="footerText">ਜਾਣਕਾਰੀ ਲਈ ਪੋਰਟਲ — ਅੰਤਿਮ ਅਤੇ ਸਹੀ ਜਾਣਕਾਰੀ ਲਈ ਭਰਤੀ ਕਰਨ ਵਾਲੀ ਸੰਸਥਾ ਦਾ official notice ਹੀ ਮੰਨੋ।</p><p>© <span id="year"></span> Jaimalwala Govt Jobs</p></footer>
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261016-7"></script>
+  <script src="app.js?v=20261016-8"></script>
 </body>
 </html>
