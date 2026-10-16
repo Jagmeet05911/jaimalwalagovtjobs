@@ -53,6 +53,7 @@
     <div class="tabs-label"><span class="nav-dot"></span> JOB PORTAL</div>
     <button class="tab" data-view="homeView" id="homeTab">🏠 Home</button>
     <button class="tab active" data-view="jobsView" id="jobsTab">Jobs</button>
+    <button class="tab" data-view="privateJobsView" id="privateJobsTab">💼 Private Jobs</button>
     <button class="tab" data-view="savedView" id="savedTab">♡ Saved Jobs <span id="savedNavCount">0</span></button>
     <button class="tab" data-view="admitView" id="admitTab">Admit Cards</button>
     <button class="tab" data-view="adminView" id="adminTab">Admin Panel ⚙</button>
@@ -92,6 +93,12 @@
       <div id="emptyJobs" class="empty-state"><div class="empty-symbol">⌕</div><h3 id="emptyTitle">Loading jobs…</h3><p id="emptyText">If the list remains empty, please check again shortly.</p></div>
     </section>
 
+    <section id="privateJobsView" class="view hidden">
+      <div class="section-head"><div><span class="eyebrow">PRIVATE SECTOR CAREERS</span><h2>Private Company Jobs</h2><p class="muted">Private-company vacancies. Verify every role and apply only through the employer’s official website.</p></div><span class="count-pill"><b id="privateJobsCount">0</b> jobs</span></div>
+      <div id="privateJobsList" class="jobs-grid"></div>
+      <div id="emptyPrivateJobs" class="empty-state"><div class="empty-symbol">💼</div><h3>No private jobs listed yet</h3><p>Private-company vacancies will appear here after they are added and approved in the Admin Panel.</p></div>
+    </section>
+
     <section id="savedView" class="view hidden">
       <div class="section-head"><div><span class="eyebrow">YOUR SHORTLIST</span><h2 id="savedHeading">Saved Jobs</h2><p class="muted" id="savedIntro">Your bookmarked opportunities appear here.</p></div></div>
       <div id="savedList" class="jobs-grid"></div>
@@ -112,7 +119,7 @@
           <h3>Add a Job</h3><p class="muted">Enter information verified from the official notice.</p>
           <label for="jobTitle">Job Title *</label><input id="jobTitle" required maxlength="120" placeholder="Example: Clerk Recruitment">
           <label for="department">Department *</label><input id="department" required maxlength="120" placeholder="Recruiting department">
-          <div class="two-col"><div><label for="location">Location</label><select id="location"><option>Punjab</option><option>All India</option><option>Chandigarh</option></select></div><div><label for="category">Category</label><select id="category"><option>Other</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option></select></div></div>
+          <div class="two-col"><div><label for="location">Location</label><select id="location"><option>Punjab</option><option>All India</option><option>Chandigarh</option></select></div><div><label for="category">Category</label><select id="category"><option>Other</option><option>Private Jobs</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option></select></div></div>
           <label for="eligibility">Eligibility</label><textarea id="eligibility" rows="3" maxlength="500" placeholder="As stated in the official notice"></textarea>
           <label for="deadline">Application Deadline</label><input id="deadline" type="date">
           <label for="noticeUrl">Official Notice URL *</label><input id="noticeUrl" type="url" required placeholder="https://official-website.gov.in/..." inputmode="url">
@@ -141,6 +148,6 @@
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
-  <script src="app.js?v=20261016-25"></script>
+  <script src="app.js?v=20261016-26"></script>
 </body>
 </html>
