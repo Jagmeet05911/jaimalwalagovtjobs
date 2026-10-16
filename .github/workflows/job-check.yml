@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "scripts/fetch_jobs.py"
+      - ".github/workflows/job-check.yml"
   schedule:
     - cron: "30 2 * * *"
   workflow_dispatch:
