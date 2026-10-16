@@ -177,3 +177,9 @@ footer>p{width:100%}
 .home-trust-note b{font-size:12px;color:#225b91}
 .home-trust-note p{font-size:11px;line-height:1.8;color:#456383;margin:5px 0 0}
 @media(max-width:700px){.home-welcome{padding:22px 18px}.home-welcome h2{font-size:25px}.home-shortcuts{grid-template-columns:1fr;gap:10px}.home-shortcut{padding:14px}.home-trust-note{padding:14px}}
+
+/* Home page browser-bookmark helper */
+.home-action-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-bookmark{background:#fff;color:#174d7d;border:1px solid #91bce2;box-shadow:0 4px 12px #2d6ca010}
+.btn-bookmark:hover,.btn-bookmark:focus-visible{background:#e8f4ff;border-color:#397eb9;outline:2px solid #b9dafa;outline-offset:2px}
+@media(max-width:520px){.home-action-row{align-items:stretch;flex-direction:column}.home-action-row .btn{width:100%}}
