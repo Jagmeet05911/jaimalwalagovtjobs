@@ -1036,7 +1036,7 @@
    * Pending section.
    */
 
-  async function loadAutomaticJobs() {
+  async function loadAutomaticJobs(showResult = false) {
     // Import discovered official-page links only into the admin review queue.
     // Never auto-publish: every candidate stays pending until the admin approves it.
     if (!adminUser || !accessToken) return;
@@ -1098,8 +1098,12 @@
         toast(rows.length + " job candidates added to Pending. Verify the official notice before approval.");
       } else {
         renderAdmin();
+        if (showResult) {
+          toast("No new candidates to add. Feed contains " + candidates.length + " candidate(s); check the scanner run and whether notices are already in Pending.");
+        }
       }
       console.log("Official-page candidates checked:", candidates.length, "new rows:", rows.length);
+      return { checked: candidates.length, added: rows.length };
     } catch (error) {
       console.error("Automatic candidate import failed:", error);
       toast("Could not load automatic job candidates: " + error.message);
@@ -1405,6 +1409,24 @@
   /* Start website */
 
   setLanguage("en");
+
+  const refreshCandidatesButton = $("refreshCandidatesBtn");
+  if (refreshCandidatesButton) {
+    refreshCandidatesButton.addEventListener("click", async () => {
+      if (!adminUser || !accessToken) {
+        toast("Please sign in to the Admin Panel first.");
+        return;
+      }
+      refreshCandidatesButton.disabled = true;
+      refreshCandidatesButton.textContent = "Checking…";
+      try {
+        await loadAutomaticJobs(true);
+      } finally {
+        refreshCandidatesButton.disabled = false;
+        refreshCandidatesButton.textContent = "Check for New Candidates";
+      }
+    });
+  }
 
   /* Load shared jobs from Supabase, not browser-local demo data. */
   initializeCloud();
