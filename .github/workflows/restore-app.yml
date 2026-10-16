@@ -1,0 +1,25 @@
+name: Restore app.js after accidental edit
+
+on:
+  push:
+    paths:
+      - .github/workflows/restore-app.yml
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore app.js from known-good commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout 975dc4961028684a819adc3f80620fc416b1b5dc -- app.js
+          git add app.js
+          git commit -m "Restore site application code" || true
+          git push
