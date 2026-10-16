@@ -84,6 +84,11 @@
         "ਇਹ ਵੈੱਬਸਾਈਟ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਹਰ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।",
       jobsTab: "ਨੌਕਰੀਆਂ",
       savedTab: "ਸੇਵ ਕੀਤੀਆਂ",
+      admitTab: "ਐਡਮਿਟ ਕਾਰਡ",
+      admitHeading: "ਐਡਮਿਟ ਕਾਰਡ / ਰੋਲ ਨੰਬਰ",
+      admitIntro: "ਜਿਨ੍ਹਾਂ ਨੌਕਰੀਆਂ ਦੇ ਐਡਮਿਟ ਕਾਰਡ ਦਾ official link ਜਾਰੀ ਹੋਇਆ ਹੈ, ਉਹ ਇੱਥੇ ਵੇਖੋ।",
+      emptyAdmitTitle: "ਹਾਲੇ ਕੋਈ ਐਡਮਿਟ ਕਾਰਡ ਲਿੰਕ ਨਹੀਂ",
+      emptyAdmitText: "ਐਡਮਿਟ ਕਾਰਡ ਜਾਰੀ ਹੋਣ ਅਤੇ Admin Panel ਵਿੱਚ official link ਜੋੜਨ ਤੋਂ ਬਾਅਦ ਇੱਥੇ ਦਿਖੇਗਾ.",
       jobsHeading: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ",
       jobsIntro: "ਆਪਣੀ ਲੋੜ ਮੁਤਾਬਕ ਖੋਜੋ ਅਤੇ ਫਿਲਟਰ ਕਰੋ।",
       publishedLabel: "ਪਬਲਿਸ਼",
@@ -141,6 +146,11 @@
         "This website is an early version. Always verify the official notification and deadline.",
       jobsTab: "Jobs",
       savedTab: "Saved",
+      admitTab: "Admit Card",
+      admitHeading: "Admit Cards / Roll Numbers",
+      admitIntro: "Find official admit-card links for published recruitments here.",
+      emptyAdmitTitle: "No admit-card links yet",
+      emptyAdmitText: "Official links will appear here after an admit card is released and added in the Admin Panel.",
       jobsHeading: "Latest jobs",
       jobsIntro: "Search and filter opportunities.",
       publishedLabel: "published",
@@ -214,6 +224,11 @@
       noticeText: "noticeText",
       jobsTab: "jobsTab",
       savedTab: "savedTab",
+      admitTab: "admitTab",
+      admitHeading: "admitHeading",
+      admitIntro: "admitIntro",
+      emptyAdmitTitle: "emptyAdmitTitle",
+      emptyAdmitText: "emptyAdmitText",
       jobsHeading: "jobsHeading",
       jobsIntro: "jobsIntro",
       publishedLabel: "publishedLabel",
@@ -272,6 +287,10 @@
 
     if (id === "savedView") {
       renderSaved();
+    }
+
+    if (id === "admitView") {
+      renderAdmitCards();
     }
 
     if (id === "adminView") {
@@ -507,6 +526,22 @@
     attachSaveButtons($("savedList"));
   }
 
+  function renderAdmitCards() {
+    if (!$("admitList")) return;
+
+    const items = jobs.filter(job =>
+      job.status === "published" && safeUrl(job.admitCardUrl)
+    );
+
+    $("admitList").innerHTML = items.map(jobCard).join("");
+
+    if ($("emptyAdmit")) {
+      $("emptyAdmit").classList.toggle("hidden", items.length > 0);
+    }
+
+    attachSaveButtons($("admitList"));
+  }
+
   function renderAdmin() {
     if (!$("pendingList")) return;
 
@@ -694,6 +729,7 @@
 
     renderJobs();
     renderSaved();
+    renderAdmitCards();
     renderAdmin();
   }
 
