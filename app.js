@@ -82,6 +82,19 @@
       noticeTitle: "ਜ਼ਰੂਰੀ ਨੋਟ:",
       noticeText:
         "ਇਹ ਵੈੱਬਸਾਈਟ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਹਰ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।",
+      homeTab: "🏠 ਹੋਮ",
+      homeEyebrow: "JAIMALWALA GOVT JOBS",
+      homeHeading: "ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ",
+      homeIntro: "ਨਵੀਆਂ ਭਰਤੀਆਂ, ਐਡਮਿਟ ਕਾਰਡ ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਜਾਣਕਾਰੀ ਇੱਕੋ ਥਾਂ ਲੱਭੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ official notification ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
+      homeBrowseBtn: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਵੇਖੋ ↗",
+      homeJobsLabel: "ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ",
+      homeJobsHint: "ਨਵੀਆਂ ਭਰਤੀਆਂ ਅਤੇ ਆਖ਼ਰੀ ਮਿਤੀਆਂ",
+      homeAdmitLabel: "ਐਡਮਿਟ ਕਾਰਡ",
+      homeAdmitHint: "ਰੋਲ ਨੰਬਰ ਅਤੇ ਡਾਊਨਲੋਡ ਲਿੰਕ",
+      homeSavedLabel: "ਸੇਵ ਕੀਤੀਆਂ ਨੌਕਰੀਆਂ",
+      homeSavedHint: "ਆਪਣੀ ਪਸੰਦ ਦੀਆਂ ਨੌਕਰੀਆਂ ਸੰਭਾਲੋ",
+      homeTrustTitle: "✓ ਅਧਿਕਾਰਤ ਜਾਣਕਾਰੀ ਨੂੰ ਪਹਿਲ",
+      homeTrustText: "ਨੌਕਰੀ ਦੀ ਯੋਗਤਾ, ਫੀਸ, ਆਖ਼ਰੀ ਮਿਤੀ ਅਤੇ ਅਰਜ਼ੀ ਦਾ ਲਿੰਕ ਸਬੰਧਤ ਵਿਭਾਗ ਦੀ official website ਤੋਂ ਪੱਕਾ ਕਰੋ।",
       jobsTab: "ਨੌਕਰੀਆਂ",
       savedTab: "ਸੇਵ ਕੀਤੀਆਂ",
       admitTab: "ਐਡਮਿਟ ਕਾਰਡ",
@@ -144,6 +157,19 @@
       noticeTitle: "Important:",
       noticeText:
         "This website is an early version. Always verify the official notification and deadline.",
+      homeTab: "🏠 Home",
+      homeEyebrow: "JAIMALWALA GOVT JOBS",
+      homeHeading: "Your Government Jobs Portal",
+      homeIntro: "Find recruitment updates, admit cards and results in one place. Always read the official notification before applying.",
+      homeBrowseBtn: "Browse Latest Jobs ↗",
+      homeJobsLabel: "Government Jobs",
+      homeJobsHint: "Latest recruitment and closing dates",
+      homeAdmitLabel: "Admit Cards",
+      homeAdmitHint: "Roll numbers and download links",
+      homeSavedLabel: "Saved Jobs",
+      homeSavedHint: "Keep your preferred opportunities handy",
+      homeTrustTitle: "✓ Official information comes first",
+      homeTrustText: "Verify eligibility, fees, deadlines and application links on the recruiting department's official website.",
       jobsTab: "Jobs",
       savedTab: "Saved",
       admitTab: "Admit Card",
@@ -222,6 +248,19 @@
       browseBtn: "browseBtn",
       noticeTitle: "noticeTitle",
       noticeText: "noticeText",
+      homeTab: "homeTab",
+      homeEyebrow: "homeEyebrow",
+      homeHeading: "homeHeading",
+      homeIntro: "homeIntro",
+      homeBrowseBtn: "homeBrowseBtn",
+      homeJobsLabel: "homeJobsLabel",
+      homeJobsHint: "homeJobsHint",
+      homeAdmitLabel: "homeAdmitLabel",
+      homeAdmitHint: "homeAdmitHint",
+      homeSavedLabel: "homeSavedLabel",
+      homeSavedHint: "homeSavedHint",
+      homeTrustTitle: "homeTrustTitle",
+      homeTrustText: "homeTrustText",
       jobsTab: "jobsTab",
       savedTab: "savedTab",
       admitTab: "admitTab",
@@ -841,6 +880,15 @@
         () => switchView(button.dataset.view)
       );
     });
+
+  /* Home dashboard shortcuts */
+  document.querySelectorAll("[data-home-view]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const view = button.dataset.homeView;
+      switchView(view);
+      $(view)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 
   /* Homepage feature shortcuts: delegated so the cards keep working reliably */
   document.querySelectorAll("[data-benefit]").forEach((button) => {
