@@ -126,36 +126,36 @@ footer>p{width:100%}
 
 /* Light blue theme requested by the site owner */
 :root{
-  --navy:#3f8ed6;
-  --blue:#559fe0;
+  --navy:#2878bf;
+  --blue:#347fca;
   --blue-light:#e1f0ff;
-  --green:#559fe0;
-  --bg:#edf6ff;
-  --line:#c5ddf5;
+  --green:#347fca;
+  --bg:#e8f3ff;
+  --line:#bad5ef;
   --ink:#17365d;
-  --muted:#506d8d;
+  --muted:#486687;
   --shadow:0 10px 30px #3677b512;
 }
-.site-header{background:#f7fbff;border-bottom-color:#c5ddf5}
-.brand-icon{background:linear-gradient(135deg,#69b1ed,#3f8ed6)}
-.btn-outline{color:#286ba8;border-color:#b7d6f2;background:#f3f9ff}
-.btn-primary{background:linear-gradient(135deg,#65b0ed,#438fd2);color:#fff}
-.btn-primary:hover{background:#347fc2}
-.hero{background:radial-gradient(circle at 80% 10%,#b9dcfb 0,transparent 38%),linear-gradient(120deg,#d7ebff,#a6cff3)}
-.hero h1,.hero h1 span,.hero .hero-kicker,.hero .eyebrow{color:#123b63}
-.hero p{color:#234f79}
-.tab.active{background:#559fe0;color:#fff}
-.art-card span{background:#e1f0ff;color:#286ba8}
+.site-header{background:#f7fbff;border-bottom-color:#bad5ef}
+.brand-icon{background:linear-gradient(135deg,#4c9bdd,#2878bf)}
+.btn-outline{color:#245f98;border-color:#a9cbea;background:#f1f8ff}
+.btn-primary{background:linear-gradient(135deg,#438fd2,#286fb4);color:#fff}
+.btn-primary:hover{background:#2267a8}
+.hero{background:radial-gradient(circle at 80% 10%,#a9d2f5 0,transparent 38%),linear-gradient(120deg,#c8e3ff,#8ebce9)}
+.hero h1,.hero h1 span,.hero .hero-kicker,.hero .eyebrow{color:#103557}
+.hero p{color:#1f456b}
+.tab.active{background:#347fca;color:#fff}
+.art-card span{background:#d9ebfc;color:#245f98}
 .admit-card-link{background:#e1f0ff;color:#245f98!important;border-color:#b7d6f2!important}
-.admit-card-link:hover{background:#cde5fb}
-.benefit:hover,.benefit:focus-visible{background:#e7f3ff;outline-color:#7fb8e8}
-.document-card:hover,.document-card:focus-visible{outline-color:#7fb8e8}
-.safety-band{background:#e8f4ff;border-color:#b7d6f2}
+.admit-card-link:hover{background:#b9daf7}
+.benefit:hover,.benefit:focus-visible{background:#dceeff;outline-color:#69a8df}
+.document-card:hover,.document-card:focus-visible{outline-color:#69a8df}
+.safety-band{background:#e0efff;border-color:#a9cbea}
 
 
 /* Final cleanup: remove remaining green-tinted interface accents */
-.empty-state{border-color:#b7d6f2;background:#f3f9ff}
+.empty-state{border-color:#a9cbea;background:#f1f8ff}
 .mini-count{background:#e1f0ff;color:#286ba8}
 .safety-band .safety-icon{background:#e1f0ff;color:#286ba8}
-.panel input,.panel textarea,.panel select{border-color:#c5ddf5}
+.panel input,.panel textarea,.panel select{border-color:#bad5ef}
 .apply-link:hover,.btn-primary:hover{background:#347fc2}
