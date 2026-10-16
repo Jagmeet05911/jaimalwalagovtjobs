@@ -15,8 +15,10 @@ SOURCES = [
     ("UPSC", "https://www.upsc.gov.in/recruitment/recruitment-advertisement", "All India"),
     ("SSC", "https://ssc.gov.in/", "All India"),
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
+    ("HSSC", "https://hssc.gov.in/advertisement", "Haryana"),
+    ("RRB Chandigarh", "https://www.rrbcdg.gov.in/employment-notices.php", "Chandigarh"),
 ]
-JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advertisement no|apply online|career|post of|posts of|job opening|direct recruitment", re.I)
+JOB_TERMS = re.compile(r"recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|post of|posts of|job opening|direct recruitment|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b", re.I)
 EXCLUDE = re.compile(r"result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition", re.I)
 MAX_PER_SOURCE = 20
 
@@ -86,7 +88,7 @@ def main():
                 candidates.append({
                     "source": source,
                     "title": title[:180],
-                    "department": {"SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts", "UPSC": "Union Public Service Commission", "SSC": "Staff Selection Commission", "PPSC": "Punjab Public Service Commission"}[source],
+                    "department": {"SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts", "UPSC": "Union Public Service Commission", "SSC": "Staff Selection Commission", "PPSC": "Punjab Public Service Commission", "HSSC": "Haryana Staff Selection Commission", "RRB Chandigarh": "Railway Recruitment Board, Chandigarh"}[source],
                     "location": ("Haryana" if "SSSC/HR" in title.upper() or "haryana" in title.lower() else location),
                     "category": "Other",
                     "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
