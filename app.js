@@ -1062,7 +1062,7 @@
         // Older JSON entries are intentionally ignored because they may be stale.
         if (!item || !item.title || !item.url || !item.sourceChecked || item.needsReview !== true) continue;
         const titleForReview = String(item.title);
-        if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|status of|recruitment requisition|roll number/i.test(titleForReview)) continue;
+        if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|date of examination|examination date|exam date|roll number|status of|recruitment requisition/i.test(titleForReview)) continue;
         if (!/recruit|vacanc|advertisement|apply online|career|posts? of|job opening/i.test(titleForReview)) continue;
         const noticeUrl = safeUrl(item.url);
         if (!noticeUrl || existingUrls.has(noticeUrl) || seen.has(noticeUrl)) continue;
@@ -1182,9 +1182,9 @@
     }
 
       if (action === "language") {
-        const nextLanguage = language === "pa" ? "en" : language === "en" ? "hi" : "pa";
+        const nextLanguage = language === "en" ? "pa" : "en";
         setLanguage(nextLanguage);
-        toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : nextLanguage === "hi" ? "हिन्दी चुनी गई।" : "English selected.");
+        toast(nextLanguage === "pa" ? "Punjabi selected." : "English selected.");
       }
     });
   });
@@ -1198,7 +1198,7 @@
       () => {
 
         setLanguage(
-          language === "pa" ? "en" : language === "en" ? "hi" : "pa"
+          language === "en" ? "pa" : "en"
         );
       }
     );
