@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jagmeet05911.github.io/jaimalwalagovtjobs/sitemap.xml
