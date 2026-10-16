@@ -1,0 +1,30 @@
+name: Discover official job notice candidates
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */12 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Discover candidates from official pages
+        run: python .github/scripts/discover_jobs.py
+      - name: Commit candidate list when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pending_jobs.json
+          if git diff --cached --quiet; then
+            echo "No candidate-list changes."
+          else
+            git commit -m "Refresh automatically discovered job candidates"
+            git push
+          fi
