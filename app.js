@@ -233,6 +233,86 @@
     }
   };
 
+
+  const hindiTranslations = {
+    ...translations.en,
+    tagline: "सरकारी नौकरियाँ • पंजाबी + English",
+    eyebrow: "आपके करियर के लिए",
+    heroTitle: "सही जानकारी के साथ सरकारी नौकरी खोजें।",
+    heroText: "पंजाब और भारत की भर्तियों की जानकारी देखें। आवेदन करने से पहले आधिकारिक नोटिफिकेशन ज़रूर पढ़ें।",
+    browseBtn: "नौकरियाँ देखें ↓",
+    noticeTitle: "ज़रूरी सूचना:",
+    noticeText: "यह वेबसाइट शुरुआती संस्करण है। हर नौकरी की आधिकारिक सूचना और अंतिम तारीख़ खुद जाँचें।",
+    homeTab: "🏠 होम",
+    homeHeading: "आपका सरकारी नौकरी पोर्टल",
+    homeIntro: "नई भर्तियाँ, एडमिट कार्ड और नतीजों की जानकारी एक जगह पाएँ। आवेदन से पहले आधिकारिक नोटिफिकेशन ज़रूर पढ़ें।",
+    homeBrowseBtn: "नई नौकरियाँ देखें ↗",
+    siteBookmarkBtn: "⭐ वेबसाइट बुकमार्क करें",
+    homeJobsLabel: "सरकारी नौकरियाँ",
+    homeJobsHint: "नई भर्तियाँ और अंतिम तारीख़ें",
+    homeAdmitLabel: "एडमिट कार्ड",
+    homeAdmitHint: "रोल नंबर और डाउनलोड लिंक",
+    homeSavedLabel: "सेव की गई नौकरियाँ",
+    homeSavedHint: "अपनी पसंद की नौकरियाँ सँभालें",
+    homeTrustTitle: "✓ आधिकारिक जानकारी को प्राथमिकता",
+    homeTrustText: "योग्यता, फीस, अंतिम तारीख़ और आवेदन लिंक संबंधित विभाग की आधिकारिक वेबसाइट पर जाँचें।",
+    benefitSearchTitle: "आसान खोज",
+    benefitSearchText: "पद और योग्यता के अनुसार",
+    benefitNoticeTitle: "नोटिफिकेशन लिंक",
+    benefitNoticeText: "भर्ती संस्था की आधिकारिक वेबसाइट",
+    benefitDeadlineTitle: "अंतिम तारीख़",
+    benefitDeadlineText: "आवेदन से पहले जाँचें",
+    benefitLanguageTitle: "पंजाबी + English + हिन्दी",
+    benefitLanguageText: "अपनी भाषा चुनें",
+    jobsTab: "नौकरियाँ",
+    savedTab: "सेव की गई",
+    admitTab: "एडमिट कार्ड",
+    admitHeading: "एडमिट कार्ड / रोल नंबर",
+    admitIntro: "जिन भर्तियों के एडमिट कार्ड के आधिकारिक लिंक जारी हुए हैं, वे यहाँ देखें।",
+    emptyAdmitTitle: "अभी कोई एडमिट कार्ड लिंक नहीं",
+    emptyAdmitText: "एडमिट कार्ड जारी होने और Admin Panel में लिंक जोड़ने के बाद यहाँ दिखेगा।",
+    jobsHeading: "नई नौकरियाँ",
+    jobsIntro: "अपनी ज़रूरत के अनुसार खोजें और फ़िल्टर करें।",
+    publishedLabel: "प्रकाशित",
+    searchPlaceholder: "पद, विभाग या योग्यता खोजें",
+    allLocations: "सभी स्थान",
+    allCategories: "सभी श्रेणियाँ",
+    emptyTitle: "अभी कोई मंज़ूर नौकरी नहीं",
+    emptyText: "आधिकारिक भर्ती सूचना जाँचकर Admin Panel के ज़रिए जोड़ें।",
+    savedHeading: "सेव की गई नौकरियाँ",
+    savedIntro: "अपनी पसंद की नौकरियाँ यहाँ देखें।",
+    emptySavedTitle: "अभी कोई नौकरी सेव नहीं की",
+    emptySavedText: "नौकरी के कार्ड पर Save बटन दबाएँ।",
+    footerText: "अंतिम और सही जानकारी के लिए भर्ती संस्था की आधिकारिक सूचना पर ही भरोसा करें।",
+    save: "♡ सेव करें",
+    unsave: "♥ सेव की गई",
+    notification: "आधिकारिक नोटिफिकेशन ↗",
+    applyOnline: "ऑनलाइन आवेदन ↗",
+    admitCard: "रोल नंबर / एडमिट कार्ड डाउनलोड ↗",
+    admitCardUnavailable: "एडमिट कार्ड अभी जारी नहीं हुआ",
+    applyUnavailable: "सीधा आवेदन लिंक अभी उपलब्ध नहीं",
+    deadline: "अंतिम तारीख़",
+    location: "स्थान",
+    eligibility: "योग्यता",
+    checked: "जाँच की तारीख़",
+    noResults: "इस खोज के लिए कोई नौकरी नहीं मिली।",
+    pendingEmpty: "कोई लंबित नौकरी नहीं।",
+    publishedEmpty: "अभी कुछ प्रकाशित नहीं हुआ।",
+    pending: "लंबित",
+    approve: "मंज़ूर करें",
+    reject: "अस्वीकार करें",
+    delete: "हटाएँ",
+    submitted: "नौकरी लंबित सूची में सेव हो गई।",
+    approved: "नौकरी प्रकाशित हो गई।",
+    rejected: "नौकरी हटा दी गई।",
+    savedToast: "नौकरी सेव की गई सूची में जोड़ दी गई।",
+    removedToast: "सेव की गई सूची से हटा दी गई।",
+    noDate: "नहीं दी गई",
+    confirmReset: "क्या आप इस ब्राउज़र में सेव किया गया सारा डेमो जॉब डेटा मिटाना चाहते हैं?",
+    resetDone: "डेमो डेटा मिटा दिया गया।"
+  };
+  Object.assign(translations, { hi: hindiTranslations });
+
   function t(key) {
     return translations[language][key] ||
       translations.en[key] ||
@@ -248,7 +328,7 @@
     language = lang;
 
     document.documentElement.lang =
-      lang === "pa" ? "pa" : "en";
+      lang === "pa" ? "pa" : lang === "hi" ? "hi" : "en";
 
     const map = {
       tagline: "tagline",
@@ -305,7 +385,7 @@
 
     if ($("langBtn")) {
       $("langBtn").textContent =
-        lang === "pa" ? "English" : "ਪੰਜਾਬੀ";
+        lang === "pa" ? "English" : lang === "en" ? "हिन्दी" : "ਪੰਜਾਬੀ";
     }
 
     if ($("searchInput")) {
@@ -959,9 +1039,9 @@
     }
 
       if (action === "language") {
-        const nextLanguage = language === "pa" ? "en" : "pa";
+        const nextLanguage = language === "pa" ? "en" : language === "en" ? "hi" : "pa";
         setLanguage(nextLanguage);
-        toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : "English selected.");
+        toast(nextLanguage === "pa" ? "ਪੰਜਾਬੀ ਚੁਣੀ ਗਈ।" : nextLanguage === "hi" ? "हिन्दी चुनी गई।" : "English selected.");
       }
     });
   });
@@ -975,9 +1055,7 @@
       () => {
 
         setLanguage(
-          language === "pa"
-            ? "en"
-            : "pa"
+          language === "pa" ? "en" : language === "en" ? "hi" : "pa"
         );
       }
     );
