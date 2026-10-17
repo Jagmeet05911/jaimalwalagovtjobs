@@ -1,7 +1,7 @@
 {
   "name": "Jaimalwala Govt Jobs",
   "short_name": "Jaimalwala Jobs",
-  "description": "Government recruitment updates across Punjab and India, eligibility details, deadlines and official links.",
+  "description": "Government and private job updates across Punjab and India, with official links and admin-reviewed listings.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
