@@ -636,7 +636,7 @@
 
         <div class="job-meta">
           <span>
-            ⌖ ${escapeHtml(job.location || "India")}
+            ⌖ ${escapeHtml(getJobLocation(job))}
           </span>
 
           <span>
@@ -737,6 +737,40 @@
       });
   }
 
+  function getJobLocation(job) {
+    const title = String(job.title || "").toLowerCase();
+    const department = String(job.department || "").toLowerCase();
+    const combined = title + " " + department;
+    const explicitStates = [
+      ["Jammu and Kashmir", /jammu\s*(and|&)\s*kashmir|jkssb/],
+      ["Himachal Pradesh", /himachal\s*pradesh|hppsc/],
+      ["Uttar Pradesh", /uttar\s*pradesh|upsssc|uppsc/],
+      ["Madhya Pradesh", /madhya\s*pradesh|mpesb/],
+      ["West Bengal", /west\s*bengal|wbpsc/],
+      ["Andhra Pradesh", /andhra\s*pradesh/],
+      ["Arunachal Pradesh", /arunachal\s*pradesh/],
+      ["Punjab", /\bpunjab\b|ppsc|sssc\/pb/],
+      ["Haryana", /\bharyana\b|hssc|sssc\/hr/],
+      ["Rajasthan", /\brajasthan\b|rssb/],
+      ["Uttarakhand", /uttarakhand|uksssc/],
+      ["Chandigarh", /\bchandigarh\b|rrb chandigarh/],
+      ["Delhi", /\bdelhi\b|dsssb/],
+      ["Maharashtra", /maharashtra/], ["Gujarat", /gujarat|gpsc/],
+      ["Bihar", /\bbihar\b|bpsc/], ["Odisha", /odisha|opsc/],
+      ["Jharkhand", /jharkhand/], ["Chhattisgarh", /chhattisgarh/],
+      ["Telangana", /telangana/], ["Karnataka", /karnataka/],
+      ["Tamil Nadu", /tamil\s*nadu/], ["Kerala", /kerala/],
+      ["Goa", /\bgoa\b/], ["Assam", /assam/], ["Sikkim", /sikkim/],
+      ["Nagaland", /nagaland/], ["Manipur", /manipur/],
+      ["Mizoram", /mizoram/], ["Tripura", /tripura/],
+      ["Meghalaya", /meghalaya/]
+    ];
+    for (const [state, pattern] of explicitStates) {
+      if (pattern.test(title) || pattern.test(department)) return state;
+    }
+    return String(job.location || "All India").trim();
+  }
+
   function classifyJob(job) {
     const text = [job.title, job.department, job.eligibility, job.category].join(" ").toLowerCase();
     if (/railway|\brrc\b|\brrb\b|locomotive|railway protection force|\brpf\b/.test(text)) return "Railway";
@@ -776,9 +810,9 @@
       ["Other", "Other Government Jobs"]
     ];
     const stateJobs = state => published.filter(job => {
-      const location = String(job.location || "").toLowerCase();
+      const location = getJobLocation(job).toLowerCase();
       if (state === "All India") return /all india|india-wide|national|pan india/i.test(location);
-      return location.includes(state.toLowerCase());
+      return location === state.toLowerCase();
     });
     const jobCards = items => items.length
       ? items.map(jobCard).join("")
