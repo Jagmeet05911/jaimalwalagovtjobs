@@ -1098,6 +1098,24 @@
       const candidates = await response.json();
       if (!Array.isArray(candidates)) throw new Error("Job candidate feed is not a list.");
 
+      // Safety repair: older scanner versions may have inserted auto-discovered
+      // records as published. Move those records back to Pending for human review.
+      // Never change manually-created records or auto records already reviewed
+      // unless they are still marked with the automatic "auto-" ID prefix.
+      const unsafeAutoPublished = jobs
+        .filter(job => job.status === "published" && String(job.id).startsWith("auto-"))
+        .map(job => String(job.id))
+        .filter(id => /^[a-zA-Z0-9_-]+$/.test(id));
+      if (unsafeAutoPublished.length) {
+        const idFilter = "in.(" + unsafeAutoPublished.join(",") + ")";
+        await supa("/rest/v1/jobs?id=" + encodeURIComponent(idFilter), {
+          method: "PATCH",
+          headers: { Prefer: "return=minimal" },
+          body: JSON.stringify({ status: "pending" })
+        }, true);
+        await loadCloudJobs();
+      }
+
       const existingUrls = new Set(jobs.map(job => safeUrl(job.noticeUrl)).filter(Boolean));
       const seen = new Set();
       const rows = [];
