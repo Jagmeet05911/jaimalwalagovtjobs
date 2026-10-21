@@ -17,6 +17,20 @@ GOV_SOURCES = [
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
     ("HSSC", "https://hssc.gov.in/advertisement", "Haryana"),
     ("RRB Chandigarh", "https://www.rrbcdg.gov.in/employment-notices.php", "Chandigarh"),
+    ("IBPS", "https://www.ibps.in/", "All India"),
+    ("SBI Careers", "https://sbi.co.in/web/careers", "All India"),
+    ("RBI Opportunities", "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx", "All India"),
+    ("UPSSSC", "https://upsssc.gov.in/", "Uttar Pradesh"),
+    ("UPPSC", "https://uppsc.up.nic.in/", "Uttar Pradesh"),
+    ("RSSB Rajasthan", "https://rssb.rajasthan.gov.in/", "Rajasthan"),
+    ("BPSC Bihar", "https://bpsc.bihar.gov.in/", "Bihar"),
+    ("MPESB", "https://esb.mp.gov.in/", "Madhya Pradesh"),
+    ("OPSC Odisha", "https://www.opsc.gov.in/", "Odisha"),
+    ("WBPSC", "https://psc.wb.gov.in/", "West Bengal"),
+    ("GPSC Gujarat", "https://gpsc.gujarat.gov.in/", "Gujarat"),
+    ("HPPSC", "https://hppsc.hp.gov.in/", "Himachal Pradesh"),
+    ("DSSSB Delhi", "https://dsssb.delhi.gov.in/", "Delhi"),
+    ("JKSSB", "https://jkssb.nic.in/", "Jammu and Kashmir"),
     ("Employment News", "https://employmentnews.gov.in/newemp/AllJobs.aspx?k=All", "All India"),
     ("India Post", "https://www.indiapost.gov.in/VAS/Pages/Content/Recruitments.aspx?Category=Recruitment", "All India"),
     ("ISRO", "https://www.isro.gov.in/Careers.html", "All India"),
@@ -24,12 +38,26 @@ GOV_SOURCES = [
     ("NCS", "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx", "All India"),
 ]
 DEPARTMENTS = {
-    "SSSC": "Society for Centralized Recruitment of Staff in Subordinate Courts",
+    "SSSC": "Punjab Subordinate Courts Recruitment",
     "UPSC": "Union Public Service Commission",
     "SSC": "Staff Selection Commission",
     "PPSC": "Punjab Public Service Commission",
     "HSSC": "Haryana Staff Selection Commission",
     "RRB Chandigarh": "Railway Recruitment Board, Chandigarh",
+    "IBPS": "Institute of Banking Personnel Selection",
+    "SBI Careers": "State Bank of India",
+    "RBI Opportunities": "Reserve Bank of India",
+    "UPSSSC": "Uttar Pradesh Subordinate Services Selection Commission",
+    "UPPSC": "Uttar Pradesh Public Service Commission",
+    "RSSB Rajasthan": "Rajasthan Staff Selection Board",
+    "BPSC Bihar": "Bihar Public Service Commission",
+    "MPESB": "Madhya Pradesh Employees Selection Board",
+    "OPSC Odisha": "Odisha Public Service Commission",
+    "WBPSC": "West Bengal Public Service Commission",
+    "GPSC Gujarat": "Gujarat Public Service Commission",
+    "HPPSC": "Himachal Pradesh Public Service Commission",
+    "DSSSB Delhi": "Delhi Subordinate Services Selection Board",
+    "JKSSB": "Jammu and Kashmir Services Selection Board",
     "Employment News": "Employment News, Government of India",
     "India Post": "Department of Posts, Government of India",
     "ISRO": "Indian Space Research Organisation",
@@ -280,12 +308,35 @@ def main():
                 if url in seen:
                     continue
                 seen.add(url)
+                combined = (title + " " + DEPARTMENTS[source]).lower()
+                if any(term in combined for term in ("railway", "rrb", "rrc", "locomotive")):
+                    category = "Railway"
+                elif any(term in combined for term in ("ibps", "sbi", "rbi", "bank", "probationary officer")):
+                    category = "Banking"
+                elif any(term in combined for term in ("b.tech", "btech", "engineer", "engineering", "diploma")):
+                    category = "Engineering"
+                elif any(term in combined for term in ("police", "constable", "sub inspector", "rpf")):
+                    category = "Police"
+                elif any(term in combined for term in ("teacher", "teaching", "lecturer", "professor", "tet", "ctet")):
+                    category = "Teaching"
+                elif any(term in combined for term in ("army", "navy", "air force", "defence", "agniveer", "drdo")):
+                    category = "Defence"
+                elif any(term in combined for term in ("nurse", "medical", "health", "pharmacist", "hospital")):
+                    category = "Medical"
+                elif any(term in combined for term in ("court", "judicial", "judiciary", "stenographer")):
+                    category = "Courts"
+                elif any(term in combined for term in ("agriculture", "horticulture", "veterinary")):
+                    category = "Agriculture"
+                elif any(term in combined for term in ("computer", "software", "developer", "programmer", "it officer")):
+                    category = "IT"
+                else:
+                    category = "Other"
                 candidates.append({
                     "source": source,
                     "title": title[:180],
                     "department": DEPARTMENTS[source],
-                    "location": ("Haryana" if "SSSC/HR" in title.upper() or "haryana" in title.lower() else location),
-                    "category": "Other",
+                    "location": ("Haryana" if "haryana" in title.lower() or source == "HSSC" else location),
+                    "category": category,
                     "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
                     "url": url,
                     "applyUrl": "",
