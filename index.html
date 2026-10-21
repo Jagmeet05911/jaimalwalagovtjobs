@@ -84,9 +84,13 @@
     <section id="jobsView" class="view">
       <div class="section-head"><div><span class="eyebrow" id="listingEyebrow">FIND YOUR NEXT STEP</span><h2 id="jobsHeading">Latest Government Jobs</h2><p class="muted" id="jobsIntro">Search vacancies, review eligibility and open the official notification.</p></div><span class="count-pill"><b id="publishedCount">0</b> <span id="publishedLabel">jobs</span></span></div>
       <div class="filters">
-        <label class="searchbox"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search by job title, department or eligibility"></label>
-        <select id="locationFilter" aria-label="Filter by location"><option value="">All Locations</option><option>Punjab</option><option>All India</option><option>Chandigarh</option></select>
-        <select id="categoryFilter" aria-label="Filter by category"><option value="">All Categories</option><option>Police</option><option>Teaching</option><option>Railway</option><option>Banking</option><option>Defence</option><option>Other</option></select>
+        <label class="searchbox"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search by job title, department, qualification (B.Tech, 12th, ITI...)"></label>
+        <select id="locationFilter" aria-label="Filter jobs by state">
+          <option value="">All States / Locations</option><option>Punjab</option><option>Haryana</option><option>Himachal Pradesh</option><option>Chandigarh</option><option>Delhi</option><option>Uttar Pradesh</option><option>Rajasthan</option><option>Uttarakhand</option><option>Jammu and Kashmir</option><option>Haryana</option><option>Maharashtra</option><option>Gujarat</option><option>Madhya Pradesh</option><option>Bihar</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Odisha</option><option>Jharkhand</option><option>Chhattisgarh</option><option>Rajasthan</option><option>All India</option>
+        </select>
+        <select id="categoryFilter" aria-label="Filter jobs by department or field">
+          <option value="">All Departments / Fields</option><option value="Railway">Railway</option><option value="Banking">Banking</option><option value="Engineering">Engineering / B.Tech</option><option value="Police">Police</option><option value="Teaching">Teaching</option><option value="Defence">Defence</option><option value="Medical">Medical / Health</option><option value="Courts">Courts / Judiciary</option><option value="Agriculture">Agriculture</option><option value="IT">IT / Computer</option><option value="Other">Other Government Jobs</option>
+        </select>
       </div>
       <div class="jobs-toolbar"><span><span class="toolbar-dot"></span> <b>Latest opportunities</b></span><span>Read the official notice before every application</span></div>
       <div id="jobsList" class="jobs-grid"></div>
