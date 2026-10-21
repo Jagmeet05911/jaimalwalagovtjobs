@@ -753,75 +753,56 @@
   }
 
   function renderJobs() {
-    if (!$("jobsList")) return;
-
-    const q =
-      $("searchInput")
-        ? $("searchInput").value.trim().toLowerCase()
-        : "";
-
-    const loc =
-      $("locationFilter")
-        ? $("locationFilter").value
-        : "";
-
-    const cat =
-      $("categoryFilter")
-        ? $("categoryFilter").value
-        : "";
-
-    const visible = jobs
-      .filter(job => job.status === "published" && String(job.category || "").toLowerCase() !== "private jobs")
-      .filter(job => {
-        const text = [job.title, job.department, job.eligibility, job.location, job.category]
-          .join(" ").toLowerCase();
-        const field = classifyJob(job);
-        const location = String(job.location || "").toLowerCase();
-        const wantedLocation = String(loc || "").toLowerCase();
-        const locationMatches = !loc ||
-          location === wantedLocation ||
-          (loc === "All India" && /all india|india-wide|national|pan india/i.test(location)) ||
-          (loc !== "All India" && location.includes(wantedLocation));
-        return (!q || text.includes(q)) &&
-          locationMatches &&
-          (!cat || field === cat);
-      });
-
-    if (deadlineSort) {
-      visible.sort((a, b) => {
-        const da = a.deadline ? Date.parse(a.deadline) : Number.MAX_SAFE_INTEGER;
-        const db = b.deadline ? Date.parse(b.deadline) : Number.MAX_SAFE_INTEGER;
-        return da - db;
-      });
-    }
-
-    if ($("publishedCount")) {
-      $("publishedCount").textContent =
-        jobs.filter(
-          job => job.status === "published" && String(job.category || "").toLowerCase() !== "private jobs"
-        ).length;
-    }
-
-    $("jobsList").innerHTML =
-      visible.map(jobCard).join("");
-
-    if ($("emptyJobs")) {
-      $("emptyJobs").classList.toggle(
-        "hidden",
-        visible.length > 0
-      );
-    }
-
-    if (!visible.length && $("emptyText")) {
-      setText(
-        "emptyText",
-        q || loc || cat
-          ? t("noResults")
-          : t("emptyText")
-      );
-    }
-
-    attachSaveButtons($("jobsList"));
+    if (!$("jobsDirectory")) return;
+    const published = jobs.filter(job =>
+      job.status === "published" &&
+      String(job.category || "").toLowerCase() !== "private jobs"
+    );
+    const states = [
+      "Punjab", "Haryana", "Himachal Pradesh", "Chandigarh", "Delhi",
+      "Uttar Pradesh", "Rajasthan", "Uttarakhand", "Jammu and Kashmir",
+      "Maharashtra", "Gujarat", "Madhya Pradesh", "Bihar", "West Bengal",
+      "Odisha", "Jharkhand", "Chhattisgarh", "Andhra Pradesh", "Telangana",
+      "Karnataka", "Tamil Nadu", "Kerala", "Goa", "Assam", "Sikkim",
+      "Arunachal Pradesh", "Nagaland", "Manipur", "Mizoram", "Tripura",
+      "Meghalaya", "All India"
+    ];
+    const departments = [
+      ["Railway", "Railway Jobs"], ["Banking", "Banking Jobs"],
+      ["Engineering", "Engineering / B.Tech Jobs"], ["Police", "Police Jobs"],
+      ["Teaching", "Teaching Jobs"], ["Defence", "Defence Jobs"],
+      ["Medical", "Medical / Health Jobs"], ["Courts", "Courts / Judiciary Jobs"],
+      ["Agriculture", "Agriculture Jobs"], ["IT", "IT / Computer Jobs"],
+      ["Other", "Other Government Jobs"]
+    ];
+    const stateJobs = state => published.filter(job => {
+      const location = String(job.location || "").toLowerCase();
+      if (state === "All India") return /all india|india-wide|national|pan india/i.test(location);
+      return location.includes(state.toLowerCase());
+    });
+    const jobCards = items => items.length
+      ? items.map(jobCard).join("")
+      : '<p class="directory-empty">No jobs listed here yet. Check back for official updates.</p>';
+    const stateSections = states.map(state => {
+      const items = stateJobs(state);
+      return '<section class="directory-section"><h3 class="directory-heading">' +
+        escapeHtml(state) + ' <span>' + items.length + ' jobs</span></h3>' +
+        '<div class="jobs-grid">' + jobCards(items) + '</div></section>';
+    }).join("");
+    const departmentSections = departments.map(([category, label]) => {
+      const items = published.filter(job => classifyJob(job) === category);
+      return '<section class="directory-section"><h3 class="directory-heading">' +
+        escapeHtml(label) + ' <span>' + items.length + ' jobs</span></h3>' +
+        '<div class="jobs-grid">' + jobCards(items) + '</div></section>';
+    }).join("");
+    $("jobsDirectory").innerHTML =
+      '<section class="directory-group"><h2 class="directory-group-title">State-wise Government Jobs</h2>' +
+      stateSections + '</section><section class="directory-group"><h2 class="directory-group-title">Department-wise Government Jobs</h2>' +
+      departmentSections + '</section>';
+    if ($("publishedCount")) $("publishedCount").textContent = published.length;
+    if ($("emptyJobs")) $("emptyJobs").classList.toggle("hidden", published.length > 0);
+    if ($("emptyJobs") && published.length > 0) $("emptyJobs").classList.add("hidden");
+    attachSaveButtons($("jobsDirectory"));
   }
 
   function renderPrivateJobs() {
