@@ -117,8 +117,8 @@ JOB_TERMS = re.compile(
     re.I,
 )
 EXCLUDE = re.compile(
-    r"result|answer key|admit card|syllabus|shortlist|interview schedule|"
-    r"corrigendum|tender|auction|calendar|press release|annual report|"
+    r"result|answer key|admit card|syllabus|shortlist|provisionally selected|selected candidates|"
+    r"interview schedule|corrigendum|tender|auction|calendar|press release|annual report|"
     r"objection|proposed answers|dates? of (the )?examination|"
     r"examination dates?|exam dates?|exam schedule|date sheet|roll number|"
     r"status of|recruitment requisition",
