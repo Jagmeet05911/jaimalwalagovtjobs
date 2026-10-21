@@ -740,7 +740,7 @@
   function classifyJob(job) {
     const text = [job.title, job.department, job.eligibility, job.category].join(" ").toLowerCase();
     if (/railway|\brRB\b|\brrc\b|\brrb\b|locomotive|railway protection force|\brpf\b/.test(text)) return "Railway";
-    if (/bank|\bibps\b|\bsbi\b|\brbi\b|\brrb clerk\b|probationary officer|\bpo\b|\bclerk\b/.test(text)) return "Banking";
+    if (/bank|ibps|sbi|rbi|probationary officer|bank officer|bank assistant/.test(text)) return "Banking";
     if (/b\.tech|btech|b\.e\b|bachelor of engineering|engineer|engineering|junior engineer|assistant engineer|\bje\b|\bae\b|diploma engineer/.test(text)) return "Engineering";
     if (/police|constable|sub inspector|\bsi\b|\basi\b|head constable/.test(text)) return "Police";
     if (/teacher|teaching|lecturer|professor|school education|\bptet\b|\btet\b|\bctet\b/.test(text)) return "Teaching";
