@@ -800,7 +800,7 @@
       "Karnataka", "Tamil Nadu", "Kerala", "Goa", "Assam", "Sikkim",
       "Arunachal Pradesh", "Nagaland", "Manipur", "Mizoram", "Tripura",
       "Meghalaya", "All India"
-    ];
+    ].sort((a, b) => a.localeCompare(b, "en"));
     const departments = [
       ["Railway", "Railway Jobs"], ["Banking", "Banking Jobs"],
       ["Engineering", "Engineering / B.Tech Jobs"], ["Police", "Police Jobs"],
@@ -808,7 +808,7 @@
       ["Medical", "Medical / Health Jobs"], ["Courts", "Courts / Judiciary Jobs"],
       ["Agriculture", "Agriculture Jobs"], ["IT", "IT / Computer Jobs"],
       ["Other", "Other Government Jobs"]
-    ];
+    ].sort((a, b) => a[1].localeCompare(b[1], "en"));
     const stateJobs = state => published.filter(job => {
       const location = getJobLocation(job).toLowerCase();
       if (state === "All India") return /all india|india-wide|national|pan india/i.test(location);
