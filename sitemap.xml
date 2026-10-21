@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/</loc></url>
-  <url><loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/about.html</loc></url>
-  <url><loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/contact.html</loc></url>
-  <url><loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/privacy.html</loc></url>
-  <url><loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/disclaimer.html</loc></url>
+  <url>
+    <loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/about.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/contact.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/privacy.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://jagmeet05911.github.io/jaimalwalagovtjobs/disclaimer.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
 </urlset>
