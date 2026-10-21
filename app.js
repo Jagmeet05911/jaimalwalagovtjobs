@@ -737,6 +737,21 @@
       });
   }
 
+  function classifyJob(job) {
+    const text = [job.title, job.department, job.eligibility, job.category].join(" ").toLowerCase();
+    if (/railway|\brRB\b|\brrc\b|\brrb\b|locomotive|railway protection force|\brpf\b/.test(text)) return "Railway";
+    if (/bank|\bibps\b|\bsbi\b|\brbi\b|\brrb clerk\b|probationary officer|\bpo\b|\bclerk\b/.test(text)) return "Banking";
+    if (/b\.tech|btech|b\.e\b|bachelor of engineering|engineer|engineering|junior engineer|assistant engineer|\bje\b|\bae\b|diploma engineer/.test(text)) return "Engineering";
+    if (/police|constable|sub inspector|\bsi\b|\basi\b|head constable/.test(text)) return "Police";
+    if (/teacher|teaching|lecturer|professor|school education|\bptet\b|\btet\b|\bctet\b/.test(text)) return "Teaching";
+    if (/defence|army|navy|air force|\bagniveer\b|\bdrdo\b/.test(text)) return "Defence";
+    if (/medical|health|nurse|nursing|doctor|pharmacist|lab technician|\bnhm\b|hospital/.test(text)) return "Medical";
+    if (/court|judicial|judiciary|stenographer|judicial services|subordinate courts/.test(text)) return "Courts";
+    if (/agriculture|agricultural|horticulture|veterinary|animal husbandry/.test(text)) return "Agriculture";
+    if (/software|developer|programmer|computer|information technology|\bit officer\b|data entry|cyber|network engineer/.test(text)) return "IT";
+    return "Other";
+  }
+
   function renderJobs() {
     if (!$("jobsList")) return;
 
@@ -758,22 +773,18 @@
     const visible = jobs
       .filter(job => job.status === "published" && String(job.category || "").toLowerCase() !== "private jobs")
       .filter(job => {
-
-        const text = [
-          job.title,
-          job.department,
-          job.eligibility,
-          job.location,
-          job.category
-        ]
-          .join(" ")
-          .toLowerCase();
-
-        return (
-          (!q || text.includes(q)) &&
-          (!loc || job.location === loc) &&
-          (!cat || job.category === cat)
-        );
+        const text = [job.title, job.department, job.eligibility, job.location, job.category]
+          .join(" ").toLowerCase();
+        const field = classifyJob(job);
+        const location = String(job.location || "").toLowerCase();
+        const wantedLocation = String(loc || "").toLowerCase();
+        const locationMatches = !loc ||
+          location === wantedLocation ||
+          (loc === "All India" && /all india|india-wide|national|pan india/i.test(location)) ||
+          (loc !== "All India" && location.includes(wantedLocation));
+        return (!q || text.includes(q)) &&
+          locationMatches &&
+          (!cat || field === cat);
       });
 
     if (deadlineSort) {
