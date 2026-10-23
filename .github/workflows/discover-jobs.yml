@@ -3,7 +3,7 @@ name: Discover official job notice candidates
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/scripts/discover_jobs.py"
@@ -42,7 +42,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Keep the scan output while syncing any concurrent commits from other workflows.
           cp data/pending_jobs.json /tmp/pending_jobs_scanned.json
 
           for attempt in 1 2 3; do
