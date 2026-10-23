@@ -1644,3 +1644,22 @@
   initializeCloud();
 
 })();
+
+
+// Accessible site-wide text size controls (persist for this browser).
+(function setupFontSizeControls(){
+  const key = "jg_font_scale_v1";
+  const allowed = [1, 1.1, 1.2];
+  let scale = 1;
+  try { const saved = Number(localStorage.getItem(key)); if (allowed.includes(saved)) scale = saved; } catch (_) {}
+  function apply(){ document.documentElement.style.setProperty("--site-font-scale", String(scale)); document.body.style.zoom = String(scale); }
+  document.addEventListener("DOMContentLoaded", function(){
+    apply();
+    const smaller = document.getElementById("fontSmaller");
+    const reset = document.getElementById("fontReset");
+    const larger = document.getElementById("fontLarger");
+    if (smaller) smaller.addEventListener("click", function(){ scale = allowed[Math.max(0, allowed.indexOf(scale)-1)]; apply(); try{localStorage.setItem(key,String(scale));}catch(_){} });
+    if (reset) reset.addEventListener("click", function(){ scale = 1; apply(); try{localStorage.setItem(key,String(scale));}catch(_){} });
+    if (larger) larger.addEventListener("click", function(){ scale = allowed[Math.min(allowed.length-1, allowed.indexOf(scale)+1)]; apply(); try{localStorage.setItem(key,String(scale));}catch(_){} });
+  });
+})();
