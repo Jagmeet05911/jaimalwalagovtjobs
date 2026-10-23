@@ -690,6 +690,12 @@
     if (id === "admitView") {
       renderAdmitCards();
     }
+    if (id === "resultsView") {
+      renderResults();
+    }
+    if (id === "formsView") {
+      renderForms();
+    }
 
     if (id === "adminView") {
       renderAdmin();
@@ -880,7 +886,7 @@
     if (!$("jobsDirectory")) return;
     const published = jobs.filter(job =>
       job.status === "published" &&
-      String(job.category || "").toLowerCase() !== "private jobs"
+      !["private jobs", "results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase())
     );
     const states = [
       "Punjab", "Haryana", "Himachal Pradesh", "Chandigarh", "Delhi",
@@ -972,18 +978,30 @@
 
   function renderAdmitCards() {
     if (!$("admitList")) return;
-
     const items = jobs.filter(job =>
-      job.status === "published" && safeUrl(job.admitCardUrl)
+      job.status === "published" &&
+      (safeUrl(job.admitCardUrl) || String(job.category || "").toLowerCase() === "admit cards")
     );
-
     $("admitList").innerHTML = items.map(jobCard).join("");
-
-    if ($("emptyAdmit")) {
-      $("emptyAdmit").classList.toggle("hidden", items.length > 0);
-    }
-
+    if ($("emptyAdmit")) $("emptyAdmit").classList.toggle("hidden", items.length > 0);
     attachSaveButtons($("admitList"));
+  }
+
+  function renderResults() {
+    if (!$("resultsList")) return;
+    const items = jobs.filter(job => job.status === "published" && String(job.category || "").toLowerCase() === "results");
+    $("resultsList").innerHTML = items.map(jobCard).join("");
+    if ($("emptyResults")) $("emptyResults").classList.toggle("hidden", items.length > 0);
+    if ($("resultsCount")) $("resultsCount").textContent = String(items.length);
+    attachSaveButtons($("resultsList"));
+  }
+
+  function renderForms() {
+    if (!$("dynamicFormsList")) return;
+    const items = jobs.filter(job => job.status === "published" && String(job.category || "").toLowerCase() === "forms / admissions");
+    $("dynamicFormsList").innerHTML = items.map(jobCard).join("");
+    if ($("dynamicFormsCount")) $("dynamicFormsCount").textContent = String(items.length);
+    attachSaveButtons($("dynamicFormsList"));
   }
 
   function renderAdmin() {
@@ -1165,6 +1183,8 @@
     renderPrivateJobs();
     renderSaved();
     renderAdmitCards();
+    renderResults();
+    renderForms();
     renderAdmin();
   }
 
@@ -1209,9 +1229,10 @@
         const ageDays = (Date.now() - checkedAt) / 86400000;
         if (!Number.isFinite(checkedAt) || ageDays > 3 || ageDays < -1) continue;
         const titleForReview = String(item.title);
-        if (/result|answer key|admit card|syllabus|shortlist|interview|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|dates? of (the )?examination|examination dates?|exam dates?|exam schedule|date sheet|roll number|status of|recruitment requisition/i.test(titleForReview)) continue;
-        if (/^(recruitment|career|careers|career tools(?: & learning)?|career article|career schemes|career guidance|web advertisement|job opportunities|current openings|view all jobs|all jobs)$/i.test(titleForReview.trim())) continue;
-        if (String(item.category || "").toLowerCase() !== "private jobs" && !/recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|posts? of|job opening|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b/i.test(titleForReview)) continue;
+        if (/syllabus|shortlist|interview schedule|corrigendum|tender|auction|calendar|press release|annual report|objection|proposed answers|recruitment requisition/i.test(titleForReview)) continue;
+        if (/^(recruitment|career|careers|career tools(?: & learning)?|career article|career schemes|career guidance|web advertisement|job opportunities|current openings|view all jobs|all jobs|advertisements)$/i.test(titleForReview.trim())) continue;
+        const inferredType = item.noticeType || (/result|merit list|selection list|score ?card|marks list|answer key/i.test(titleForReview) ? "result" : /admit.?card|hall ticket|call letter|roll number|exam city slip/i.test(titleForReview) ? "admit_card" : /admission|entrance test|entrance examination|application form|online form|counselling|counseling|prospectus|neet|jee main|cuet/i.test(titleForReview) ? "form" : "job");
+        if (inferredType === "job" && String(item.category || "").toLowerCase() !== "private jobs" && !/recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|career|posts? of|job opening|employment notice|centralised employment notice|\bCEN\s*\d|group[- ]?[CD]\b/i.test(titleForReview)) continue;
         const noticeUrl = safeUrl(item.url);
         if (!noticeUrl || existingUrls.has(noticeUrl) || seen.has(noticeUrl)) continue;
         seen.add(noticeUrl);
@@ -1221,12 +1242,12 @@
           title: String(item.title).slice(0, 240),
           department: String(item.department || item.source || "Government department").slice(0, 240),
           location: item.location || "All India",
-          category: item.category || "Other",
+          category: inferredType === "result" ? "Results" : inferredType === "admit_card" ? "Admit Cards" : inferredType === "form" ? "Forms / Admissions" : (item.category || "Other"),
           eligibility: item.eligibility || "Auto-discovered candidate. Read the official notice and verify eligibility, dates and application link before publishing.",
           deadline: item.deadline || null,
           notice_url: noticeUrl,
-          apply_url: safeUrl(item.applyUrl || "") || null,
-          admit_card_url: safeUrl(item.admitCardUrl || "") || null,
+          apply_url: safeUrl(item.applyUrl || (inferredType === "form" ? item.url : "")) || null,
+          admit_card_url: safeUrl(item.admitCardUrl || (inferredType === "admit_card" ? item.url : "")) || null,
           source_checked: item.sourceChecked || today,
           status: "pending"
         });
