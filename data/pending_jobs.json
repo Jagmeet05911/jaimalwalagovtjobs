@@ -480,38 +480,6 @@
     "sourceChecked": "2026-10-24"
   },
   {
-    "source": "SBI Careers",
-    "title": "Recruitment Results",
-    "department": "State Bank of India",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://sbi.co.in/web/careers/recruitment-results",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-24"
-  },
-  {
-    "source": "SBI Careers",
-    "title": "Recruitment Results & Archive",
-    "department": "State Bank of India",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://sbi.co.in/web/careers/recruitment-results-archive",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-24"
-  },
-  {
     "source": "UPPSC",
     "title": "{{'Recruitment_HM' | translate }}",
     "department": "Uttar Pradesh Public Service Commission",
