@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from datetime import date
+from datetime import date, datetime
 from urllib.parse import urljoin, urldefrag
 
 import requests
@@ -26,8 +26,6 @@ CURATED_JOBS = [
     }
 ]
 
-# Official recruitment / vacancy pages. The scanner takes the newest-looking
-# links from these pages and sends them to Admin review; it never auto-publishes.
 SOURCES = [
     {"name": "UPSC", "url": "https://www.upsc.gov.in/recruitment/recruitment-advertisement", "location": "All India"},
     {"name": "SSC", "url": "https://ssc.gov.in/", "location": "All India"},
@@ -56,8 +54,44 @@ GENERIC_LABELS = {"recruitment", "advertisement", "view all", "official website"
 CURRENT_YEAR = date.today().year
 MAX_CANDIDATES_PER_SOURCE = 20
 
+
+def normal_url(url):
+    return urldefrag(str(url or "").strip()).url.rstrip("/").lower()
+
+
+def extract_deadline(text):
+    """Extract common DD/MM/YYYY or YYYY-MM-DD deadlines from notice text."""
+    text = str(text or "")
+    patterns = [
+        r"\b(\d{1,2})[/-](\d{1,2})[/-](20\d{2})\b",
+        r"\b(20\d{2})-(\d{1,2})-(\d{1,2})\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text)
+        if not match:
+            continue
+        try:
+            a, b, c = map(int, match.groups())
+            if c >= 2000:  # DD/MM/YYYY
+                return date(c, b, a).isoformat()
+            return date(a, b, c).isoformat()  # YYYY-MM-DD
+        except ValueError:
+            pass
+    return ""
+
+
+def is_expired(deadline):
+    if not deadline:
+        return False
+    try:
+        return date.fromisoformat(deadline) < date.today()
+    except ValueError:
+        return False
+
+
 candidates = []
-seen_urls = {job["url"] for job in CURATED_JOBS}
+seen_urls = {normal_url(job["url"]) for job in CURATED_JOBS}
+seen_titles = set()
 checked_at = str(date.today())
 
 for source in SOURCES:
@@ -81,18 +115,26 @@ for source in SOURCES:
             if not any(word in lowered for word in NOTICE_WORDS):
                 continue
 
-            # Avoid pulling clearly old archive links into today's review queue.
             years = [int(y) for y in re.findall(r"\b(20\d{2})\b", title)]
             if years and max(years) < CURRENT_YEAR:
                 continue
 
-            url = urldefrag(urljoin(response.url, anchor["href"])).url
+            url = normal_url(urljoin(response.url, anchor["href"]))
             if not url.startswith("https://") or url in seen_urls:
                 continue
-            if url.rstrip("/") == source["url"].rstrip("/"):
+            if url == normal_url(source["url"]):
                 continue
 
+            deadline = extract_deadline(title)
+            if is_expired(deadline):
+                continue
+
+            title_key = re.sub(r"\s+", " ", lowered)
+            if title_key in seen_titles:
+                continue
+            seen_titles.add(title_key)
             seen_urls.add(url)
+
             candidates.append({
                 "source": source["name"],
                 "title": title,
@@ -101,7 +143,7 @@ for source in SOURCES:
                 "category": "Other",
                 "url": url,
                 "applyUrl": "",
-                "deadline": "",
+                "deadline": deadline,
                 "sourceChecked": checked_at,
                 "verified": False,
                 "needsReview": True
@@ -111,8 +153,21 @@ for source in SOURCES:
     except Exception as error:
         print(f"Could not fetch {source['name']}: {error}")
 
+# Final safety pass: never write duplicate URLs, duplicate source+title pairs,
+# or candidates whose explicit deadline has already passed.
+cleaned = []
+seen_keys = set()
+for job in CURATED_JOBS + candidates:
+    url_key = normal_url(job.get("url"))
+    title_key = re.sub(r"\s+", " ", str(job.get("title", "")).strip().lower())
+    key = (url_key, str(job.get("source", "")).strip().lower(), title_key)
+    if key in seen_keys or is_expired(job.get("deadline", "")):
+        continue
+    seen_keys.add(key)
+    cleaned.append(job)
+
 os.makedirs("data", exist_ok=True)
 with open("data/pending_jobs.json", "w", encoding="utf-8") as output:
-    json.dump(CURATED_JOBS + candidates, output, ensure_ascii=False, indent=2)
+    json.dump(cleaned, output, ensure_ascii=False, indent=2)
 
-print(f"Saved {len(CURATED_JOBS)} curated active job(s) and {len(candidates)} fresh notice candidate(s) for admin review.")
+print(f"Saved {len(cleaned)} fresh/active candidates for admin review.")
