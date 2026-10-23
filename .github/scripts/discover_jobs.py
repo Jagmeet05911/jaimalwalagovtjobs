@@ -5,7 +5,8 @@ All records are review-only. Nothing is ever published automatically.
 import json
 import re
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
@@ -108,6 +109,11 @@ LEVER_BOARDS = [
     ("Twitch", "twitch", "All India"),
 ]
 
+NOTICE_TYPES = {
+    "result": re.compile(r"result|merit list|selection list|selected candidates|score card|scorecard|marks list|final answer key|answer key", re.I),
+    "admit_card": re.compile(r"admit.?card|e-admit|hall ticket|call letter|download call letter|roll number|exam city slip|city intimation slip", re.I),
+    "form": re.compile(r"admission|entrance test|entrance examination|application form|online form|registration open|counselling|counseling|prospectus|neet|jee main|cuet|ctet|tet application", re.I),
+}
 JOB_TERMS = re.compile(
     r"recruit|vacanc|advertisement|advt\\.?\\s*(no\\.?|number)|apply online|"
     r"posts? of|job opening|employment notice|centralised employment notice|"
@@ -117,8 +123,7 @@ JOB_TERMS = re.compile(
     re.I,
 )
 EXCLUDE = re.compile(
-    r"result|answer key|admit card|syllabus|shortlist|provisionally selected|selected candidates|"
-    r"interview schedule|corrigendum|tender|auction|calendar|press release|annual report|"
+    r"syllabus|shortlist|interview schedule|corrigendum|tender|auction|calendar|press release|annual report|"
     r"objection|proposed answers|dates? of (the )?examination|"
     r"examination dates?|exam dates?|exam schedule|date sheet|roll number|"
     r"status of|recruitment requisition",
@@ -271,7 +276,7 @@ def scan_private(candidates, seen, successful_sources, checked):
 def main():
     candidates = []
     seen = set()
-    checked = datetime.now(timezone.utc).date().isoformat()
+    checked = datetime.now(ZoneInfo("Asia/Kolkata")).date().isoformat()
     feed_path = Path("data/pending_jobs.json")
     try:
         previous_candidates = json.loads(feed_path.read_text(encoding="utf-8"))
@@ -295,7 +300,13 @@ def main():
                 title = " ".join(title.split())
                 if title.lower().strip(" -") in GENERIC_PAGE_TITLES:
                     continue
-                if not JOB_TERMS.search(title) or EXCLUDE.search(title):
+                # Classify all useful notice types, not only recruitment ads.
+                notice_type = next((kind for kind, pattern in NOTICE_TYPES.items() if pattern.search(title)), None)
+                if notice_type is None:
+                    if not JOB_TERMS.search(title) or EXCLUDE.search(title):
+                        continue
+                    notice_type = "job"
+                elif notice_type == "form" and EXCLUDE.search(title):
                     continue
                 url = urljoin(page, href)
                 parsed = urlparse(url)
@@ -309,7 +320,13 @@ def main():
                     continue
                 seen.add(url)
                 combined = (title + " " + DEPARTMENTS[source]).lower()
-                if any(term in combined for term in ("railway", "rrb", "rrc", "locomotive")):
+                if notice_type == "result":
+                    category = "Results"
+                elif notice_type == "admit_card":
+                    category = "Admit Cards"
+                elif notice_type == "form":
+                    category = "Forms / Admissions"
+                elif any(term in combined for term in ("railway", "rrb", "rrc", "locomotive")):
                     category = "Railway"
                 elif any(term in combined for term in ("ibps", "sbi", "rbi", "bank", "probationary officer")):
                     category = "Banking"
@@ -337,9 +354,11 @@ def main():
                     "department": DEPARTMENTS[source],
                     "location": ("Haryana" if "haryana" in title.lower() or source == "HSSC" else location),
                     "category": category,
-                    "eligibility": "Auto-discovered candidate. Check the official notice for eligibility, fees and dates before publishing.",
+                    "noticeType": notice_type,
+                    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
                     "url": url,
-                    "applyUrl": "",
+                    "applyUrl": url if notice_type == "form" else "",
+                    "admitCardUrl": url if notice_type == "admit_card" else "",
                     "deadline": "",
                     "verified": False,
                     "needsReview": True,
