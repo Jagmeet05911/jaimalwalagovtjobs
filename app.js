@@ -53,6 +53,74 @@
     return data;
   }
 
+  // Count a browser once per local calendar day and keep page views private to the admin.
+  function getVisitorKey() {
+    const key = "jg_visitor_key_v1";
+    try {
+      let value = localStorage.getItem(key);
+      if (!value || value.length < 20) {
+        value = (typeof crypto !== "undefined" && crypto.randomUUID)
+          ? crypto.randomUUID() + "-" + crypto.randomUUID()
+          : String(Date.now()) + "-" + Math.random().toString(36).slice(2) + "-" + Math.random().toString(36).slice(2);
+        localStorage.setItem(key, value);
+      }
+      return value;
+    } catch (_) {
+      return String(Date.now()) + "-" + Math.random().toString(36).slice(2) + "-" + Math.random().toString(36).slice(2);
+    }
+  }
+
+  async function recordSiteVisit() {
+    const counter = $("siteVisitCount");
+    try {
+      const path = (location.pathname || "/").slice(0, 250);
+      const total = await supa("/rest/v1/rpc/record_site_visit", {
+        method: "POST",
+        body: JSON.stringify({
+          p_visitor_key: getVisitorKey(),
+          p_visit_date: localDateString(),
+          p_page_path: path
+        })
+      });
+      if (counter && Number.isFinite(Number(total))) counter.textContent = Number(total).toLocaleString();
+    } catch (error) {
+      if (counter) counter.textContent = "—";
+      console.warn("Visitor counter is not configured yet. Run the analytics SQL file in Supabase.", error);
+    }
+  }
+
+  async function loadPrivateAnalytics() {
+    if (!adminUser || !accessToken) return;
+    const summary = $("siteAnalyticsSummary");
+    const daily = $("siteAnalyticsDaily");
+    if (!summary || !daily) return;
+    summary.textContent = "Loading analytics…";
+    try {
+      const since = new Date();
+      since.setDate(since.getDate() - 6);
+      const fromDate = localDateString(since);
+      const rows = await supa("/rest/v1/site_analytics?select=visitor_key,visit_date,page_path,created_at&visit_date=gte." + encodeURIComponent(fromDate) + "&order=visit_date.desc", {}, true);
+      const data = Array.isArray(rows) ? rows : [];
+      const visitors = new Set(data.map(row => row.visitor_key + "|" + row.visit_date)).size;
+      summary.innerHTML = '<p><strong>Page views (last 7 days):</strong> ' + data.length.toLocaleString() + '</p><p><strong>Unique browser-days (last 7 days):</strong> ' + visitors.toLocaleString() + '</p>';
+      const byDayPage = new Map();
+      data.forEach(row => {
+        const key = row.visit_date + "|" + row.page_path;
+        byDayPage.set(key, (byDayPage.get(key) || 0) + 1);
+      });
+      const lines = Array.from(byDayPage.entries()).sort((a, b) => b[0].localeCompare(a[0]));
+      daily.innerHTML = lines.length
+        ? lines.slice(0, 50).map(([key, count]) => {
+            const split = key.indexOf("|");
+            return '<div class="pending-card"><strong>' + escapeHtml(displayDate(key.slice(0, split))) + '</strong><p>' + escapeHtml(key.slice(split + 1)) + ' · ' + count + ' page view(s)</p></div>';
+          }).join("")
+        : '<p class="muted">No visits recorded yet. Open the public website once the SQL setup is complete.</p>';
+    } catch (error) {
+      summary.textContent = "Analytics could not load: " + error.message + ". Check that site_analytics.sql has been run in Supabase.";
+      daily.innerHTML = "";
+    }
+  }
+
   function showAdminLogin() {
     const host = $("adminView");
     if (!host || $("supabaseAdminBox")) return;
@@ -102,6 +170,7 @@
         await loadCloudJobs();
         updateAdminSession();
         await loadAutomaticJobs();
+        await loadPrivateAnalytics();
         toast("Admin login successful.");
       } catch (error) {
         toast("Login failed: " + error.message);
@@ -114,7 +183,7 @@
   function updateAdminSession() {
     const info = $("adminSessionInfo");
     const form = $("supabaseLoginForm");
-    const protectedPanels = $("adminView")?.querySelectorAll(".warning, .admin-grid") || [];
+    const protectedPanels = $("adminView")?.querySelectorAll(".warning, .admin-grid, #siteAnalyticsPanel") || [];
     protectedPanels.forEach(el => el.classList.toggle("hidden", !adminUser));
     if (form) form.classList.toggle("hidden", !!adminUser);
     if (info) {
@@ -166,7 +235,7 @@
     }
     await loadCloudJobs();
     updateAdminSession();
-    if (adminUser) await loadAutomaticJobs();
+    if (adminUser) { await loadAutomaticJobs(); await loadPrivateAnalytics(); }
   }
 
   const KEYS = {
@@ -1492,6 +1561,9 @@
   /* Start website */
 
   setLanguage("en");
+  recordSiteVisit();
+  const refreshAnalyticsButton = $("refreshAnalyticsBtn");
+  if (refreshAnalyticsButton) refreshAnalyticsButton.addEventListener("click", loadPrivateAnalytics);
 
   const refreshCandidatesButton = $("refreshCandidatesBtn");
   if (refreshCandidatesButton) {
