@@ -13,7 +13,9 @@ from urllib.parse import urljoin, urlparse
 
 GOV_SOURCES = [
     ("SSSC", "https://sssc.gov.in/", "Punjab"),
+    ("SSSC", "https://sssc.gov.in/notice-board", "Punjab"),
     ("UPSC", "https://www.upsc.gov.in/recruitment/recruitment-advertisement", "All India"),
+    ("UPSC", "https://upsc.gov.in/examinations/active-exams", "All India"),
     ("SSC", "https://ssc.gov.in/", "All India"),
     ("PPSC", "https://ppsc.gov.in/", "Punjab"),
     ("HSSC", "https://hssc.gov.in/advertisement", "Haryana"),
@@ -37,6 +39,7 @@ GOV_SOURCES = [
     ("ISRO", "https://www.isro.gov.in/Careers.html", "All India"),
     ("DRDO", "https://www.drdo.gov.in/drdo/ceptam/ceptam-notice-board", "All India"),
     ("NCS", "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx", "All India"),
+    ("Punjab Admissions", "https://admission.punjab.gov.in/", "Punjab"),
 ]
 DEPARTMENTS = {
     "SSSC": "Punjab Subordinate Courts Recruitment",
@@ -64,6 +67,7 @@ DEPARTMENTS = {
     "ISRO": "Indian Space Research Organisation",
     "DRDO": "Defence Research and Development Organisation",
     "NCS": "National Career Service, Ministry of Labour and Employment",
+    "Punjab Admissions": "Punjab Department of Higher Education",
 }
 
 # Public job-board identifiers. A source is accepted only when its official
@@ -133,6 +137,8 @@ GENERIC_PAGE_TITLES = {
     "recruitment", "career", "careers", "career tools", "career tools & learning",
     "career article", "career schemes", "career guidance", "web advertisement",
     "job opportunities", "current openings", "view all jobs", "all jobs",
+    "results", "result", "admit card", "admit cards", "admissions", "forms",
+    "application forms", "notice board", "noticeboard", "examination", "examinations",
 }
 MAX_PER_SOURCE = 25
 
