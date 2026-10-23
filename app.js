@@ -1007,9 +1007,32 @@
   function renderAdmin() {
     if (!$("pendingList")) return;
 
-    const pending = jobs.filter(
+    const pendingAll = jobs.filter(
       job => job.status === "pending"
     );
+
+    const filter = $("pendingCategoryFilter")?.value || "all";
+    const isAdmitItem = job =>
+      String(job.category || "").toLowerCase() === "admit cards" ||
+      Boolean(job.admitCardUrl) ||
+      /admit.?card|hall ticket|roll number|exam city slip/i.test(String(job.title || ""));
+    const isResultItem = job =>
+      String(job.category || "").toLowerCase() === "results" ||
+      /\bresult(s)?\b|merit list|selection list|score ?card|marks list/i.test(String(job.title || ""));
+    const isFormItem = job =>
+      String(job.category || "").toLowerCase() === "forms / admissions" ||
+      /admission|application form|online form|counselling|counseling|prospectus/i.test(String(job.title || ""));
+    const isPrivateItem = job =>
+      String(job.category || "").toLowerCase() === "private jobs";
+    const pending = pendingAll.filter(job => {
+      if (filter === "all") return true;
+      if (filter === "admit") return isAdmitItem(job);
+      if (filter === "results") return isResultItem(job);
+      if (filter === "forms") return isFormItem(job);
+      if (filter === "private") return isPrivateItem(job);
+      if (filter === "jobs") return !isAdmitItem(job) && !isResultItem(job) && !isFormItem(job) && !isPrivateItem(job);
+      return true;
+    });
 
     const published = jobs.filter(
       job => job.status === "published"
@@ -1017,7 +1040,7 @@
 
     if ($("pendingCount")) {
       $("pendingCount").textContent =
-        pending.length;
+        filter === "all" ? pendingAll.length : pending.length;
     }
 
     if ($("adminPublishedCount")) {
@@ -1401,6 +1424,10 @@
       "change",
       renderJobs
     );
+  }
+
+  if ($("pendingCategoryFilter")) {
+    $("pendingCategoryFilter").addEventListener("change", renderAdmin);
   }
 
   /* Manual Job Form */
