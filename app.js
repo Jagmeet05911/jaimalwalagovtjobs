@@ -196,6 +196,19 @@
     return year + "-" + month + "-" + day;
   }
 
+  // Format YYYY-MM-DD without parsing it as UTC (which can shift the day).
+  function displayDate(value) {
+    if (!value) return "";
+    const match = String(value).trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (match) return match[3] + "/" + match[2] + "/" + match[1];
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? String(value) : [
+      String(parsed.getDate()).padStart(2, "0"),
+      String(parsed.getMonth() + 1).padStart(2, "0"),
+      parsed.getFullYear()
+    ].join("/");
+  }
+
   function write(key, value) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
@@ -648,7 +661,7 @@
           </span>
 
           <span>
-            ◷ ${escapeHtml(t("deadline"))}: ${escapeHtml(job.deadline || t("noDate"))}
+            ◷ ${escapeHtml(t("deadline"))}: ${escapeHtml(displayDate(job.deadline) || t("noDate"))}
           </span>
         </div>
 
@@ -664,7 +677,7 @@
           <span>
             ${escapeHtml(t("checked"))}:
             ${escapeHtml(
-              job.sourceChecked || t("noDate")
+              displayDate(job.sourceChecked) || t("noDate")
             )}
           </span>
         </p>
@@ -987,7 +1000,7 @@
                 ${escapeHtml(job.department)}
                 ·
                 ${escapeHtml(
-                  job.deadline || t("noDate")
+                  displayDate(job.deadline) || t("noDate")
                 )}
               </p>
 
@@ -1047,6 +1060,7 @@
 
   async function changeStatus(id, status) {
     try {
+      if (!adminUser || !accessToken) throw new Error("Admin sign-in required.");
       await supa("/rest/v1/jobs?id=eq." + encodeURIComponent(id), {
         method: "PATCH", headers: { Prefer: "return=minimal" }, body: JSON.stringify({ status })
       }, true);
@@ -1057,6 +1071,7 @@
 
   async function removeJob(id) {
     try {
+      if (!adminUser || !accessToken) throw new Error("Admin sign-in required.");
       await supa("/rest/v1/jobs?id=eq." + encodeURIComponent(id), {
         method: "DELETE", headers: { Prefer: "return=minimal" }
       }, true);
@@ -1344,6 +1359,17 @@
 
         const sourceChecked =
           $("sourceChecked").value;
+        const deadline = $("deadline").value;
+
+        if (deadline && !/^\d{4}-\d{2}-\d{2}$/.test(deadline)) {
+          toast("Please select a valid last date.");
+          return;
+        }
+
+        if (deadline && deadline < localDateString()) {
+          const proceed = window.confirm("The last date is in the past. Save this job anyway?");
+          if (!proceed) return;
+        }
 
         if (!sourceChecked) {
 
@@ -1381,7 +1407,7 @@
             $("eligibility").value.trim(),
 
           deadline:
-            $("deadline").value,
+            deadline,
 
           noticeUrl:
             noticeUrl,
@@ -1400,6 +1426,7 @@
         };
 
         try {
+          if (!adminUser || !accessToken) throw new Error("Admin sign-in required.");
           await supa("/rest/v1/jobs", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify(jobRow(job)) }, true);
         } catch (error) {
           toast("Could not save the job: " + error.message);
