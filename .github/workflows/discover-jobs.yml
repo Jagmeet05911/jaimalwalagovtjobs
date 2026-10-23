@@ -3,7 +3,7 @@ name: Discover official job notice candidates
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/10 * * * *"
   push:
     paths:
       - ".github/scripts/discover_jobs.py"
