@@ -337,7 +337,7 @@
       browseBtn: "ਨੌਕਰੀਆਂ ਵੇਖੋ ↓",
       noticeTitle: "ਜ਼ਰੂਰੀ ਨੋਟ:",
       noticeText:
-        "ਇਹ ਵੈੱਬਸਾਈਟ ਸ਼ੁਰੂਆਤੀ ਵਰਜਨ ਹੈ। ਹਰ ਨੌਕਰੀ ਲਈ official notification ਅਤੇ last date ਖੁਦ verify ਕਰੋ।",
+        "ਇਹ ਨੌਕਰੀਆਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਦੇਣ ਵਾਲਾ ਸੁਤੰਤਰ ਪੋਰਟਲ ਹੈ, ਸਰਕਾਰੀ ਵੈੱਬਸਾਈਟ ਨਹੀਂ। ਅਰਜ਼ੀ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਅਤੇ ਆਖ਼ਰੀ ਤਾਰੀਖ਼ ਜ਼ਰੂਰ ਜਾਂਚੋ।",
       homeTab: "🏠 ਹੋਮ",
       homeEyebrow: "JAIMALWALA GOVT JOBS",
       homeHeading: "ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ",
@@ -413,7 +413,7 @@
       browseBtn: "Browse jobs ↓",
       noticeTitle: "Important:",
       noticeText:
-        "This website is an early version. Always verify the official notification and deadline.",
+        "Independent job-information portal, not a government website. Always verify the official notification and deadline before applying.",
       homeTab: "🏠 Home",
       homeEyebrow: "JAIMALWALA GOVT JOBS",
       homeHeading: "Your Government Jobs Portal",
@@ -498,7 +498,7 @@
     heroText: "पंजाब और भारत की भर्तियों की जानकारी देखें। आवेदन करने से पहले आधिकारिक नोटिफिकेशन ज़रूर पढ़ें।",
     browseBtn: "नौकरियाँ देखें ↓",
     noticeTitle: "ज़रूरी सूचना:",
-    noticeText: "यह वेबसाइट शुरुआती संस्करण है। हर नौकरी की आधिकारिक सूचना और अंतिम तारीख़ खुद जाँचें।",
+    noticeText: "यह नौकरी-सूचना पोर्टल है, सरकारी वेबसाइट नहीं। आवेदन से पहले आधिकारिक नोटिस और अंतिम तारीख़ ज़रूर जाँचें।",
     homeTab: "🏠 होम",
     homeHeading: "आपका सरकारी नौकरी पोर्टल",
     homeIntro: "नई भर्तियाँ, एडमिट कार्ड और नतीजों की जानकारी एक जगह पाएँ। आवेदन से पहले आधिकारिक नोटिफिकेशन ज़रूर पढ़ें।",
