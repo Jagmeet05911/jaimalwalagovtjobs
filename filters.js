@@ -20,11 +20,11 @@
         <label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label>
         <label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label>
         <label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label>
-        <button id="jobFilterReset" type="button">Reset</button>
+        <button id="jobFilterSearchBtn" type="button">🔎 Search</button>
       </div>`;
     const toolbar = directory.previousElementSibling;
     if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
-    const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), reset = document.getElementById("jobFilterReset");
+    const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), searchBtn = document.getElementById("jobFilterSearchBtn");
     function collectOptions() {
       const states = new Set(), departments = new Set();
       directory.querySelectorAll(".directory-section").forEach(section => {
@@ -58,7 +58,8 @@
     }
     function refresh() { collectOptions(); apply(); }
     [search, state, department, deadline].forEach(el => el.addEventListener("input", apply)); [state, department, deadline].forEach(el => el.addEventListener("change", apply));
-    reset.addEventListener("click", () => { search.value = ""; state.value = ""; department.value = ""; deadline.value = ""; apply(); });
+    searchBtn.addEventListener("click", apply);
+    search.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); apply(); } });
     const observer = new MutationObserver(() => { collectOptions(); apply(); }); observer.observe(directory, { childList: true, subtree: true }); refresh();
   }
   function start() { setTimeout(setupJobFilters, 350); }
