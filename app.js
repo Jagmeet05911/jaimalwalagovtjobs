@@ -188,6 +188,14 @@
     }
   }
 
+  // Use the visitor's local calendar date; UTC can shift the date in India.
+  function localDateString(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
   function write(key, value) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
@@ -1098,28 +1106,10 @@
       const candidates = await response.json();
       if (!Array.isArray(candidates)) throw new Error("Job candidate feed is not a list.");
 
-      // Safety repair: older scanner versions may have inserted auto-discovered
-      // records as published. Move those records back to Pending for human review.
-      // Never change manually-created records or auto records already reviewed
-      // unless they are still marked with the automatic "auto-" ID prefix.
-      const unsafeAutoPublished = jobs
-        .filter(job => job.status === "published" && String(job.id).startsWith("auto-"))
-        .map(job => String(job.id))
-        .filter(id => /^[a-zA-Z0-9_-]+$/.test(id));
-      if (unsafeAutoPublished.length) {
-        const idFilter = "in.(" + unsafeAutoPublished.join(",") + ")";
-        await supa("/rest/v1/jobs?id=" + encodeURIComponent(idFilter), {
-          method: "PATCH",
-          headers: { Prefer: "return=minimal" },
-          body: JSON.stringify({ status: "pending" })
-        }, true);
-        await loadCloudJobs();
-      }
-
       const existingUrls = new Set(jobs.map(job => safeUrl(job.noticeUrl)).filter(Boolean));
       const seen = new Set();
       const rows = [];
-      const today = new Date().toISOString().slice(0, 10);
+      const today = localDateString();
       const hash = (value) => {
         let h = 2166136261;
         for (let i = 0; i < value.length; i++) h = Math.imul(h ^ value.charCodeAt(i), 16777619);
@@ -1421,9 +1411,7 @@
         if ($("sourceChecked")) {
 
           $("sourceChecked").value =
-            new Date()
-              .toISOString()
-              .slice(0, 10);
+            localDateString();
         }
 
         await loadCloudJobs();
@@ -1471,9 +1459,7 @@
   if ($("sourceChecked")) {
 
     $("sourceChecked").value =
-      new Date()
-        .toISOString()
-        .slice(0, 10);
+      localDateString();
   }
 
   /* Start website */
