@@ -1,9 +1,16 @@
 (() => {
   "use strict";
   function textOf(node) { return (node?.textContent || "").trim().toLowerCase(); }
+  function addStyles() {
+    if (document.getElementById("jobFilterStyles")) return;
+    const style = document.createElement("style"); style.id = "jobFilterStyles";
+    style.textContent = `.job-filter-panel{margin:12px 0 18px;padding:14px;background:#fff;border:1px solid var(--line,#dfe7f1);border-radius:14px;box-shadow:0 6px 18px #203c6408}.job-filter-row{display:grid;grid-template-columns:minmax(190px,1.4fr) repeat(3,minmax(140px,1fr)) auto;gap:9px;align-items:end}.job-filter-row label{display:grid;gap:5px;font-size:11px;font-weight:800;color:var(--muted,#64748b)}.job-filter-row input,.job-filter-row select{width:100%;min-width:0;padding:10px 11px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#fff;color:var(--ink,#17243a);font-size:12px}.job-filter-row button{padding:10px 12px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#eaf1ff;color:var(--navy,#123b72);font-weight:800;font-size:12px}@media(max-width:760px){.job-filter-row{grid-template-columns:1fr 1fr}.job-filter-row label:first-child{grid-column:1/-1}.job-filter-row button{width:100%}}@media(max-width:420px){.job-filter-row{grid-template-columns:1fr}}`;
+    document.head.appendChild(style);
+  }
   function setupJobFilters() {
     const directory = document.getElementById("jobsDirectory");
     if (!directory || document.getElementById("jobFilterPanel")) return;
+    addStyles();
     const panel = document.createElement("div");
     panel.id = "jobFilterPanel";
     panel.className = "job-filter-panel";
@@ -17,19 +24,14 @@
       </div>`;
     const toolbar = directory.previousElementSibling;
     if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
-    const search = document.getElementById("jobFilterSearch");
-    const state = document.getElementById("jobFilterState");
-    const department = document.getElementById("jobFilterDepartment");
-    const deadline = document.getElementById("jobFilterDeadline");
-    const reset = document.getElementById("jobFilterReset");
+    const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), reset = document.getElementById("jobFilterReset");
     function collectOptions() {
       const states = new Set(), departments = new Set();
       directory.querySelectorAll(".directory-section").forEach(section => {
         const heading = section.querySelector(".directory-heading"); if (!heading) return;
         const label = (heading.firstChild?.textContent || heading.textContent || "").replace(/\d+\s*jobs?/i, "").trim();
         const group = section.parentElement?.querySelector(".directory-group-title")?.textContent || "";
-        if (/state-wise/i.test(group)) states.add(label);
-        if (/department-wise/i.test(group)) departments.add(label);
+        if (/state-wise/i.test(group)) states.add(label); if (/department-wise/i.test(group)) departments.add(label);
       });
       const keep = state.value, keepD = department.value;
       state.innerHTML = '<option value="">All States</option>' + [...states].sort().map(x => `<option value="${x.replace(/"/g,"&quot;")}">${x}</option>`).join("");
@@ -38,39 +40,26 @@
     }
     function matchesDeadline(card) {
       if (!deadline.value) return true;
-      const raw = [...card.querySelectorAll(".job-meta span")].map(x => x.textContent).join(" ");
-      const m = raw.match(/(\d{2})\/(\d{2})\/(\d{4})/);
-      if (!m) return deadline.value === "open";
-      if (deadline.value === "open") return false;
-      const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
-      const days = Math.ceil((d - new Date()) / 86400000);
-      return days >= 0 && days <= 14;
+      const raw = [...card.querySelectorAll(".job-meta span")].map(x => x.textContent).join(" "); const m = raw.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+      if (!m) return deadline.value === "open"; if (deadline.value === "open") return false;
+      const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1])); const days = Math.ceil((d - new Date()) / 86400000); return days >= 0 && days <= 14;
     }
     function apply() {
       const q = textOf(search), selectedState = state.value.toLowerCase(), selectedDepartment = department.value.toLowerCase();
       directory.querySelectorAll(".directory-section").forEach(section => {
-        const heading = section.querySelector(".directory-heading");
-        const sectionName = (heading?.firstChild?.textContent || heading?.textContent || "").replace(/\d+\s*jobs?/i, "").trim().toLowerCase();
-        const group = section.parentElement?.querySelector(".directory-group-title")?.textContent || "";
-        const isStateGroup = /state-wise/i.test(group);
-        const isDepartmentGroup = /department-wise/i.test(group);
+        const heading = section.querySelector(".directory-heading"); const sectionName = (heading?.firstChild?.textContent || heading?.textContent || "").replace(/\d+\s*jobs?/i, "").trim().toLowerCase();
+        const group = section.parentElement?.querySelector(".directory-group-title")?.textContent || ""; const isStateGroup = /state-wise/i.test(group);
         let visible = false;
         section.querySelectorAll(".job-card").forEach(card => {
-          const matchesSearch = !q || textOf(card).includes(q);
-          const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (!selectedDepartment || sectionName === selectedDepartment);
-          const show = matchesSearch && matchesGroup && matchesDeadline(card);
-          card.style.display = show ? "" : "none"; if (show) visible = true;
-        });
-        section.style.display = visible ? "" : "none";
+          const matchesSearch = !q || textOf(card).includes(q); const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (!selectedDepartment || sectionName === selectedDepartment);
+          const show = matchesSearch && matchesGroup && matchesDeadline(card); card.style.display = show ? "" : "none"; if (show) visible = true;
+        }); section.style.display = visible ? "" : "none";
       });
     }
     function refresh() { collectOptions(); apply(); }
-    [search, state, department, deadline].forEach(el => el.addEventListener("input", apply));
-    [state, department, deadline].forEach(el => el.addEventListener("change", apply));
+    [search, state, department, deadline].forEach(el => el.addEventListener("input", apply)); [state, department, deadline].forEach(el => el.addEventListener("change", apply));
     reset.addEventListener("click", () => { search.value = ""; state.value = ""; department.value = ""; deadline.value = ""; apply(); });
-    const observer = new MutationObserver(() => { collectOptions(); apply(); });
-    observer.observe(directory, { childList: true, subtree: true });
-    refresh();
+    const observer = new MutationObserver(() => { collectOptions(); apply(); }); observer.observe(directory, { childList: true, subtree: true }); refresh();
   }
   function start() { setTimeout(setupJobFilters, 350); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
