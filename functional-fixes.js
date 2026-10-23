@@ -56,12 +56,37 @@
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+  function addQualificationFilter() {
+    if (document.getElementById('qualificationFilter')) return;
+    const toolbar = document.querySelector('#jobsView .jobs-toolbar');
+    if (!toolbar) return;
+    const wrap = document.createElement('label');
+    wrap.className = 'qualification-filter';
+    wrap.style.cssText = 'display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;flex-wrap:wrap;font-weight:600;';
+    wrap.innerHTML = '<span>🎓 Qualification</span><select id="qualificationFilter" aria-label="Filter jobs by qualification" style="padding:8px 10px;border:1px solid #d5dbe5;border-radius:8px;background:#fff"><option value="all">Any Qualification</option><option value="10th">10ਵੀਂ ਪਾਸ</option><option value="12th">12ਵੀਂ / +2</option><option value="iti">ITI</option><option value="diploma">Diploma</option><option value="graduation">Graduation</option><option value="postgraduation">Post Graduation</option></select>';
+    toolbar.parentNode.insertBefore(wrap, toolbar.nextSibling);
+    wrap.querySelector('select').addEventListener('change', applyQualificationFilter);
+  }
+  function applyQualificationFilter() {
+    const value = document.getElementById('qualificationFilter')?.value || 'all';
+    document.querySelectorAll('#jobsDirectory .job-card, #jobsList .job-card').forEach(card => {
+      const text = (card.textContent || '').toLowerCase();
+      let show = true;
+      if (value === '10th') show = /10th|10वीं|10ਵੀਂ|matric/.test(text);
+      else if (value === '12th') show = /12th|12वीं|12ਵੀਂ|\+2|senior secondary|10\+2/.test(text);
+      else if (value === 'iti') show = /\biti\b|industrial training institute/.test(text);
+      else if (value === 'diploma') show = /\bdiploma\b/.test(text);
+      else if (value === 'graduation') show = /graduation|graduate|b\.a\b|b\.sc|b\.com|btech|b\.tech|bachelor/.test(text) && !/post.?graduation|postgraduate|master|m\.a\b|m\.sc|m\.com/.test(text);
+      else if (value === 'postgraduation') show = /post.?graduation|postgraduate|master|m\.a\b|m\.sc|m\.com|mtech|m\.tech|mba|phd/.test(text);
+      card.style.display = show ? '' : 'none';
+    });
+  }
   function normalizeBrokenText() {
     document.querySelectorAll('*').forEach(el => {
       if (el.children.length === 0 && el.textContent.includes('&#x')) el.textContent = el.textContent.replace(/&#x20;/g,' ').replace(/&#x79;/g,'y').replace(/&#x65;/g,'e');
     });
   }
-  function run() { addResults(); fixCards(); hideEmptyDirectories(); normalizeBrokenText(); }
+  function run() { addResults(); addQualificationFilter(); fixCards(); hideEmptyDirectories(); normalizeBrokenText(); }
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
   setTimeout(run, 250); setTimeout(run, 1200); setTimeout(run, 3000);
 })();
