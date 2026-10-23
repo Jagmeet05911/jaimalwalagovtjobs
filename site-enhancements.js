@@ -1,48 +1,66 @@
 (() => {
   "use strict";
 
-  const STATE_ORDER = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-    "Chandigarh", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh",
-    "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
-    "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha",
-    "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
-    "Uttar Pradesh", "Uttarakhand", "West Bengal", "All India"
-  ];
-
-  const STATE_RANK = new Map(STATE_ORDER.map((name, index) => [name, index]));
-
   function sortStateSections() {
     const directory = document.querySelector("#jobsDirectory");
     if (!directory) return;
+
     const stateGroup = [...directory.querySelectorAll(".directory-group")]
-      .find(group => /State-wise Government Jobs/i.test(group.querySelector(".directory-group-title")?.textContent || ""));
+      .find(group => /State-wise Government Jobs/i.test(
+        group.querySelector(".directory-group-title")?.textContent || ""
+      ));
     if (!stateGroup) return;
+
     const sections = [...stateGroup.querySelectorAll(":scope > .directory-section")];
     sections.sort((a, b) => {
-      const aName = (a.querySelector(".directory-heading")?.textContent || "").replace(/\d+\s*jobs?/i, "").trim();
-      const bName = (b.querySelector(".directory-heading")?.textContent || "").replace(/\d+\s*jobs?/i, "").trim();
-      const ar = STATE_RANK.has(aName) ? STATE_RANK.get(aName) : 999;
-      const br = STATE_RANK.has(bName) ? STATE_RANK.get(bName) : 999;
-      return ar - br || aName.localeCompare(bName, "en", { sensitivity: "base" });
+      const aName = (a.querySelector(".directory-heading")?.textContent || "")
+        .replace(/\d+\s*jobs?/i, "").trim();
+      const bName = (b.querySelector(".directory-heading")?.textContent || "")
+        .replace(/\d+\s*jobs?/i, "").trim();
+      return aName.localeCompare(bName, "en", { sensitivity: "base" });
     });
     sections.forEach(section => stateGroup.appendChild(section));
   }
 
+  function detectBrowserLanguage() {
+    const languages = Array.isArray(navigator.languages) && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language || navigator.userLanguage || "en"];
+    for (const raw of languages) {
+      const lang = String(raw || "").toLowerCase();
+      if (lang.startsWith("pa")) return "pa";
+      if (lang.startsWith("hi")) return "hi";
+    }
+    return "en";
+  }
+
   function setupLanguage() {
-    const saved = localStorage.getItem("jg_language_v1");
-    const browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-    const wanted = saved || (browser.startsWith("pa") ? "pa" : browser.startsWith("hi") ? "hi" : "en");
     const btn = document.getElementById("langBtn");
-    if (!btn || !wanted || wanted === "en") return;
-    // The existing app owns the language state. Its button cycles the supported languages.
-    // Click until the document language matches the browser preference.
+    if (!btn) return;
+
+    const manualChoice = localStorage.getItem("jg_language_manual_v1") === "1";
+    const wanted = manualChoice
+      ? (localStorage.getItem("jg_language_v1") || detectBrowserLanguage())
+      : detectBrowserLanguage();
+
+    if (!manualChoice) localStorage.setItem("jg_language_v1", wanted);
+    if (wanted === "en") {
+      document.documentElement.lang = "en";
+      return;
+    }
+
+    let autoChanging = true;
+    btn.addEventListener("click", () => {
+      if (!autoChanging) localStorage.setItem("jg_language_manual_v1", "1");
+    });
+
     let tries = 0;
     const timer = setInterval(() => {
-      const current = document.documentElement.lang || "en";
+      const current = (document.documentElement.lang || "en").toLowerCase();
       if (current === wanted || tries >= 4) {
         clearInterval(timer);
-        localStorage.setItem("jg_language_v1", wanted);
+        autoChanging = false;
+        localStorage.setItem("jg_language_v1", current === wanted ? wanted : current);
         return;
       }
       tries += 1;
@@ -59,6 +77,9 @@
     setTimeout(() => observer.disconnect(), 30000);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
-  else boot();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
+  } else {
+    boot();
+  }
 })();
