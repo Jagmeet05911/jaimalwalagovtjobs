@@ -5,7 +5,7 @@
     const topNav = document.querySelector("nav.tabs");
     if (!topNav) return;
 
-    // Top navigation: Home must be the FIRST item on the same row.
+    // Keep Home first in the top navigation.
     const homeTop = document.getElementById("homeTab");
     if (homeTop) {
       homeTop.style.setProperty("order", "0", "important");
@@ -15,40 +15,38 @@
       topNav.insertBefore(homeTop, topNav.children[1] || null);
     }
 
-    // Remove an older cloned bottom navigation if this script was previously loaded.
     const oldBottom = document.getElementById("bottomNav");
     if (oldBottom) oldBottom.remove();
 
-    // Bottom navigation: Home only, aligned to the right.
+    // Make a complete second navigation line at the bottom of the page.
     const nav = document.createElement("nav");
     nav.id = "bottomNav";
     nav.setAttribute("aria-label", "Bottom navigation");
-    nav.style.cssText = [
-      "max-width:1120px",
-      "margin:0 auto",
-      "padding:12px 0 18px",
-      "display:flex",
-      "justify-content:flex-end",
-      "border-top:1px solid var(--line)"
-    ].join(";");
+    nav.className = "tabs bottom-tabs";
 
-    const home = document.createElement("button");
-    home.type = "button";
-    home.className = "tab";
-    home.textContent = "🏠 Home";
-    home.style.cssText = [
-      "background:var(--blue-light)",
-      "color:var(--navy)",
-      "border:0",
-      "padding:11px 16px",
-      "border-radius:10px",
-      "font-weight:700"
-    ].join(";");
-    home.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    const label = document.createElement("div");
+    label.className = "tabs-label";
+    label.innerHTML = '<span class="nav-dot"></span> JOB PORTAL';
+    nav.appendChild(label);
+
+    const originalTabs = [...topNav.querySelectorAll("button.tab")];
+    originalTabs.forEach(original => {
+      const copy = document.createElement("button");
+      copy.type = "button";
+      copy.className = "tab";
+      copy.innerHTML = original.innerHTML;
+      copy.setAttribute("aria-label", original.textContent.trim());
+      copy.addEventListener("click", () => {
+        if (original.id === "homeTab") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          original.click();
+        } else {
+          original.click();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+      nav.appendChild(copy);
     });
-
-    nav.appendChild(home);
 
     const safety = document.querySelector(".safety-band");
     if (safety) safety.parentNode.insertBefore(nav, safety);
