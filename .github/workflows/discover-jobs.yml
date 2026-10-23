@@ -7,7 +7,7 @@ on:
       - ".github/scripts/discover_jobs.py"
       - ".github/workflows/discover-jobs.yml"
   schedule:
-    - cron: "17 */12 * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
