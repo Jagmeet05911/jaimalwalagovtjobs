@@ -12,6 +12,15 @@
     if (!stateGroup) return;
 
     const sections = [...stateGroup.querySelectorAll(":scope > .directory-section")];
+    sections.forEach(section => {
+      const heading = section.querySelector(".directory-heading");
+      const text = heading?.textContent || "";
+      const match = text.match(/(\d+)\s*jobs?/i);
+      const count = match ? Number(match[1]) : null;
+      // Keep the State-wise page clean: don't show empty states.
+      section.hidden = count === 0;
+    });
+
     sections.sort((a, b) => {
       const aName = (a.querySelector(".directory-heading")?.textContent || "")
         .replace(/\d+\s*jobs?/i, "").trim();
