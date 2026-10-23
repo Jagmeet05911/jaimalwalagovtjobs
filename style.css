@@ -67,3 +67,11 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 .directory-empty{margin:0;padding:12px 15px;border:1px dashed #c7d7eb;border-radius:10px;color:#66768b;background:#fbfdff;font-size:.92rem}
 .jobs-directory .jobs-grid{margin:0 0 8px}
 @media(max-width:640px){.directory-group-title{font-size:1.15rem}.directory-heading{font-size:1rem;padding:10px}.jobs-directory-intro{padding:12px}}
+
+
+/* Accessible text-size controls */
+.font-controls{display:flex;align-items:center;gap:4px;padding:4px 6px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--muted);font-size:11px;white-space:nowrap}
+.font-controls span{padding:0 3px}
+.font-controls button{min-width:27px;height:27px;padding:3px 5px;border:1px solid #d7e3f3;border-radius:6px;background:#eef4ff;color:var(--navy);font-size:12px;font-weight:800;cursor:pointer}
+.font-controls button:hover{background:#dbeafe}
+@media(max-width:650px){.header-actions{align-items:flex-end}.font-controls{gap:3px;padding:3px 4px}.font-controls span{display:none}.font-controls button{min-width:25px;height:25px}}
