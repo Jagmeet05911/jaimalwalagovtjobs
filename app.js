@@ -1663,3 +1663,26 @@
     if (larger) larger.addEventListener("click", function(){ scale = allowed[Math.min(allowed.length-1, allowed.indexOf(scale)+1)]; apply(); try{localStorage.setItem(key,String(scale));}catch(_){} });
   });
 })();
+
+ 
+// Persistent theme selector: blue (default), green, or dark.
+(function setupThemeSelector(){
+  const key = "jg_theme_v1";
+  const valid = ["blue", "green", "dark"];
+  function apply(theme){
+    const selected = valid.includes(theme) ? theme : "blue";
+    document.documentElement.dataset.theme = selected;
+    const picker = document.getElementById("themeSelect");
+    if (picker) picker.value = selected;
+    try { localStorage.setItem(key, selected); } catch (_) {}
+  }
+  function init(){
+    let saved = "blue";
+    try { saved = localStorage.getItem(key) || "blue"; } catch (_) {}
+    apply(saved);
+    const picker = document.getElementById("themeSelect");
+    if (picker) picker.addEventListener("change", () => apply(picker.value));
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
