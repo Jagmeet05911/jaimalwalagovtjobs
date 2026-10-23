@@ -6,7 +6,6 @@ import requests
 from bs4 import BeautifulSoup
 
 # Curated active listings. Keep only when official source and closing date
-# Updated 2026-10-15: refresh public listings after improving the homepage loader.
 # have been checked; dates use YYYY-MM-DD.
 CURATED_JOBS = [
     {
@@ -21,36 +20,32 @@ CURATED_JOBS = [
         "deadline": "2026-11-04",
         "verified": True,
         "needsReview": False
-    },
-    {
-        "source": "UPSC",
-        "title": "Direct Recruitment to Various Government of India Posts — Advertisement 12/2026",
-        "department": "Union Public Service Commission (UPSC)",
-        "location": "All India",
-        "category": "Other",
-        "eligibility": "Posts, qualifications, age limits and other conditions vary. Read the detailed official advertisement before applying.",
-        "url": "https://www.upsc.gov.in/recruitment/recruitment-advertisement",
-        "applyUrl": "https://upsconline.nic.in/",
-        "deadline": "2026-10-16",
-        "verified": True,
-        "needsReview": False
     }
 ]
 
-# Extra notices discovered on official pages are added for manual review.
+# Official recruitment / vacancy pages. Candidates discovered here are sent
+# to review rather than published automatically without a verified deadline.
 SOURCES = [
-    {"name": "UPSC", "url": "https://www.upsc.gov.in/recruitment/recruitment-advertisement"},
-    {"name": "SSC", "url": "https://ssc.gov.in/"},
-    {"name": "SSSC", "url": "https://www.sssc.gov.in/notice-board"},
+    {"name": "UPSC", "url": "https://www.upsc.gov.in/recruitment/recruitment-advertisement", "location": "All India"},
+    {"name": "SSC", "url": "https://ssc.gov.in/", "location": "All India"},
+    {"name": "SSSC", "url": "https://www.sssc.gov.in/notice-board", "location": "Punjab"},
+    {"name": "HSSC", "url": "https://hssc.gov.in/advertisement", "location": "Haryana"},
+    {"name": "Haryana Government", "url": "https://www.haryana.gov.in/job-opportunities/", "location": "Haryana"},
+    {"name": "Chandigarh Administration", "url": "https://www.chandigarh.gov.in/public-notices/vacancies", "location": "Chandigarh"},
+    {"name": "Chandigarh Public Notices", "url": "https://chandigarh.gov.in/public-notice", "location": "Chandigarh"},
+    {"name": "Chandigarh Transport Undertaking", "url": "https://www.chdctu.gov.in/recruitment", "location": "Chandigarh"},
+    {"name": "GMCH Chandigarh", "url": "https://gmch.gov.in/jobs-and-training", "location": "Chandigarh"},
 ]
 
 NOTICE_WORDS = (
     "notification", "advertisement", "recruitment", "vacancy", "vacancies",
-    "employment notice", "posts of", "direct recruitment"
+    "employment notice", "posts of", "direct recruitment", "applications are invited",
+    "walk-in-interview", "walk in interview", "hiring", "engagement"
 )
 SKIP_WORDS = (
     "apply online", "application form", "login", "register", "home",
-    "answer key", "result", "admit card", "objection", "exam date"
+    "answer key", "result", "admit card", "objection", "exam date",
+    "corrigendum", "recruitment rules", "seniority", "eligible/ineligible"
 )
 GENERIC_LABELS = {"recruitment", "advertisement", "view all", "official website", "portal"}
 
@@ -85,6 +80,9 @@ for source in SOURCES:
             candidates.append({
                 "source": source["name"],
                 "title": title,
+                "department": source["name"],
+                "location": source["location"],
+                "category": "Other",
                 "url": url,
                 "applyUrl": "",
                 "deadline": "",
