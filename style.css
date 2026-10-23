@@ -75,3 +75,15 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 .font-controls button{min-width:27px;height:27px;padding:3px 5px;border:1px solid #d7e3f3;border-radius:6px;background:#eef4ff;color:var(--navy);font-size:12px;font-weight:800;cursor:pointer}
 .font-controls button:hover{background:#dbeafe}
 @media(max-width:650px){.header-actions{align-items:flex-end}.font-controls{gap:3px;padding:3px 4px}.font-controls span{display:none}.font-controls button{min-width:25px;height:25px}}
+
+
+/* User-selectable site themes */
+.theme-control{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--ink)}
+.theme-control select{max-width:100px;padding:8px 9px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:600}
+:root[data-theme="green"]{--navy:#14532d;--blue:#15803d;--blue-light:#dcfce7;--green:#15803d;--bg:#f4faf5;--line:#d9e8dc}
+:root[data-theme="dark"]{--navy:#0f172a;--blue:#60a5fa;--blue-light:#1e293b;--ink:#e5edf8;--muted:#a8b6ca;--line:#334155;--bg:#0b1220;--white:#111c2d;--green:#60a5fa;--shadow:0 10px 30px #0005;color-scheme:dark}
+:root[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+:root[data-theme="dark"] .site-header,:root[data-theme="dark"] .benefit,:root[data-theme="dark"] .panel,:root[data-theme="dark"] .job-card,:root[data-theme="dark"] .home-welcome,:root[data-theme="dark"] .home-shortcut,:root[data-theme="dark"] .font-controls,:root[data-theme="dark"] .theme-control select,:root[data-theme="dark"] .header-language{background:#111c2d;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] .notice{background:#2b2616;color:#f8e7b0;border-color:#67572d}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#0b1220;color:var(--ink);border-color:var(--line)}
+@media(max-width:760px){.theme-control{font-size:11px}.theme-control select{padding:6px;max-width:84px}}
