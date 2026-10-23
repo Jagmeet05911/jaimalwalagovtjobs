@@ -5,14 +5,14 @@
     const topNav = document.querySelector("nav.tabs");
     if (!topNav) return;
 
-    // Keep Home first in the top navigation.
+    // Home must be the FIRST item in the top navigation.
     const homeTop = document.getElementById("homeTab");
     if (homeTop) {
-      homeTop.style.setProperty("order", "0", "important");
+      homeTop.style.setProperty("order", "-1", "important");
       homeTop.style.setProperty("flex", "0 0 auto", "important");
       homeTop.style.setProperty("width", "auto", "important");
       homeTop.style.setProperty("margin-top", "0", "important");
-      topNav.insertBefore(homeTop, topNav.children[1] || null);
+      topNav.insertBefore(homeTop, topNav.firstChild);
     }
 
     const oldBottom = document.getElementById("bottomNav");
