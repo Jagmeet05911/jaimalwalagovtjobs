@@ -1024,6 +1024,13 @@
       /admission|application form|online form|counselling|counseling|prospectus/i.test(String(job.title || ""));
     const isPrivateItem = job =>
       String(job.category || "").toLowerCase() === "private jobs";
+    const reviewCategory = job => {
+      if (isAdmitItem(job)) return "Admit Cards / Roll Numbers";
+      if (isResultItem(job)) return "Results";
+      if (isFormItem(job)) return "Forms / Admissions";
+      if (isPrivateItem(job)) return "Private Jobs";
+      return "Job Notification";
+    };
     const pending = pendingAll.filter(job => {
       if (filter === "all") return true;
       if (filter === "admit") return isAdmitItem(job);
@@ -1062,6 +1069,8 @@
                 ·
                 ${escapeHtml(job.location)}
               </p>
+
+              <p class="review-category"><strong>Review type:</strong> ${escapeHtml(reviewCategory(job))}</p>
 
               <p>
                 Official notice:
