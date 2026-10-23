@@ -22,9 +22,19 @@
       if (corrected && current !== corrected) loc.textContent = '⌖ ' + corrected;
     });
   }
+  function hideEmptyDirectories() {
+    document.querySelectorAll('#jobsDirectory .directory-section').forEach(section => {
+      const cards = section.querySelectorAll('.job-card').length;
+      section.style.display = cards ? '' : 'none';
+    });
+    document.querySelectorAll('#jobsDirectory .directory-group').forEach(group => {
+      const visible = [...group.querySelectorAll('.directory-section')].some(s => s.style.display !== 'none');
+      group.style.display = visible ? '' : 'none';
+    });
+  }
   function addResults() {
     if (document.getElementById('resultsView')) return;
-    const nav = document.querySelector('.tabs');
+    const nav = document.querySelector('nav.tabs');
     const main = document.querySelector('main');
     const admit = document.getElementById('admitView');
     if (!nav || !main || !admit) return;
@@ -35,15 +45,23 @@
     const sec = document.createElement('section'); sec.id = 'resultsView'; sec.className = 'view hidden';
     sec.innerHTML = '<div class="section-head"><div><span class="eyebrow">RESULT UPDATES</span><h2>Results / Merit Lists</h2><p class="muted">Official result and merit-list links will appear here after they are added and verified in the Admin Panel.</p></div></div><div class="empty-state"><div class="empty-symbol">📊</div><h3>No result links available yet</h3><p>When an official result link is added to a recruitment record, it will be shown here.</p></div>';
     main.appendChild(sec);
-    btn.addEventListener('click', () => show('resultsView'));
-    function show(id) { document.querySelectorAll('.view').forEach(v => v.classList.toggle('hidden', v.id !== id)); document.querySelectorAll('.tabs .tab').forEach(t => t.classList.toggle('active', t.dataset.view === id)); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    btn.addEventListener('click', () => showResults());
+    const bottom = document.getElementById('bottomNav');
+    if (bottom && !bottom.querySelector('[data-bottom-results]')) {
+      const copy = btn.cloneNode(true); copy.removeAttribute('id'); copy.dataset.bottomResults = '1'; copy.addEventListener('click', () => showResults()); bottom.appendChild(copy);
+    }
+    function showResults() {
+      document.querySelectorAll('.view').forEach(v => v.classList.toggle('hidden', v.id !== 'resultsView'));
+      document.querySelectorAll('.tabs .tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'resultsView'));
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
   function normalizeBrokenText() {
     document.querySelectorAll('*').forEach(el => {
       if (el.children.length === 0 && el.textContent.includes('&#x')) el.textContent = el.textContent.replace(/&#x20;/g,' ').replace(/&#x79;/g,'y').replace(/&#x65;/g,'e');
     });
   }
-  function run() { addResults(); fixCards(); normalizeBrokenText(); }
+  function run() { addResults(); fixCards(); hideEmptyDirectories(); normalizeBrokenText(); }
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
   setTimeout(run, 250); setTimeout(run, 1200); setTimeout(run, 3000);
 })();
