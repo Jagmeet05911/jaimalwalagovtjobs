@@ -36,6 +36,53 @@ jobs:
       - name: Discover government and private job candidates
         run: python .github/scripts/discover_jobs.py
 
+      - name: Clean duplicate and stale candidates
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from datetime import date, datetime
+          from pathlib import Path
+
+          path = Path("data/pending_jobs.json")
+          items = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+          today = date.today()
+          cleaned = []
+          seen = set()
+
+          for item in items:
+              if not isinstance(item, dict):
+                  continue
+              title = str(item.get("title", "")).strip()
+              url = str(item.get("url", "")).strip()
+              key = url or re.sub(r"\\s+", " ", title).lower()
+              if not key or key in seen:
+                  continue
+
+              text = f"{title} {url}".lower()
+              # Remove clearly old 2025 notices, while keeping current records.
+              if re.search(r"(?:^|[^0-9])2025(?:[^0-9]|$)", text):
+                  continue
+
+              deadline = str(item.get("deadline", "")).strip()
+              if deadline:
+                  parsed = None
+                  for fmt in ("%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y", "%d.%m.%Y"):
+                      try:
+                          parsed = datetime.strptime(deadline[:10], fmt).date()
+                          break
+                      except ValueError:
+                          pass
+                  if parsed and parsed < today:
+                      continue
+
+              seen.add(key)
+              cleaned.append(item)
+
+          path.write_text(json.dumps(cleaned, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(f"Cleaned candidates: {len(items)} -> {len(cleaned)}")
+          PY
+
       - name: Save updated candidate list
         run: |
           set -e
