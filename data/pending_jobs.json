@@ -764,22 +764,6 @@
   },
   {
     "source": "UPPSC",
-    "title": "{{'DownloadAdmitCard_HM' | translate }}",
-    "department": "Uttar Pradesh Public Service Commission",
-    "location": "Uttar Pradesh",
-    "category": "Admit Cards",
-    "noticeType": "admit_card",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://uppsc.up.nic.in/CandidatePages/Advertismentwise_DownloadDocument.aspx?inptprmtr=ac",
-    "applyUrl": "",
-    "admitCardUrl": "https://uppsc.up.nic.in/CandidatePages/Advertismentwise_DownloadDocument.aspx?inptprmtr=ac",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-26"
-  },
-  {
-    "source": "UPPSC",
     "title": "16 Nov 2026 LIST OF PROVISIONALLY SELECTED CANDIDATES IN ADVT. NO. A-2/E-1/2020, REGIONAL INSPECTOR (TECHNICAL), EXAMINATION-2020",
     "department": "Uttar Pradesh Public Service Commission",
     "location": "Uttar Pradesh",
