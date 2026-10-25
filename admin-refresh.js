@@ -1,15 +1,16 @@
-/* Admin panel live refresh: check for new pending jobs every 5 minutes. */
+/* Admin panel live refresh: import new pending jobs every 10 minutes. */
 (() => {
   "use strict";
-  const INTERVAL = 5 * 60 * 1000;
+  const INTERVAL = 10 * 60 * 1000;
+
   function refreshPending() {
-    try {
-      if (typeof window.loadPendingJobs === "function") window.loadPendingJobs();
-      else window.location.reload();
-    } catch (_) {
-      window.location.reload();
-    }
+    const adminView = document.getElementById("adminView");
+    if (!adminView || adminView.classList.contains("hidden")) return;
+    const button = document.getElementById("refreshCandidatesBtn");
+    if (!button || button.disabled) return;
+    button.click();
   }
+
   if (document.visibilityState === "visible") {
     setInterval(() => {
       if (document.visibilityState === "visible") refreshPending();
