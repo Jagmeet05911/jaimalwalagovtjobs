@@ -52,6 +52,13 @@
   function start() {
     addBottomNav();
     loadFunctionalFixes();
+    if (!document.getElementById("adminRefreshScript")) {
+      const script = document.createElement("script");
+      script.id = "adminRefreshScript";
+      script.src = "admin-refresh.js?v=20261025-1";
+      script.defer = true;
+      document.body.appendChild(script);
+    }
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
   else start();
