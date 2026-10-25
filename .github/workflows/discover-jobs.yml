@@ -7,6 +7,7 @@ on:
   push:
     paths:
       - ".github/scripts/discover_jobs.py"
+      - ".github/scripts/notify_jobs_email.py"
       - ".github/workflows/discover-jobs.yml"
 
 permissions:
@@ -55,12 +56,11 @@ jobs:
                   continue
               title = str(item.get("title", "")).strip()
               url = str(item.get("url", "")).strip()
-              key = url or re.sub(r"\\s+", " ", title).lower()
+              key = url or re.sub(r"\s+", " ", title).lower()
               if not key or key in seen:
                   continue
 
               text = f"{title} {url}".lower()
-              # Remove clearly old 2025 notices, while keeping current records.
               if re.search(r"(?:^|[^0-9])2025(?:[^0-9]|$)", text):
                   continue
 
@@ -83,26 +83,46 @@ jobs:
           print(f"Cleaned candidates: {len(items)} -> {len(cleaned)}")
           PY
 
-      - name: Save updated candidate list
+      - name: Email new job candidates
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_SSL: ${{ secrets.SMTP_SSL }}
+          SMTP_STARTTLS: ${{ secrets.SMTP_STARTTLS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python .github/scripts/notify_jobs_email.py
+
+      - name: Save updated candidate and notification state
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           cp data/pending_jobs.json /tmp/pending_jobs_scanned.json
+          if [ -f data/notified_job_keys.json ]; then
+            cp data/notified_job_keys.json /tmp/notified_job_keys.json
+          else
+            rm -f /tmp/notified_job_keys.json
+          fi
 
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/pending_jobs_scanned.json data/pending_jobs.json
-            git add data/pending_jobs.json
+            if [ -f /tmp/notified_job_keys.json ]; then
+              cp /tmp/notified_job_keys.json data/notified_job_keys.json
+            fi
+            git add data/pending_jobs.json data/notified_job_keys.json
 
             if git diff --cached --quiet; then
               echo "Candidate list is already up to date."
               exit 0
             fi
 
-            git commit -m "Refresh job candidates"
+            git commit -m "Refresh job candidates and notification state"
             if git push origin HEAD:main; then
               echo "Candidate list saved successfully."
               exit 0
