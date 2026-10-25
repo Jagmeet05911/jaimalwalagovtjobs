@@ -26,15 +26,13 @@ def main():
     current = {key(job) for job in jobs if isinstance(job, dict) and key(job)}
     new_keys = current - old
 
-    # Always persist seen keys so the same candidate is not repeatedly notified.
-    NOTIFIED.parent.mkdir(parents=True, exist_ok=True)
-    NOTIFIED.write_text(json.dumps(sorted(current), indent=2) + "\n", encoding="utf-8")
-
     required = ["SMTP_HOST", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD", "EMAIL_TO"]
     if not all(os.getenv(name) for name in required):
         print("Email notification skipped: SMTP secrets are not configured yet.")
         return
     if not new_keys:
+        NOTIFIED.parent.mkdir(parents=True, exist_ok=True)
+        NOTIFIED.write_text(json.dumps(sorted(current), indent=2) + "\n", encoding="utf-8")
         print("No new job candidates to email.")
         return
 
@@ -72,6 +70,8 @@ def main():
             server.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
             server.send_message(msg)
 
+    NOTIFIED.parent.mkdir(parents=True, exist_ok=True)
+    NOTIFIED.write_text(json.dumps(sorted(current), indent=2) + "\n", encoding="utf-8")
     print(f"Email sent for {len(new_keys)} new job candidate(s).")
 
 
