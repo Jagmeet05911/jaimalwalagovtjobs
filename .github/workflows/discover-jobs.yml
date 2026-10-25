@@ -114,8 +114,14 @@ jobs:
             cp /tmp/pending_jobs_scanned.json data/pending_jobs.json
             if [ -f /tmp/notified_job_keys.json ]; then
               cp /tmp/notified_job_keys.json data/notified_job_keys.json
+            else
+              rm -f data/notified_job_keys.json
             fi
-            git add data/pending_jobs.json data/notified_job_keys.json
+
+            git add data/pending_jobs.json
+            if [ -f data/notified_job_keys.json ]; then
+              git add data/notified_job_keys.json
+            fi
 
             if git diff --cached --quiet; then
               echo "Candidate list is already up to date."
