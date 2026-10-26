@@ -34,6 +34,9 @@ def make_id(job):
 
 
 def main():
+    if not os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "").strip():
+        print("Supabase sync skipped: SUPABASE_SERVICE_ROLE_KEY is not configured yet.")
+        return
     items = json.loads(PENDING.read_text(encoding="utf-8")) if PENDING.exists() else []
     published = [x for x in items if isinstance(x, dict) and x.get("verified") is True and x.get("needsReview") is False]
     if not published:
