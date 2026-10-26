@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+"""Sync verified auto-published candidates from JSON into Supabase public.jobs."""
+import hashlib
+import json
+import os
+import urllib.parse
+import urllib.request
+from pathlib import Path
+
+SUPABASE_URL = "https://kbebdetnhfkxnkpdiefd.supabase.co"
+PENDING = Path("data/pending_jobs.json")
+
+
+def request(method, path, payload=None):
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "").strip()
+    if not key:
+        raise RuntimeError("SUPABASE_SERVICE_ROLE_KEY is not configured")
+    body = None if payload is None else json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+        "Prefer": "return=representation",
+    }
+    req = urllib.request.Request(SUPABASE_URL + path, data=body, headers=headers, method=method)
+    with urllib.request.urlopen(req, timeout=30) as response:
+        text = response.read().decode("utf-8", "replace")
+        return json.loads(text) if text else []
+
+
+def make_id(job):
+    raw = str(job.get("url") or job.get("title") or "").strip().lower().encode("utf-8")
+    return "gov-" + hashlib.sha256(raw).hexdigest()[:24]
+
+
+def main():
+    items = json.loads(PENDING.read_text(encoding="utf-8")) if PENDING.exists() else []
+    published = [x for x in items if isinstance(x, dict) and x.get("verified") is True and x.get("needsReview") is False]
+    if not published:
+        print("No verified jobs to sync.")
+        return
+
+    synced = 0
+    for job in published:
+        notice = str(job.get("url") or "").strip()
+        if not notice:
+            continue
+        row = {
+            "id": make_id(job),
+            "title": str(job.get("title") or "Untitled")[:300],
+            "department": str(job.get("department") or job.get("source") or "Government")[:300],
+            "location": str(job.get("location") or "India")[:200],
+            "category": str(job.get("category") or "Other")[:120],
+            "eligibility": str(job.get("eligibility") or "Check the official notification.")[:2000],
+            "deadline": job.get("deadline") or None,
+            "notice_url": notice,
+            "apply_url": str(job.get("applyUrl") or notice),
+            "admit_card_url": job.get("admitCardUrl") or None,
+            "source_checked": str(job.get("sourceChecked") or "")[:40],
+            "status": "published",
+        }
+        encoded = urllib.parse.quote(notice, safe="")
+        existing = request("GET", f"/rest/v1/jobs?select=id&notice_url=eq.{encoded}&limit=1")
+        if existing:
+            request("PATCH", f"/rest/v1/jobs?id=eq.{urllib.parse.quote(str(existing[0]['id']), safe='')}", row)
+        else:
+            request("POST", "/rest/v1/jobs", row)
+        synced += 1
+    print(f"Supabase published jobs synced: {synced}")
+
+
+if __name__ == "__main__":
+    main()
