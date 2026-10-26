@@ -84,13 +84,11 @@ jobs:
         run: python .github/scripts/auto_publish_verified.py
 
       - name: Sync verified published jobs to Supabase
-        if: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
         env:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: python .github/scripts/sync_published_jobs.py
 
       - name: Send visitor job alerts through Resend
-        if: ${{ secrets.RESEND_API_KEY != '' && secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM: ${{ secrets.RESEND_FROM }}
