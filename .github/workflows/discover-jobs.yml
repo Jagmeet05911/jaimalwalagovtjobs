@@ -8,7 +8,8 @@ on:
     paths:
       - ".github/scripts/discover_jobs.py"
       - ".github/scripts/auto_publish_verified.py"
-      - ".github/scripts/notify_jobs_email.py"
+      - ".github/scripts/sync_published_jobs.py"
+      - ".github/scripts/send_subscriber_alerts.py"
       - ".github/workflows/discover-jobs.yml"
 
 permissions:
@@ -82,32 +83,31 @@ jobs:
       - name: Auto-publish verified official government notices
         run: python .github/scripts/auto_publish_verified.py
 
-      - name: Email new job candidates
+      - name: Sync verified published jobs to Supabase
+        if: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
         env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          SMTP_SSL: ${{ secrets.SMTP_SSL }}
-          SMTP_STARTTLS: ${{ secrets.SMTP_STARTTLS }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: python .github/scripts/notify_jobs_email.py
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python .github/scripts/sync_published_jobs.py
 
-      - name: Save updated candidate and notification state
+      - name: Send visitor job alerts through Resend
+        if: ${{ secrets.RESEND_API_KEY != '' && secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python .github/scripts/send_subscriber_alerts.py
+
+      - name: Save updated candidate state
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp data/pending_jobs.json /tmp/pending_jobs_scanned.json
-          if [ -f data/notified_job_keys.json ]; then cp data/notified_job_keys.json /tmp/notified_job_keys.json; else rm -f /tmp/notified_job_keys.json; fi
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/pending_jobs_scanned.json data/pending_jobs.json
-            if [ -f /tmp/notified_job_keys.json ]; then cp /tmp/notified_job_keys.json data/notified_job_keys.json; else rm -f data/notified_job_keys.json; fi
             git add data/pending_jobs.json
-            if [ -f data/notified_job_keys.json ]; then git add data/notified_job_keys.json; fi
             if git diff --cached --quiet; then echo "Candidate list is already up to date."; exit 0; fi
             git commit -m "Refresh and auto-publish verified job notices"
             if git push origin HEAD:main; then echo "Candidate list saved successfully."; exit 0; fi
