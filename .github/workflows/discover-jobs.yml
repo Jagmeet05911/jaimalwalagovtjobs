@@ -91,7 +91,6 @@ jobs:
       - name: Send visitor job alerts through Resend
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RESEND_FROM: ${{ secrets.RESEND_FROM }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: python .github/scripts/send_subscriber_alerts.py
 
