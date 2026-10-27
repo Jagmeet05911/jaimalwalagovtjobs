@@ -1,6 +1,13 @@
 (() => {
   "use strict";
   function textOf(node) { return (node?.textContent || "").trim().toLowerCase(); }
+  function cleanSectionName(value) {
+    return String(value || "")
+      .replace(/\s*\d+\s*(?:jobs?|नौकरियां|नौकरी|ਨੌਕਰੀਆਂ|ਨੌਕਰੀ)\s*$/iu, "")
+      .replace(/\s*\d+\s*$/u, "")
+      .trim()
+      .toLowerCase();
+  }
   function addStyles() {
     if (document.getElementById("jobFilterStyles")) return;
     const style = document.createElement("style"); style.id = "jobFilterStyles";
@@ -12,7 +19,7 @@
     if (!directory || document.getElementById("jobFilterPanel")) return;
     addStyles();
     const panel = document.createElement("div"); panel.id = "jobFilterPanel"; panel.className = "job-filter-panel";
-    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
+    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
     const toolbar = directory.previousElementSibling;
     if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
     const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), searchBtn = document.getElementById("jobFilterSearchBtn");
@@ -22,7 +29,7 @@
       const states = new Set(), departments = new Set(); const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
         const heading = section.querySelector(".directory-heading"); if (!heading) return;
-        const label = (heading.firstChild?.textContent || heading.textContent || "").replace(/\d+\s*jobs?/i, "").trim();
+        const label = cleanSectionName(heading.firstChild?.textContent || heading.textContent || "");
         if (groupOf(section) === stateGroup) states.add(label);
         if (groupOf(section) === departmentGroup) departments.add(label);
       });
@@ -41,7 +48,7 @@
       const q = textOf(search), selectedState = state.value.toLowerCase(), selectedDepartment = department.value.toLowerCase();
       const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
-        const heading = section.querySelector(".directory-heading"); const sectionName = (heading?.firstChild?.textContent || heading?.textContent || "").replace(/\d+\s*jobs?/i, "").trim().toLowerCase();
+        const heading = section.querySelector(".directory-heading"); const sectionName = cleanSectionName(heading?.firstChild?.textContent || heading?.textContent || "");
         const isStateGroup = groupOf(section) === stateGroup; const isDepartmentGroup = groupOf(section) === departmentGroup;
         let visible = false;
         section.querySelectorAll(".job-card").forEach(card => {
