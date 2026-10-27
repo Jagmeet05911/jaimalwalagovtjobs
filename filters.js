@@ -11,27 +11,20 @@
     const directory = document.getElementById("jobsDirectory");
     if (!directory || document.getElementById("jobFilterPanel")) return;
     addStyles();
-    const panel = document.createElement("div");
-    panel.id = "jobFilterPanel";
-    panel.className = "job-filter-panel";
-    panel.innerHTML = `
-      <div class="job-filter-row">
-        <label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label>
-        <label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label>
-        <label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label>
-        <label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label>
-        <button id="jobFilterSearchBtn" type="button">🔎 Search</button>
-      </div>`;
+    const panel = document.createElement("div"); panel.id = "jobFilterPanel"; panel.className = "job-filter-panel";
+    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
     const toolbar = directory.previousElementSibling;
     if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
     const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), searchBtn = document.getElementById("jobFilterSearchBtn");
+    function groupOf(section) { return section.closest(".directory-group"); }
+    function groups() { return [...directory.querySelectorAll(":scope > .directory-group")]; }
     function collectOptions() {
-      const states = new Set(), departments = new Set();
+      const states = new Set(), departments = new Set(); const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
         const heading = section.querySelector(".directory-heading"); if (!heading) return;
         const label = (heading.firstChild?.textContent || heading.textContent || "").replace(/\d+\s*jobs?/i, "").trim();
-        const group = section.parentElement?.querySelector(".directory-group-title")?.textContent || "";
-        if (/state-wise/i.test(group)) states.add(label); if (/department-wise/i.test(group)) departments.add(label);
+        if (groupOf(section) === stateGroup) states.add(label);
+        if (groupOf(section) === departmentGroup) departments.add(label);
       });
       const keep = state.value, keepD = department.value;
       state.innerHTML = '<option value="">All States</option>' + [...states].sort().map(x => `<option value="${x.replace(/"/g,"&quot;")}">${x}</option>`).join("");
@@ -46,20 +39,20 @@
     }
     function apply() {
       const q = textOf(search), selectedState = state.value.toLowerCase(), selectedDepartment = department.value.toLowerCase();
+      const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
         const heading = section.querySelector(".directory-heading"); const sectionName = (heading?.firstChild?.textContent || heading?.textContent || "").replace(/\d+\s*jobs?/i, "").trim().toLowerCase();
-        const group = section.parentElement?.querySelector(".directory-group-title")?.textContent || ""; const isStateGroup = /state-wise/i.test(group);
+        const isStateGroup = groupOf(section) === stateGroup; const isDepartmentGroup = groupOf(section) === departmentGroup;
         let visible = false;
         section.querySelectorAll(".job-card").forEach(card => {
-          const matchesSearch = !q || textOf(card).includes(q); const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (!selectedDepartment || sectionName === selectedDepartment);
+          const matchesSearch = !q || textOf(card).includes(q); const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (isDepartmentGroup ? (!selectedDepartment || sectionName === selectedDepartment) : true);
           const show = matchesSearch && matchesGroup && matchesDeadline(card); card.style.display = show ? "" : "none"; if (show) visible = true;
         }); section.style.display = visible ? "" : "none";
       });
     }
     function refresh() { collectOptions(); apply(); }
     [search, state, department, deadline].forEach(el => el.addEventListener("input", apply)); [state, department, deadline].forEach(el => el.addEventListener("change", apply));
-    searchBtn.addEventListener("click", apply);
-    search.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); apply(); } });
+    searchBtn.addEventListener("click", apply); search.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); apply(); } });
     const observer = new MutationObserver(() => { collectOptions(); apply(); }); observer.observe(directory, { childList: true, subtree: true }); refresh();
   }
   function start() { setTimeout(setupJobFilters, 350); }
