@@ -1,10 +1,14 @@
 (() => {
   "use strict";
   function textOf(node) { return (node?.textContent || "").trim().toLowerCase(); }
-  function cleanSectionName(value) {
-    return String(value || "")
-      .replace(/\s*\d+\s*(?:jobs?|नौकरियां|नौकरी|ਨੌਕਰੀਆਂ|ਨੌਕਰੀ)\s*$/iu, "")
-      .replace(/\s*\d+\s*$/u, "")
+  function sectionLabel(section) {
+    const heading = section?.querySelector(".directory-heading");
+    if (!heading) return "";
+    return Array.from(heading.childNodes)
+      .filter(node => !(node.nodeType === 1 && node.matches("span")))
+      .map(node => node.textContent || "")
+      .join(" ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
   }
@@ -19,24 +23,26 @@
     if (!directory || document.getElementById("jobFilterPanel")) return;
     addStyles();
     const panel = document.createElement("div"); panel.id = "jobFilterPanel"; panel.className = "job-filter-panel";
-    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
+    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
     const toolbar = directory.previousElementSibling;
     if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
     const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), searchBtn = document.getElementById("jobFilterSearchBtn");
     function groupOf(section) { return section.closest(".directory-group"); }
     function groups() { return [...directory.querySelectorAll(":scope > .directory-group")]; }
     function collectOptions() {
-      const states = new Set(), departments = new Set(); const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
+      const states = new Map(), departments = new Map(); const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
-        const heading = section.querySelector(".directory-heading"); if (!heading) return;
-        const label = cleanSectionName(heading.firstChild?.textContent || heading.textContent || "");
-        if (groupOf(section) === stateGroup) states.add(label);
-        if (groupOf(section) === departmentGroup) departments.add(label);
+        const label = sectionLabel(section);
+        if (!label) return;
+        const heading = section.querySelector(".directory-heading");
+        const display = Array.from(heading.childNodes).filter(node => !(node.nodeType === 1 && node.matches("span"))).map(node => node.textContent || "").join(" ").replace(/\s+/g, " ").trim();
+        if (groupOf(section) === stateGroup) states.set(label, display);
+        if (groupOf(section) === departmentGroup) departments.set(label, display);
       });
       const keep = state.value, keepD = department.value;
-      state.innerHTML = '<option value="">All States</option>' + [...states].sort().map(x => `<option value="${x.replace(/"/g,"&quot;")}">${x}</option>`).join("");
-      department.innerHTML = '<option value="">All Departments</option>' + [...departments].sort().map(x => `<option value="${x.replace(/"/g,"&quot;")}">${x}</option>`).join("");
-      state.value = [...states].includes(keep) ? keep : ""; department.value = [...departments].includes(keepD) ? keepD : "";
+      state.innerHTML = '<option value="">All States</option>' + [...states].sort((a,b) => a[1].localeCompare(b[1])).map(([key,label]) => `<option value="${key.replace(/"/g,"&quot;")}">${label}</option>`).join("");
+      department.innerHTML = '<option value="">All Departments</option>' + [...departments].sort((a,b) => a[1].localeCompare(b[1])).map(([key,label]) => `<option value="${key.replace(/"/g,"&quot;")}">${label}</option>`).join("");
+      state.value = states.has(keep) ? keep : ""; department.value = departments.has(keepD) ? keepD : "";
     }
     function matchesDeadline(card) {
       if (!deadline.value) return true;
@@ -45,11 +51,10 @@
       const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1])); const days = Math.ceil((d - new Date()) / 86400000); return days >= 0 && days <= 14;
     }
     function apply() {
-      const q = textOf(search), selectedState = state.value.toLowerCase(), selectedDepartment = department.value.toLowerCase();
+      const q = textOf(search), selectedState = state.value, selectedDepartment = department.value;
       const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
       directory.querySelectorAll(".directory-section").forEach(section => {
-        const heading = section.querySelector(".directory-heading"); const sectionName = cleanSectionName(heading?.firstChild?.textContent || heading?.textContent || "");
-        const isStateGroup = groupOf(section) === stateGroup; const isDepartmentGroup = groupOf(section) === departmentGroup;
+        const sectionName = sectionLabel(section); const isStateGroup = groupOf(section) === stateGroup; const isDepartmentGroup = groupOf(section) === departmentGroup;
         let visible = false;
         section.querySelectorAll(".job-card").forEach(card => {
           const matchesSearch = !q || textOf(card).includes(q); const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (isDepartmentGroup ? (!selectedDepartment || sectionName === selectedDepartment) : true);
