@@ -5,6 +5,7 @@ import os
 import urllib.error
 import urllib.parse
 import urllib.request
+import uuid
 from pathlib import Path
 
 SUPABASE_URL = "https://kbebdetnhfkxnkpdiefd.supabase.co"
@@ -52,8 +53,6 @@ def main():
         if not notice:
             continue
 
-        # Let Supabase generate jobs.id on INSERT. The previous code supplied
-        # a custom text id, which can cause HTTP 400 when id is UUID/defaulted.
         row = {
             "title": str(job.get("title") or "Untitled")[:300],
             "department": str(job.get("department") or job.get("source") or "Government")[:300],
@@ -74,6 +73,9 @@ def main():
             existing_id = urllib.parse.quote(str(existing[0]["id"]), safe="")
             request("PATCH", f"/rest/v1/jobs?id=eq.{existing_id}", row)
         else:
+            # The current jobs table has a NOT NULL id without a database default.
+            # Use a deterministic UUID so retries do not create a new id per run.
+            row["id"] = str(uuid.uuid5(uuid.NAMESPACE_URL, notice))
             request("POST", "/rest/v1/jobs", row)
         synced += 1
 
