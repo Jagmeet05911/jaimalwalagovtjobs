@@ -166,10 +166,10 @@ class Links(HTMLParser):
 
 def fetch(url):
     req = urllib.request.Request(url, headers={
-        "User-Agent": "JaimalwalaGovtJobsBot/1.1 (public job discovery; manual review required)",
+        "User-Agent": "Mozilla/5.0 (compatible; JaimalwalaGovtJobsBot/1.2; +https://jagmeet05911.github.io/jaimalwalagovtjobs/)",
         "Accept": "application/json,text/html,*/*",
     })
-    with urllib.request.urlopen(req, timeout=7) as response:
+    with urllib.request.urlopen(req, timeout=20) as response:
         if response.status != 200:
             raise RuntimeError(f"HTTP {response.status}")
         return response.read().decode("utf-8", "replace")
