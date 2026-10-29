@@ -316,6 +316,17 @@ def main():
                     notice_type = "job"
                 elif notice_type == "form" and EXCLUDE.search(title):
                     continue
+
+                # Do not clutter the review queue with old result/merit notices
+                # tied to recruitment cycles from previous years. These are not
+                # current vacancies; older results should only be added manually
+                # to the Results section when needed.
+                if notice_type == "result":
+                    years = [int(y) for y in re.findall(r"\\b(20\\d{2})\\b", title)]
+                    current_year = datetime.now(ZoneInfo("Asia/Kolkata")).year
+                    if years and max(years) < current_year:
+                        continue
+
                 url = urljoin(page, href)
                 parsed = urlparse(url)
                 candidate_host = parsed.netloc.lower()
