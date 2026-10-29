@@ -13,7 +13,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -30,7 +30,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -47,7 +47,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -64,7 +64,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -81,7 +81,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -98,7 +98,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -115,7 +115,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -132,7 +132,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -149,7 +149,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -166,7 +166,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -183,7 +183,24 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "SBI Careers",
+    "title": "RECRUITMENT ARCHIVE",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Banking",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/en/web/careers/recruitment-results-archive",
+    "applyUrl": "https://sbi.co.in/en/web/careers/recruitment-results-archive",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -200,7 +217,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -217,7 +234,24 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "UPPSC",
+    "title": "17 Dec 2026 NOTICE REGARDING ADVT. NO. D-2/E-1/2024, ASSISTANT ARCHITECT, S-06/01 (PUBLIC WORKS DEPARTMENT UTTAR PRADESH)(SCREENING) EXAM-2024",
+    "department": "Uttar Pradesh Public Service Commission",
+    "location": "Uttar Pradesh",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagktt06NhTTxwrCJQ8FYSe0e",
+    "applyUrl": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagktt06NhTTxwrCJQ8FYSe0e",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -234,7 +268,109 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Current Vacancies",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
+    "applyUrl": "https://dsssb.delhi.gov.in/dsssb-vacancies",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Archived Vacancies",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/dsssb/archived-vacancies",
+    "applyUrl": "https://dsssb.delhi.gov.in/dsssb/archived-vacancies",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Recruitment Rules of Combined Exam",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/dsssb/recruitment-rules-combined-exam",
+    "applyUrl": "https://dsssb.delhi.gov.in/dsssb/recruitment-rules-combined-exam",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Recruitments",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/recruitment",
+    "applyUrl": "https://dsssb.delhi.gov.in/recruitment",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "VACANCY NOTICE/ ADVERTISEMENT NO. 03/2026",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/dsssb/vacancy-notice-advertisement-no-032026-various-posts-post-code-2126-4526-closing-date-0",
+    "applyUrl": "https://dsssb.delhi.gov.in/dsssb/vacancy-notice-advertisement-no-032026-various-posts-post-code-2126-4526-closing-date-0",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. A.26012/1/2023-I (Vol.II) DATED 26.10.2026: - Inviting online applications for the post of Accounts Officer (Finance). Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/DOSRecruitment11.html",
+    "applyUrl": "https://www.isro.gov.in/DOSRecruitment11.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -251,7 +387,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -268,7 +404,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -285,24 +421,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advertisement No. ISTRAC:02:2026 dated 27.06.2026 - The Computer Based Test (CBT) was successfully conducted on 25.09.2026. Candidates may now access their response sheets and can ",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/ISTRACRecruitment4.html",
-    "applyUrl": "https://www.isro.gov.in/ISTRACRecruitment4.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -319,7 +438,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -336,7 +455,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -353,7 +472,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -370,7 +489,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -387,7 +506,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -404,7 +523,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -421,7 +540,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-10-26",
+    "sourceChecked": "2026-10-29",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -488,7 +607,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -504,7 +623,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -520,7 +639,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -536,7 +655,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -552,7 +671,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -568,7 +687,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -584,7 +703,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -600,7 +719,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -616,7 +735,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -632,7 +751,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -648,7 +767,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "SSSC",
@@ -664,7 +783,55 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "SBI Careers",
+    "title": "Recruitment Results",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/web/careers/recruitment-results",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "SBI Careers",
+    "title": "Recruitment Results & Archive",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/web/careers/recruitment-results-archive",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "SBI Careers",
+    "title": "RECRUITMENT RESULTS",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/en/web/careers/recruitment-results",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -680,7 +847,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -696,7 +863,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -712,7 +879,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -728,39 +895,23 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
-    "title": "RESULT OF ADVT. NO. D-1/E-1/2026, MEDICAL EDUCATION DEPARTMENT U.P. (ALLOPATHY)/..",
+    "title": "{{'DownloadAdmitCard_HM' | translate }}",
     "department": "Uttar Pradesh Public Service Commission",
     "location": "Uttar Pradesh",
-    "category": "Results",
-    "noticeType": "result",
+    "category": "Admit Cards",
+    "noticeType": "admit_card",
     "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://uppsc.up.nic.in/Open_PDF_DB.aspx?I4PnQ0tBagnr4uATu7lVS+Kdn7bANrC+",
+    "url": "https://uppsc.up.nic.in/CandidatePages/Advertismentwise_DownloadDocument.aspx?inptprmtr=ac",
     "applyUrl": "",
-    "admitCardUrl": "",
+    "admitCardUrl": "https://uppsc.up.nic.in/CandidatePages/Advertismentwise_DownloadDocument.aspx?inptprmtr=ac",
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
-  },
-  {
-    "source": "UPPSC",
-    "title": "RESULT OF ADVT. NO. D-1/E-1/2026, MEDICAL EDUCATION DEPARTMENT U.P. (ALLOPATHY)/..",
-    "department": "Uttar Pradesh Public Service Commission",
-    "location": "Uttar Pradesh",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://uppsc.up.nic.in/Open_PDF_DB.aspx?I4PnQ0tBagnr4uATu7lVS9Jm9XBAaZWi",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -776,7 +927,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPPSC",
@@ -792,7 +943,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "OPSC Odisha",
@@ -808,11 +959,123 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Latest Result",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/doit/dsssb/latest-result",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Old Results",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/doit/tab-content/old-results",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Answer Keys",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/doit/tab-content/answer-keys",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Marks List",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/dsssb/marks-list",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Old Result",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/doit/tab-content/old-result",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "DSSSB Delhi",
+    "title": "Tentative Schedule for declaration of Results of DSSSB Examinations",
+    "department": "Delhi Subordinate Services Selection Board",
+    "location": "Delhi",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://dsssb.delhi.gov.in/sites/default/files/DSSSB/circulars-orders/tentative_schedule_for_result.pdf",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "ISRO",
-    "title": "ADVT NO. ISRO:ICRB:01(A-JPA):2026 DATED 27.07.2026: - List of candidates short-listed for Skill Test [Results of Computer Based Test conducted on 21.09.2026], zone-wise for the pos",
+    "title": "ADVT NO. ISTRAC:02:2026 dated 27.06.2026: - Revised Answer Key and Post-Objection Response Sheets Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/ISTRACRecruitment4.html",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-29"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. ISRO:ICRB:01(A-JPA):2026 Dated 27.07.2026: - REVISED ANSWER KEYS Read More",
     "department": "Indian Space Research Organisation",
     "location": "All India",
     "category": "Results",
@@ -824,7 +1087,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "ISRO",
@@ -840,7 +1103,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "ISRO",
@@ -856,7 +1119,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "NCS",
@@ -872,7 +1135,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "NCS",
@@ -888,7 +1151,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "NCS",
@@ -904,7 +1167,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "NCS",
@@ -920,7 +1183,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "Figma",
@@ -934,7 +1197,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "Figma",
@@ -948,7 +1211,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "Datadog",
@@ -962,35 +1225,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
-  },
-  {
-    "source": "GitLab",
-    "title": "Associate Renewals Manager, India",
-    "department": "Renewals",
-    "location": "Remote, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8857611002",
-    "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8857611002",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-26"
-  },
-  {
-    "source": "GitLab",
-    "title": "Associate Revenue Operations Manager, India",
-    "department": "Field Operations",
-    "location": "Remote, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8859694002",
-    "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8859694002",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "GitLab",
@@ -1004,7 +1239,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "Duolingo",
@@ -1018,7 +1253,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "Notion",
@@ -1032,7 +1267,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-10-26"
+    "sourceChecked": "2026-10-29"
   },
   {
     "source": "UPSC",
