@@ -63,7 +63,7 @@ def main():
             "notice_url": notice,
             "apply_url": str(job.get("applyUrl") or notice),
             "admit_card_url": job.get("admitCardUrl") or None,
-            "source_checked": str(job.get("sourceChecked") or "")[:40],
+            "source_checked": str(job.get("sourceChecked") or "")[:40] or None,
             "status": "published",
         }
 
