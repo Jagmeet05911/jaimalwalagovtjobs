@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -39,7 +40,14 @@ def main():
         return
 
     headers = {"apikey": service, "Authorization": f"Bearer {service}"}
-    subscribers = request("GET", SUPABASE_URL + "/rest/v1/job_alert_subscribers?select=email&active=eq.true", headers=headers)
+    try:
+        subscribers = request("GET", SUPABASE_URL + "/rest/v1/job_alert_subscribers?select=email&active=eq.true", headers=headers)
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            print("Subscriber alerts skipped: Supabase table job_alert_subscribers is not set up yet; job publishing and sync remain successful.")
+            return
+        raise
+
     if not subscribers:
         print("No active job-alert subscribers.")
         return
