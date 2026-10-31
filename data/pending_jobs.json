@@ -990,6 +990,38 @@
     "sourceChecked": "2026-10-31"
   },
   {
+    "source": "SBI Careers",
+    "title": "Recruitment Results",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/web/careers/recruitment-results",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-31"
+  },
+  {
+    "source": "SBI Careers",
+    "title": "Recruitment Results & Archive",
+    "department": "State Bank of India",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://sbi.co.in/web/careers/recruitment-results-archive",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-10-31"
+  },
+  {
     "source": "UPPSC",
     "title": "RESULT OF ADVT. NO. 2/2020-2021, U.P. CHIKITSA SHIKSHA (HOMOEOPATHIC) DEPTT., LE..",
     "department": "Uttar Pradesh Public Service Commission",
