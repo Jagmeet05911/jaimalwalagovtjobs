@@ -13,7 +13,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -30,7 +30,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -47,7 +47,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -64,7 +64,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -81,7 +81,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -98,7 +98,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -115,7 +115,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -132,7 +132,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -149,7 +149,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -166,7 +166,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -183,7 +183,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -200,7 +200,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -217,7 +217,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -234,279 +234,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "India Post",
-    "title": "Post Office Passport Seva Kendra Post Office Passport Seva Kendra",
-    "department": "Department of Posts, Government of India",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.indiapost.gov.in/otheronlineservices/popsk",
-    "applyUrl": "https://www.indiapost.gov.in/otheronlineservices/popsk",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "India Post",
-    "title": "Vacancies Vacancies",
-    "department": "Department of Posts, Government of India",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.indiapost.gov.in/vacancies",
-    "applyUrl": "https://www.indiapost.gov.in/vacancies",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "India Post",
-    "title": "Recruitment Rules Recruitment Rules",
-    "department": "Department of Posts, Government of India",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.indiapost.gov.in/documents/recruitmentrules",
-    "applyUrl": "https://www.indiapost.gov.in/documents/recruitmentrules",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "India Post",
-    "title": "Recruitments",
-    "department": "Department of Posts, Government of India",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.indiapost.gov.in/vacancies/recruitments",
-    "applyUrl": "https://www.indiapost.gov.in/vacancies/recruitments",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "India Post",
-    "title": "Online GDS Recruitment",
-    "department": "Department of Posts, Government of India",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.indiapost.gov.in/vacancies/online-gds",
-    "applyUrl": "https://www.indiapost.gov.in/vacancies/online-gds",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "ADVT NO. A.26012/1/2023-I (Vol.II) DATED 26.10.2026: - Inviting online applications for the post of Accounts Officer (Finance). Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/DOSRecruitment11.html",
-    "applyUrl": "https://www.isro.gov.in/DOSRecruitment11.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt No. URSC:04:2026 dated 24.10.2026 - Inviting online applications for the posts of Technician - B/ Heavy Vehicle Driver - A/ Light Vehicle Driver - A/ Staff Car Driver- A. Read",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/URSCRecruitment13.html",
-    "applyUrl": "https://www.isro.gov.in/URSCRecruitment13.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "ADVT NO. SDSC SHAR/RMT/03/2026 Dated 19.10.2026 Recruitment to the post of Technical Assistant, Scientific Assistant, Library Assistant ‘A’, Nurse ‘B’, Technician ‘B’/Draughtsman ‘",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Medical",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/SDSCRecruitment26.html",
-    "applyUrl": "https://www.isro.gov.in/SDSCRecruitment26.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt. No. HSFC:02:RMT:2026, Dated:09.10.2026 - Inviting applications for the post GROUP ‘A’ Medical Officer - SD Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Medical",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/HSFCRecruitment2026_2.html",
-    "applyUrl": "https://www.isro.gov.in/HSFCRecruitment2026_2.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Revised: Advt. No. DS_8C-12012/1/2026-Sec.VIII dated 30/09/2026 - Inviting applications for the post of Director. Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/NESACRecruitment24.html",
-    "applyUrl": "https://www.isro.gov.in/NESACRecruitment24.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt. No. LPSC/03/2026 dated 26.09.2026 - Recruitment to the post of Scientist / Engineer 'SC' Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Engineering",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/LPSCRecruitment14.html",
-    "applyUrl": "https://www.isro.gov.in/LPSCRecruitment14.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt. No. IPRC/RMT/2026/01 dated 12.09.2026 - Inviting online applications for the posts of Technical Assistant, Technician 'B', Cook 'A' and Fireman 'A'. Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/IPRCRecruitment4.html",
-    "applyUrl": "https://www.isro.gov.in/IPRCRecruitment4.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt No. SAC:02:2026 dated 10.09.2026 - Inviting online applications for the posts of Junior Research Fellows, Research Associate and Project Scientist-I. Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/SACRecruitment21.html",
-    "applyUrl": "https://www.isro.gov.in/SACRecruitment21.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt No. DS_IX-14011/1/2024-Section_9-DOS dated 21.08.2026 - Inviting applications for the post of Chairman-cum-Managing Director in NSIL on Deputation/Contract Basis Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/NSILRecruitment2.html",
-    "applyUrl": "https://www.isro.gov.in/NSILRecruitment2.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt No. LPSC/02/2026 dated 15.08.2026 Recruitment to the post of Technical Assistant, Technician 'B', Draughtsman 'B' and Fireman 'A' in LPSC. Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/LPSCRecruitment13.html",
-    "applyUrl": "https://www.isro.gov.in/LPSCRecruitment13.html",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
-    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
-  },
-  {
-    "source": "NCS",
-    "title": "Support & Services",
-    "department": "National Career Service, Ministry of Labour and Employment",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx",
-    "applyUrl": "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": true,
-    "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -523,7 +251,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -540,7 +268,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -557,7 +285,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -574,7 +302,7 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -591,7 +319,279 @@
     "deadline": "",
     "verified": true,
     "needsReview": false,
-    "sourceChecked": "2026-11-03",
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "India Post",
+    "title": "Post Office Passport Seva Kendra Post Office Passport Seva Kendra",
+    "department": "Department of Posts, Government of India",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.indiapost.gov.in/otheronlineservices/popsk",
+    "applyUrl": "https://www.indiapost.gov.in/otheronlineservices/popsk",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "India Post",
+    "title": "Vacancies Vacancies",
+    "department": "Department of Posts, Government of India",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.indiapost.gov.in/vacancies",
+    "applyUrl": "https://www.indiapost.gov.in/vacancies",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "India Post",
+    "title": "Recruitment Rules Recruitment Rules",
+    "department": "Department of Posts, Government of India",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.indiapost.gov.in/documents/recruitmentrules",
+    "applyUrl": "https://www.indiapost.gov.in/documents/recruitmentrules",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "India Post",
+    "title": "Recruitments",
+    "department": "Department of Posts, Government of India",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.indiapost.gov.in/vacancies/recruitments",
+    "applyUrl": "https://www.indiapost.gov.in/vacancies/recruitments",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "India Post",
+    "title": "Online GDS Recruitment",
+    "department": "Department of Posts, Government of India",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.indiapost.gov.in/vacancies/online-gds",
+    "applyUrl": "https://www.indiapost.gov.in/vacancies/online-gds",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. A.26012/1/2023-I (Vol.II) DATED 26.10.2026: - Inviting online applications for the post of Accounts Officer (Finance). Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/DOSRecruitment11.html",
+    "applyUrl": "https://www.isro.gov.in/DOSRecruitment11.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt No. URSC:04:2026 dated 24.10.2026 - Inviting online applications for the posts of Technician - B/ Heavy Vehicle Driver - A/ Light Vehicle Driver - A/ Staff Car Driver- A. Read",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/URSCRecruitment13.html",
+    "applyUrl": "https://www.isro.gov.in/URSCRecruitment13.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. SDSC SHAR/RMT/03/2026 Dated 19.10.2026 Recruitment to the post of Technical Assistant, Scientific Assistant, Library Assistant ‘A’, Nurse ‘B’, Technician ‘B’/Draughtsman ‘",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Medical",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/SDSCRecruitment26.html",
+    "applyUrl": "https://www.isro.gov.in/SDSCRecruitment26.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt. No. HSFC:02:RMT:2026, Dated:09.10.2026 - Inviting applications for the post GROUP ‘A’ Medical Officer - SD Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Medical",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/HSFCRecruitment2026_2.html",
+    "applyUrl": "https://www.isro.gov.in/HSFCRecruitment2026_2.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Revised: Advt. No. DS_8C-12012/1/2026-Sec.VIII dated 30/09/2026 - Inviting applications for the post of Director. Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/NESACRecruitment24.html",
+    "applyUrl": "https://www.isro.gov.in/NESACRecruitment24.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt. No. LPSC/03/2026 dated 26.09.2026 - Recruitment to the post of Scientist / Engineer 'SC' Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Engineering",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/LPSCRecruitment14.html",
+    "applyUrl": "https://www.isro.gov.in/LPSCRecruitment14.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt. No. IPRC/RMT/2026/01 dated 12.09.2026 - Inviting online applications for the posts of Technical Assistant, Technician 'B', Cook 'A' and Fireman 'A'. Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/IPRCRecruitment4.html",
+    "applyUrl": "https://www.isro.gov.in/IPRCRecruitment4.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt No. SAC:02:2026 dated 10.09.2026 - Inviting online applications for the posts of Junior Research Fellows, Research Associate and Project Scientist-I. Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/SACRecruitment21.html",
+    "applyUrl": "https://www.isro.gov.in/SACRecruitment21.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt No. DS_IX-14011/1/2024-Section_9-DOS dated 21.08.2026 - Inviting applications for the post of Chairman-cum-Managing Director in NSIL on Deputation/Contract Basis Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/NSILRecruitment2.html",
+    "applyUrl": "https://www.isro.gov.in/NSILRecruitment2.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt No. LPSC/02/2026 dated 15.08.2026 Recruitment to the post of Technical Assistant, Technician 'B', Draughtsman 'B' and Fireman 'A' in LPSC. Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/LPSCRecruitment13.html",
+    "applyUrl": "https://www.isro.gov.in/LPSCRecruitment13.html",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
+    "verificationMethod": "allowlisted official government domain + recruitment notice checks"
+  },
+  {
+    "source": "NCS",
+    "title": "Support & Services",
+    "department": "National Career Service, Ministry of Labour and Employment",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx",
+    "applyUrl": "https://www.ncs.gov.in/pages/govt-job-vacancies.aspx",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": true,
+    "needsReview": false,
+    "sourceChecked": "2026-11-04",
     "verificationMethod": "allowlisted official government domain + recruitment notice checks"
   },
   {
@@ -658,7 +658,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -674,7 +674,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -690,7 +690,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -706,7 +706,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -722,7 +722,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -738,7 +738,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -754,7 +754,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -770,7 +770,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -786,7 +786,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -802,7 +802,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -818,7 +818,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "SSSC",
@@ -834,7 +834,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -850,7 +850,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -866,7 +866,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -882,7 +882,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -898,7 +898,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -914,7 +914,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -930,7 +930,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "UPPSC",
@@ -946,7 +946,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "OPSC Odisha",
@@ -962,191 +962,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "ISRO",
-    "title": "ADVT NO. ISTRAC:02:2026 dated 27.06.2026: - Revised Answer Key and Post-Objection Response Sheets Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/ISTRACRecruitment4.html",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "ISRO",
-    "title": "ADVT NO. ISRO:ICRB:01(A-JPA):2026 Dated 27.07.2026: - REVISED ANSWER KEYS Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/ICRB_Recruitment11.html",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advt. No. ISRO:ICRB:03(EMC):2026 dated 27-08-2026 - Download Admit Card for Computer Based Test (CBT) Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Admit Cards",
-    "noticeType": "admit_card",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/ICRB_Recruitment13.html",
-    "applyUrl": "",
-    "admitCardUrl": "https://www.isro.gov.in/ICRB_Recruitment13.html",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "ISRO",
-    "title": "Advertisement No. URSC:01:2026 dated 21.03.2026 -Answer keys for the written test to the post of Scientist/Engineer - 'SC' (Industrial Engineering) held on 27.09.2026. Read More",
-    "department": "Indian Space Research Organisation",
-    "location": "All India",
-    "category": "Results",
-    "noticeType": "result",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.isro.gov.in/URSCRecruitment2026_1.html",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "NCS",
-    "title": "Find International Jobs E-migrate",
-    "department": "National Career Service, Ministry of Labour and Employment",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.ncs.gov.in/e-migrate",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "NCS",
-    "title": "International Resources",
-    "department": "National Career Service, Ministry of Labour and Employment",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.ncs.gov.in/internationalResources",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "NCS",
-    "title": "Internships",
-    "department": "National Career Service, Ministry of Labour and Employment",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.ncs.gov.in/Pmis-jobList",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "NCS",
-    "title": "Operations & Support",
-    "department": "National Career Service, Ministry of Labour and Employment",
-    "location": "All India",
-    "category": "Other",
-    "noticeType": "job",
-    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
-    "url": "https://www.ncs.gov.in/job-listing?functionalAreas=Operations%20and%20Maintenance,Admin%20Back%20Office,Office%20%26%20Administration",
-    "applyUrl": "",
-    "admitCardUrl": "",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "Figma",
-    "title": "Account Executive, Enterprise (Bengaluru, India)",
-    "department": "Sales",
-    "location": "Bengaluru, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://boards.greenhouse.io/figma/jobs/5579204004?gh_jid=5579204004",
-    "applyUrl": "https://boards.greenhouse.io/figma/jobs/5579204004?gh_jid=5579204004",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "Datadog",
-    "title": "Commercial Account Executive",
-    "department": "Commercial Sales",
-    "location": "Bangalore, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://careers.datadoghq.com/detail/6512321/?gh_jid=6512321",
-    "applyUrl": "https://careers.datadoghq.com/detail/6512321/?gh_jid=6512321",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "GitLab",
-    "title": "Benefits Analyst",
-    "department": "Total Rewards",
-    "location": "Bangalore, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8864819002",
-    "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8864819002",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
-  },
-  {
-    "source": "Duolingo",
-    "title": "General Manager, India",
-    "department": "Business Development",
-    "location": "Bangalore, India",
-    "category": "Private Jobs",
-    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
-    "url": "https://careers.duolingo.com/jobs/8883563002?gh_jid=8883563002",
-    "applyUrl": "https://careers.duolingo.com/jobs/8883563002?gh_jid=8883563002",
-    "deadline": "",
-    "verified": false,
-    "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "DSSSB Delhi",
@@ -1162,7 +978,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "DSSSB Delhi",
@@ -1178,7 +994,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "DSSSB Delhi",
@@ -1194,7 +1010,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "DSSSB Delhi",
@@ -1210,7 +1026,7 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "DSSSB Delhi",
@@ -1226,7 +1042,191 @@
     "deadline": "",
     "verified": false,
     "needsReview": true,
-    "sourceChecked": "2026-11-03"
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. ISTRAC:02:2026 dated 27.06.2026: - Revised Answer Key and Post-Objection Response Sheets Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/ISTRACRecruitment4.html",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "ISRO",
+    "title": "ADVT NO. ISRO:ICRB:01(A-JPA):2026 Dated 27.07.2026: - REVISED ANSWER KEYS Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/ICRB_Recruitment11.html",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advt. No. ISRO:ICRB:03(EMC):2026 dated 27-08-2026 - Download Admit Card for Computer Based Test (CBT) Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Admit Cards",
+    "noticeType": "admit_card",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/ICRB_Recruitment13.html",
+    "applyUrl": "",
+    "admitCardUrl": "https://www.isro.gov.in/ICRB_Recruitment13.html",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "ISRO",
+    "title": "Advertisement No. URSC:01:2026 dated 21.03.2026 -Answer keys for the written test to the post of Scientist/Engineer - 'SC' (Industrial Engineering) held on 27.09.2026. Read More",
+    "department": "Indian Space Research Organisation",
+    "location": "All India",
+    "category": "Results",
+    "noticeType": "result",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.isro.gov.in/URSCRecruitment2026_1.html",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "NCS",
+    "title": "Find International Jobs E-migrate",
+    "department": "National Career Service, Ministry of Labour and Employment",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.ncs.gov.in/e-migrate",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "NCS",
+    "title": "International Resources",
+    "department": "National Career Service, Ministry of Labour and Employment",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.ncs.gov.in/internationalResources",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "NCS",
+    "title": "Internships",
+    "department": "National Career Service, Ministry of Labour and Employment",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.ncs.gov.in/Pmis-jobList",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "NCS",
+    "title": "Operations & Support",
+    "department": "National Career Service, Ministry of Labour and Employment",
+    "location": "All India",
+    "category": "Other",
+    "noticeType": "job",
+    "eligibility": "Auto-discovered official-page notice. Check the source page for dates, eligibility and links before publishing.",
+    "url": "https://www.ncs.gov.in/job-listing?functionalAreas=Operations%20and%20Maintenance,Admin%20Back%20Office,Office%20%26%20Administration",
+    "applyUrl": "",
+    "admitCardUrl": "",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "Figma",
+    "title": "Account Executive, Enterprise (Bengaluru, India)",
+    "department": "Sales",
+    "location": "Bengaluru, India",
+    "category": "Private Jobs",
+    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
+    "url": "https://boards.greenhouse.io/figma/jobs/5579204004?gh_jid=5579204004",
+    "applyUrl": "https://boards.greenhouse.io/figma/jobs/5579204004?gh_jid=5579204004",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "Datadog",
+    "title": "Commercial Account Executive",
+    "department": "Commercial Sales",
+    "location": "Bangalore, India",
+    "category": "Private Jobs",
+    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
+    "url": "https://careers.datadoghq.com/detail/6512321/?gh_jid=6512321",
+    "applyUrl": "https://careers.datadoghq.com/detail/6512321/?gh_jid=6512321",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "GitLab",
+    "title": "Benefits Analyst",
+    "department": "Total Rewards",
+    "location": "Bangalore, India",
+    "category": "Private Jobs",
+    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8864819002",
+    "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8864819002",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
+  },
+  {
+    "source": "Duolingo",
+    "title": "General Manager, India",
+    "department": "Business Development",
+    "location": "Bangalore, India",
+    "category": "Private Jobs",
+    "eligibility": "Check the employer's official posting for required education, experience, age, salary and other criteria.",
+    "url": "https://careers.duolingo.com/jobs/8883563002?gh_jid=8883563002",
+    "applyUrl": "https://careers.duolingo.com/jobs/8883563002?gh_jid=8883563002",
+    "deadline": "",
+    "verified": false,
+    "needsReview": true,
+    "sourceChecked": "2026-11-04"
   },
   {
     "source": "Notion",
