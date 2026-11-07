@@ -87,3 +87,9 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 :root[data-theme="dark"] .notice{background:#2b2616;color:#f8e7b0;border-color:#67572d}
 :root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#0b1220;color:var(--ink);border-color:var(--line)}
 @media(max-width:760px){.theme-control{font-size:11px}.theme-control select{padding:6px;max-width:84px}}
+
+
+/* Short festive greeting: keeps the site's blue identity and adapts to Google Translate. */
+.festival-greeting{max-width:1120px;margin:14px auto 0;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:center;border:1px solid #f3d28b;border-radius:16px;background:linear-gradient(110deg,#fff8df,#fff 48%,#fff1cf);color:#68430a;box-shadow:0 8px 24px #9a6b1815}
+.festival-greeting[hidden]{display:none!important}.festival-lamps{font-size:25px;white-space:nowrap}.festival-copy{min-width:0}.festival-copy p{margin:3px 0;line-height:1.5}.festival-en{font-weight:700}.festival-pa{font-weight:700;font-family:"Noto Sans Gurmukhi",sans-serif}.festival-hi{font-weight:700;font-family:system-ui,sans-serif}
+@media(max-width:700px){.festival-greeting{margin:12px 14px 0;padding:13px 10px;gap:5px}.festival-lamps{font-size:18px}.festival-copy p{font-size:12px}}
