@@ -3,13 +3,10 @@ name: Discover official job notice candidates
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "0 */3 * * *"
   push:
     paths:
       - ".github/scripts/discover_jobs.py"
-      - ".github/scripts/auto_publish_verified.py"
-      - ".github/scripts/sync_published_jobs.py"
-      - ".github/scripts/send_subscriber_alerts.py"
       - ".github/workflows/discover-jobs.yml"
 
 permissions:
@@ -80,20 +77,6 @@ jobs:
           print(f"Cleaned candidates: {len(items)} -> {len(cleaned)}")
           PY
 
-      - name: Auto-publish verified official government notices
-        run: python .github/scripts/auto_publish_verified.py
-
-      - name: Sync verified published jobs to Supabase
-        env:
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: python .github/scripts/sync_published_jobs.py
-
-      - name: Send visitor job alerts through Resend
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: python .github/scripts/send_subscriber_alerts.py
-
       - name: Save updated candidate state
         run: |
           set -e
@@ -106,7 +89,7 @@ jobs:
             cp /tmp/pending_jobs_scanned.json data/pending_jobs.json
             git add data/pending_jobs.json
             if git diff --cached --quiet; then echo "Candidate list is already up to date."; exit 0; fi
-            git commit -m "Refresh and auto-publish verified job notices"
+            git commit -m "Refresh government job candidates for admin review"
             if git push origin HEAD:main; then echo "Candidate list saved successfully."; exit 0; fi
             echo "Push attempt $attempt failed; retrying after syncing main."
           done
