@@ -121,9 +121,9 @@ NOTICE_TYPES = {
     "form": re.compile(r"admission|entrance test|entrance examination|application form|online form|registration open|counselling|counseling|prospectus|neet|jee main|cuet|ctet|tet application", re.I),
 }
 JOB_TERMS = re.compile(
-    r"recruit|vacanc|advertisement|advt\\.?\\s*(no\\.?|number)|apply online|"
+    r"recruit|vacanc|advertisement|advt\.?\s*(no\.?|number)|apply online|"
     r"posts? of|job opening|employment notice|centralised employment notice|"
-    r"\\bCEN\\s*\\d|group[- ]?[CD]\\b|apprentice|fellowship|scientist|"
+    r"\bCEN\s*\d|group[- ]?[CD]\b|apprentice|fellowship|scientist|"
     r"technician|clerk|constable|assistant|engineer|officer|teacher|lecturer|"
     r"driver|staff nurse|trainee|intern|manager|analyst|developer|sales|support",
     re.I,
@@ -132,7 +132,10 @@ EXCLUDE = re.compile(
     r"syllabus|shortlist|interview schedule|corrigendum|tender|auction|calendar|press release|annual report|"
     r"objection|proposed answers|dates? of (the )?examination|"
     r"examination dates?|exam dates?|exam schedule|date sheet|roll number|"
-    r"status of|recruitment requisition",
+    r"status of|recruitment requisition|recruitment rules|archived vacancies|"
+    r"designation of public information|passport seva|list of candidates|"
+    r"waiting list|recommended for appointment|special opportunity|"
+    r"edit window|discrepancies|support & services",
     re.I,
 )
 GENERIC_PAGE_TITLES = {
@@ -141,6 +144,8 @@ GENERIC_PAGE_TITLES = {
     "job opportunities", "current openings", "view all jobs", "all jobs",
     "results", "result", "admit card", "admit cards", "admissions", "forms",
     "application forms", "notice board", "noticeboard", "examination", "examinations",
+    "advertisement", "advertisements", "vacancy", "vacancies", "recruitments",
+    "recruitment notices", "current vacancies", "archived vacancies", "recruitment rules",
 }
 MAX_PER_SOURCE = 25
 
@@ -306,7 +311,9 @@ def main():
                 if not title or len(title) < 6 or not href:
                     continue
                 title = " ".join(title.split())
-                if title.lower().strip(" -") in GENERIC_PAGE_TITLES:
+                normalized_title = re.sub(r"[^a-z0-9 ]+", " ", title.lower())
+                normalized_title = " ".join(normalized_title.split())
+                if normalized_title in GENERIC_PAGE_TITLES or EXCLUDE.search(title):
                     continue
                 # Classify all useful notice types, not only recruitment ads.
                 notice_type = next((kind for kind, pattern in NOTICE_TYPES.items() if pattern.search(title)), None)
@@ -334,6 +341,9 @@ def main():
                     candidate_host == source_host or candidate_host == host or
                     candidate_host.endswith("." + source_host)
                 ):
+                    continue
+                # A source's general landing page is not an individual vacancy notice.
+                if parsed.netloc.lower() == host and parsed.path.rstrip("/") == urlparse(page).path.rstrip("/"):
                     continue
                 if url in seen:
                     continue
