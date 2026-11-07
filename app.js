@@ -265,6 +265,16 @@
     return year + "-" + month + "-" + day;
   }
 
+  // Hide expired vacancies from active job listings without deleting database records.
+  // Records without a deadline remain visible for manual review.
+  function isDeadlineActive(job) {
+    if (!job || !job.deadline) return true;
+    const match = String(job.deadline).trim().match(/^(\\d{4})-(\\d{2})-(\\d{2})/);
+    if (!match) return true;
+    const deadline = match[1] + "-" + match[2] + "-" + match[3];
+    return deadline >= localDateString();
+  }
+
   // Format YYYY-MM-DD without parsing it as UTC (which can shift the day).
   function displayDate(value) {
     if (!value) return "";
@@ -886,6 +896,7 @@
     if (!$("jobsDirectory")) return;
     const published = jobs.filter(job =>
       job.status === "published" &&
+      isDeadlineActive(job) &&
       !["private jobs", "results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase())
     );
     const states = [
@@ -940,6 +951,7 @@
 
     const items = jobs.filter(job =>
       job.status === "published" &&
+      isDeadlineActive(job) &&
       String(job.category || "").toLowerCase() === "private jobs"
     );
 
