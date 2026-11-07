@@ -93,3 +93,15 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 .festival-greeting{max-width:1120px;margin:14px auto 0;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:center;border:1px solid #f3d28b;border-radius:16px;background:linear-gradient(110deg,#fff8df,#fff 48%,#fff1cf);color:#68430a;box-shadow:0 8px 24px #9a6b1815}
 .festival-greeting[hidden]{display:none!important}.festival-lamps{font-size:25px;white-space:nowrap}.festival-copy{min-width:0}.festival-copy p{margin:3px 0;line-height:1.5}.festival-en{font-weight:700}.festival-pa{font-weight:700;font-family:"Noto Sans Gurmukhi",sans-serif}.festival-hi{font-weight:700;font-family:system-ui,sans-serif}
 @media(max-width:700px){.festival-greeting{margin:12px 14px 0;padding:13px 10px;gap:5px}.festival-lamps{font-size:18px}.festival-copy p{font-size:12px}}
+
+
+/* A few softly glowing festive bulbs and lit diyas. */
+.festival-greeting{position:relative;overflow:hidden;padding-top:29px}
+.festival-lights{position:absolute;top:0;left:8%;right:8%;height:22px;display:flex;align-items:flex-start;justify-content:space-between;border-top:1px solid #8b7957}
+.festival-lights span{position:relative;display:block;width:8px;height:11px;margin-top:-1px;border-radius:3px 3px 6px 6px;background:#ffd34e;color:transparent;box-shadow:0 0 7px 3px #ffd34e99;animation:festivalGlow 1.8s ease-in-out infinite alternate}
+.festival-lights span:nth-child(3n){background:#ff8c69;box-shadow:0 0 7px 3px #ff8c6999;animation-delay:.5s}
+.festival-lights span:nth-child(3n + 2){background:#8bd9ff;box-shadow:0 0 7px 3px #8bd9ff99;animation-delay:1s}
+.festival-lamps{filter:drop-shadow(0 0 5px #ffb52e)}
+@keyframes festivalGlow{from{opacity:.65;filter:brightness(.9)}to{opacity:1;filter:brightness(1.3)}}
+@media(max-width:700px){.festival-greeting{padding-top:25px}.festival-lights{left:7%;right:7%;height:18px}.festival-lights span{width:6px;height:8px}}
+@media(prefers-reduced-motion:reduce){.festival-lights span{animation:none}}
