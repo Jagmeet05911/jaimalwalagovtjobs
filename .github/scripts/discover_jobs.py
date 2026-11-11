@@ -148,6 +148,31 @@ GENERIC_PAGE_TITLES = {
     "recruitment notices", "current vacancies", "archived vacancies", "recruitment rules",
 }
 MAX_PER_SOURCE = 25
+CURRENT_YEAR = datetime.now(ZoneInfo("Asia/Kolkata")).year
+
+
+def is_stale_candidate(item, today):
+    """Reject old-cycle notices and outage-preserved entries older than 7 days."""
+    if not isinstance(item, dict):
+        return True
+    checked = str(item.get("sourceChecked") or "").strip()
+    try:
+        checked_date = datetime.strptime(checked, "%Y-%m-%d").date()
+    except ValueError:
+        return True
+    if checked_date > today or (today - checked_date).days > 7:
+        return True
+    years = [int(year) for year in re.findall(r"\b(20\d{2})\b", str(item.get("title") or ""))]
+    if years and max(years) < today.year:
+        return True
+    deadline = str(item.get("deadline") or "").strip()
+    if deadline:
+        try:
+            if datetime.strptime(deadline[:10], "%Y-%m-%d").date() < today:
+                return True
+        except ValueError:
+            pass
+    return False
 
 class Links(HTMLParser):
     def __init__(self):
@@ -255,7 +280,7 @@ def scan_private(candidates, seen, successful_sources, checked):
             data = json.loads(fetch(api))
             if not isinstance(data, dict) or not isinstance(data.get("jobs"), list):
                 raise ValueError("Unexpected Ashby response")
-            successful_sources.add(source)
+            successful_sources.add(company)
             for job in data["jobs"][:MAX_PER_SOURCE]:
                 loc = job.get("location") or default_location
                 if job.get("isRemote") and "remote" not in str(loc).lower():
@@ -275,7 +300,7 @@ def scan_private(candidates, seen, successful_sources, checked):
             data = json.loads(fetch(api))
             if not isinstance(data, list):
                 raise ValueError("Unexpected Lever response")
-            successful_sources.add(source)
+            successful_sources.add(company)
             for job in data[:MAX_PER_SOURCE]:
                 categories = job.get("categories") or {}
                 loc = categories.get("location") or default_location
@@ -324,15 +349,11 @@ def main():
                 elif notice_type == "form" and EXCLUDE.search(title):
                     continue
 
-                # Do not clutter the review queue with old result/merit notices
-                # tied to recruitment cycles from previous years. These are not
-                # current vacancies; older results should only be added manually
-                # to the Results section when needed.
-                if notice_type == "result":
-                    years = [int(y) for y in re.findall(r"\\b(20\\d{2})\\b", title)]
-                    current_year = datetime.now(ZoneInfo("Asia/Kolkata")).year
-                    if years and max(years) < current_year:
-                        continue
+                # Reject notices explicitly tied to a previous calendar-year cycle.
+                # Historical results/admit cards and old recruitment ads are not active vacancies.
+                years = [int(y) for y in re.findall(r"\b(20\d{2})\b", title)]
+                if years and max(years) < CURRENT_YEAR:
+                    continue
 
                 url = urljoin(page, href)
                 parsed = urlparse(url)
@@ -407,7 +428,7 @@ def main():
     private_defaults = {company: default for company, _, default in GREENHOUSE_BOARDS + ASHBY_BOARDS + LEVER_BOARDS}
     for item in previous_candidates:
         source = item.get("source") if isinstance(item, dict) else None
-        if not isinstance(item, dict):
+        if not isinstance(item, dict) or is_stale_candidate(item, datetime.now(ZoneInfo("Asia/Kolkata")).date()):
             continue
         if item.get("category") == "Private Jobs" and not is_india_relevant(
                 item.get("location"), private_defaults.get(source, "All India")):
