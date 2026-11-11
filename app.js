@@ -268,7 +268,26 @@
   // Hide expired vacancies from active job listings without deleting database records.
   // Records without a deadline remain visible for manual review.
   function isDeadlineActive(job) {
-    if (!job || !job.deadline) return true;
+    if (!job) return false;
+
+    // Do not show records clearly tied to an earlier recruitment year.
+    const years = String(job.title || "").match(/\b(20\d{2})\b/g) || [];
+    if (years.length && Math.max(...years.map(Number)) < new Date().getFullYear()) return false;
+
+    // Hide records whose official source has not been rechecked for over 30 days.
+    if (job.sourceChecked) {
+      const checked = String(job.sourceChecked).trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (checked) {
+        const checkedDate = new Date(Number(checked[1]), Number(checked[2]) - 1, Number(checked[3]));
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const ageDays = Math.floor((today - checkedDate) / 86400000);
+        if (ageDays > 30) return false;
+      }
+    }
+
+    // Records without a deadline remain visible for manual review unless clearly stale.
+    if (!job.deadline) return true;
     const match = String(job.deadline).trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (!match) return true;
     const deadline = match[1] + "-" + match[2] + "-" + match[3];
