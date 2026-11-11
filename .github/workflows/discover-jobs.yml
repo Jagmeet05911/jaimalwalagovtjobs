@@ -43,10 +43,11 @@ jobs:
           import re
           from datetime import date, datetime
           from pathlib import Path
+          from zoneinfo import ZoneInfo
 
           path = Path("data/pending_jobs.json")
           items = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
-          today = date.today()
+          today = datetime.now(ZoneInfo("Asia/Kolkata")).date()
           cleaned = []
           seen = set()
           for item in items:
