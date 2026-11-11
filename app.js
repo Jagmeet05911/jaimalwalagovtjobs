@@ -269,7 +269,7 @@
   // Records without a deadline remain visible for manual review.
   function isDeadlineActive(job) {
     if (!job || !job.deadline) return true;
-    const match = String(job.deadline).trim().match(/^(\\d{4})-(\\d{2})-(\\d{2})/);
+    const match = String(job.deadline).trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (!match) return true;
     const deadline = match[1] + "-" + match[2] + "-" + match[3];
     return deadline >= localDateString();
