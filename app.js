@@ -909,9 +909,10 @@
 
   function renderJobs() {
     if (!$("jobsDirectory")) return;
+    // Temporary safe restore: show every published government vacancy.
+    // Do not let deadline parsing hide existing published records.
     const published = jobs.filter(job =>
       job.status === "published" &&
-      isDeadlineActive(job) &&
       !["private jobs", "results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase())
     );
     const states = [
