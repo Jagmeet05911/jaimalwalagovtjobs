@@ -276,35 +276,14 @@
     return year + "-" + month + "-" + day;
   }
 
-  // Hide stale/expired vacancies from public listings without deleting records.
-  // Results and admit-card notices may legitimately have no application deadline.
+  // Keep published listings visible unless a clear, valid deadline has expired.
+  // Missing/legacy dates must not make every existing published job disappear.
   function isDeadlineActive(job) {
     if (!job) return false;
-
-    const category = String(job.category || "").toLowerCase();
-    const isNonVacancyNotice = ["results", "admit cards", "forms / admissions"].includes(category);
-
-    // Reject records explicitly tied to a previous recruitment year.
-    const searchable = [job.title, job.department, job.noticeUrl, job.applyUrl].join(" ");
-    const years = searchable.match(/\b(20\d{2})\b/g) || [];
-    if (years.some(year => Number(year) < new Date().getFullYear())) return false;
-
-    // A source recheck date alone does not prove that a vacancy is current.
-    if (job.sourceChecked) {
-      const checked = String(job.sourceChecked).trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
-      if (checked) {
-        const checkedDate = new Date(Number(checked[1]), Number(checked[2]) - 1, Number(checked[3]));
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const ageDays = Math.floor((today - checkedDate) / 86400000);
-        if (ageDays > 30 || ageDays < -1) return false;
-      }
-    }
-
-    // Public vacancy listings require a real, valid, future deadline.
-    if (!job.deadline) return isNonVacancyNotice;
-    const match = String(job.deadline).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!match) return false;
+    const raw = String(job.deadline || "").trim();
+    if (!raw) return true;
+    const match = raw.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    if (!match) return true;
     const deadline = match[1] + "-" + match[2] + "-" + match[3];
     return deadline >= localDateString();
   }
