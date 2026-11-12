@@ -123,7 +123,7 @@ for source in SOURCES:
 
             # A fresh sourceChecked date does not make an old notice current.
             years = [int(y) for y in re.findall(r"\b(20\d{2})\b", title + " " + url)]
-            if years and max(years) < CURRENT_YEAR:
+            if any(year < CURRENT_YEAR for year in years):
                 continue
 
             deadline = extract_deadline(title)
