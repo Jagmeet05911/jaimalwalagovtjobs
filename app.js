@@ -101,8 +101,11 @@
       const fromDate = localDateString(since);
       const rows = await supa("/rest/v1/site_analytics?select=visitor_key,visit_date,page_path,created_at&visit_date=gte." + encodeURIComponent(fromDate) + "&order=visit_date.desc", {}, true);
       const data = Array.isArray(rows) ? rows : [];
-      const visitors = new Set(data.map(row => row.visitor_key + "|" + row.visit_date)).size;
-      summary.innerHTML = '<p><strong>Page views (last 7 days):</strong> ' + data.length.toLocaleString() + '</p><p><strong>Unique browser-days (last 7 days):</strong> ' + visitors.toLocaleString() + '</p>';
+      const clickRows = data.filter(row => String(row.page_path || "").startsWith("/apply-click/"));
+      const pageRows = data.filter(row => !String(row.page_path || "").startsWith("/apply-click/"));
+      const visitors = new Set(pageRows.map(row => row.visitor_key + "|" + row.visit_date)).size;
+      const clickVisitors = new Set(clickRows.map(row => row.visitor_key + "|" + row.visit_date)).size;
+      summary.innerHTML = '<p><strong>Page views (last 7 days):</strong> ' + pageRows.length.toLocaleString() + '</p><p><strong>Unique browser-days (last 7 days):</strong> ' + visitors.toLocaleString() + '</p><p><strong>Apply Online clicks (last 7 days):</strong> ' + clickRows.length.toLocaleString() + '</p><p><strong>Unique browser-days with Apply clicks:</strong> ' + clickVisitors.toLocaleString() + '</p>';
       const byDayPage = new Map();
       data.forEach(row => {
         const key = row.visit_date + "|" + row.page_path;
@@ -807,6 +810,8 @@
           ${
             apply && apply !== notice
               ? `<a
+                   class="apply-online-link"
+                   data-job-id="${escapeHtml(job.id)}"
                    href="${escapeHtml(apply)}"
                    target="_blank"
                    rel="noopener noreferrer">
@@ -1649,6 +1654,22 @@
     $("sourceChecked").value =
       localDateString();
   }
+
+  // Record a privacy-conscious Apply Online click in the existing analytics table.
+  // The database stores only a random browser key, date and job ID path; no personal details.
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a.apply-online-link");
+    if (!link) return;
+    const jobId = String(link.dataset.jobId || "unknown").slice(0, 180);
+    supa("/rest/v1/rpc/record_site_visit", {
+      method: "POST",
+      body: JSON.stringify({
+        p_visitor_key: getVisitorKey(),
+        p_visit_date: localDateString(),
+        p_page_path: "/apply-click/" + encodeURIComponent(jobId)
+      })
+    }).catch(error => console.warn("Apply click analytics could not be recorded:", error));
+  });
 
   /* Start website */
 
