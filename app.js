@@ -276,7 +276,7 @@
     // Reject records explicitly tied to a previous recruitment year.
     const searchable = [job.title, job.department, job.noticeUrl, job.applyUrl].join(" ");
     const years = searchable.match(/\b(20\d{2})\b/g) || [];
-    if (years.length && Math.max(...years.map(Number)) < new Date().getFullYear()) return false;
+    if (years.some(year => Number(year) < new Date().getFullYear())) return false;
 
     // A source recheck date alone does not prove that a vacancy is current.
     if (job.sourceChecked) {
