@@ -115,18 +115,20 @@ for source in SOURCES:
             if not any(word in lowered for word in NOTICE_WORDS):
                 continue
 
-            years = [int(y) for y in re.findall(r"\b(20\d{2})\b", title)]
-            if years and max(years) < CURRENT_YEAR:
-                continue
-
             url = normal_url(urljoin(response.url, anchor["href"]))
             if not url.startswith("https://") or url in seen_urls:
                 continue
             if url == normal_url(source["url"]):
                 continue
 
+            # A fresh sourceChecked date does not make an old notice current.
+            years = [int(y) for y in re.findall(r"\b(20\d{2})\b", title + " " + url)]
+            if years and max(years) < CURRENT_YEAR:
+                continue
+
             deadline = extract_deadline(title)
-            if is_expired(deadline):
+            # Undated vacancies must not enter the current-opening review queue.
+            if not deadline or is_expired(deadline):
                 continue
 
             title_key = re.sub(r"\s+", " ", lowered)
@@ -161,7 +163,10 @@ for job in CURATED_JOBS + candidates:
     url_key = normal_url(job.get("url"))
     title_key = re.sub(r"\s+", " ", str(job.get("title", "")).strip().lower())
     key = (url_key, str(job.get("source", "")).strip().lower(), title_key)
-    if key in seen_keys or is_expired(job.get("deadline", "")):
+    years = [int(y) for y in re.findall(r"\b(20\d{2})\b", str(job.get("title", "")) + " " + str(job.get("url", "")))]
+    if key in seen_keys or not job.get("deadline") or is_expired(job.get("deadline", "")):
+        continue
+    if years and max(years) < CURRENT_YEAR:
         continue
     seen_keys.add(key)
     cleaned.append(job)
