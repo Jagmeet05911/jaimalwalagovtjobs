@@ -115,7 +115,15 @@
       daily.innerHTML = lines.length
         ? lines.slice(0, 50).map(([key, count]) => {
             const split = key.indexOf("|");
-            return '<div class="pending-card"><strong>' + escapeHtml(displayDate(key.slice(0, split))) + '</strong><p>' + escapeHtml(key.slice(split + 1)) + ' · ' + count + ' page view(s)</p></div>';
+            const pagePath = key.slice(split + 1);
+            if (pagePath.startsWith("/apply-click/")) {
+              let jobId = pagePath.slice("/apply-click/".length);
+              try { jobId = decodeURIComponent(jobId); } catch (_) {}
+              const clickedJob = jobs.find(job => String(job.id) === jobId);
+              const label = clickedJob ? "Apply Online · " + clickedJob.title : "Apply Online · Job " + jobId;
+              return '<div class="pending-card"><strong>' + escapeHtml(displayDate(key.slice(0, split))) + '</strong><p>' + escapeHtml(label) + ' · ' + count + ' click(s)</p></div>';
+            }
+            return '<div class="pending-card"><strong>' + escapeHtml(displayDate(key.slice(0, split))) + '</strong><p>' + escapeHtml(pagePath) + ' · ' + count + ' page view(s)</p></div>';
           }).join("")
         : '<p class="muted">No visits recorded yet. Open the public website once the SQL setup is complete.</p>';
     } catch (error) {
