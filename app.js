@@ -780,6 +780,19 @@
           </span>
         </p>
 
+        <details class="apply-help">
+          <summary>ਫਾਰਮ ਕਿਵੇਂ ਭਰਨਾ ਹੈ? · How to apply</summary>
+          <ol>
+            <li>ਪਹਿਲਾਂ Official Notification ਖੋਲ੍ਹ ਕੇ ਯੋਗਤਾ, ਉਮਰ, ਫੀਸ ਅਤੇ ਆਖ਼ਰੀ ਮਿਤੀ ਪੜ੍ਹੋ।</li>
+            <li>Apply Online ਦਬਾ ਕੇ ਸਰਕਾਰੀ ਭਰਤੀ ਪੋਰਟਲ ਖੋਲ੍ਹੋ।</li>
+            <li>ਉੱਥੇ ਆਪਣਾ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਫਾਰਮ ਸਰਕਾਰੀ ਹਦਾਇਤਾਂ ਮੁਤਾਬਕ ਪੂਰਾ ਕਰੋ।</li>
+            <li>ਲੋੜੀਂਦੇ ਦਸਤਾਵੇਜ਼ ਅਤੇ ਫੀਸ ਸਿਰਫ਼ ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਨੁਸਾਰ ਜਮ੍ਹਾਂ ਕਰੋ।</li>
+            <li>Submit ਕਰਨ ਤੋਂ ਬਾਅਦ ਰਸੀਦ/ਐਪਲੀਕੇਸ਼ਨ ਨੰਬਰ ਸੰਭਾਲੋ।</li>
+          </ol>
+          <p>ਦਸਤਾਵੇਜ਼ ਨੌਕਰੀ ਅਨੁਸਾਰ ਵੱਖਰੇ ਹੁੰਦੇ ਹਨ—ਸਹੀ ਲਿਸਟ Official Notification ਵਿੱਚ ਵੇਖੋ। ਆਪਣਾ ਪਾਸਵਰਡ ਜਾਂ OTP ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਾ ਕਰੋ।</p>
+          <p class="apply-help-en">Read the official notice first. Complete the application only on the recruiting authority's official portal. Required documents and fees vary by vacancy.</p>
+        </details>
+
         <div class="job-actions">
 
           ${
