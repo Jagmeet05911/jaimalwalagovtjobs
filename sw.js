@@ -9,7 +9,7 @@ const APP_SHELL = [
   "./app.js?v=20261122-easy-search",
   "./filters.js?v=20261122-easy-search",
   "./bottom-nav.js?v=20261122-nav-fix",
-  "./growth-tools.js?v=20261122-growth",
+  "./growth-tools.js?v=20261122-cache-fix",
   "./alerts.js?v=20261025",
   "./festival-greetings.js?v=20261107"
 ];
