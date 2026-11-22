@@ -1714,10 +1714,14 @@
     primaryLanguagePicker.addEventListener("change", () => {
       const googlePicker = document.querySelector(".goog-te-combo");
       if (googlePicker) {
-        googlePicker.value = "/en/en";
+        // Translate the complete page, not only the built-in text labels.
+        googlePicker.value = primaryLanguagePicker.value === "en" ? "" : primaryLanguagePicker.value;
         googlePicker.dispatchEvent(new Event("change"));
+        document.documentElement.lang = primaryLanguagePicker.value;
+      } else {
+        // Keep the built-in translations available if the Google widget is blocked.
+        setLanguage(primaryLanguagePicker.value);
       }
-      setLanguage(primaryLanguagePicker.value);
     });
   }
 
