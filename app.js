@@ -691,11 +691,13 @@
   window.setPortalLanguage = setLanguage;
 
   function switchView(id) {
+    const showJobSplit = id === "jobsView" || id === "privateJobsView";
+    const splitLayout = $("jobsSplitLayout");
+    if (splitLayout) splitLayout.classList.toggle("hidden", !showJobSplit);
+
     document.querySelectorAll(".view").forEach(view => {
-      view.classList.toggle(
-        "hidden",
-        view.id !== id
-      );
+      const isJobColumn = view.id === "jobsView" || view.id === "privateJobsView";
+      view.classList.toggle("hidden", showJobSplit ? !isJobColumn : view.id !== id);
     });
 
     document.querySelectorAll(".tab").forEach(button => {
