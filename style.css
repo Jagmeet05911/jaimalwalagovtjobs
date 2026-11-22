@@ -164,3 +164,15 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 @media(max-width:430px){.job-facts{grid-template-columns:1fr}}
 
 .job-link-hint{margin:0 0 8px;color:var(--muted);font-size:12px;font-weight:600}.job-actions .apply-link,.job-actions .apply-online-link{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;font-size:13px}
+
+
+/* Government and private jobs shown together in a clear two-column layout */
+.jobs-split-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.jobs-split-layout>.view{min-width:0;padding:16px;background:var(--surface,#f7f9fc);border:1px solid var(--line);border-radius:18px}
+.jobs-split-layout .section-head{align-items:flex-start;min-height:108px}
+.jobs-split-layout .section-head h2{font-size:22px}
+.jobs-split-layout .jobs-grid{grid-template-columns:minmax(0,1fr)}
+.jobs-split-layout .jobs-directory-intro{font-size:11px}
+.jobs-split-layout .jobs-toolbar{font-size:11px;flex-wrap:wrap}
+.jobs-split-layout .job-card{padding:15px}
+@media(max-width:760px){.jobs-split-layout{grid-template-columns:minmax(0,1fr);gap:14px}.jobs-split-layout>.view{padding:13px}.jobs-split-layout .section-head{min-height:0}.jobs-split-layout .section-head h2{font-size:21px}}
