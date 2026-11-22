@@ -780,14 +780,6 @@
           </span>
         </div>
 
-        ${
-          job.eligibility
-            ? `<p class="job-description">
-                ${escapeHtml(job.eligibility)}
-               </p>`
-            : ""
-        }
-
         <p class="job-meta">
           <span>
             ${escapeHtml(t("checked"))}:
