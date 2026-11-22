@@ -1765,6 +1765,22 @@
 })();
 
 
+// Branded copies of supported official PDF notices; original source remains linked.
+document.addEventListener("click", async function(event){
+  const link = event.target.closest("a.watermark-notice-link");
+  if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const sourceUrl = link.href;
+  if (!/^https:\/\//i.test(sourceUrl)) return;
+  event.preventDefault(); const oldText = link.textContent; link.textContent = "Preparing branded copy…";
+  try {
+    const response = await fetch("https://kbebdetnhfkxnkpdiefd.supabase.co/functions/v1/watermark-notice", {method:"POST",headers:{"Content-Type":"application/json","apikey":"sb_publishable_51mCCN-NaaylwYSnLyFk2Q_Uovo2lY_"},body:JSON.stringify({url:sourceUrl})});
+    if (!response.ok) throw new Error("Watermark unavailable");
+    const blob = await response.blob(); if (blob.type !== "application/pdf") throw new Error("Not a PDF");
+    const objectUrl=URL.createObjectURL(blob), a=document.createElement("a"); a.href=objectUrl; a.download="Jaimalwala-Govt-Jobs-Notice.pdf"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);
+  } catch (_) { window.open(sourceUrl,"_blank","noopener,noreferrer"); if(typeof toast==="function") toast("ਇਸ ਨੋਟੀਫਿਕੇਸ਼ਨ ਦੀ branded copy ਨਹੀਂ ਬਣ ਸਕੀ; ਅਸਲ ਨੋਟੀਫਿਕੇਸ਼ਨ ਖੋਲ੍ਹ ਦਿੱਤਾ ਹੈ।"); }
+  finally { link.textContent=oldText; }
+}, true);
+
 // Accessible site-wide text size controls (persist for this browser).
 (function setupFontSizeControls(){
   const key = "jg_font_scale_v1";
