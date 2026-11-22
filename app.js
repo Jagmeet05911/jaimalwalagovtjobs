@@ -1242,7 +1242,39 @@
     } catch (error) { toast("Delete failed: " + error.message); }
   }
 
+  // Two live scrolling ticker lines, sourced only from admin-published records.
+  function renderLatestJobTicker() {
+    const governmentTrack = $("governmentTickerTrack");
+    const privateTrack = $("privateTickerTrack");
+    if (!governmentTrack || !privateTrack) return;
+
+    const published = jobs.filter(job => job.status === "published");
+    const isPrivate = job => String(job.category || "").toLowerCase() === "private jobs";
+    const isGovernment = job => !isPrivate(job) &&
+      !["results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase());
+
+    const makeItems = (items, emptyText, target) => {
+      const latest = items.slice(0, 10);
+      if (!latest.length) {
+        target.innerHTML = '<span class="ticker-empty">' + escapeHtml(emptyText) + '</span>';
+        target.classList.remove("ticker-moving");
+        return;
+      }
+      const markup = latest.map(job =>
+        '<a class="ticker-item" href="' + (isPrivate(job) ? '#privateJobsView' : '#jobsView') +
+        '" title="' + escapeHtml(job.title || "Job update") + '">' +
+        '<span aria-hidden="true">✦</span> ' + escapeHtml(job.title || "New job update") + '</a>'
+      ).join('<span class="ticker-separator" aria-hidden="true">•</span>');
+      target.innerHTML = '<span class="ticker-sequence">' + markup + '</span><span class="ticker-sequence" aria-hidden="true">' + markup + '</span>';
+      target.classList.toggle("ticker-moving", latest.length > 1);
+    };
+
+    makeItems(published.filter(isGovernment), "ਨਵੀਆਂ ਸਰਕਾਰੀ ਨੌਕਰੀਆਂ ਦੀ ਜਾਣਕਾਰੀ ਜਲਦੀ ਅੱਪਡੇਟ ਹੋਵੇਗੀ।", governmentTrack);
+    makeItems(published.filter(isPrivate), "ਨਵੀਆਂ ਪ੍ਰਾਈਵੇਟ ਨੌਕਰੀਆਂ ਜਲਦੀ ਇੱਥੇ ਦਿਖਣਗੀਆਂ।", privateTrack);
+  }
+
   function renderAll() {
+    renderLatestJobTicker();
 
     if ($("savedNavCount")) {
       $("savedNavCount").textContent =
