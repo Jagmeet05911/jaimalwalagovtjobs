@@ -40,7 +40,8 @@
       copy.setAttribute("aria-label", original.textContent.trim());
       copy.addEventListener("click", () => {
         original.click();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        const destination = document.getElementById(original.dataset.view);
+        if (destination) destination.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       nav.appendChild(copy);
     });
