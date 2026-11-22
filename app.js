@@ -1302,6 +1302,14 @@
     renderResults();
     renderForms();
     renderAdmin();
+
+    const sharedJobId = decodeURIComponent((window.location.hash || "").replace(/^#job-/, ""));
+    if (window.location.hash.startsWith("#job-") && sharedJobId) {
+      window.setTimeout(() => {
+        const target = document.getElementById("job-" + sharedJobId);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 250);
+    }
   }
 
   /*
