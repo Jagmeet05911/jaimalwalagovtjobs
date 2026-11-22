@@ -744,7 +744,7 @@
     const admitCard = safeUrl(job.admitCardUrl);
 
     return `
-      <article class="job-card" id="job-${escapeHtml(job.id)}">
+      <article class="job-card" id="job-${escapeHtml(job.id)}" data-state="${escapeHtml(getJobLocation(job))}" data-department="${escapeHtml(classifyJob(job))}">
 
         <div class="job-top">
           <span class="job-badge">
@@ -973,56 +973,16 @@
 
   function renderJobs() {
     if (!$("jobsDirectory")) return;
-    // Temporary safe restore: show every published government vacancy.
-    // Do not let deadline parsing hide existing published records.
     const published = jobs.filter(job =>
       job.status === "published" &&
       !["private jobs", "results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase())
     );
-    const states = [
-      "Punjab", "Haryana", "Himachal Pradesh", "Chandigarh", "Delhi",
-      "Uttar Pradesh", "Rajasthan", "Uttarakhand", "Jammu and Kashmir",
-      "Maharashtra", "Gujarat", "Madhya Pradesh", "Bihar", "West Bengal",
-      "Odisha", "Jharkhand", "Chhattisgarh", "Andhra Pradesh", "Telangana",
-      "Karnataka", "Tamil Nadu", "Kerala", "Goa", "Assam", "Sikkim",
-      "Arunachal Pradesh", "Nagaland", "Manipur", "Mizoram", "Tripura",
-      "Meghalaya", "All India"
-    ].sort((a, b) => a.localeCompare(b, "en"));
-    const departments = [
-      ["Railway", "Railway Jobs"], ["Banking", "Banking Jobs"],
-      ["Engineering", "Engineering / B.Tech Jobs"], ["Police", "Police Jobs"],
-      ["Teaching", "Teaching Jobs"], ["Defence", "Defence Jobs"],
-      ["Medical", "Medical / Health Jobs"], ["Courts", "Courts / Judiciary Jobs"],
-      ["Agriculture", "Agriculture Jobs"], ["IT", "IT / Computer Jobs"],
-      ["Other", "Other Government Jobs"]
-    ].sort((a, b) => a[1].localeCompare(b[1], "en"));
-    const stateJobs = state => published.filter(job => {
-      const location = getJobLocation(job).toLowerCase();
-      if (state === "All India") return /all india|india-wide|national|pan india/i.test(location);
-      return location === state.toLowerCase();
-    });
-    const jobCards = items => items.length
-      ? items.map(jobCard).join("")
-      : '<p class="directory-empty">No jobs listed here yet. Check back for official updates.</p>';
-    const stateSections = states.map(state => {
-      const items = stateJobs(state);
-      return '<section class="directory-section"><h3 class="directory-heading">' +
-        escapeHtml(state) + ' <span>' + items.length + ' jobs</span></h3>' +
-        '<div class="jobs-grid">' + jobCards(items) + '</div></section>';
-    }).join("");
-    const departmentSections = departments.map(([category, label]) => {
-      const items = published.filter(job => classifyJob(job) === category);
-      return '<section class="directory-section"><h3 class="directory-heading">' +
-        escapeHtml(label) + ' <span>' + items.length + ' jobs</span></h3>' +
-        '<div class="jobs-grid">' + jobCards(items) + '</div></section>';
-    }).join("");
+    const cards = published.map(jobCard).join("");
     $("jobsDirectory").innerHTML =
-      '<section class="directory-group"><h2 class="directory-group-title">State-wise Government Jobs</h2>' +
-      stateSections + '</section><section class="directory-group"><h2 class="directory-group-title">Department-wise Government Jobs</h2>' +
-      departmentSections + '</section>';
+      '<section class="directory-group"><h2 class="directory-group-title">All Government Jobs <span class="directory-result-count">' +
+      published.length + ' opportunities</span></h2><div class="jobs-grid">' + cards + '</div></section>';
     if ($("publishedCount")) $("publishedCount").textContent = published.length;
     if ($("emptyJobs")) $("emptyJobs").classList.toggle("hidden", published.length > 0);
-    if ($("emptyJobs") && published.length > 0) $("emptyJobs").classList.add("hidden");
     attachSaveButtons($("jobsDirectory"));
   }
 
