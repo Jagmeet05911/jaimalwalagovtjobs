@@ -1787,7 +1787,7 @@
 // Persistent theme selector: blue (default), green, or dark.
 (function setupThemeSelector(){
   const key = "jg_theme_v1";
-  const valid = ["blue", "green", "dark"];
+  const valid = ["blue", "green", "dark", "midnight", "royal"];
   function apply(theme){
     const selected = valid.includes(theme) ? theme : "blue";
     document.documentElement.dataset.theme = selected;
