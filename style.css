@@ -295,3 +295,51 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
 .job-card{position:relative;overflow:hidden}
 .job-card::after{content:"JG · JAIMALWALA GOVT JOBS";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
+
+
+/* Jaimalwala dashboard: inspired by category-led job portals, with an original layout */
+.portal-dashboard{max-width:1120px;margin:22px auto 26px;padding:0 0 18px;color:var(--ink)}
+.portal-welcome{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;border-radius:15px 15px 0 0;background:linear-gradient(105deg,#123b72,#2467b5);color:#fff}
+.portal-kicker{font-size:10px;font-weight:900;letter-spacing:1.4px;color:#d6e7ff}
+.portal-welcome h2{font-size:25px;line-height:1.2;margin:5px 0}
+.portal-welcome p{margin:0;color:#e1edff;font-size:12px}
+.portal-live{font-size:10px;font-weight:900;letter-spacing:.7px;white-space:nowrap;background:#ffffff20;border:1px solid #ffffff40;border-radius:99px;padding:8px 10px}
+.portal-live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#65e6a1;margin-right:6px;box-shadow:0 0 0 4px #65e6a122}
+.portal-search{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border:1px solid var(--line);border-top:0;box-shadow:0 5px 18px #193c6810}
+.portal-search>span{font-size:25px;color:var(--muted)}
+.portal-search input{flex:1;min-width:0;border:0!important;outline:0;padding:10px 4px!important}
+.portal-search button,.portal-section-heading button{border:0;border-radius:8px;padding:10px 15px;background:#3159d9;color:#fff;font-size:12px;font-weight:800}
+.portal-dashboard-grid{display:grid;grid-template-columns:215px minmax(0,1fr);gap:14px;margin-top:14px;align-items:start}
+.portal-side-menu{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 5px 18px #193c680a}
+.portal-side-menu h3{font-size:13px;margin:2px 5px 9px;color:var(--navy);padding-bottom:9px;border-bottom:2px solid var(--blue-light)}
+.portal-side-menu button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#40516a;padding:8px 7px;font-size:11px;font-weight:650}
+.portal-side-menu button:hover,.portal-side-menu button:focus-visible{background:#edf3ff;color:#174b91;outline:0}
+.portal-dashboard-main{min-width:0}
+.portal-feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.portal-feature,.portal-new-updates{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 5px 18px #193c680a;min-width:0}
+.portal-feature-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.portal-feature-head h3{font-size:14px;margin:0}
+.portal-feature-head>span{font-size:8px;font-weight:900;letter-spacing:.5px;color:#64748b;background:#f1f5f9;border-radius:5px;padding:5px 6px}
+.portal-feature-head .portal-live-tag{background:#ffeded;color:#c12737}
+.portal-mini-list{display:grid;gap:0}
+.portal-mini-item{display:flex;align-items:flex-start;gap:8px;padding:9px 0;border-bottom:1px dashed #e5eaf1;text-decoration:none;color:#35465f;font-size:11px;line-height:1.4}
+.portal-mini-item:last-child{border-bottom:0}
+.portal-mini-item:hover{color:#174b91}
+.portal-mini-dot{color:#2c68c9;font-weight:900}
+.portal-deadline{margin-left:auto;flex-shrink:0;font-size:8px;font-weight:900;color:#b42332;background:#ffeded;padding:4px 5px;border-radius:4px}
+.portal-loading{font-size:11px;color:var(--muted);margin:12px 0}
+.portal-new-updates{margin-top:12px}
+.portal-section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.portal-section-heading span{font-size:9px;font-weight:900;letter-spacing:1px;color:#3565bd}
+.portal-section-heading h3{font-size:17px;margin:2px 0}
+.portal-section-heading button{padding:8px 11px;font-size:10px}
+.portal-job-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.portal-job-tile{min-height:76px;padding:11px;border-radius:8px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#176c86,#168c91);display:flex;flex-direction:column;justify-content:space-between;font-size:11px;font-weight:800;line-height:1.35;overflow-wrap:anywhere}
+.portal-job-tile:nth-child(3n+2){background:linear-gradient(135deg,#94521c,#d28a25)}
+.portal-job-tile:nth-child(3n){background:linear-gradient(135deg,#3f348e,#7651c8)}
+.portal-job-tile small{font-size:8px;opacity:.85;font-weight:600}
+.portal-trust-strip{display:flex;flex-wrap:wrap;gap:8px 15px;padding:12px 3px;color:#52708e;font-size:10px;font-weight:750}
+@media(max-width:1160px){.portal-dashboard{margin-left:20px;margin-right:20px}}
+@media(max-width:760px){.portal-dashboard-grid{grid-template-columns:1fr}.portal-side-menu{display:grid;grid-template-columns:1fr 1fr;gap:3px}.portal-side-menu h3{grid-column:1/-1}.portal-side-menu button{font-size:10px;padding:9px 6px}.portal-feature-grid{grid-template-columns:1fr 1fr}.portal-welcome h2{font-size:21px}.portal-job-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.portal-dashboard{margin:12px 10px 20px}.portal-welcome{padding:15px 14px}.portal-welcome h2{font-size:19px}.portal-kicker{font-size:8px}.portal-live{font-size:8px;padding:6px}.portal-search{padding:8px;gap:5px}.portal-search button{padding:9px 10px;font-size:10px}.portal-feature-grid{grid-template-columns:1fr}.portal-side-menu{grid-template-columns:1fr 1fr}.portal-feature,.portal-new-updates{padding:11px}.portal-job-tile{min-height:68px;font-size:10px}}
+@media(max-width:360px){.portal-side-menu{grid-template-columns:1fr}.portal-job-tiles{grid-template-columns:1fr 1fr}}
