@@ -50,16 +50,38 @@
       <form class="portal-search" id="portalSearchForm"><span aria-hidden="true">⌕</span><input id="portalSearchInput" type="search" placeholder="Search job, department, qualification or state…" aria-label="Search jobs"><button type="submit">Search Jobs</button></form>
       <div class="portal-dashboard-grid">
         <aside class="portal-side-menu"><h3>Browse Categories</h3>
-          <button type="button" data-portal-view="jobsView" data-portal-query="">🏛️ All Government Jobs</button>
+          <button type="button" data-portal-view="jobsView">🏛️ All Government Jobs</button>
           <button type="button" data-portal-view="jobsView" data-portal-query="Punjab">📍 Punjab Jobs</button>
-          <button type="button" data-portal-view="jobsView" data-portal-query="All India">🇮🇳 Central / All India</button>
-          <button type="button" data-portal-view="privateJobsView">💼 Private Jobs</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Central|All India">🇮🇳 Central / All India</button>
+          <strong class="portal-category-label">🎓 Qualification Wise</strong>
+          <button type="button" data-portal-view="jobsView" data-portal-query="5th|fifth class">5th Pass</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="8th|eighth class">8th Pass</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="10th|matric">10th / Matric</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="12th|+2|senior secondary">12th / +2</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="ITI|industrial training">ITI</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Diploma">Diploma</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Graduate|Graduation|Bachelor">Graduate</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Post Graduate|Postgraduate|Master">Post Graduate</button>
+          <strong class="portal-category-label">🏆 Competitive Exams</strong>
+          <button type="button" data-portal-view="jobsView" data-portal-query="UPSC|IAS|IPS">UPSC / IAS / IPS</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="PCS|Punjab Civil Services">PCS</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="SSC">SSC</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Bank|IBPS|SBI">Banking</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Railway|RRB">Railway</button>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Defence|Army|Navy|Air Force">Defence</button>
+          <strong class="portal-category-label">👩 Women Opportunities</strong>
+          <button type="button" data-portal-view="jobsView" data-portal-query="Women|Woman|Female|Ladies|Female candidates">Women-specific / Women Eligible</button>
+          <strong class="portal-category-label">💼 Private Jobs</strong>
+          <button type="button" data-portal-view="privateJobsView">All Private Jobs</button>
+          <button type="button" data-portal-view="privateJobsView" data-portal-query="10th|Matric|8th|Middle">Private • 8th / 10th</button>
+          <button type="button" data-portal-view="privateJobsView" data-portal-query="12th|+2|Senior Secondary">Private • 12th</button>
+          <button type="button" data-portal-view="privateJobsView" data-portal-query="Graduate|Bachelor|Degree">Private • Graduate</button>
+          <button type="button" data-portal-view="privateJobsView" data-portal-query="Work From Home|Remote">Work From Home</button>
+          <button type="button" data-portal-view="privateJobsView" data-portal-query="Women|Female|Ladies">Private • Women</button>
+          <strong class="portal-category-label">📚 More</strong>
           <button type="button" data-portal-view="formsView">📝 Forms & Admissions</button>
           <button type="button" data-portal-view="resultsView">📊 Results & Merit Lists</button>
           <button type="button" data-portal-view="admitView">🎫 Admit Cards</button>
-          <button type="button" data-portal-view="jobsView" data-portal-query="10th">🎓 10th Pass Jobs</button>
-          <button type="button" data-portal-view="jobsView" data-portal-query="12th">🎓 12th Pass Jobs</button>
-          <button type="button" data-portal-view="jobsView" data-portal-query="ITI">🛠️ ITI / Diploma</button>
           <button type="button" data-portal-view="savedView">♡ Saved Jobs</button>
         </aside>
         <div class="portal-dashboard-main">
