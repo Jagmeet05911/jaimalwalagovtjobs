@@ -135,3 +135,20 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 @keyframes jobTickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){.job-ticker{margin:9px 10px 0;padding:7px 9px}.ticker-row{grid-template-columns:1fr;gap:2px}.ticker-label{font-size:11px}.ticker-item{font-size:11px;padding:2px 9px}.ticker-track.ticker-moving{animation-duration:90s}}
 @media(prefers-reduced-motion:reduce){.ticker-track.ticker-moving{animation:none}.ticker-sequence[aria-hidden="true"]{display:none}}
+
+
+/* Primary portal languages first; Google Translate provides additional languages. */
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.header-language{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#siteLanguage{max-width:115px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-size:12px;font-weight:700}
+.other-language{display:flex;align-items:center;gap:5px}
+.other-language small{font-size:10px;color:var(--muted);white-space:nowrap}
+#google_translate_element{max-width:145px}
+#google_translate_element select{max-width:145px;padding:6px 7px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-size:11px}
+@media(max-width:650px){
+ .header-language{gap:5px;justify-content:flex-end}
+ #siteLanguage{max-width:100px;padding:6px 7px;font-size:11px}
+ .other-language{gap:3px}
+ .other-language small{display:none}
+ #google_translate_element,#google_translate_element select{max-width:115px}
+}
