@@ -15,7 +15,7 @@
     return {
       id: row.id, title: row.title, department: row.department,
       location: row.location || "Punjab", category: row.category || "Other",
-      eligibility: row.eligibility || "", deadline: row.deadline || "",
+      eligibility: row.eligibility || "", ageLimit: row.age_limit || "", deadline: row.deadline || "",
       noticeUrl: row.notice_url, applyUrl: row.apply_url || "",
       admitCardUrl: row.admit_card_url || "",
       sourceChecked: row.source_checked || "", status: row.status
@@ -26,7 +26,7 @@
     return {
       id: String(job.id), title: job.title, department: job.department,
       location: job.location || "Punjab", category: job.category || "Other",
-      eligibility: job.eligibility || "", deadline: job.deadline || null,
+      eligibility: job.eligibility || "", age_limit: job.ageLimit || null, deadline: job.deadline || null,
       notice_url: job.noticeUrl, apply_url: job.applyUrl || null,
       admit_card_url: job.admitCardUrl || null,
       source_checked: job.sourceChecked || null, status: job.status || "pending"
@@ -755,6 +755,11 @@
         <p class="job-dept">
           ${escapeHtml(job.department)}
         </p>
+
+        <div class="job-facts">
+          <div class="job-fact"><strong>Eligibility / ਯੋਗਤਾ</strong><span>${escapeHtml(job.eligibility || "Check official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੇਖੋ")}</span></div>
+          <div class="job-fact"><strong>Age Limit / ਉਮਰ ਹੱਦ</strong><span>${escapeHtml(job.ageLimit || "As per official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਨੁਸਾਰ")}</span></div>
+        </div>
 
         <div class="job-meta">
           <span>
@@ -1607,6 +1612,9 @@
 
           eligibility:
             $("eligibility").value.trim(),
+
+          ageLimit:
+            $("ageLimit").value.trim(),
 
           deadline:
             deadline,
