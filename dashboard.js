@@ -1,7 +1,7 @@
 (() => {
   "use strict";
   const $ = id => document.getElementById(id);
-  const clean = node => (node?.textContent || "").replace(/\\s+/g," ").trim();
+  const clean = node => (node?.textContent || "").replace(/\s+/g," ").trim();
   const safe = value => String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   function visibleJobs(){
     return [...document.querySelectorAll("#jobsDirectory .job-card,#jobsList .job-card")].filter(card=>!card.hidden && card.offsetParent!==null);
