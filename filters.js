@@ -1,55 +1,73 @@
 (() => {
   "use strict";
-  function textOf(node) { return (node?.textContent || "").trim().toLowerCase(); }
-  function sectionLabel(section) {
-    const heading = section?.querySelector(".directory-heading");
-    if (!heading) return "";
-    return Array.from(heading.childNodes)
-      .filter(node => !(node.nodeType === 1 && node.matches("span")))
-      .map(node => node.textContent || "")
-      .join(" ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toLowerCase();
-  }
+
+  const textOf = node => (node?.textContent || "").trim().toLowerCase();
+  const escapeAttr = value => String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+
   function addStyles() {
-    if (document.getElementById("jobFilterStyles")) return;
-    const style = document.createElement("style"); style.id = "jobFilterStyles";
-    style.textContent = `.job-filter-panel{margin:12px 0 18px;padding:14px;background:#fff;border:1px solid var(--line,#dfe7f1);border-radius:14px;box-shadow:0 6px 18px #203c6408}.job-filter-row{display:grid;grid-template-columns:minmax(190px,1.4fr) repeat(4,minmax(130px,1fr)) auto;gap:9px;align-items:end}.job-filter-row label{display:grid;gap:5px;font-size:11px;font-weight:800;color:var(--muted,#64748b)}.job-filter-row input,.job-filter-row select{width:100%;min-width:0;padding:10px 11px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#fff;color:var(--ink,#17243a);font-size:12px}.job-filter-row button{padding:10px 12px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#eaf1ff;color:var(--navy,#123b72);font-weight:800;font-size:12px}@media(max-width:760px){.job-filter-row{grid-template-columns:1fr 1fr}.job-filter-row label:first-child{grid-column:1/-1}.job-filter-row button{width:100%}}@media(max-width:420px){.job-filter-row{grid-template-columns:1fr}}`;
+    if (document.getElementById("simpleJobFilterStyles")) return;
+    const style = document.createElement("style");
+    style.id = "simpleJobFilterStyles";
+    style.textContent = `
+      .job-filter-panel{margin:12px 0 18px;padding:14px;background:#fff;border:1px solid var(--line,#dfe7f1);border-radius:14px;box-shadow:0 6px 18px #203c6408}
+      .job-filter-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 10px;font-size:14px;font-weight:800;color:var(--navy,#123b72)}
+      .job-filter-row{display:grid;grid-template-columns:minmax(180px,1.5fr) repeat(3,minmax(125px,1fr)) auto;gap:9px;align-items:end}
+      .job-filter-row label{display:grid;gap:5px;font-size:11px;font-weight:800;color:var(--muted,#64748b)}
+      .job-filter-row input,.job-filter-row select{width:100%;min-width:0;padding:10px 11px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#fff;color:var(--ink,#17243a);font-size:12px}
+      .job-filter-row button{padding:10px 12px;border:1px solid var(--line,#dfe7f1);border-radius:9px;background:#eaf1ff;color:var(--navy,#123b72);font-weight:800;font-size:12px}
+      .quick-qualifications{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;align-items:center}
+      .quick-qualifications span{font-size:11px;color:var(--muted);font-weight:700;margin-right:3px}
+      .quick-qualifications button{border:1px solid var(--line);border-radius:999px;padding:7px 11px;background:#f7faff;color:var(--navy);font-size:11px;font-weight:750}
+      .quick-qualifications button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+      .filter-result-count{font-size:11px;color:var(--muted);font-weight:700}
+      .filter-no-results{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+      .directory-group-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+      .share-job-btn{border:1px solid #bfd3ed!important;background:#f2f7ff!important;color:#174b84!important;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer}
+      .job-actions{display:flex;flex-wrap:wrap;gap:8px}
+      @media(max-width:760px){.job-filter-row{grid-template-columns:1fr 1fr}.job-filter-row label:first-child{grid-column:1/-1}.job-filter-row button{width:100%}}
+      @media(max-width:420px){.job-filter-row{grid-template-columns:1fr}}
+    `;
     document.head.appendChild(style);
   }
-  function setupJobFilters() {
-    const directory = document.getElementById("jobsDirectory");
-    if (!directory || document.getElementById("jobFilterPanel")) return;
+
+  function setupFilter(containerId, panelId, privateMode) {
+    const container = document.getElementById(containerId);
+    if (!container || document.getElementById(panelId)) return;
     addStyles();
-    const panel = document.createElement("div"); panel.id = "jobFilterPanel"; panel.className = "job-filter-panel";
-    panel.innerHTML = `<div class="job-filter-row"><label>🔎 <span>Search</span><input id="jobFilterSearch" type="search" placeholder="Post, department or eligibility"></label><label>📍 <span>State</span><select id="jobFilterState"><option value="">All States</option></select></label><label>🏢 <span>Department</span><select id="jobFilterDepartment"><option value="">All Departments</option></select></label><label>📅 <span>Deadline</span><select id="jobFilterDeadline"><option value="">Any date</option><option value="soon">Closing soon</option><option value="open">Open / no deadline</option></select></label><label>🎓 <span>Qualification</span><select id="jobFilterQualification"><option value="all">Any Qualification</option><option value="10th">10th / Matric</option><option value="12th">12th / +2</option><option value="iti">ITI</option><option value="diploma">Diploma</option><option value="graduation">Graduation</option><option value="postgraduation">Post Graduation</option></select></label><button id="jobFilterSearchBtn" type="button">🔎 Search</button></div>`;
-    const toolbar = directory.previousElementSibling;
-    if (toolbar && toolbar.classList.contains("jobs-toolbar")) toolbar.after(panel); else directory.before(panel);
-    const search = document.getElementById("jobFilterSearch"), state = document.getElementById("jobFilterState"), department = document.getElementById("jobFilterDepartment"), deadline = document.getElementById("jobFilterDeadline"), qualification = document.getElementById("jobFilterQualification"), searchBtn = document.getElementById("jobFilterSearchBtn");
-    function groupOf(section) { return section.closest(".directory-group"); }
-    function groups() { return [...directory.querySelectorAll(":scope > .directory-group")]; }
-    function collectOptions() {
-      const states = new Map(), departments = new Map(); const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
-      directory.querySelectorAll(".directory-section").forEach(section => {
-        const label = sectionLabel(section);
-        if (!label) return;
-        const heading = section.querySelector(".directory-heading");
-        const display = Array.from(heading.childNodes).filter(node => !(node.nodeType === 1 && node.matches("span"))).map(node => node.textContent || "").join(" ").replace(/\s+/g, " ").trim();
-        if (groupOf(section) === stateGroup) states.set(label, display);
-        if (groupOf(section) === departmentGroup) departments.set(label, display);
-      });
-      const keep = state.value, keepD = department.value;
-      state.innerHTML = '<option value="">All States</option>' + [...states].sort((a,b) => a[1].localeCompare(b[1])).map(([key,label]) => `<option value="${key.replace(/"/g,"&quot;")}">${label}</option>`).join("");
-      department.innerHTML = '<option value="">All Departments</option>' + [...departments].sort((a,b) => a[1].localeCompare(b[1])).map(([key,label]) => `<option value="${key.replace(/"/g,"&quot;")}">${label}</option>`).join("");
-      state.value = states.has(keep) ? keep : ""; department.value = departments.has(keepD) ? keepD : "";
+
+    const panel = document.createElement("div");
+    panel.id = panelId;
+    panel.className = "job-filter-panel";
+    panel.innerHTML = `
+      <div class="job-filter-title"><span>${privateMode ? "Find a private job" : "Find the right government job"}</span><span class="filter-result-count" data-filter-count></span></div>
+      <div class="job-filter-row">
+        <label>🔎 <span>Search jobs</span><input type="search" data-filter-search placeholder="Post, company, skill or qualification"></label>
+        <label>📍 <span>State</span><select data-filter-state><option value="">All States</option></select></label>
+        <label>🏢 <span>Department / Field</span><select data-filter-department><option value="">All Fields</option></select></label>
+        <label>🎓 <span>Qualification</span><select data-filter-qualification><option value="all">Any Qualification</option><option value="10th">10th / Matric</option><option value="12th">12th / +2</option><option value="iti">ITI</option><option value="diploma">Diploma</option><option value="graduation">Graduation</option><option value="postgraduation">Post Graduation</option></select></label>
+        <button type="button" data-filter-reset>Reset</button>
+      </div>
+      <div class="quick-qualifications"><span>Quick select:</span><button type="button" data-quick="10th">10th</button><button type="button" data-quick="12th">12th</button><button type="button" data-quick="iti">ITI</button><button type="button" data-quick="diploma">Diploma</button><button type="button" data-quick="graduation">Graduate</button></div>`;
+    container.before(panel);
+
+    const search = panel.querySelector("[data-filter-search]");
+    const state = panel.querySelector("[data-filter-state]");
+    const department = panel.querySelector("[data-filter-department]");
+    const qualification = panel.querySelector("[data-filter-qualification]");
+    const count = panel.querySelector("[data-filter-count]");
+    const quickButtons = [...panel.querySelectorAll("[data-quick]")];
+
+    function cards() { return [...container.querySelectorAll(".job-card")]; }
+    function fillOptions() {
+      const stateKeep = state.value, deptKeep = department.value;
+      const states = [...new Set(cards().map(card => card.dataset.state).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+      const depts = [...new Set(cards().map(card => card.dataset.department).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+      state.innerHTML = '<option value="">All States</option>' + states.map(v=>'<option value="' + escapeAttr(v) + '">' + v + '</option>').join("");
+      department.innerHTML = '<option value="">All Fields</option>' + depts.map(v=>'<option value="' + escapeAttr(v) + '">' + v + '</option>').join("");
+      state.value = states.includes(stateKeep) ? stateKeep : "";
+      department.value = depts.includes(deptKeep) ? deptKeep : "";
     }
-    function matchesDeadline(card) {
-      if (!deadline.value) return true;
-      const raw = [...card.querySelectorAll(".job-meta span")].map(x => x.textContent).join(" "); const m = raw.match(/(\d{2})\/(\d{2})\/(\d{4})/);
-      if (!m) return deadline.value === "open"; if (deadline.value === "open") return false;
-      const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1])); const days = Math.ceil((d - new Date()) / 86400000); return days >= 0 && days <= 14;
-    }
+
     function matchesQualification(card) {
       const value = qualification.value;
       if (!value || value === "all") return true;
@@ -62,23 +80,56 @@
       if (value === "postgraduation") return /post.?graduation|postgraduate|master|m\.a\b|m\.sc|m\.com|mtech|m\.tech|mba|phd/.test(text);
       return true;
     }
+
     function apply() {
-      const q = textOf(search), selectedState = state.value, selectedDepartment = department.value;
-      const gs = groups(), stateGroup = gs[0], departmentGroup = gs[1];
-      directory.querySelectorAll(".directory-section").forEach(section => {
-        const sectionName = sectionLabel(section); const isStateGroup = groupOf(section) === stateGroup; const isDepartmentGroup = groupOf(section) === departmentGroup;
-        let visible = false;
-        section.querySelectorAll(".job-card").forEach(card => {
-          const matchesSearch = !q || textOf(card).includes(q); const matchesGroup = isStateGroup ? (!selectedState || sectionName === selectedState) : (isDepartmentGroup ? (!selectedDepartment || sectionName === selectedDepartment) : true);
-          const show = matchesSearch && matchesGroup && matchesDeadline(card) && matchesQualification(card); card.style.display = show ? "" : "none"; if (show) visible = true;
-        }); section.style.display = visible ? "" : "none";
+      const q = textOf(search);
+      let visible = 0;
+      cards().forEach(card => {
+        const show = (!q || textOf(card).includes(q)) &&
+          (!state.value || card.dataset.state === state.value) &&
+          (!department.value || card.dataset.department === department.value) &&
+          matchesQualification(card);
+        card.hidden = !show;
+        if (show) visible++;
       });
+      count.textContent = visible + " of " + cards().length + " jobs";
+      quickButtons.forEach(button => button.classList.toggle("active", qualification.value === button.dataset.quick));
+      let empty = container.querySelector(":scope > .filter-no-results");
+      if (!empty) {
+        empty = document.createElement("p");
+        empty.className = "filter-no-results";
+        empty.textContent = "ਇਸ ਚੋਣ ਲਈ ਨੌਕਰੀ ਨਹੀਂ ਮਿਲੀ। ਹੋਰ ਯੋਗਤਾ ਜਾਂ State ਚੁਣ ਕੇ ਵੇਖੋ।";
+        container.appendChild(empty);
+      }
+      empty.hidden = visible > 0;
     }
-    function refresh() { collectOptions(); apply(); }
-    [search, state, department, deadline, qualification].forEach(el => el.addEventListener("input", apply)); [state, department, deadline, qualification].forEach(el => el.addEventListener("change", apply));
-    searchBtn.addEventListener("click", apply); search.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); apply(); } });
-    const observer = new MutationObserver(() => { collectOptions(); apply(); }); observer.observe(directory, { childList: true, subtree: true }); refresh();
+
+    [search,state,department,qualification].forEach(el => {
+      el.addEventListener("input", apply);
+      el.addEventListener("change", apply);
+    });
+    quickButtons.forEach(button => button.addEventListener("click", () => {
+      qualification.value = button.dataset.quick;
+      apply();
+    }));
+    panel.querySelector("[data-filter-reset]").addEventListener("click", () => {
+      search.value = "";
+      state.value = "";
+      department.value = "";
+      qualification.value = "all";
+      apply();
+    });
+
+    const observer = new MutationObserver(() => { fillOptions(); apply(); });
+    observer.observe(container, { childList: true, subtree: true });
+    fillOptions();
+    apply();
   }
-  function start() { setTimeout(setupJobFilters, 350); }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+
+  function start() {
+    setupFilter("jobsDirectory", "jobFilterPanel", false);
+    setupFilter("privateJobsList", "privateJobFilterPanel", true);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+  else start();
 })();
