@@ -687,6 +687,9 @@
     renderAll();
   }
 
+  // Expose the three primary portal languages to the header selector.
+  window.setPortalLanguage = setLanguage;
+
   function switchView(id) {
     document.querySelectorAll(".view").forEach(view => {
       view.classList.toggle(
@@ -1705,6 +1708,18 @@
   });
 
   /* Start website */
+
+  const primaryLanguagePicker = $("siteLanguage");
+  if (primaryLanguagePicker) {
+    primaryLanguagePicker.addEventListener("change", () => {
+      const googlePicker = document.querySelector(".goog-te-combo");
+      if (googlePicker) {
+        googlePicker.value = "/en/en";
+        googlePicker.dispatchEvent(new Event("change"));
+      }
+      setLanguage(primaryLanguagePicker.value);
+    });
+  }
 
   setLanguage("en");
   recordSiteVisit();
