@@ -282,7 +282,7 @@
     if (!job) return false;
     const raw = String(job.deadline || "").trim();
     if (!raw) return true;
-    const match = raw.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!match) return true;
     const deadline = match[1] + "-" + match[2] + "-" + match[3];
     return deadline >= localDateString();
