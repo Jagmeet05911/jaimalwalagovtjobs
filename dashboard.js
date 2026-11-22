@@ -1,7 +1,7 @@
 (() => {
   "use strict";
   const $ = id => document.getElementById(id);
-  const clean = node => (node?.textContent || "").replace(/\s+/g," ").trim();
+  const clean = node => (node?.textContent || "").replace(/\\s+/g," ").trim();
   const safe = value => String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   function visibleJobs(){
     return [...document.querySelectorAll("#jobsDirectory .job-card,#jobsList .job-card")].filter(card=>!card.hidden && card.offsetParent!==null);
@@ -18,10 +18,8 @@
     const top=unique.slice(0,5);
     const latestHTML=top.length?top.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Job update")+'</span></a>').join(""):'<p class="portal-loading">No published jobs are available yet.</p>';
     const withDeadline=unique.filter(c=>/last date|deadline|closing|apply till|before/i.test(clean(c)));
-    const deadlineList=withDeadline.slice(0,4);
-    const closingHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span><span class="portal-deadline">VERIFY DATE</span></a>').join(""):'<p class="portal-loading">No deadline-specific details detected. Check each official notice for the last date.</p>';
     const deadlineList=(withDeadline.length?withDeadline:unique).slice(0,4);
-    const closingHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">VERIFY DATE</span>':'')).join("")+'</a>':'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
+    const closingHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">VERIFY DATE</span>':'')+'</a>').join(""):'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
     const tilesHTML=top.length?top.slice(0,6).map(c=>'<a class="portal-job-tile" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span>'+safe(clean(c.querySelector("h3"))||"New vacancy")+'</span><small>View official details ↗</small></a>').join(""):'<p class="portal-loading">Published jobs will appear here after loading.</p>';
     if(latest.innerHTML!==latestHTML)latest.innerHTML=latestHTML;
     if(closing.innerHTML!==closingHTML)closing.innerHTML=closingHTML;
@@ -33,18 +31,19 @@
     const target=$(id);
     if(target)target.scrollIntoView({behavior:"smooth",block:"start"});
   }
+  function applyQuery(view,query){
+    const panelId=view==="privateJobsView"?"#privateJobFilterPanel":"#jobFilterPanel";
+    const filter=document.querySelector(panelId+" [data-filter-search]");
+    if(filter){filter.value=query;filter.dispatchEvent(new Event("input",{bubbles:true}));}
+  }
   function bind(){
     const form=$("portalSearchForm"), input=$("portalSearchInput");
     if(form&&!form.dataset.bound){form.dataset.bound="1";form.addEventListener("submit",e=>{
-      e.preventDefault();showView("jobsView");
-      const filter=document.querySelector("#jobFilterPanel [data-filter-search],#privateJobFilterPanel [data-filter-search]");
-      if(filter){filter.value=input.value;filter.dispatchEvent(new Event("input",{bubbles:true}));}
-      else {const native=document.querySelector("#jobsView input[type=search],#jobsView input");if(native){native.value=input.value;native.dispatchEvent(new Event("input",{bubbles:true}));}}
+      e.preventDefault();showView("jobsView");applyQuery("jobsView",input.value.trim());
     });}
     document.querySelectorAll("[data-portal-view]").forEach(btn=>{if(btn.dataset.bound)return;btn.dataset.bound="1";btn.addEventListener("click",()=>{
       const view=btn.dataset.portalView;showView(view);
-      const query=btn.dataset.portalQuery||"";
-      if(query){const filter=document.querySelector("#jobFilterPanel [data-filter-search]");if(filter){filter.value=query;filter.dispatchEvent(new Event("input",{bubbles:true}));}}
+      if(btn.hasAttribute("data-portal-query"))applyQuery(view,btn.dataset.portalQuery||"");
     });});
   }
   function init(){bind();update();}
