@@ -5,11 +5,11 @@ const APP_SHELL = [
   "./index.html",
   "./manifest.json",
   "./icons/app-icon.svg",
-  "./style.css?v=20261122-top-bottom",
+  "./style.css?v=20261122-growth",
   "./app.js?v=20261122-nav-fix",
   "./filters.js?v=20261122-unified-filters",
   "./bottom-nav.js?v=20261122-nav-fix",
-  "./growth-tools.js?v=20261122-growth"
+  "./growth-tools.js?v=20261122-growth",\n  "./alerts.js?v=20261025",\n  "./festival-greetings.js?v=20261107"
 ];
 
 self.addEventListener("install", event => {
