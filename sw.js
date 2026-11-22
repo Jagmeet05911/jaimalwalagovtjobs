@@ -1,12 +1,12 @@
 "use strict";
-const CACHE_NAME = "jaimalwala-portal-v7";
+const CACHE_NAME = "jaimalwala-portal-v8";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icons/app-icon.svg",
-  "./style.css?v=20261122-theme-style",
-  "./app.js?v=20261122-theme-style",
+  "./style.css?v=20261122-theme-style2",
+  "./app.js?v=20261122-theme-style2",
   "./filters.js?v=20261122-easy-search",
   "./bottom-nav.js?v=20261122-nav-fix",
   "./growth-tools.js?v=20261122-cache-fix",
