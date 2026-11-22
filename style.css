@@ -186,3 +186,6 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 .return-visitor-note{position:fixed;z-index:9999;left:50%;bottom:22px;transform:translate(-50%,18px);width:min(92vw,520px);padding:13px 17px;border-radius:13px;background:#153e75;color:#fff;text-align:center;font-size:13px;font-weight:700;box-shadow:0 8px 28px #0003;opacity:0;transition:opacity .25s ease,transform .25s ease}
 .return-visitor-note.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:650px){.growth-actions{gap:8px}.growth-actions .btn{font-size:12px;padding:10px 12px}.growth-actions #growthHint{font-size:11px}}
+
+/* Keep filtered cards hidden even when card display styles are applied. */
+.job-card[hidden]{display:none!important}
