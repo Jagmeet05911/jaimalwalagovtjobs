@@ -72,7 +72,9 @@
       const value = qualification.value;
       if (!value || value === "all") return true;
       const text = textOf(card);
-      if (value === "5th") return /5th|fifth class|ਪੰਜਵੀਂ/.test(text);\n      if (value === "8th") return /8th|eighth class|8वीं|8ਵੀਂ|middle pass/.test(text);\n      if (value === "10th") return /10th|10वीं|10ਵੀਂ|matric/.test(text);
+      if (value === "5th") return /5th|fifth class|ਪੰਜਵੀਂ/.test(text);
+      if (value === "8th") return /8th|eighth class|8वीं|8ਵੀਂ|middle pass/.test(text);
+      if (value === "10th") return /10th|10वीं|10ਵੀਂ|matric/.test(text);
       if (value === "12th") return /12th|12वीं|12ਵੀਂ|\+2|senior secondary|10\+2/.test(text);
       if (value === "iti") return /\biti\b|industrial training institute/.test(text);
       if (value === "diploma") return /\bdiploma\b/.test(text);
@@ -82,10 +84,13 @@
     }
 
     function apply() {
-      const q = textOf(search);\n      const terms = q.split("|").map(term => term.trim()).filter(Boolean);
+      const q = textOf(search);
+      const terms = q.split("|").map(term => term.trim()).filter(Boolean);
       let visible = 0;
       cards().forEach(card => {
-        const cardText = textOf(card);\n        const textMatch = !q || (terms.length > 1 ? terms.some(term => cardText.includes(term)) : cardText.includes(q));\n        const show = textMatch &&
+        const cardText = textOf(card);
+        const textMatch = !q || (terms.length > 1 ? terms.some(term => cardText.includes(term)) : cardText.includes(q));
+        const show = textMatch &&
           (!state.value || card.dataset.state === state.value) &&
           (!department.value || card.dataset.department === department.value) &&
           matchesQualification(card);
