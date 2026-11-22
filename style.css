@@ -207,107 +207,85 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 /* Keep filtered cards hidden even when card display styles are applied. */
 .job-card[hidden]{display:none!important}
 
-/* Theme palettes apply across the complete interface; no separate colour control. */
-:root[data-theme] .topline{background:var(--navy)!important;color:var(--blue-light)!important}
-:root[data-theme] .site-header,
-:root[data-theme] footer,
-:root[data-theme] .tabs,
-:root[data-theme] .font-controls,
-:root[data-theme] .theme-control select,
-:root[data-theme] #siteLanguage,
-:root[data-theme] #google_translate_element select,
-:root[data-theme] .job-ticker,
-:root[data-theme] .count-pill,
-:root[data-theme] .searchbox,
-:root[data-theme] .filters select,
-:root[data-theme] .filters input,
-:root[data-theme] .empty-state,
-:root[data-theme] .home-trust-note,
-:root[data-theme] .safety-band,
-:root[data-theme] .jobs-directory-intro,
-:root[data-theme] .directory-empty,
-:root[data-theme] .directory-heading,
-:root[data-theme] .job-meta span,
-:root[data-theme] .apply-help,
-:root[data-theme] .festival-greeting{
-  background:var(--white)!important;color:var(--ink)!important;border-color:var(--line)!important
+/* Theme styling: use each palette's own surfaces instead of forcing white backgrounds. */
+:root[data-theme] .site-header,:root[data-theme] footer,:root[data-theme] .tabs,
+:root[data-theme] .font-controls,:root[data-theme] .theme-control select,
+:root[data-theme] #siteLanguage,:root[data-theme] #google_translate_element select,
+:root[data-theme] .job-ticker,:root[data-theme] .count-pill,:root[data-theme] .searchbox,
+:root[data-theme] .filters select,:root[data-theme] .filters input,
+:root[data-theme] .empty-state,:root[data-theme] .home-trust-note,
+:root[data-theme] .safety-band,:root[data-theme] .jobs-directory-intro,
+:root[data-theme] .directory-empty,:root[data-theme] .directory-heading,
+:root[data-theme] .job-meta span,:root[data-theme] .apply-help,
+:root[data-theme] .festival-greeting,:root[data-theme] .job-fact,
+:root[data-theme] .job-card,:root[data-theme] .panel,
+:root[data-theme] .home-welcome,:root[data-theme] .home-shortcut,
+:root[data-theme] .benefit,:root[data-theme] .jobs-split-layout>.view,
+:root[data-theme] .pending-card{
+ background:var(--white)!important;color:var(--ink)!important;border-color:var(--line)!important
 }
 :root[data-theme] .directory-group-title{background:var(--navy)!important;color:#fff!important}
-:root[data-theme] .directory-heading{background:var(--blue-light)!important;color:var(--navy)!important;border-left-color:var(--blue)!important}
-:root[data-theme] .directory-heading span,
-:root[data-theme] .job-meta span{color:var(--muted)!important}
-:root[data-theme] .job-fact,
-:root[data-theme] .job-meta span,
-:root[data-theme] .home-shortcut,
-:root[data-theme] .benefit,
-:root[data-theme] .job-card,
-:root[data-theme] .panel,
-:root[data-theme] .home-welcome,
-:root[data-theme] .jobs-split-layout>.view,
-:root[data-theme] .pending-card{background:var(--white)!important;color:var(--ink)!important;border-color:var(--line)!important}
-:root[data-theme] .job-description,
-:root[data-theme] .job-dept,
-:root[data-theme] .home-welcome p,
-:root[data-theme] .benefit-copy small,
-:root[data-theme] .home-shortcut small,
-:root[data-theme] .safety-band p,
-:root[data-theme] .ticker-empty,
-:root[data-theme] .ticker-separator{color:var(--muted)!important}
-:root[data-theme] .job-badge,
-:root[data-theme] .mini-count,
-:root[data-theme] .tab.active,
-:root[data-theme] .tab:hover,
-:root[data-theme] .benefit-icon,
-:root[data-theme] .home-shortcut-icon,
-:root[data-theme] .home-trust-note,
-:root[data-theme] .safety-band,
+:root[data-theme] .directory-heading{background:var(--blue-light)!important;color:var(--blue)!important;border-left-color:var(--blue)!important}
+:root[data-theme] .directory-heading span,:root[data-theme] .job-meta span,
+:root[data-theme] .job-description,:root[data-theme] .job-dept,
+:root[data-theme] .home-welcome p,:root[data-theme] .benefit-copy small,
+:root[data-theme] .home-shortcut small,:root[data-theme] .safety-band p,
+:root[data-theme] .ticker-empty,:root[data-theme] .ticker-separator,
+:root[data-theme] .job-link-hint,:root[data-theme] .muted{color:var(--muted)!important}
+:root[data-theme] .job-badge,:root[data-theme] .mini-count,
+:root[data-theme] .tab.active,:root[data-theme] .tab:hover,
+:root[data-theme] .benefit-icon,:root[data-theme] .home-shortcut-icon,
 :root[data-theme] .font-controls button{background:var(--blue-light)!important;color:var(--blue)!important;border-color:var(--line)!important}
-:root[data-theme] .directory-heading,
-:root[data-theme] .count-pill b,
-:root[data-theme] footer strong,
-:root[data-theme] .header-link,
-:root[data-theme] .home-arrow,
-:root[data-theme] .job-fact strong{color:var(--blue)!important}
-:root[data-theme] .btn-primary,
-:root[data-theme] .apply-link,
+:root[data-theme] .directory-heading,:root[data-theme] .count-pill b,
+:root[data-theme] footer strong,:root[data-theme] .header-link,
+:root[data-theme] .home-arrow,:root[data-theme] .job-fact strong{color:var(--blue)!important}
+:root[data-theme] .btn-primary,:root[data-theme] .apply-link,
 :root[data-theme] .brand-icon{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important}
 :root[data-theme] .apply-online-link{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important}
-:root[data-theme] .btn-outline,
-:root[data-theme] .save-btn,
+:root[data-theme] .btn-outline,:root[data-theme] .save-btn,
 :root[data-theme] .btn-bookmark{background:var(--white)!important;color:var(--blue)!important;border-color:var(--line)!important}
-:root[data-theme] .hero{background:linear-gradient(120deg,var(--navy),var(--blue))!important}
-:root[data-theme] .hero .eyebrow,
-:root[data-theme] .hero p,
-:root[data-theme] .hero-trust,
-:root[data-theme] .hero-note{color:#fff!important}
-:root[data-theme="green"] .notice{background:#fef8e8!important;color:#704d08!important;border-color:#ead59c!important}
-:root[data-theme="dark"] .notice,
-:root[data-theme="midnight"] .notice,
-:root[data-theme="royal"] .notice{background:#332b19!important;color:#f8e7b0!important;border-color:#67572d!important}
-:root[data-theme="green"] .festival-greeting{background:#f1f8f3!important;color:#14532d!important;border-color:#d3e5d8!important}
-:root[data-theme="dark"] .festival-greeting,
-:root[data-theme="midnight"] .festival-greeting,
-:root[data-theme="royal"] .festival-greeting{background:var(--white)!important;color:var(--ink)!important;border-color:var(--line)!important}
-:root[data-theme] .ticker-private .ticker-label{color:var(--green)!important}
+:root[data-theme] .hero{background:radial-gradient(circle at 82% 8%,color-mix(in srgb,var(--blue) 65%,transparent),transparent 36%),linear-gradient(120deg,var(--navy),var(--blue))!important}
+:root[data-theme] .hero .eyebrow,:root[data-theme] .hero p,
+:root[data-theme] .hero-trust,:root[data-theme] .hero-note{color:#fff!important}
 :root[data-theme] .ticker-item{color:var(--ink)!important}
 :root[data-theme] .ticker-item:hover{color:var(--blue)!important}
+:root[data-theme="green"] .notice{background:#fef8e8!important;color:#704d08!important;border-color:#ead59c!important}
+:root[data-theme="dark"] .notice,:root[data-theme="midnight"] .notice,
+:root[data-theme="royal"] .notice{background:#332b19!important;color:#f8e7b0!important;border-color:#67572d!important}
+:root[data-theme="green"] .festival-greeting{background:#f1f8f3!important;color:#14532d!important;border-color:#d3e5d8!important}
 :root[data-theme] .theme-control{color:var(--ink)!important}
 :root[data-theme] .theme-control select{background:var(--white)!important;color:var(--ink)!important}
 
-
-
-/* Each theme changes the visual identity as well as its colour palette. */
-:root[data-theme="blue"]{--theme-font:"Inter","Segoe UI",Arial,sans-serif;--theme-radius:16px;--theme-card-shadow:0 7px 22px rgba(24,74,132,.09);--theme-type-scale:1}
-:root[data-theme="green"]{--theme-font:"Trebuchet MS","Segoe UI",sans-serif;--theme-radius:12px;--theme-card-shadow:0 4px 14px rgba(24,92,58,.10);--theme-type-scale:1.025}
-:root[data-theme="dark"]{--theme-font:Arial,"Segoe UI",sans-serif;--theme-radius:9px;--theme-card-shadow:0 2px 12px rgba(0,0,0,.24);--theme-type-scale:.98}
-:root[data-theme="midnight"]{--theme-font:"Segoe UI","Trebuchet MS",sans-serif;--theme-radius:14px;--theme-card-shadow:0 8px 26px rgba(3,18,48,.20);--theme-type-scale:1.015}
-:root[data-theme="royal"]{--theme-font:Georgia,"Times New Roman",serif;--theme-radius:20px;--theme-card-shadow:0 9px 24px rgba(76,35,116,.12);--theme-type-scale:1.035}
-:root[data-theme] body,:root[data-theme] button,:root[data-theme] input,:root[data-theme] select,:root[data-theme] textarea{font-family:var(--theme-font)!important}
-:root[data-theme] .job-card,:root[data-theme] .panel,:root[data-theme] .home-welcome,:root[data-theme] .home-shortcut,:root[data-theme] .benefit,:root[data-theme] .jobs-split-layout>.view,:root[data-theme] .job-ticker,:root[data-theme] .empty-state{border-radius:var(--theme-radius)!important;box-shadow:var(--theme-card-shadow)!important}
-:root[data-theme] .section-head h2,:root[data-theme] .home-welcome h2,:root[data-theme] .hero h1,:root[data-theme] .job-card h3{letter-spacing:-.025em;line-height:1.22;font-size:calc(1em * var(--theme-type-scale,1))}
-:root[data-theme] .job-card p,:root[data-theme] .job-fact span,:root[data-theme] .job-meta,:root[data-theme] .home-welcome p,:root[data-theme] .muted{line-height:1.58;font-size:calc(1em * var(--theme-type-scale,1))}
-:root[data-theme] .btn,:root[data-theme] .tab{border-radius:calc(var(--theme-radius) * .65)!important;letter-spacing:.01em}
-:root[data-theme="green"] .section-head h2,:root[data-theme="green"] .home-welcome h2,:root[data-theme="green"] .job-card h3{font-weight:800;letter-spacing:-.035em}
+/* Each theme is a distinct visual design, not just a colour swap. */
+:root[data-theme="blue"]{--theme-font:"Inter";--theme-radius:16px;--theme-type-scale:1;--theme-card-shadow:0 7px 22px rgba(24,74,132,.09)}
+:root[data-theme="green"]{--theme-font:"Trebuchet MS";--theme-radius:12px;--theme-type-scale:1.035;--theme-card-shadow:0 4px 14px rgba(24,92,58,.10)}
+:root[data-theme="dark"]{--theme-font:"Arial";--theme-radius:8px;--theme-type-scale:.97;--theme-card-shadow:0 2px 12px rgba(0,0,0,.24)}
+:root[data-theme="midnight"]{--theme-font:"Segoe UI";--theme-radius:20px;--theme-type-scale:1.02;--theme-card-shadow:0 10px 28px rgba(3,18,48,.22)}
+:root[data-theme="royal"]{--theme-font:"Georgia";--theme-radius:18px;--theme-type-scale:1.04;--theme-card-shadow:0 9px 24px rgba(76,35,116,.16)}
+:root[data-theme] body,:root[data-theme] button,:root[data-theme] input,
+:root[data-theme] select,:root[data-theme] textarea{
+ font-family:var(--theme-font),"Noto Sans Gurmukhi",system-ui,sans-serif!important
+}
+:root[data-theme] .job-card,:root[data-theme] .panel,
+:root[data-theme] .home-welcome,:root[data-theme] .home-shortcut,
+:root[data-theme] .benefit,:root[data-theme] .jobs-split-layout>.view,
+:root[data-theme] .job-ticker,:root[data-theme] .empty-state{
+ border-radius:var(--theme-radius)!important;box-shadow:var(--theme-card-shadow)!important
+}
+:root[data-theme] .section-head h2,:root[data-theme] .home-welcome h2,
+:root[data-theme] .hero h1,:root[data-theme] .job-card h3{
+ font-size:calc(1em * var(--theme-type-scale));line-height:1.25
+}
+:root[data-theme] .job-card p,:root[data-theme] .job-meta,
+:root[data-theme] .home-welcome p,:root[data-theme] .muted{font-size:calc(1em * var(--theme-type-scale));line-height:1.6}
+:root[data-theme] .btn,:root[data-theme] .tab{border-radius:calc(var(--theme-radius) * .65)!important}
+:root[data-theme="green"] .job-card{border-left:4px solid var(--blue)!important}
+:root[data-theme="green"] .section-head h2,:root[data-theme="green"] .job-card h3{font-weight:800;letter-spacing:-.035em}
+:root[data-theme="dark"] .job-card{padding:15px!important;border-width:1px!important}
 :root[data-theme="dark"] .btn,:root[data-theme="dark"] .tab{font-weight:700;letter-spacing:.025em}
-:root[data-theme="midnight"] .section-head h2,:root[data-theme="midnight"] .home-welcome h2{font-weight:750;letter-spacing:.005em}
-:root[data-theme="royal"] .section-head h2,:root[data-theme="royal"] .home-welcome h2,:root[data-theme="royal"] .job-card h3{font-family:Georgia,"Times New Roman",serif!important;font-weight:700;letter-spacing:0}
+:root[data-theme="midnight"] .hero{border-radius:32px!important}
+:root[data-theme="midnight"] .job-card{border-width:1px 1px 3px!important}
+:root[data-theme="royal"] .section-head h2,:root[data-theme="royal"] .home-welcome h2,
+:root[data-theme="royal"] .job-card h3,:root[data-theme="royal"] .hero h1{
+ font-family:Georgia,"Noto Sans Gurmukhi",serif!important;font-weight:700;letter-spacing:0
+}
