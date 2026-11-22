@@ -728,6 +728,12 @@
     if (id === "adminView") {
       renderAdmin();
     }
+
+    // Keep navigation tabs useful: jump to the selected section after it is shown.
+    const destination = $(id);
+    if (destination) {
+      destination.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   function jobCard(job) {
