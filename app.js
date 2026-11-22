@@ -744,7 +744,7 @@
     const admitCard = safeUrl(job.admitCardUrl);
 
     return `
-      <article class="job-card">
+      <article class="job-card" id="job-${escapeHtml(job.id)}">
 
         <div class="job-top">
           <span class="job-badge">
@@ -841,6 +841,8 @@
 
           ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("admitCard"))}</a>` : `<span class="admit-card-unavailable" aria-disabled="true">${escapeHtml(t("admitCardUnavailable"))}</span>`}
 
+          <button class="share-job-btn" type="button" data-share-job="${escapeHtml(job.id)}" aria-label="Share this job">↗ Share Job</button>
+
           <button
             class="save-btn"
             type="button"
@@ -855,8 +857,40 @@
     `;
   }
 
+  async function shareJobById(id) {
+    const job = jobs.find(item => String(item.id) === String(id));
+    if (!job) return;
+    const url = new URL(window.location.href);
+    url.hash = "job-" + String(job.id);
+    const text = [
+      job.title,
+      job.department,
+      job.eligibility ? "ਯੋਗਤਾ: " + job.eligibility : "",
+      job.deadline ? "ਆਖਰੀ ਮਿਤੀ: " + displayDate(job.deadline) : "",
+      "Official details ਅਤੇ apply link ਇੱਥੇ ਵੇਖੋ:"
+    ].filter(Boolean).join("\\n");
+    const data = { title: job.title + " | Jaimalwala Govt Jobs", text, url: url.href };
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\\n" + url.href), "_blank", "noopener,noreferrer");
+      }
+    } catch (error) {
+      if (error && error.name !== "AbortError") {
+        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\\n" + url.href), "_blank", "noopener,noreferrer");
+      }
+    }
+  }
+
   function attachSaveButtons(container) {
     if (!container) return;
+
+    container
+      .querySelectorAll("[data-share-job]")
+      .forEach(button => {
+        button.addEventListener("click", () => shareJobById(button.dataset.shareJob));
+      });
 
     container
       .querySelectorAll("[data-save]")
