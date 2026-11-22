@@ -760,6 +760,7 @@
           <div class="job-fact"><strong>Eligibility / ਯੋਗਤਾ</strong><span>${escapeHtml(job.eligibility || "Check official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੇਖੋ")}</span></div>
           <div class="job-fact"><strong>Age Limit / ਉਮਰ ਹੱਦ</strong><span>${escapeHtml(job.ageLimit || "As per official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਨੁਸਾਰ")}</span></div>
         </div>
+        <p class="job-link-hint">ਪਹਿਲਾਂ Notification ਪੜ੍ਹੋ। ਯੋਗਤਾ ਪੂਰੀ ਹੋਵੇ ਤਾਂ Apply ਕਰੋ।</p>
 
         <div class="job-meta">
           <span>
@@ -810,7 +811,7 @@
                    href="${escapeHtml(notice)}"
                    target="_blank"
                    rel="noopener noreferrer">
-                   ${escapeHtml(t("notification"))}
+                   📄 Notification ਪੜ੍ਹੋ
                  </a>`
               : ""
           }
@@ -823,7 +824,7 @@
                    href="${escapeHtml(apply)}"
                    target="_blank"
                    rel="noopener noreferrer">
-                   ${escapeHtml(t("applyOnline"))}
+                   🟢 ਸਿੱਧਾ Apply ਕਰੋ
                  </a>`
               : ""
           }
