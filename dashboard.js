@@ -1,7 +1,7 @@
 (() => {
   "use strict";
   const $ = id => document.getElementById(id);
-  const clean = node => (node?.textContent || "").replace(/\\s+/g," ").trim();
+  const clean = node => (node?.textContent || "").replace(/\s+/g," ").trim();
   const safe = value => String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   function visibleJobs(){
     return [...document.querySelectorAll("#jobsDirectory .job-card,#jobsList .job-card")].filter(card=>!card.hidden && card.offsetParent!==null);
@@ -19,7 +19,7 @@
     latest.innerHTML=top.length?top.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Job update")+'</span></a>').join(""):'<p class="portal-loading">No published jobs are available yet.</p>';
     const withDeadline=unique.filter(c=>/last date|deadline|closing|apply till|before/i.test(clean(c)));
     const deadlineList=(withDeadline.length?withDeadline:unique).slice(0,4);
-    closing.innerHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">CHECK DATE</span>':'')).join("")+'</a>':'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
+    closing.innerHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">VERIFY DATE</span>':'')).join("")+'</a>':'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
     tiles.innerHTML=top.length?top.slice(0,6).map(c=>'<a class="portal-job-tile" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span>'+safe(clean(c.querySelector("h3"))||"New vacancy")+'</span><small>View official details ↗</small></a>').join(""):'<p class="portal-loading">Published jobs will appear here after loading.</p>';
   }
   function showView(id){
