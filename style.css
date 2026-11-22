@@ -289,3 +289,9 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 :root[data-theme="royal"] .job-card h3,:root[data-theme="royal"] .hero h1{
  font-family:Georgia,"Noto Sans Gurmukhi",serif!important;font-weight:700;letter-spacing:0
 }
+
+
+/* Subtle Jaimalwala identity mark across the portal */
+body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
+.job-card{position:relative;overflow:hidden}
+.job-card::after{content:"JG · JAIMALWALA GOVT JOBS";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
