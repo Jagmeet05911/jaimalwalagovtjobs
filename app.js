@@ -868,17 +868,17 @@
       job.eligibility ? "ਯੋਗਤਾ: " + job.eligibility : "",
       job.deadline ? "ਆਖਰੀ ਮਿਤੀ: " + displayDate(job.deadline) : "",
       "Official details ਅਤੇ apply link ਇੱਥੇ ਵੇਖੋ:"
-    ].filter(Boolean).join("\\n");
+    ].filter(Boolean).join("\n");
     const data = { title: job.title + " | Jaimalwala Govt Jobs", text, url: url.href };
     try {
       if (navigator.share) {
         await navigator.share(data);
       } else {
-        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\\n" + url.href), "_blank", "noopener,noreferrer");
+        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\n" + url.href), "_blank", "noopener,noreferrer");
       }
     } catch (error) {
       if (error && error.name !== "AbortError") {
-        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\\n" + url.href), "_blank", "noopener,noreferrer");
+        window.open("https://wa.me/?text=" + encodeURIComponent(text + "\n" + url.href), "_blank", "noopener,noreferrer");
       }
     }
   }
