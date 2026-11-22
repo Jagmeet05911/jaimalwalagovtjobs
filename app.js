@@ -807,7 +807,7 @@
           ${
             notice
               ? `<a
-                   class="apply-link"
+                   class="apply-link watermark-notice-link"
                    href="${escapeHtml(notice)}"
                    target="_blank"
                    rel="noopener noreferrer">
