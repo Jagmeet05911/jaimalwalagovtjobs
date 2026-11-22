@@ -294,3 +294,20 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 :root[data-theme] .theme-control{color:var(--ink)!important}
 :root[data-theme] .theme-control select{background:var(--white)!important;color:var(--ink)!important}
 
+
+
+/* Each theme changes the visual identity as well as its colour palette. */
+:root[data-theme="blue"]{--theme-font:"Inter","Segoe UI",Arial,sans-serif;--theme-radius:16px;--theme-card-shadow:0 7px 22px rgba(24,74,132,.09);--theme-type-scale:1}
+:root[data-theme="green"]{--theme-font:"Trebuchet MS","Segoe UI",sans-serif;--theme-radius:12px;--theme-card-shadow:0 4px 14px rgba(24,92,58,.10);--theme-type-scale:1.025}
+:root[data-theme="dark"]{--theme-font:Arial,"Segoe UI",sans-serif;--theme-radius:9px;--theme-card-shadow:0 2px 12px rgba(0,0,0,.24);--theme-type-scale:.98}
+:root[data-theme="midnight"]{--theme-font:"Segoe UI","Trebuchet MS",sans-serif;--theme-radius:14px;--theme-card-shadow:0 8px 26px rgba(3,18,48,.20);--theme-type-scale:1.015}
+:root[data-theme="royal"]{--theme-font:Georgia,"Times New Roman",serif;--theme-radius:20px;--theme-card-shadow:0 9px 24px rgba(76,35,116,.12);--theme-type-scale:1.035}
+:root[data-theme] body,:root[data-theme] button,:root[data-theme] input,:root[data-theme] select,:root[data-theme] textarea{font-family:var(--theme-font)!important}
+:root[data-theme] .job-card,:root[data-theme] .panel,:root[data-theme] .home-welcome,:root[data-theme] .home-shortcut,:root[data-theme] .benefit,:root[data-theme] .jobs-split-layout>.view,:root[data-theme] .job-ticker,:root[data-theme] .empty-state{border-radius:var(--theme-radius)!important;box-shadow:var(--theme-card-shadow)!important}
+:root[data-theme] .section-head h2,:root[data-theme] .home-welcome h2,:root[data-theme] .hero h1,:root[data-theme] .job-card h3{letter-spacing:-.025em;line-height:1.22}
+:root[data-theme] .job-card p,:root[data-theme] .job-fact span,:root[data-theme] .job-meta,:root[data-theme] .home-welcome p,:root[data-theme] .muted{line-height:1.58;font-size:calc(1em * var(--theme-type-scale,1))}
+:root[data-theme] .btn,:root[data-theme] .tab{border-radius:calc(var(--theme-radius) * .65)!important;letter-spacing:.01em}
+:root[data-theme="green"] .section-head h2,:root[data-theme="green"] .home-welcome h2,:root[data-theme="green"] .job-card h3{font-weight:800;letter-spacing:-.035em}
+:root[data-theme="dark"] .btn,:root[data-theme="dark"] .tab{font-weight:700;letter-spacing:.025em}
+:root[data-theme="midnight"] .section-head h2,:root[data-theme="midnight"] .home-welcome h2{font-weight:750;letter-spacing:.005em}
+:root[data-theme="royal"] .section-head h2,:root[data-theme="royal"] .home-welcome h2,:root[data-theme="royal"] .job-card h3{font-family:Georgia,"Times New Roman",serif!important;font-weight:700;letter-spacing:0}
