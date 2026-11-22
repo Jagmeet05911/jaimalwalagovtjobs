@@ -162,3 +162,5 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 .job-actions .apply-online-link{background:#137547;color:#fff!important;border-color:#137547!important;font-weight:800}
 .job-actions .apply-online-link::before{content:"↗ "}
 @media(max-width:430px){.job-facts{grid-template-columns:1fr}}
+
+.job-link-hint{margin:0 0 8px;color:var(--muted);font-size:12px;font-weight:600}.job-actions .apply-link,.job-actions .apply-online-link{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;font-size:13px}
