@@ -343,3 +343,8 @@ body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px
 @media(max-width:760px){.portal-dashboard-grid{grid-template-columns:1fr}.portal-side-menu{display:grid;grid-template-columns:1fr 1fr;gap:3px}.portal-side-menu h3{grid-column:1/-1}.portal-side-menu button{font-size:10px;padding:9px 6px}.portal-feature-grid{grid-template-columns:1fr 1fr}.portal-welcome h2{font-size:21px}.portal-job-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.portal-dashboard{margin:12px 10px 20px}.portal-welcome{padding:15px 14px}.portal-welcome h2{font-size:19px}.portal-kicker{font-size:8px}.portal-live{font-size:8px;padding:6px}.portal-search{padding:8px;gap:5px}.portal-search button{padding:9px 10px;font-size:10px}.portal-feature-grid{grid-template-columns:1fr}.portal-side-menu{grid-template-columns:1fr 1fr}.portal-feature,.portal-new-updates{padding:11px}.portal-job-tile{min-height:68px;font-size:10px}}
 @media(max-width:360px){.portal-side-menu{grid-template-columns:1fr}.portal-job-tiles{grid-template-columns:1fr 1fr}}
+
+/* Expanded qualification and career category navigation */
+.portal-category-label{display:block;margin:12px 0 3px;padding:8px 9px 3px;border-top:1px solid var(--line);color:var(--navy);font-size:11px;letter-spacing:.35px}
+.portal-side-menu button{white-space:normal;text-align:left}
+@media(max-width:760px){.portal-side-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.portal-side-menu h3,.portal-category-label{grid-column:1/-1}.portal-category-label{margin-top:8px}}
