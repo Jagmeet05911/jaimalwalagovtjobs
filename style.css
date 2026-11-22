@@ -152,3 +152,13 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
  .other-language small{display:none}
  #google_translate_element,#google_translate_element select{max-width:115px}
 }
+
+/* Clear, separate government/private job facts and application actions. */
+.job-facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}
+.job-fact{min-width:0;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:#f8fbff}
+.job-fact strong{display:block;color:var(--navy);font-size:11px;margin-bottom:5px}
+.job-fact span{display:block;color:var(--ink);font-size:12px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.job-actions .apply-link{background:#eaf1ff;color:#123b72!important;border-color:#b9cff5!important}
+.job-actions .apply-online-link{background:#137547;color:#fff!important;border-color:#137547!important;font-weight:800}
+.job-actions .apply-online-link::before{content:"↗ "}
+@media(max-width:430px){.job-facts{grid-template-columns:1fr}}
