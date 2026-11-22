@@ -16,11 +16,14 @@
     if(!latest||!closing||!tiles)return;
     const unique=[...new Map(cards.map(c=>[clean(c.querySelector("h3"))||clean(c),c])).values()];
     const top=unique.slice(0,5);
-    latest.innerHTML=top.length?top.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Job update")+'</span></a>').join(""):'<p class="portal-loading">No published jobs are available yet.</p>';
+    const latestHTML=top.length?top.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Job update")+'</span></a>').join(""):'<p class="portal-loading">No published jobs are available yet.</p>';
     const withDeadline=unique.filter(c=>/last date|deadline|closing|apply till|before/i.test(clean(c)));
     const deadlineList=(withDeadline.length?withDeadline:unique).slice(0,4);
-    closing.innerHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">VERIFY DATE</span>':'')).join("")+'</a>':'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
-    tiles.innerHTML=top.length?top.slice(0,6).map(c=>'<a class="portal-job-tile" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span>'+safe(clean(c.querySelector("h3"))||"New vacancy")+'</span><small>View official details ↗</small></a>').join(""):'<p class="portal-loading">Published jobs will appear here after loading.</p>';
+    const closingHTML=deadlineList.length?deadlineList.map(c=>'<a class="portal-mini-item" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span class="portal-mini-dot">•</span><span>'+safe(clean(c.querySelector("h3"))||"Vacancy")+'</span>'+(withDeadline.length?'<span class="portal-deadline">VERIFY DATE</span>':'')).join("")+'</a>':'<p class="portal-loading">No deadline-listed vacancies yet.</p>';
+    const tilesHTML=top.length?top.slice(0,6).map(c=>'<a class="portal-job-tile" href="'+safe(linkFor(c))+'" target="_blank" rel="noopener noreferrer"><span>'+safe(clean(c.querySelector("h3"))||"New vacancy")+'</span><small>View official details ↗</small></a>').join(""):'<p class="portal-loading">Published jobs will appear here after loading.</p>';
+    if(latest.innerHTML!==latestHTML)latest.innerHTML=latestHTML;
+    if(closing.innerHTML!==closingHTML)closing.innerHTML=closingHTML;
+    if(tiles.innerHTML!==tilesHTML)tiles.innerHTML=tilesHTML;
   }
   function showView(id){
     const tab=document.querySelector('.tabs .tab[data-view="'+id+'"]');
