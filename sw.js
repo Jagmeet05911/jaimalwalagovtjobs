@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "jaimalwala-portal-v3";
+const CACHE_NAME = "jaimalwala-portal-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -49,16 +49,17 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  // Network-first: visitors receive the newest site files whenever online.
+  // The cache is only a fallback for offline use.
   event.respondWith(
-    caches.match(request).then(cached => {
-      const network = fetch(request).then(response => {
+    fetch(request)
+      .then(response => {
         if (response && response.ok) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
         }
         return response;
-      }).catch(() => cached);
-      return cached || network;
-    })
+      })
+      .catch(() => caches.match(request))
   );
 });
