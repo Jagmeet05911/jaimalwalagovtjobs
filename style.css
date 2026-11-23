@@ -348,3 +348,18 @@ body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px
 .portal-category-label{display:block;margin:12px 0 3px;padding:8px 9px 3px;border-top:1px solid var(--line);color:var(--navy);font-size:11px;letter-spacing:.35px}
 .portal-side-menu button{white-space:normal;text-align:left}
 @media(max-width:760px){.portal-side-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.portal-side-menu h3,.portal-category-label{grid-column:1/-1}.portal-category-label{margin-top:8px}}
+
+
+/* Official application portal: in-site iframe where the recruiting authority permits embedding. */
+.apply-modal.hidden{display:none!important}
+.apply-modal{position:fixed;inset:0;z-index:10050;background:rgba(7,18,35,.78);display:flex;align-items:center;justify-content:center;padding:12px}
+.apply-modal-panel{width:min(1100px,100%);height:min(92vh,900px);background:var(--card,#fff);color:var(--text,#17243a);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.35)}
+.apply-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;border-bottom:1px solid var(--line,#dce3ed)}
+.apply-modal-head strong,.apply-modal-head small{display:block}
+.apply-modal-head small{font-size:11px;color:var(--muted,#63738a);margin-top:3px}
+.apply-modal-close{border:0;border-radius:8px;padding:8px 11px;background:var(--surface,#eef2f7);color:inherit;font-size:17px}
+.apply-modal-note{margin:0;padding:9px 14px;font-size:12px;line-height:1.5;background:var(--surface,#f3f6fa)}
+#applyPortalFrame{display:block;width:100%;flex:1;min-height:0;border:0;background:#fff}
+.apply-modal-actions{display:flex;flex-wrap:wrap;gap:9px;padding:10px 14px;border-top:1px solid var(--line,#dce3ed)}
+body.apply-modal-open{overflow:hidden}
+@media(max-width:600px){.apply-modal{padding:0}.apply-modal-panel{width:100%;height:100dvh;border-radius:0}.apply-modal-actions>*{flex:1;text-align:center}}
