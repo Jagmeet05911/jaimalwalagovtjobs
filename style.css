@@ -363,3 +363,21 @@ body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px
 .apply-modal-actions{display:flex;flex-wrap:wrap;gap:9px;padding:10px 14px;border-top:1px solid var(--line,#dce3ed)}
 body.apply-modal-open{overflow:hidden}
 @media(max-width:600px){.apply-modal{padding:0}.apply-modal-panel{width:100%;height:100dvh;border-radius:0}.apply-modal-actions>*{flex:1;text-align:center}}
+
+
+/* Compact New Job Updates: use the available width and reduce dead space */
+.portal-dashboard{max-width:1200px;margin-top:14px;margin-bottom:16px;padding-bottom:8px}
+.portal-dashboard-grid{gap:10px;margin-top:10px}
+.portal-feature,.portal-new-updates{padding:11px}
+.portal-feature-grid{gap:9px}
+.portal-new-updates{margin-top:9px}
+.portal-section-heading{margin-bottom:8px}
+.portal-job-tiles{grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));gap:8px}
+.portal-job-tile{min-height:64px;padding:9px 10px}
+.portal-trust-strip{padding:8px 3px;gap:6px 12px}
+@media(max-width:760px){
+  .portal-dashboard{margin-top:10px;margin-bottom:12px}
+  .portal-dashboard-grid{gap:9px}
+  .portal-job-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-job-tile{min-height:60px}
+}
