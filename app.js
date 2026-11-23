@@ -1718,6 +1718,42 @@
     }).catch(error => console.warn("Apply click analytics could not be recorded:", error));
   });
 
+
+  // Try opening the recruiting authority's application portal inside Jaimalwala.
+  // Many government portals prohibit iframe embedding; the official-site fallback remains available.
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a.apply-online-link");
+    if (!link) return;
+    const modal = document.getElementById("applyPortalModal");
+    const frame = document.getElementById("applyPortalFrame");
+    const external = document.getElementById("applyPortalExternal");
+    if (!modal || !frame || !external) return;
+    event.preventDefault();
+    const targetUrl = safeUrl(link.href);
+    if (!targetUrl) return;
+    frame.src = targetUrl;
+    external.href = targetUrl;
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("apply-modal-open");
+  }, true);
+
+  function closeApplyPortalModal() {
+    const modal = document.getElementById("applyPortalModal");
+    const frame = document.getElementById("applyPortalFrame");
+    if (!modal || !frame) return;
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden", "true");
+    frame.src = "about:blank";
+    document.body.classList.remove("apply-modal-open");
+  }
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-close-apply-portal]")) closeApplyPortalModal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeApplyPortalModal();
+  });
+
   /* Start website */
 
   const primaryLanguagePicker = $("siteLanguage");
