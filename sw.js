@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "indojobalert-portal-v38";
+const CACHE_NAME = "indojobalert-portal-v39";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -10,7 +10,7 @@ const APP_SHELL = [
   "./style.css?v=20261128-simple-layout",
   "./dashboard.js?v=20261122-categories-v3",
   "./bottom-nav.js?v=20261122-nav-fix",
-  "./app.js?v=20261123-in-site-apply",
+  "./app.js?v=20261128-category-groups",
   "./filters.js?v=20261122-categories-v3",
   "./festival-greetings.js?v=20261107",
   "./growth-tools.js?v=20261128-indojobalert-final"
