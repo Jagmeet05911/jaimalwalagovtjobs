@@ -291,13 +291,13 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 }
 
 
-/* Subtle Jaimalwala identity mark across the portal */
-body::after{content:"JAIMALWALA GOVT JOBS";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
+/* Subtle Job Mitra identity mark across the portal */
+body::after{content:"JOB MITRA";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
 .job-card{position:relative;overflow:hidden}
-.job-card::after{content:"JG · JAIMALWALA GOVT JOBS";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
+.job-card::after{content:"JM · JOB MITRA";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
 
 
-/* Jaimalwala dashboard: inspired by category-led job portals, with an original layout */
+/* Job Mitra dashboard: inspired by category-led job portals, with an original layout */
 .portal-dashboard{max-width:1120px;margin:22px auto 26px;padding:0 0 18px;color:var(--ink)}
 .portal-welcome{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;border-radius:15px 15px 0 0;background:linear-gradient(105deg,#123b72,#2467b5);color:#fff}
 .portal-kicker{font-size:10px;font-weight:900;letter-spacing:1.4px;color:#d6e7ff}
