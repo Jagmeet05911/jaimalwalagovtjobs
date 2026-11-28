@@ -455,3 +455,47 @@ body.apply-modal-open{overflow:hidden}
   .brand-banner{width:100%;max-width:1600px;margin:0 auto 14px;}
   .brand-banner img{display:block;width:100%;height:auto;max-height:none;min-height:0;object-fit:contain;object-position:center;}
 }
+
+
+/* IndoJobAlert simple visitor layout: remove duplicated, overwhelming dashboard panels. */
+.quick-benefits{display:none!important}
+.portal-dashboard{max-width:960px;margin:14px auto 18px;padding:0 12px 4px}
+.portal-search{border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 14px #193c6808;padding:10px 12px}
+.portal-search input{font-size:15px}
+.portal-search button{padding:11px 17px}
+.portal-dashboard-grid{display:none!important}
+.simple-howto{margin-top:10px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 14px #193c6808}
+.simple-howto h2{font-size:16px;line-height:1.35;margin:0 0 12px;color:var(--navy)}
+.simple-howto-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.simple-howto-steps>div{display:grid;grid-template-columns:28px 1fr;column-gap:8px;align-items:center;padding:9px;background:#f7f9fd;border-radius:10px}
+.simple-howto-steps>div>span{grid-row:span 2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--blue-light);color:var(--navy);font-weight:900}
+.simple-howto-steps strong{font-size:12px;color:var(--ink)}
+.simple-howto-steps small{font-size:10px;line-height:1.4;color:var(--muted)}
+.simple-howto>p{font-size:11px;color:var(--muted);margin:10px 0 0}
+.simple-howto-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.simple-howto-actions button{border:1px solid var(--line);border-radius:9px;background:#f5f8ff;color:var(--navy);padding:9px 12px;font-size:12px;font-weight:800}
+.jobs-directory-intro{margin:8px 0 12px;padding:10px 13px}
+.jobs-directory-intro p{font-size:12px}
+.directory-group{margin:14px 0 20px}
+.directory-group-title{font-size:1.1rem;margin-bottom:10px;padding:10px 13px}
+.directory-section{margin-bottom:14px}
+.directory-heading{font-size:1rem;margin-bottom:8px;padding:9px 12px}
+.jobs-toolbar{margin:8px 0 10px}
+.tabs{gap:5px;margin-top:10px}
+.tabs-label{display:none}
+.tab{padding:9px 12px;font-size:12px}
+@media(max-width:700px){
+  .portal-dashboard{margin:10px auto 12px;padding:0 10px}
+  .portal-search{display:grid;grid-template-columns:24px minmax(0,1fr);gap:6px}
+  .portal-search input{grid-column:2;padding:8px 2px!important}
+  .portal-search button{grid-column:1/-1;width:100%}
+  .simple-howto{padding:12px}
+  .simple-howto h2{font-size:14px}
+  .simple-howto-steps{grid-template-columns:1fr;gap:6px}
+  .simple-howto-steps>div{grid-template-columns:28px 1fr;padding:7px 9px}
+  .simple-howto-steps small{font-size:10px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;padding-bottom:8px;scrollbar-width:thin}
+  .tab{flex:0 0 auto}
+  .section-head{margin-bottom:10px}
+  .jobs-directory-intro{margin:6px 0 10px}
+}
