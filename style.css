@@ -875,3 +875,12 @@ body>.brand-banner>img{
 @media(max-width:650px){
  #homeView>.home-vertical-notice{width:calc(100% - 20px)!important;height:210px!important;margin:8px 10px 12px auto!important}
 }
+
+
+/* Prevent duplicate search bars on the home screen */
+#homeView .searchbox,
+#homeView form:not(#portalSearchForm),
+#portalDashboard form:not(#portalSearchForm),
+#portalDashboard .searchbox,
+#portalDashboard [class*="search"]:not(#portalSearchForm):not(#portalSearchForm *){display:none!important}
+#portalDashboard>#portalSearchForm{display:flex!important}
