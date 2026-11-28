@@ -1,11 +1,12 @@
 "use strict";
-const CACHE_NAME = "job-mitra-portal-v26";
+const CACHE_NAME = "job-mitra-portal-v27";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./dashboard.js?v=20261122-hero-hidden-v1",
   "./manifest.json",
   "./icons/app-icon.svg",
+  "./assets/jobmitra-jaimalwala-banner.svg",
   "./style.css?v=20261122-hero-hidden-v1",
   "./app.js?v=20261122-watermark",
   "./filters.js?v=20261122-hero-hidden-v1",
