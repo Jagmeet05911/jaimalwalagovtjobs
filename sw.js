@@ -1,19 +1,19 @@
 "use strict";
-const CACHE_NAME = "indojobalert-portal-v35";
+const CACHE_NAME = "indojobalert-portal-v36";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icons/app-icon.svg",
-  "./icons/jobmitra-logo.svg?v=3",
-  "./assets/jobmitra-jaimalwala-banner.svg?v=20261128-indojobalert",
-  "./style.css?v=20261128-indojobalert",
+  "./icons/jobmitra-logo.svg?v=4",
+  "./assets/jobmitra-jaimalwala-banner.svg?v=20261128-indojobalert-final",
+  "./style.css?v=20261128-indojobalert-final",
   "./dashboard.js?v=20261122-categories-v3",
   "./bottom-nav.js?v=20261122-nav-fix",
   "./app.js?v=20261123-in-site-apply",
   "./filters.js?v=20261122-categories-v3",
   "./festival-greetings.js?v=20261107",
-  "./growth-tools.js?v=20261128-indojobalert"
+  "./growth-tools.js?v=20261128-indojobalert-final"
 ];
 
 self.addEventListener("install", event => {
