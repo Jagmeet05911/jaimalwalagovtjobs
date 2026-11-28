@@ -919,3 +919,17 @@ body>.brand-banner>img{
 
 /* Keep Latest Updates in the same right-side position, just a little higher */
 #homeView>.home-vertical-notice{margin-top:6px!important}
+
+
+/* Move Latest Updates about 3–4 inches higher, keeping it on the right */
+#homeView>.home-vertical-notice{
+  order:0!important;
+  align-self:flex-end!important;
+  margin:0 18px 12px auto!important;
+}
+@media(max-width:1250px){
+  #homeView>.home-vertical-notice{margin:0 10px 12px auto!important}
+}
+@media(max-width:650px){
+  #homeView>.home-vertical-notice{margin:0 10px 12px auto!important}
+}
