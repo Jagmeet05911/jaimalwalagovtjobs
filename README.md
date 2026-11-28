@@ -1,4 +1,4 @@
-# Jaimalwala Govt Jobs
+# Job Mitra
 
 Responsive Punjabi + English static website prototype.
 
