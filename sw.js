@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "jaimalwala-portal-v18";
+const CACHE_NAME = "jaimalwala-portal-v19";
 const APP_SHELL = [
   "./",
   "./index.html",
