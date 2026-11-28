@@ -444,3 +444,8 @@ body.apply-modal-open{overflow:hidden}
 .brand-banner img{display:block;width:100%;height:auto;max-height:310px;object-fit:cover;object-position:center}
 @media(max-width:760px){.brand-banner{margin-bottom:8px;border-radius:0 0 12px 12px}.brand-banner img{min-height:145px;max-height:210px;object-fit:cover}}
 @media(max-width:420px){.brand-banner img{min-height:125px;max-height:160px}}
+
+/* JobMitra identity mark */
+.brand-icon{overflow:hidden;padding:0;background:transparent!important;border-radius:13px!important;flex:0 0 46px}
+.brand-icon img{display:block;width:100%;height:100%;object-fit:cover;border-radius:13px}
+.footer-brand .brand-icon{width:42px;height:42px;flex-basis:42px}
