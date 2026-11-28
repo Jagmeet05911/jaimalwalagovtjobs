@@ -884,3 +884,24 @@ body>.brand-banner>img{
 #portalDashboard .searchbox,
 #portalDashboard [class*="search"]:not(#portalSearchForm):not(#portalSearchForm *){display:none!important}
 #portalDashboard>#portalSearchForm{display:flex!important}
+
+
+/* Even vertical spacing across Latest Updates, portal intro, category cards and search */
+#homeView>.home-welcome{margin:12px auto!important;padding:14px 18px!important}
+.home-welcome h2{margin:6px 0!important}
+.home-welcome>p{margin:0 auto 12px!important}
+.home-main-options{margin:12px auto!important;row-gap:12px!important}
+.home-trust-note.home-small-note{margin:12px auto!important;padding:8px 12px!important}
+#homeView>.home-vertical-notice{margin:12px 18px 12px auto!important}
+#portalDashboard{padding-top:0!important;padding-bottom:0!important}
+#portalDashboard>#portalSearchForm{margin:12px auto!important;padding:0!important}
+@media(max-width:1250px){
+ #homeView>.home-vertical-notice{margin:12px 10px!important}
+}
+@media(max-width:650px){
+ #homeView>.home-welcome{margin:12px 10px!important;padding:12px 8px!important}
+ .home-main-options{margin:12px 10px!important;row-gap:12px!important}
+ .home-trust-note.home-small-note{margin:12px 10px!important}
+ #homeView>.home-vertical-notice{margin:12px 10px!important}
+ #portalDashboard>#portalSearchForm{margin:12px 10px!important}
+}
