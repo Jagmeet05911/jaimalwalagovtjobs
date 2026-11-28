@@ -765,7 +765,7 @@
     ].filter(Boolean).join(" · ");
 
     return `
-      <article class="job-card job-list-card job-accordion-card" id="job-${escapeHtml(job.id)}">
+      <article class="job-card job-list-card job-accordion-card" data-states="${escapeHtml(getJobStates(job).join("|"))}" data-state="${escapeHtml(getJobStates(job)[0] || "All India")}" data-department="${escapeHtml(job.department || classifyJob(job))}" id="job-${escapeHtml(job.id)}">
         <details class="job-post-details">
           <summary class="job-post-summary">
             <span class="job-serial">${serial}</span>
@@ -884,6 +884,33 @@
       if (pattern.test(title) || pattern.test(department)) return state;
     }
     return String(job.location || "All India").trim();
+  }
+
+  function getJobStates(job) {
+    const source = [job.location, job.title, job.department].filter(Boolean).join(" ").toLowerCase();
+    const states = [
+      ["Andaman and Nicobar Islands", /andaman\s*(and|&)\s*nicobar/],
+      ["Andhra Pradesh", /andhra\s*pradesh/], ["Arunachal Pradesh", /arunachal\s*pradesh/],
+      ["Assam", /\bassam\b/], ["Bihar", /\bbihar\b|\bbpsc\b/],
+      ["Chandigarh", /\bchandigarh\b/], ["Chhattisgarh", /chhattisgarh/],
+      ["Dadra and Nagar Haveli and Daman and Diu", /dadra|daman|diu/],
+      ["Delhi", /\bdelhi\b|\bdsssb\b/], ["Goa", /\bgoa\b/], ["Gujarat", /\bgujarat\b|\bgpsc\b/],
+      ["Haryana", /\bharyana\b|\bhssc\b/], ["Himachal Pradesh", /himachal\s*pradesh|\bhppsc\b/],
+      ["Jammu and Kashmir", /jammu\s*(and|&)\s*kashmir|\bjkssb\b/], ["Jharkhand", /jharkhand/],
+      ["Karnataka", /karnataka/], ["Kerala", /\bkerala\b/], ["Ladakh", /\bladakh\b/],
+      ["Lakshadweep", /lakshadweep/], ["Madhya Pradesh", /madhya\s*pradesh|\bmpesb\b/],
+      ["Maharashtra", /maharashtra/], ["Manipur", /manipur/], ["Meghalaya", /meghalaya/],
+      ["Mizoram", /mizoram/], ["Nagaland", /nagaland/], ["Odisha", /odisha|\bodisha\b|\bopsc\b/],
+      ["Puducherry", /puducherry|pondicherry/], ["Punjab", /\bpunjab\b|\bppsc\b|sssc\/pb/],
+      ["Rajasthan", /rajasthan|\brssb\b/], ["Sikkim", /sikkim/], ["Tamil Nadu", /tamil\s*nadu/],
+      ["Telangana", /telangana/], ["Tripura", /tripura/], ["Uttar Pradesh", /uttar\s*pradesh|\bupsssc\b|\buppsc\b/],
+      ["Uttarakhand", /uttarakhand|\buksssc\b/], ["West Bengal", /west\s*bengal|\bwbpsc\b/]
+    ];
+    const found = states.filter(([, pattern]) => pattern.test(source)).map(([name]) => name);
+    if (found.length) return [...new Set(found)];
+    const location = String(job.location || "").trim();
+    if (!location || /all india|india|national|pan india|across india|anywhere/i.test(location)) return ["All India"];
+    return [location];
   }
 
   function classifyJob(job) {
