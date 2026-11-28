@@ -559,3 +559,9 @@ main{padding-top:17px;padding-bottom:30px}
 @media(min-width:761px){.brand-banner{max-width:1040px}.brand-banner img{max-height:175px}}
 @media(max-width:760px){.brand-banner{margin-bottom:6px}.brand-banner img{max-height:112px;min-height:0;object-fit:contain}}
 @media(max-width:420px){.brand-banner img{max-height:96px;min-height:0}}
+
+/* Further reduce the header banner height */
+.brand-banner{max-width:900px!important;margin:0 auto 5px!important;border-radius:0 0 10px 10px}
+.brand-banner img{display:block;width:100%;height:auto;max-height:135px!important;min-height:0!important;object-fit:contain}
+@media(max-width:760px){.brand-banner{margin-bottom:4px!important}.brand-banner img{max-height:88px!important;min-height:0!important}}
+@media(max-width:420px){.brand-banner img{max-height:74px!important;min-height:0!important}}
