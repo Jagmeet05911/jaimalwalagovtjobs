@@ -15,7 +15,8 @@
  <text x="1545" y="88" font-size="48" text-anchor="end">ॐ नमः शिवाय</text>
 </g>
 <g filter="url(#shadow)">
- 
+ <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.42;0.50;0.92;1" dur="10s" repeatCount="indefinite"/>
+ <animate attributeName="opacity" values="1;0.08;1" dur="1.8s" repeatCount="indefinite" additive="sum"/>
  <circle cx="735" cy="75" r="29" fill="#fff4c7" stroke="#e9a900" stroke-width="3"/><circle cx="735" cy="75" r="24" fill="#143b91"/>
  <text x="735" y="88" text-anchor="middle" font-family="Noto Sans Gurmukhi, Raavi, sans-serif" font-size="34" font-weight="700" fill="#fff4a6">ੴ</text>
  <circle cx="865" cy="75" r="29" fill="#fff4c7" stroke="#e9a900" stroke-width="3"/><circle cx="865" cy="75" r="24" fill="#143b91"/>
@@ -27,7 +28,7 @@
  <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.42;0.50;0.92;1" dur="10s" repeatCount="indefinite"/>
  <g transform="translate(800 232)">
   <circle r="31" fill="#fff4c7" stroke="#ffc72e" stroke-width="4"/><circle r="25" fill="#103b91"/>
-  <path d="M-16 -5h32v21h-32z M-9 -5v-7h18v7 M-16 2h32 M-3 2v5h6V2" fill="none" stroke="#fff4a6" stroke-width="3" stroke-linejoin="round"/>
+  <text x="0" y="12" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="900" fill="#fff4a6">IA</text>
  </g>
  <text x="800" y="300" font-family="Arial,sans-serif" font-size="125" font-weight="900" letter-spacing="-5" fill="url(#white)" stroke="#06275f" stroke-width="9" paint-order="stroke">Indo<tspan fill="#ffc629">JobAlert</tspan><animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/></text>
  <path d="M300 325Q800 385 1300 325L1250 405H350Z" fill="#073c9c" stroke="url(#gold)" stroke-width="6"/>
