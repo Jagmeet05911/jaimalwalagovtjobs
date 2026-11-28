@@ -1,16 +1,22 @@
 {
   "id": "./",
-  "name": "Job Mitra",
-  "short_name": "Job Mitra",
-  "description": "Free government and private job updates across Punjab and India, with official links and admin-reviewed listings.",
+  "name": "JobMitra",
+  "short_name": "JobMitra",
+  "description": "JobMitra — find verified government and private job opportunities across Punjab and India.",
   "start_url": "./?source=installed",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#f5f7fb",
   "theme_color": "#2d76bd",
   "lang": "en",
-  "categories": ["education", "utilities"],
+  "categories": [
+    "education",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "icons/app-icon.svg",
