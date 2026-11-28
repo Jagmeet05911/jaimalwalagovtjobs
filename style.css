@@ -905,3 +905,13 @@ body>.brand-banner>img{
  #homeView>.home-vertical-notice{margin:12px 10px!important}
  #portalDashboard>#portalSearchForm{margin:12px 10px!important}
 }
+
+
+/* Align the JOB MITRA title, intro, five shortcuts and trust note to one width */
+#homeView>.home-welcome{width:min(760px,calc(100% - 24px))!important;max-width:760px!important;margin:12px auto!important;padding:14px 18px!important;box-sizing:border-box!important;text-align:center!important}
+#homeView .home-welcome .eyebrow,#homeView .home-welcome h2,#homeView .home-welcome>p{display:block!important;width:100%!important;text-align:center!important}
+#homeView .home-main-options,#homeView .home-trust-note.home-small-note{width:min(760px,calc(100% - 24px))!important;max-width:760px!important;margin:12px auto!important;box-sizing:border-box!important}
+#homeView .home-main-options{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+#homeView .home-main-options .home-shortcut{width:100%!important;min-width:0!important;min-height:72px!important;box-sizing:border-box!important;margin:0!important}
+#homeView .home-trust-note.home-small-note{padding:8px 12px!important;text-align:center!important}
+@media(max-width:650px){#homeView>.home-welcome,#homeView .home-main-options,#homeView .home-trust-note.home-small-note{width:calc(100% - 20px)!important;margin:10px auto!important}#homeView .home-main-options{grid-template-columns:1fr!important;gap:10px!important}}
