@@ -419,3 +419,21 @@ body.apply-modal-open{overflow:hidden}
 /* Install/share feedback on the app-style home dashboard */
 .growth-hint{min-height:1.2em;margin:8px 0 0;color:var(--muted,#64748b);font-size:.9rem;line-height:1.45}
 #installPortalBtn[hidden]{display:none!important}
+
+
+/* Full-screen, edge-to-edge portal layout */
+.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{
+  width:calc(100% - 40px);
+  max-width:none;
+}
+.site-header{width:100%;padding-left:20px;padding-right:20px}
+.portal-dashboard{box-sizing:border-box}
+@media(max-width:650px){
+  .topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{
+    width:calc(100% - 20px);
+    max-width:none;
+    margin-left:10px;
+    margin-right:10px;
+  }
+  .site-header{padding-left:12px;padding-right:12px}
+}
