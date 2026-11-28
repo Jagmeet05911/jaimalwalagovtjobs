@@ -565,3 +565,8 @@ main{padding-top:17px;padding-bottom:30px}
 .brand-banner img{display:block;width:100%;height:auto;max-height:135px!important;min-height:0!important;object-fit:contain}
 @media(max-width:760px){.brand-banner{margin-bottom:4px!important}.brand-banner img{max-height:88px!important;min-height:0!important}}
 @media(max-width:420px){.brand-banner img{max-height:74px!important;min-height:0!important}}
+
+/* Restore full-width page layout; keep only the banner height compact */
+.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 24px)!important;max-width:none!important;margin-left:12px!important;margin-right:12px!important}
+.brand-banner{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+@media(max-width:700px){.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 16px)!important;margin-left:8px!important;margin-right:8px!important}}
