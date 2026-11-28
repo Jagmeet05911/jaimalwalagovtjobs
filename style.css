@@ -551,3 +551,11 @@ main{padding-top:17px;padding-bottom:30px}
  .simple-howto-steps strong{font-size:13px}
  .simple-howto-steps small{font-size:11px}
 }
+
+
+/* Slightly shorter IndoJobAlert header banner */
+.brand-banner{max-width:1040px;margin:0 auto 7px;border-radius:0 0 12px 12px}
+.brand-banner img{max-height:175px;min-height:0;object-fit:contain}
+@media(min-width:761px){.brand-banner{max-width:1040px}.brand-banner img{max-height:175px}}
+@media(max-width:760px){.brand-banner{margin-bottom:6px}.brand-banner img{max-height:112px;min-height:0;object-fit:contain}}
+@media(max-width:420px){.brand-banner img{max-height:96px;min-height:0}}
