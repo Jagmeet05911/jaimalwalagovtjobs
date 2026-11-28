@@ -915,3 +915,7 @@ body>.brand-banner>img{
 #homeView .home-main-options .home-shortcut{width:100%!important;min-width:0!important;min-height:72px!important;box-sizing:border-box!important;margin:0!important}
 #homeView .home-trust-note.home-small-note{padding:8px 12px!important;text-align:center!important}
 @media(max-width:650px){#homeView>.home-welcome,#homeView .home-main-options,#homeView .home-trust-note.home-small-note{width:calc(100% - 20px)!important;margin:10px auto!important}#homeView .home-main-options{grid-template-columns:1fr!important;gap:10px!important}}
+
+
+/* Keep Latest Updates in the same right-side position, just a little higher */
+#homeView>.home-vertical-notice{margin-top:6px!important}
