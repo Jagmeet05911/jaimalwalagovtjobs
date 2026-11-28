@@ -964,3 +964,26 @@ body>.brand-banner>img{
   height:220px!important;margin:0 10px 12px auto!important;
  }
 }
+
+
+/* Trial: place the existing search bar in the same navigation row as Home/Admin */
+.tabs #portalSearchForm{
+ display:flex!important;align-items:center!important;gap:6px!important;
+ flex:1 1 250px!important;width:auto!important;min-width:220px!important;
+ max-width:330px!important;margin:0 0 0 auto!important;padding:4px 7px!important;
+ border:1px solid var(--line)!important;border-radius:10px!important;
+ border-top:1px solid var(--line)!important;box-shadow:none!important;
+ background:#fff!important;box-sizing:border-box!important;
+}
+.tabs #portalSearchForm>span{font-size:19px!important;flex:0 0 auto!important}
+.tabs #portalSearchForm input{flex:1 1 auto!important;width:100%!important;min-width:0!important;padding:7px 3px!important;font-size:12px!important}
+.tabs #portalSearchForm button{flex:0 0 auto!important;padding:8px 10px!important;font-size:11px!important;white-space:nowrap!important}
+#portalDashboard>#portalSearchForm{display:none!important}
+@media(max-width:900px){
+ .tabs #portalSearchForm{flex:1 1 100%!important;max-width:none!important;margin:5px 0 0!important;order:20!important}
+}
+@media(max-width:650px){
+ .tabs #portalSearchForm{display:grid!important;grid-template-columns:20px minmax(0,1fr) auto!important;flex:1 1 100%!important;min-width:0!important}
+ .tabs #portalSearchForm input{grid-column:2!important}
+ .tabs #portalSearchForm button{grid-column:3!important;width:auto!important}
+}
