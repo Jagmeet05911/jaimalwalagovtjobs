@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "job-mitra-portal-v28";
+const CACHE_NAME = "job-mitra-portal-v29";
 const APP_SHELL = [
   "./",
   "./index.html",
