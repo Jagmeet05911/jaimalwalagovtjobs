@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" role="img" aria-labelledby="title desc">
+<title id="title">JobMitra Jaimalwala</title><desc id="desc">ਸਤਿਨਾਮ ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ, ੴ, ॐ नमः शिवाय and JobMitra Jaimalwala jobs portal banner.</desc>
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#061b55"/><stop offset=".55" stop-color="#0c4eae"/><stop offset="1" stop-color="#071a50"/></linearGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff4a6"/><stop offset=".5" stop-color="#ffc72e"/><stop offset="1" stop-color="#d98700"/></linearGradient>
+ <linearGradient id="white" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dceaff"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="7"/><feOffset dy="5"/><feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1600" height="500" rx="28" fill="url(#bg)"/>
+<path d="M0 0H1600V12Q1200 95 800 45Q400 0 0 100Z" fill="#1c6dd8" opacity=".35"/>
+<circle cx="800" cy="220" r="250" fill="none" stroke="#ffc83d" stroke-width="3" opacity=".18"/>
+<path d="M0 150Q400 75 800 130T1600 115" fill="none" stroke="#65b8ff" stroke-width="2" opacity=".3"/>
+<g font-family="'Noto Sans Gurmukhi','Arial',sans-serif" fill="url(#gold)" font-weight="700" filter="url(#shadow)">
+ <text x="65" y="88" font-size="53">ਸਤਿਨਾਮ ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ</text>
+ <text x="1535" y="88" font-size="53" text-anchor="end">ॐ नमः शिवाय</text>
+</g>
+<g filter="url(#shadow)">
+ <circle cx="685" cy="75" r="49" fill="#fff4c7" stroke="#e9a900" stroke-width="5"/><circle cx="685" cy="75" r="40" fill="#143b91"/>
+ <text x="685" y="94" text-anchor="middle" font-family="serif" font-size="54" font-weight="bold" fill="url(#gold)">ੴ</text>
+ <circle cx="915" cy="75" r="49" fill="#fff4c7" stroke="#e9a900" stroke-width="5"/><circle cx="915" cy="75" r="40" fill="#143b91"/>
+ <text x="915" y="94" text-anchor="middle" font-family="serif" font-size="59" font-weight="bold" fill="url(#gold)">ॐ</text>
+</g>
+<path d="M70 145H1530" stroke="url(#gold)" stroke-width="3" opacity=".85"/>
+<g text-anchor="middle" filter="url(#shadow)">
+ <text x="800" y="300" font-family="Arial,sans-serif" font-size="145" font-weight="900" letter-spacing="-5" fill="url(#white)" stroke="#06275f" stroke-width="9" paint-order="stroke">Job<tspan fill="#ffc629">Mitra</tspan></text>
+ <path d="M300 325Q800 385 1300 325L1250 405H350Z" fill="#073c9c" stroke="url(#gold)" stroke-width="6"/>
+ <text x="800" y="392" font-family="Arial,sans-serif" font-size="78" font-weight="900" fill="url(#white)" stroke="#061e5b" stroke-width="3" paint-order="stroke">JAIMALWALA</text>
+ <text x="800" y="458" font-family="Arial,sans-serif" font-size="34" font-weight="700" letter-spacing="3" fill="#ffdf64">FIND YOUR DREAM JOB</text>
+</g>
+<g fill="url(#gold)"><path d="M95 390l12 25 28 4-20 19 5 28-25-13-25 13 5-28-20-19 28-4z"/><path d="M1505 390l12 25 28 4-20 19 5 28-25-13-25 13 5-28-20-19 28-4z"/></g>
+</svg>
