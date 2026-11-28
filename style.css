@@ -589,3 +589,26 @@ main{padding-top:22px!important;padding-bottom:45px!important}
  .brand-banner img{max-height:100px!important}
 }
 @media(max-width:420px){.brand-banner img{max-height:88px!important}}
+
+
+/* True edge-to-edge layout: remove left/right page gutters */
+html,body{width:100%;max-width:100%;margin:0;overflow-x:hidden}
+.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{
+ width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;box-sizing:border-box!important;
+}
+.topline-inner{padding-left:18px!important;padding-right:18px!important}
+.hero{border-radius:0!important}
+.notice{border-left:0!important;border-right:0!important;border-radius:0!important;padding-left:18px!important;padding-right:18px!important}
+.tabs{padding-left:18px!important;padding-right:18px!important}
+main{padding:22px 18px 45px!important}
+.portal-dashboard,.quick-benefits,.safety-band,.job-ticker{padding-left:18px!important;padding-right:18px!important}
+.brand-banner{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+.brand-banner img{max-height:140px!important;min-height:0!important;object-fit:contain!important}
+@media(max-width:760px){
+ .topline-inner,.tabs{padding-left:10px!important;padding-right:10px!important}
+ .hero{padding-left:18px!important;padding-right:18px!important}
+ main{padding:16px 10px 32px!important}
+ .portal-dashboard,.quick-benefits,.safety-band,.job-ticker{padding-left:10px!important;padding-right:10px!important}
+ .brand-banner img{max-height:100px!important}
+}
+@media(max-width:420px){.brand-banner img{max-height:88px!important}}
