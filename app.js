@@ -687,6 +687,22 @@
     renderAll();
   }
 
+  // Rotate the brand tagline through English, Punjabi and Hindi.
+  const rotatingTaglines = [
+    "Your Job Search Companion",
+    "ਤੁਹਾਡੀ ਮਿਹਨਤ, ਤੁਹਾਡੀ ਮੰਜ਼ਿਲ",
+    "आपकी मेहनत, आपकी मंज़िल"
+  ];
+  let rotatingTaglineIndex = 0;
+  const rotatingTaglineNode = $("tagline");
+  if (rotatingTaglineNode) {
+    rotatingTaglineNode.textContent = rotatingTaglines[0];
+    window.setInterval(() => {
+      rotatingTaglineIndex = (rotatingTaglineIndex + 1) % rotatingTaglines.length;
+      rotatingTaglineNode.textContent = rotatingTaglines[rotatingTaglineIndex];
+    }, 4000);
+  }
+
   // Expose the three primary portal languages to the header selector.
   window.setPortalLanguage = setLanguage;
 
