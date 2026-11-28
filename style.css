@@ -650,3 +650,25 @@ main{padding-top:12px!important}
  .home-main-options{margin:12px 10px 18px;grid-template-columns:1fr;gap:9px}
  .home-main-options .home-shortcut{min-height:72px;padding:12px}
 }
+
+
+/* Ultra-simple landing page: exactly five main choices */
+.home-welcome{max-width:760px!important;margin:16px auto 8px!important;padding:18px 18px 12px!important;box-shadow:none!important;border:0!important;background:transparent!important}
+.home-welcome h2{font-size:clamp(23px,3.5vw,30px)!important;margin:3px 0 5px!important}
+.home-welcome>p{font-size:13px!important;margin-bottom:0!important}
+.home-extra-actions,.home-welcome #jobNotificationStatus,.home-welcome #growthHint{display:none!important}
+.home-main-options{max-width:760px!important;margin:14px auto 12px!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.home-main-options .home-shortcut{min-height:76px!important;padding:12px 14px!important;box-shadow:none!important;border-radius:11px!important}
+.home-main-options .home-shortcut-icon{width:38px!important;height:38px!important;flex-basis:38px!important;font-size:19px!important}
+.home-main-options .home-shortcut small{display:none!important}
+.home-main-options .home-shortcut b{font-size:14px!important}
+.home-trust-note.home-small-note{max-width:760px!important;margin:8px auto!important;padding:8px 12px!important;font-size:11px!important;background:transparent!important;border:0!important;text-align:center!important}
+.home-trust-note.home-small-note p{display:none!important}
+@media(max-width:650px){
+ .home-welcome{margin:8px 10px 4px!important;padding:12px 8px 6px!important}
+ .home-main-options{margin:8px 10px 10px!important;grid-template-columns:1fr!important;gap:7px!important}
+ .home-main-options .home-shortcut{min-height:57px!important;padding:8px 11px!important}
+ .home-main-options .home-shortcut-icon{width:34px!important;height:34px!important;flex-basis:34px!important}
+ .home-main-options .home-shortcut small{display:none!important}
+ .home-trust-note.home-small-note{margin:4px auto!important;padding:5px!important}
+}
