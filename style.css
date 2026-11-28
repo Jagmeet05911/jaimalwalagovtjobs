@@ -415,3 +415,7 @@ body.apply-modal-open{overflow:hidden}
 @media(max-width:980px){.portal-dashboard-grid{grid-template-columns:190px minmax(0,1fr)}.portal-right-rail{grid-column:2;grid-template-columns:1fr 1fr}.portal-ad-placeholder{min-height:130px}}
 @media(max-width:760px){.portal-dashboard-grid{grid-template-columns:1fr}.portal-right-rail{grid-column:1;grid-template-columns:1fr 1fr}.portal-ad-placeholder{min-height:145px}}
 @media(max-width:480px){.portal-right-rail{grid-template-columns:1fr}.portal-ad-placeholder{min-height:120px}}
+
+/* Install/share feedback on the app-style home dashboard */
+.growth-hint{min-height:1.2em;margin:8px 0 0;color:var(--muted,#64748b);font-size:.9rem;line-height:1.45}
+#installPortalBtn[hidden]{display:none!important}
