@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" role="img" aria-labelledby="title desc">
-<title id="title">IndoJobAlert</title><desc id="desc">ਸਤਿਨਾਮ ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ, ੴ, ॐ नमः शिवाय and IndoJobAlert jobs portal banner.</desc>
+<title id="title">IndoJobAlert</title><desc id="desc">ਸਤਿਨਾਮ ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ, ੴ, ॐ नमः शिवाय, जय महाकाल, ਜੈ ਮਹਾਕਾਲ and IndoJobAlert jobs portal banner.</desc>
 <defs>
  <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#061b55"/><stop offset=".55" stop-color="#0c4eae"/><stop offset="1" stop-color="#071a50"/></linearGradient>
  <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff4a6"/><stop offset=".5" stop-color="#ffc72e"/><stop offset="1" stop-color="#d98700"/></linearGradient>
@@ -20,7 +20,8 @@
  <circle cx="865" cy="75" r="29" fill="#fff4c7" stroke="#e9a900" stroke-width="3"/><circle cx="865" cy="75" r="24" fill="#143b91"/>
  <text x="865" y="86" text-anchor="middle" font-family="serif" font-size="35" font-weight="bold" fill="url(#gold)">ॐ</text>
 </g>
-<path d="M70 145H1530" stroke="url(#gold)" stroke-width="3" opacity=".85"/>
+<g text-anchor="middle" font-family="Noto Sans Gurmukhi, Noto Sans Devanagari, sans-serif" font-size="37" font-weight="900" fill="url(#gold)" stroke="#061e5b" stroke-width="2.5" paint-order="stroke" filter="url(#shadow)"><text x="800" y="137" lang="hi">जय महाकाल</text><text x="800" y="178" lang="pa">ਜੈ ਮਹਾਕਾਲ</text></g>
+<path d="M70 198H1530" stroke="url(#gold)" stroke-width="3" opacity=".85"/>
 <g text-anchor="middle" filter="url(#shadow)">
  <text x="800" y="300" font-family="Arial,sans-serif" font-size="125" font-weight="900" letter-spacing="-5" fill="url(#white)" stroke="#06275f" stroke-width="9" paint-order="stroke">Indo<tspan fill="#ffc629">JobAlert</tspan></text>
  <path d="M300 325Q800 385 1300 325L1250 405H350Z" fill="#073c9c" stroke="url(#gold)" stroke-width="6"/>
