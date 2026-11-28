@@ -10,23 +10,28 @@
 <path d="M0 0H1600V12Q1200 95 800 45Q400 0 0 100Z" fill="#1c6dd8" opacity=".35"/>
 <circle cx="800" cy="220" r="250" fill="none" stroke="#ffc83d" stroke-width="3" opacity=".18"/>
 <path d="M0 150Q400 75 800 130T1600 115" fill="none" stroke="#65b8ff" stroke-width="2" opacity=".3"/>
-<g font-family="'Noto Sans Gurmukhi',sans-serif" fill="url(#gold)" font-weight="700" filter="url(#shadow)"><animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/>
+<g font-family="'Noto Sans Gurmukhi',sans-serif" fill="url(#gold)" font-weight="700" filter="url(#shadow)"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.42;0.50;0.92;1" dur="10s" repeatCount="indefinite"/>
  <text x="55" y="88" font-size="48" letter-spacing="1.2">ਸਤਿਨਾਮ  ਸ੍ਰੀ  ਵਾਹਿਗੁਰੂ</text>
  <text x="1545" y="88" font-size="48" text-anchor="end">ॐ नमः शिवाय</text>
 </g>
 <g filter="url(#shadow)">
- <animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/>
+ 
  <circle cx="735" cy="75" r="29" fill="#fff4c7" stroke="#e9a900" stroke-width="3"/><circle cx="735" cy="75" r="24" fill="#143b91"/>
  <text x="735" y="88" text-anchor="middle" font-family="Noto Sans Gurmukhi, Raavi, sans-serif" font-size="34" font-weight="700" fill="#fff4a6">ੴ</text>
  <circle cx="865" cy="75" r="29" fill="#fff4c7" stroke="#e9a900" stroke-width="3"/><circle cx="865" cy="75" r="24" fill="#143b91"/>
  <text x="865" y="86" text-anchor="middle" font-family="serif" font-size="35" font-weight="bold" fill="url(#gold)">ॐ</text>
 </g>
-<g text-anchor="middle" font-family="Noto Sans Gurmukhi, Noto Sans Devanagari, sans-serif" font-size="31" font-weight="900" fill="url(#gold)" stroke="#061e5b" stroke-width="2.5" paint-order="stroke" filter="url(#shadow)"><text x="800" y="137" lang="hi">जय महाकाल</text><text x="800" y="178" lang="pa">ਜੈ ਮਹਾਕਾਲ</text></g>
+<g text-anchor="middle" font-family="Noto Sans Gurmukhi, Noto Sans Devanagari, sans-serif" font-size="31" font-weight="900" fill="url(#gold)" stroke="#061e5b" stroke-width="2.5" paint-order="stroke" filter="url(#shadow)"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.42;0.50;0.92;1" dur="10s" repeatCount="indefinite"/><text x="800" y="137" lang="hi">जय महाकाल</text><text x="800" y="178" lang="pa">ਜੈ ਮਹਾਕਾਲ</text></g>
 <path d="M70 198H1530" stroke="url(#gold)" stroke-width="3" opacity=".85"/>
 <g text-anchor="middle" filter="url(#shadow)">
+ <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.42;0.50;0.92;1" dur="10s" repeatCount="indefinite"/>
+ <g transform="translate(800 232)">
+  <circle r="31" fill="#fff4c7" stroke="#ffc72e" stroke-width="4"/><circle r="25" fill="#103b91"/>
+  <path d="M-16 -5h32v21h-32z M-9 -5v-7h18v7 M-16 2h32 M-3 2v5h6V2" fill="none" stroke="#fff4a6" stroke-width="3" stroke-linejoin="round"/>
+ </g>
  <text x="800" y="300" font-family="Arial,sans-serif" font-size="125" font-weight="900" letter-spacing="-5" fill="url(#white)" stroke="#06275f" stroke-width="9" paint-order="stroke">Indo<tspan fill="#ffc629">JobAlert</tspan><animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/></text>
  <path d="M300 325Q800 385 1300 325L1250 405H350Z" fill="#073c9c" stroke="url(#gold)" stroke-width="6"/>
- <g font-family="Noto Sans Gurmukhi, Noto Sans Devanagari, sans-serif" font-size="48" font-weight="900" fill="url(#white)" stroke="#061e5b" stroke-width="3" paint-order="stroke" text-anchor="middle"><animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/><text x="800" y="392">ਤੁਹਾਡੀ ਮਿਹਨਤ, ਤੁਹਾਡੀ ਮੰਜ਼ਿਲ<animate attributeName="opacity" values="1;0;0;0;0;0;1" keyTimes="0;.13;.16;.46;.50;.83;1" dur="12s" repeatCount="indefinite"/></text><text x="800" y="392" opacity="0">Your hard work, your destination<animate attributeName="opacity" values="0;0;1;1;0;0;0" keyTimes="0;.16;.20;.46;.50;.83;1" dur="12s" repeatCount="indefinite"/></text><text x="800" y="392" opacity="0">आपकी मेहनत, आपकी मंज़िल<animate attributeName="opacity" values="0;0;0;0;1;1;0" keyTimes="0;.16;.20;.46;.50;.83;1" dur="12s" repeatCount="indefinite"/></text></g>
+ <g font-family="Noto Sans Gurmukhi, Noto Sans Devanagari, sans-serif" font-size="48" font-weight="900" fill="url(#white)" stroke="#061e5b" stroke-width="3" paint-order="stroke" text-anchor="middle"><animate attributeName="opacity" values="1;0.12;1" dur="2.2s" repeatCount="indefinite"/><text x="800" y="392">ਤੁਹਾਡੀ ਮਿਹਨਤ, ਤੁਹਾਡੀ ਮੰਜ਼ਿਲ</text><text x="800" y="392" opacity="0">Your hard work, your destination</text><text x="800" y="392" opacity="0">आपकी मेहनत, आपकी मंज़िल</text></g>
  <text x="800" y="458" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="2" fill="#ffdf64">YOUR DREAM • YOUR CAREER • YOUR FUTURE</text>
 </g>
 <g fill="url(#gold)"><path d="M95 390l12 25 28 4-20 19 5 28-25-13-25 13 5-28-20-19 28-4z"/><path d="M1505 390l12 25 28 4-20 19 5 28-25-13-25 13 5-28-20-19 28-4z"/></g>
