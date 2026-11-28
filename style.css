@@ -709,3 +709,28 @@ main{padding-top:12px!important}
  .home-notice-item{padding:9px 2px;font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.home-notice-moving{animation:none!important}}
+
+
+/* Compact serial-numbered post lists for category pages */
+.job-list-card{
+  display:flex!important;align-items:flex-start!important;gap:12px!important;
+  padding:14px 16px!important;margin:0 0 10px!important;border-radius:12px!important;
+  box-shadow:0 2px 9px rgba(18,59,114,.07)!important
+}
+.job-serial{
+  flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;
+  border-radius:10px;background:#123b72;color:#fff;font-size:14px;font-weight:800
+}
+.job-list-main{flex:1;min-width:0}
+.job-list-card h3{margin:5px 0 3px!important;font-size:16px!important;line-height:1.35!important}
+.job-list-card .job-dept{margin:0 0 4px!important;font-size:13px!important}
+.job-list-meta{margin:0 0 9px!important;color:#64748b;font-size:12px!important;line-height:1.4}
+.job-list-card .job-badge{font-size:10px!important;padding:3px 7px!important}
+.job-list-actions{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-top:5px!important}
+.job-list-actions a,.job-list-actions button{font-size:12px!important;padding:7px 10px!important}
+@media(max-width:600px){
+ .job-list-card{gap:9px!important;padding:11px!important}
+ .job-serial{flex-basis:32px;width:32px;height:32px;font-size:12px}
+ .job-list-card h3{font-size:14px!important}
+ .job-list-actions a,.job-list-actions button{font-size:11px!important;padding:6px 8px!important}
+}
