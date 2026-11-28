@@ -734,3 +734,26 @@ main{padding-top:12px!important}
  .job-list-card h3{font-size:14px!important}
  .job-list-actions a,.job-list-actions button{font-size:11px!important;padding:6px 8px!important}
 }
+
+
+/* Heading-only job rows; reveal notice and actions when tapped */
+.job-accordion-card{display:block!important;padding:0!important;overflow:hidden!important}
+.job-post-details{width:100%}
+.job-post-summary{
+ list-style:none;display:flex!important;align-items:center!important;gap:11px!important;
+ min-height:58px;padding:10px 14px!important;cursor:pointer!important;
+ color:#17365f;font-size:15px;font-weight:700
+}
+.job-post-summary::-webkit-details-marker{display:none}
+.job-post-title{flex:1;min-width:0;line-height:1.35}
+.job-post-summary .job-serial{flex:0 0 34px;width:34px;height:34px}
+.job-expand-mark{flex:0 0 26px;width:26px;height:26px;display:grid;place-items:center;
+ border-radius:50%;background:#edf4ff;color:#123b72;font-size:18px;font-weight:500}
+.job-post-details[open] .job-expand-mark{transform:rotate(45deg)}
+.job-post-expanded{padding:0 14px 14px 59px;border-top:1px solid #edf1f7}
+.job-post-expanded .job-list-meta{padding-top:11px;margin-bottom:9px}
+@media(max-width:600px){
+ .job-post-summary{min-height:52px;padding:8px 10px!important;gap:8px!important;font-size:14px}
+ .job-post-summary .job-serial{flex-basis:30px;width:30px;height:30px}
+ .job-post-expanded{padding:0 10px 12px 48px}
+}
