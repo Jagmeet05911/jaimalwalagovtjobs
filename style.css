@@ -933,3 +933,14 @@ body>.brand-banner>img{
 @media(max-width:650px){
   #homeView>.home-vertical-notice{margin:0 10px 12px auto!important}
 }
+
+
+/* Keep the portal heading and Latest Updates side by side at the same top level */
+#homeView{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(280px,340px)!important;align-items:start!important;column-gap:22px!important;row-gap:0!important}
+#homeView>.home-welcome{grid-column:1!important;grid-row:1!important;width:100%!important;max-width:none!important;margin:0!important;align-self:start!important}
+#homeView>.home-vertical-notice{grid-column:2!important;grid-row:1!important;order:initial!important;align-self:start!important;width:100%!important;max-width:340px!important;height:480px!important;margin:0!important}
+@media(max-width:900px){
+ #homeView{display:flex!important;flex-direction:column!important;gap:12px!important}
+ #homeView>.home-welcome{order:0!important;width:100%!important;margin:0!important}
+ #homeView>.home-vertical-notice{order:1!important;align-self:flex-end!important;width:min(340px,calc(100% - 20px))!important;height:220px!important;margin:0 10px 12px auto!important}
+}
