@@ -985,10 +985,36 @@
       job.status === "published" &&
       !["private jobs", "results", "admit cards", "forms / admissions"].includes(String(job.category || "").toLowerCase())
     );
-    const cards = published.map(jobCard).join("");
+
+    // Separate government vacancies into clear job-type sections.
+    const categoryOrder = ["Police", "Teaching", "Banking", "Railway", "Defence", "Medical", "Engineering", "IT", "Courts", "Agriculture", "Other"];
+    const groups = new Map();
+    published.forEach(job => {
+      const category = classifyJob(job);
+      if (!groups.has(category)) groups.set(category, []);
+      groups.get(category).push(job);
+    });
+    const categoryIcons = {
+      Police: "👮", Teaching: "🎓", Banking: "🏦", Railway: "🚆",
+      Defence: "🪖", Medical: "🏥", Engineering: "🛠️", IT: "💻",
+      Courts: "⚖️", Agriculture: "🌾", Other: "📌"
+    };
+    const ordered = [...groups.entries()].sort((left, right) => {
+      const li = categoryOrder.indexOf(left[0]);
+      const ri = categoryOrder.indexOf(right[0]);
+      return (li < 0 ? 999 : li) - (ri < 0 ? 999 : ri);
+    });
+    const sections = ordered.map(([category, items]) =>
+      '<section class="directory-section" id="category-' + category.toLowerCase() + '">' +
+      '<h3 class="directory-heading"><strong>' + (categoryIcons[category] || "📌") + ' ' + escapeHtml(category) + ' Jobs</strong><span>' + items.length + ' jobs</span></h3>' +
+      '<div class="jobs-grid">' + items.map(jobCard).join("") + '</div></section>'
+    ).join("");
+
     $("jobsDirectory").innerHTML =
       '<section class="directory-group"><h2 class="directory-group-title">All Government Jobs <span class="directory-result-count">' +
-      published.length + ' opportunities</span></h2><div class="jobs-grid">' + cards + '</div></section>';
+      published.length + ' opportunities</span></h2>' +
+      (sections || '<p class="directory-empty">No government jobs are available right now. Please check again soon.</p>') +
+      '</section>';
     if ($("publishedCount")) $("publishedCount").textContent = published.length;
     if ($("emptyJobs")) $("emptyJobs").classList.toggle("hidden", published.length > 0);
     attachSaveButtons($("jobsDirectory"));
@@ -996,22 +1022,24 @@
 
   function renderPrivateJobs() {
     if (!$("privateJobsList")) return;
-
     const items = jobs.filter(job =>
       job.status === "published" &&
       isDeadlineActive(job) &&
       String(job.category || "").toLowerCase() === "private jobs"
     );
-
-    $("privateJobsList").innerHTML = items.map(jobCard).join("");
-
-    if ($("privateJobsCount")) {
-      $("privateJobsCount").textContent = String(items.length);
-    }
-    if ($("emptyPrivateJobs")) {
-      $("emptyPrivateJobs").classList.toggle("hidden", items.length > 0);
-    }
-
+    const groups = new Map();
+    items.forEach(job => {
+      const category = classifyJob(job);
+      if (!groups.has(category)) groups.set(category, []);
+      groups.get(category).push(job);
+    });
+    const sections = [...groups.entries()].map(([category, categoryJobs]) =>
+      '<section class="directory-section"><h3 class="directory-heading"><strong>💼 ' + escapeHtml(category) + ' Jobs</strong><span>' + categoryJobs.length + ' jobs</span></h3><div class="jobs-grid">' +
+      categoryJobs.map(jobCard).join("") + '</div></section>'
+    ).join("");
+    $("privateJobsList").innerHTML = sections;
+    if ($("privateJobsCount")) $("privateJobsCount").textContent = String(items.length);
+    if ($("emptyPrivateJobs")) $("emptyPrivateJobs").classList.toggle("hidden", items.length > 0);
     attachSaveButtons($("privateJobsList"));
   }
 
