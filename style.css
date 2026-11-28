@@ -570,3 +570,22 @@ main{padding-top:17px;padding-bottom:30px}
 .topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 24px)!important;max-width:none!important;margin-left:12px!important;margin-right:12px!important}
 .brand-banner{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
 @media(max-width:700px){.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 16px)!important;margin-left:8px!important;margin-right:8px!important}}
+
+
+/* FINAL LAYOUT FIX: restore the full page width; compact only the header artwork */
+.site-header{width:100%!important;max-width:none!important;padding-left:20px!important;padding-right:20px!important}
+.topline-inner,.hero,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{
+  width:calc(100% - 32px)!important;max-width:none!important;
+  margin-left:16px!important;margin-right:16px!important;
+}
+main{padding-top:22px!important;padding-bottom:45px!important}
+.portal-dashboard{padding-left:0!important;padding-right:0!important}
+.brand-banner{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+.brand-banner img{display:block;width:100%;height:auto;max-height:140px!important;min-height:0!important;object-fit:contain;object-position:center}
+@media(max-width:760px){
+ .topline-inner,.hero,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{
+  width:calc(100% - 20px)!important;margin-left:10px!important;margin-right:10px!important;
+ }
+ .brand-banner img{max-height:100px!important}
+}
+@media(max-width:420px){.brand-banner img{max-height:88px!important}}
