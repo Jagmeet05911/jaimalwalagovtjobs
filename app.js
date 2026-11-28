@@ -752,114 +752,32 @@
     }
   }
 
-  function jobCard(job) {
+  function jobCard(job, index = 0) {
     const isSaved = saved.includes(job.id);
-
     const notice = safeUrl(job.noticeUrl);
     const apply = safeUrl(job.applyUrl);
     const admitCard = safeUrl(job.admitCardUrl);
+    const serial = String(index + 1).padStart(2, "0");
+    const details = [
+      getJobLocation(job),
+      job.deadline ? "Last date: " + displayDate(job.deadline) : ""
+    ].filter(Boolean).join(" · ");
 
     return `
-      <article class="job-card" id="job-${escapeHtml(job.id)}" data-state="${escapeHtml(getJobLocation(job))}" data-department="${escapeHtml(classifyJob(job))}">
-
-        <div class="job-top">
-          <span class="job-badge">
-            ${escapeHtml(job.category || "Government")}
-          </span>
-
-          <span class="job-badge">
-            ${job.status === "published"
-              ? "Verified by admin"
-              : ""}
-          </span>
-        </div>
-
-        <h3>${escapeHtml(job.title)}</h3>
-
-        <p class="job-dept">
-          ${escapeHtml(job.department)}
-        </p>
-
-        <div class="job-facts">
-          <div class="job-fact"><strong>Eligibility / ਯੋਗਤਾ</strong><span>${escapeHtml(job.eligibility || "Check official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੇਖੋ")}</span></div>
-          <div class="job-fact"><strong>Age Limit / ਉਮਰ ਹੱਦ</strong><span>${escapeHtml(job.ageLimit || "As per official notification / ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਨੁਸਾਰ")}</span></div>
-        </div>
-        <p class="job-link-hint">ਪਹਿਲਾਂ Notification ਪੜ੍ਹੋ। ਯੋਗਤਾ ਪੂਰੀ ਹੋਵੇ ਤਾਂ Apply ਕਰੋ।</p>
-
-        <div class="job-meta">
-          <span>
-            ⌖ ${escapeHtml(getJobLocation(job))}
-          </span>
-
-          <span>
-            ◷ ${escapeHtml(t("deadline"))}: ${escapeHtml(displayDate(job.deadline) || t("noDate"))}
-          </span>
-        </div>
-
-        <p class="job-meta">
-          <span>
-            ${escapeHtml(t("checked"))}:
-            ${escapeHtml(
-              displayDate(job.sourceChecked) || t("noDate")
-            )}
-          </span>
-        </p>
-
-        <details class="apply-help">
-          <summary>ਫਾਰਮ ਕਿਵੇਂ ਭਰਨਾ ਹੈ? · How to apply</summary>
-          <ol>
-            <li>ਪਹਿਲਾਂ Official Notification ਖੋਲ੍ਹ ਕੇ ਯੋਗਤਾ, ਉਮਰ, ਫੀਸ ਅਤੇ ਆਖ਼ਰੀ ਮਿਤੀ ਪੜ੍ਹੋ।</li>
-            <li>Apply Online ਦਬਾ ਕੇ ਸਰਕਾਰੀ ਭਰਤੀ ਪੋਰਟਲ ਖੋਲ੍ਹੋ।</li>
-            <li>ਉੱਥੇ ਆਪਣਾ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਫਾਰਮ ਸਰਕਾਰੀ ਹਦਾਇਤਾਂ ਮੁਤਾਬਕ ਪੂਰਾ ਕਰੋ।</li>
-            <li>ਲੋੜੀਂਦੇ ਦਸਤਾਵੇਜ਼ ਅਤੇ ਫੀਸ ਸਿਰਫ਼ ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਨੁਸਾਰ ਜਮ੍ਹਾਂ ਕਰੋ।</li>
-            <li>Submit ਕਰਨ ਤੋਂ ਬਾਅਦ ਰਸੀਦ/ਐਪਲੀਕੇਸ਼ਨ ਨੰਬਰ ਸੰਭਾਲੋ।</li>
-          </ol>
-          <p>ਦਸਤਾਵੇਜ਼ ਨੌਕਰੀ ਅਨੁਸਾਰ ਵੱਖਰੇ ਹੁੰਦੇ ਹਨ—ਸਹੀ ਲਿਸਟ Official Notification ਵਿੱਚ ਵੇਖੋ। ਆਪਣਾ ਪਾਸਵਰਡ ਜਾਂ OTP ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਾ ਕਰੋ।</p>
-          <p class="apply-help-en">Read the official notice first. Complete the application only on the recruiting authority's official portal. Required documents and fees vary by vacancy.</p>
-        </details>
-
-        <div class="job-actions">
-
-          ${
-            notice
-              ? `<a
-                   class="apply-link watermark-notice-link"
-                   href="${escapeHtml(notice)}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                   📄 Notification ਪੜ੍ਹੋ
-                 </a>`
-              : ""
-          }
-
-          ${
-            apply && apply !== notice
-              ? `<a
-                   class="apply-online-link"
-                   data-job-id="${escapeHtml(job.id)}"
-                   href="${escapeHtml(apply)}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                   🟢 ਸਿੱਧਾ Apply ਕਰੋ
-                 </a>`
-              : ""
-          }
-
-          ${!apply || apply === notice ? `<span class="apply-unavailable">${escapeHtml(t("applyUnavailable"))}</span>` : ""}
-
-          ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("admitCard"))}</a>` : `<span class="admit-card-unavailable" aria-disabled="true">${escapeHtml(t("admitCardUnavailable"))}</span>`}
-
-          <button class="share-job-btn" type="button" data-share-job="${escapeHtml(job.id)}" aria-label="Share this job">↗ Share Job</button>
-
-          <button
-            class="save-btn"
-            type="button"
-            data-save="${escapeHtml(job.id)}">
-            ${escapeHtml(
-              isSaved ? t("unsave") : t("save")
-            )}
-          </button>
-
+      <article class="job-card job-list-card" id="job-${escapeHtml(job.id)}" data-state="${escapeHtml(getJobLocation(job))}" data-department="${escapeHtml(classifyJob(job))}">
+        <span class="job-serial" aria-label="Post number ${index + 1}">${serial}</span>
+        <div class="job-list-main">
+          <span class="job-badge">${escapeHtml(job.category || "Government")}</span>
+          <h3>${escapeHtml(job.title)}</h3>
+          <p class="job-dept">${escapeHtml(job.department)}</p>
+          <p class="job-list-meta">${escapeHtml(details || "See official notice for details")}</p>
+          <div class="job-actions job-list-actions">
+            ${notice ? `<a class="apply-link watermark-notice-link" href="${escapeHtml(notice)}" target="_blank" rel="noopener noreferrer">📄 Official Notice</a>` : ""}
+            ${apply && apply !== notice ? `<a class="apply-online-link" data-job-id="${escapeHtml(job.id)}" href="${escapeHtml(apply)}" target="_blank" rel="noopener noreferrer">🟢 Apply Online</a>` : ""}
+            ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>` : ""}
+            <button class="share-job-btn" type="button" data-share-job="${escapeHtml(job.id)}">↗ Share</button>
+            <button class="save-btn" type="button" data-save="${escapeHtml(job.id)}">${escapeHtml(isSaved ? t("unsave") : t("save"))}</button>
+          </div>
         </div>
       </article>
     `;
