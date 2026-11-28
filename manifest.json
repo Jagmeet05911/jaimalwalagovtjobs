@@ -2,7 +2,7 @@
   "id": "./",
   "name": "IndoJobAlert",
   "short_name": "IndoJobAlert",
-  "description": "IndoJobAlert — find verified government and private job opportunities across Punjab and all India.",
+  "description": "IndoJobAlert — free verified government and private job opportunities across Punjab and all India.",
   "start_url": "./?source=installed",
   "scope": "./",
   "display": "standalone",
