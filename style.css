@@ -1001,3 +1001,16 @@ body>.brand-banner>img{
  .tabs #jobsTab{margin:0 2px!important}
  .tabs #adminTab{margin:0 8px 0 2px!important}
 }
+
+
+/* Navigation order requested: Home, Government, Private, Forms, Results, Saved, Admit, Admin */
+.tabs .tabs-label{display:none!important}
+.tabs #homeTab{order:1!important;margin:0 2px!important}
+.tabs #jobsTab{order:2!important;margin:0 2px!important}
+.tabs #privateJobsTab{order:3!important;margin:0 2px!important}
+.tabs #formsTab{order:4!important;margin:0 2px!important}
+.tabs #resultsTab{order:5!important;margin:0 2px!important}
+.tabs #savedTab{order:6!important;margin:0 2px!important}
+.tabs #admitTab{order:7!important;margin:0 2px!important}
+.tabs #adminTab{order:8!important;margin:0 2px!important}
+.tabs #portalSearchForm{order:9!important}
