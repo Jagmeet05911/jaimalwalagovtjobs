@@ -619,3 +619,34 @@ main{padding:22px 18px 45px!important}
 .brand-banner img{display:block!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;object-fit:fill!important;object-position:center!important}
 @media(max-width:760px){.brand-banner{height:92px!important}.brand-banner img{height:100%!important}}
 @media(max-width:420px){.brand-banner{height:82px!important}}
+
+
+/* Simple first page: keep the landing screen focused on the main destinations */
+.quick-benefits,.job-ticker,.portal-dashboard,.tabs{display:none!important}
+.home-return-link{display:inline-flex!important;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:9px;padding:9px 13px;font-weight:700;text-decoration:none}
+.home-welcome{max-width:900px;margin:24px auto 12px;padding:28px 24px!important;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.home-welcome h2{font-size:clamp(25px,4vw,34px);margin:6px 0 8px}
+.home-welcome>p{max-width:650px;margin:0 auto 16px;color:var(--muted)}
+.home-action-row{justify-content:center;gap:9px}
+.home-action-row #sharePortalBtn,.home-action-row #enableJobNotificationsBtn{display:none!important}
+.home-main-options{max-width:900px;margin:18px auto 22px;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.home-main-options .home-shortcut{min-height:86px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow);text-align:left;display:flex;align-items:center;gap:13px}
+.home-main-options .home-shortcut:hover{border-color:#8bb5ef;background:#f8fbff;transform:translateY(-1px)}
+.home-main-options .home-shortcut-icon{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:12px;background:var(--blue-light);font-size:21px}
+.home-main-options .home-shortcut b,.home-main-options .home-shortcut small{display:block}
+.home-main-options .home-shortcut b{font-size:15px;color:var(--ink)}
+.home-main-options .home-shortcut small{font-size:12px;color:var(--muted);margin-top:2px}
+.home-main-options .home-shortcut>span:last-child{margin-left:auto;color:var(--blue);font-size:18px}
+.home-trust-note{max-width:900px;margin:12px auto;padding:13px 16px;border-radius:12px;background:#f0f7ff;border:1px solid #d8e8fb}
+.home-trust-note p{margin:3px 0 0;font-size:13px;color:var(--muted)}
+main{padding-top:12px!important}
+@media(max-width:650px){
+ .brand-banner{height:76px!important}
+ .site-header{padding:10px 12px!important;min-height:64px}
+ .header-actions{gap:6px}
+ .font-controls,.theme-control,.header-language{display:none!important}
+ .home-welcome{margin:12px 10px 8px;padding:20px 14px!important}
+ .home-action-row .btn{font-size:12px;padding:9px 11px}
+ .home-main-options{margin:12px 10px 18px;grid-template-columns:1fr;gap:9px}
+ .home-main-options .home-shortcut{min-height:72px;padding:12px}
+}
