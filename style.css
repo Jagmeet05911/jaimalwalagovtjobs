@@ -757,3 +757,32 @@ main{padding-top:12px!important}
  .job-post-summary .job-serial{flex-basis:30px;width:30px;height:30px}
  .job-post-expanded{padding:0 10px 12px 48px}
 }
+
+
+/* Full-bleed banner: extend from the left edge to the right edge of the screen */
+.brand-banner{
+  display:block!important;
+  position:relative!important;
+  left:50%!important;
+  width:100vw!important;
+  max-width:none!important;
+  margin:0 0 12px -50vw!important;
+  padding:0!important;
+  border-radius:0!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  line-height:0!important;
+}
+.brand-banner img{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:fill!important;
+  object-position:center!important;
+}
+@media(max-width:760px){
+  .brand-banner{margin-bottom:8px!important}
+}
