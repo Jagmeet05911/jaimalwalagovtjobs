@@ -499,3 +499,55 @@ body.apply-modal-open{overflow:hidden}
   .section-head{margin-bottom:10px}
   .jobs-directory-intro{margin:6px 0 10px}
 }
+
+
+/* 2026-11-28: calmer, more compact page with slightly clearer text */
+body{font-size:15px;line-height:1.58}
+.topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 32px);max-width:1120px;margin-left:auto;margin-right:auto}
+.brand-banner{max-width:1120px;margin:0 auto 10px;border-radius:0 0 14px 14px}
+@media(min-width:761px){.brand-banner{max-width:1120px}.brand-banner img{max-height:225px;object-fit:contain}}
+.site-header{min-height:68px;padding-top:10px;padding-bottom:10px}
+main{padding-top:17px;padding-bottom:30px}
+.tabs{margin-top:8px;gap:5px}
+.tab{padding:9px 11px;font-size:13px}
+.portal-dashboard{margin-top:10px;margin-bottom:12px}
+.portal-search{padding:8px 11px}
+.portal-search input{font-size:16px}
+.simple-howto{margin-top:8px;padding:12px 14px}
+.simple-howto h2{font-size:17px}
+.simple-howto-steps{gap:8px}
+.simple-howto-steps strong{font-size:13px}
+.simple-howto-steps small{font-size:11px}
+.simple-howto>p{font-size:12px}
+.simple-howto-actions button{font-size:13px}
+.section-head{margin-bottom:12px}
+.section-head h2{font-size:25px}
+.muted{font-size:14px}
+.filters{margin-bottom:14px}
+.filters select,.filters input{font-size:14px;padding:11px}
+.jobs-grid{gap:11px}
+.job-card{padding:16px}
+.job-card h3{font-size:17px;line-height:1.45}
+.job-dept{font-size:14px}
+.job-meta span{font-size:12px}
+.job-description{font-size:13px;line-height:1.6}
+.job-actions a,.job-actions button{font-size:13px;padding:9px 12px}
+.directory-group{margin:11px 0 16px}
+.directory-group-title{font-size:1.12rem;padding:9px 12px}
+.directory-heading{font-size:1.04rem;padding:8px 11px}
+@media(max-width:700px){
+ .topline-inner,.hero,.quick-benefits,.notice,.tabs,main,.safety-band,.portal-dashboard,.job-ticker{width:calc(100% - 20px);max-width:none;margin-left:10px;margin-right:10px}
+ .brand-banner{width:100%;margin-bottom:8px}
+ .brand-banner img{min-height:0;max-height:150px;object-fit:contain}
+ .site-header{padding-left:10px;padding-right:10px}
+ .section-head h2{font-size:23px}
+ .job-card{padding:14px}
+ .job-card h3{font-size:17px}
+ .job-dept{font-size:13px}
+ .job-meta span{font-size:12px}
+ .job-description{font-size:13px}
+ .simple-howto{padding:11px}
+ .simple-howto h2{font-size:16px}
+ .simple-howto-steps strong{font-size:13px}
+ .simple-howto-steps small{font-size:11px}
+}
