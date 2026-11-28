@@ -821,3 +821,26 @@ body>.brand-banner>img{
  height:auto!important;min-height:0!important;max-height:inherit;
  margin:0!important;object-fit:fill!important;object-position:center!important
 }
+
+
+/* Latest Updates panel: slightly larger and flows with the page */
+.home-vertical-notice{
+  position:relative!important;right:auto!important;left:auto!important;top:auto!important;
+  transform:none!important;z-index:1!important;
+  width:min(290px,calc(100% - 24px))!important;height:480px!important;
+  margin:14px 18px 18px auto!important;
+}
+.home-vertical-notice>strong{padding:15px 14px!important;font-size:16px!important}
+.home-notice-window{padding:10px 14px!important}
+.home-notice-item{padding:14px 3px!important;font-size:14px!important;line-height:1.55!important}
+@media(max-width:1250px){
+ .home-vertical-notice{
+   width:min(290px,calc(100% - 20px))!important;height:190px!important;
+   margin:10px auto 14px!important;
+ }
+ .home-vertical-notice>strong{padding:11px 13px!important;font-size:15px!important}
+ .home-notice-item{padding:11px 3px!important;font-size:13px!important}
+}
+@media(max-width:650px){
+ .home-vertical-notice{width:calc(100% - 20px)!important;height:210px!important;margin:8px 10px 12px!important}
+}
