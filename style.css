@@ -987,3 +987,17 @@ body>.brand-banner>img{
  .tabs #portalSearchForm input{grid-column:2!important}
  .tabs #portalSearchForm button{grid-column:3!important;width:auto!important}
 }
+
+
+/* Group Home, Government Jobs and Admin controls together in the navigation */
+.tabs .tabs-label{order:-4!important}
+.tabs #homeTab{order:-3!important;margin:0 2px 0 0!important}
+.tabs #jobsTab{order:-2!important;margin:0 2px!important}
+.tabs #adminTab{order:-1!important;margin:0 8px 0 2px!important}
+.tabs #privateJobsTab,.tabs #formsTab,.tabs #resultsTab,.tabs #savedTab,.tabs #admitTab{order:0!important}
+.tabs #portalSearchForm{order:10!important}
+@media(max-width:900px){
+ .tabs #homeTab{margin:0 2px 0 0!important}
+ .tabs #jobsTab{margin:0 2px!important}
+ .tabs #adminTab{margin:0 8px 0 2px!important}
+}
