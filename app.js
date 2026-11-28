@@ -759,26 +759,30 @@
     const admitCard = safeUrl(job.admitCardUrl);
     const serial = String(index + 1).padStart(2, "0");
     const details = [
+      job.department || "",
       getJobLocation(job),
       job.deadline ? "Last date: " + displayDate(job.deadline) : ""
     ].filter(Boolean).join(" · ");
 
     return `
-      <article class="job-card job-list-card" id="job-${escapeHtml(job.id)}" data-state="${escapeHtml(getJobLocation(job))}" data-department="${escapeHtml(classifyJob(job))}">
-        <span class="job-serial" aria-label="Post number ${index + 1}">${serial}</span>
-        <div class="job-list-main">
-          <span class="job-badge">${escapeHtml(job.category || "Government")}</span>
-          <h3>${escapeHtml(job.title)}</h3>
-          <p class="job-dept">${escapeHtml(job.department)}</p>
-          <p class="job-list-meta">${escapeHtml(details || "See official notice for details")}</p>
-          <div class="job-actions job-list-actions">
-            ${notice ? `<a class="apply-link watermark-notice-link" href="${escapeHtml(notice)}" target="_blank" rel="noopener noreferrer">📄 Official Notice</a>` : ""}
-            ${apply && apply !== notice ? `<a class="apply-online-link" data-job-id="${escapeHtml(job.id)}" href="${escapeHtml(apply)}" target="_blank" rel="noopener noreferrer">🟢 Apply Online</a>` : ""}
-            ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>` : ""}
-            <button class="share-job-btn" type="button" data-share-job="${escapeHtml(job.id)}">↗ Share</button>
-            <button class="save-btn" type="button" data-save="${escapeHtml(job.id)}">${escapeHtml(isSaved ? t("unsave") : t("save"))}</button>
+      <article class="job-card job-list-card job-accordion-card" id="job-${escapeHtml(job.id)}">
+        <details class="job-post-details">
+          <summary class="job-post-summary">
+            <span class="job-serial">${serial}</span>
+            <strong class="job-post-title">${escapeHtml(job.title)}</strong>
+            <span class="job-expand-mark" aria-hidden="true">＋</span>
+          </summary>
+          <div class="job-post-expanded">
+            <p class="job-list-meta">${escapeHtml(details || "See official notice for details")}</p>
+            <div class="job-actions job-list-actions">
+              ${notice ? `<a class="apply-link watermark-notice-link" href="${escapeHtml(notice)}" target="_blank" rel="noopener noreferrer">📄 Official Notification</a>` : ""}
+              ${apply && apply !== notice ? `<a class="apply-online-link" data-job-id="${escapeHtml(job.id)}" href="${escapeHtml(apply)}" target="_blank" rel="noopener noreferrer">🟢 Apply Online</a>` : ""}
+              ${admitCard ? `<a class="admit-card-link" href="${escapeHtml(admitCard)}" target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>` : ""}
+              <button class="share-job-btn" type="button" data-share-job="${escapeHtml(job.id)}">↗ Share</button>
+              <button class="save-btn" type="button" data-save="${escapeHtml(job.id)}">${escapeHtml(isSaved ? t("unsave") : t("save"))}</button>
+            </div>
           </div>
-        </div>
+        </details>
       </article>
     `;
   }
