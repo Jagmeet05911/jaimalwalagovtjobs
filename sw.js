@@ -31,6 +31,20 @@ self.addEventListener("activate", event => {
   );
 });
 
+self.addEventListener("notificationclick", event => {
+  event.notification.close();
+  const target = event.notification.data && event.notification.data.url;
+  const destination = target && /^https:\/\//i.test(target)
+    ? target
+    : "https://jagmeet05911.github.io/jaimalwalagovtjobs/";
+  event.waitUntil(clients.matchAll({ type: "window", includeUncontrolled: true }).then(windowClients => {
+    for (const client of windowClients) {
+      if ("focus" in client) return client.focus();
+    }
+    return clients.openWindow(destination);
+  }));
+});
+
 self.addEventListener("fetch", event => {
   const request = event.request;
   if (request.method !== "GET") return;
