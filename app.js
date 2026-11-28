@@ -1320,8 +1320,39 @@
     makeItems(published.filter(isPrivate), "ਨਵੀਆਂ ਪ੍ਰਾਈਵੇਟ ਨੌਕਰੀਆਂ ਜਲਦੀ ਇੱਥੇ ਦਿਖਣਗੀਆਂ।", privateTrack);
   }
 
+  // Compact vertical home-page ticker using only admin-published notices.
+  function renderVerticalHomeNotices() {
+    const target = $("homeVerticalNoticeTrack");
+    if (!target) return;
+    const published = jobs
+      .filter(job => job.status === "published")
+      .slice(0, 8);
+    if (!published.length) {
+      target.innerHTML = '<div class="home-notice-item">ਨਵੀਆਂ ਮਨਜ਼ੂਰਸ਼ੁਦਾ ਨੌਕਰੀਆਂ ਦੀ ਜਾਣਕਾਰੀ ਜਲਦੀ ਇੱਥੇ ਦਿਖਾਈ ਜਾਵੇਗੀ।</div>';
+      target.classList.remove("home-notice-moving");
+      return;
+    }
+    const destination = job => {
+      const category = String(job.category || "").toLowerCase();
+      if (category === "private jobs") return "#privateJobsView";
+      if (category === "results") return "#resultsView";
+      if (category === "admit cards") return "#admitView";
+      if (category === "forms / admissions") return "#formsView";
+      return "#jobsView";
+    };
+    const markup = published.map(job =>
+      '<a class="home-notice-item" href="' + destination(job) + '">' +
+      '<span class="home-notice-bullet" aria-hidden="true">🔔</span><span>' +
+      escapeHtml(job.title || "New job update") + '</span></a>'
+    ).join("");
+    target.innerHTML = '<div class="home-notice-sequence">' + markup +
+      '</div><div class="home-notice-sequence" aria-hidden="true">' + markup + '</div>';
+    target.classList.toggle("home-notice-moving", published.length > 1);
+  }
+
   function renderAll() {
     renderLatestJobTicker();
+    renderVerticalHomeNotices();
 
     if ($("savedNavCount")) {
       $("savedNavCount").textContent =
