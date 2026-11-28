@@ -381,3 +381,19 @@ body.apply-modal-open{overflow:hidden}
   .portal-job-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .portal-job-tile{min-height:60px}
 }
+
+/* Right rail beside New Job Updates */
+.portal-updates-layout{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px;align-items:stretch}
+.portal-updates-layout .portal-new-updates{margin-top:9px}
+.portal-right-rail{display:grid;grid-template-rows:auto 1fr;gap:9px;min-width:0;margin-top:9px}
+.portal-quick-links,.portal-ad-space{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 5px 18px #193c6808;min-width:0}
+.portal-quick-links .portal-section-heading{margin-bottom:6px}
+.portal-quick-links .portal-section-heading h3{font-size:15px}
+.portal-quick-links button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:#f5f7fb;color:#334760;padding:8px 9px;margin-top:6px;font-size:10px;font-weight:750}
+.portal-quick-links button:hover,.portal-quick-links button:focus-visible{background:var(--blue-light);color:var(--navy);outline:0}
+.portal-ad-space{min-height:125px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px dashed #b9c8dc;background:linear-gradient(145deg,#f8fbff,#f1f5fb);color:#64748b}
+.portal-ad-space span{font-size:8px;font-weight:900;letter-spacing:1.2px}
+.portal-ad-space strong{font-size:13px;color:#40516a;margin-top:8px}
+.portal-ad-space p{font-size:10px;margin:5px 0 0}
+@media(max-width:760px){.portal-updates-layout{grid-template-columns:minmax(0,1fr)}.portal-right-rail{grid-template-columns:1fr 1fr;grid-template-rows:auto;margin-top:0}.portal-ad-space{min-height:115px}}
+@media(max-width:420px){.portal-right-rail{grid-template-columns:1fr}.portal-ad-space{min-height:90px}}
