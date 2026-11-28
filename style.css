@@ -292,9 +292,9 @@ footer{text-align:center;border-top:1px solid var(--line);background:#fff;paddin
 
 
 /* Subtle Job Mitra identity mark across the portal */
-body::after{content:"JOB MITRA";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
+body::after{content:"IndoJobAlert";position:fixed;right:12px;bottom:76px;z-index:20;pointer-events:none;opacity:.10;color:var(--blue);font-size:10px;font-weight:900;letter-spacing:1.4px;transform:rotate(-90deg);transform-origin:right bottom}
 .job-card{position:relative;overflow:hidden}
-.job-card::after{content:"JM · JOB MITRA";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
+.job-card::after{content:"IndoJobAlert";position:absolute;right:12px;bottom:9px;pointer-events:none;color:var(--blue);opacity:.10;font-size:9px;font-weight:900;letter-spacing:1px}
 
 
 /* Job Mitra dashboard: inspired by category-led job portals, with an original layout */
