@@ -362,7 +362,7 @@
       noticeText:
         "ਇਹ ਨੌਕਰੀਆਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਦੇਣ ਵਾਲਾ ਸੁਤੰਤਰ ਪੋਰਟਲ ਹੈ, ਸਰਕਾਰੀ ਵੈੱਬਸਾਈਟ ਨਹੀਂ। ਅਰਜ਼ੀ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਅਤੇ ਆਖ਼ਰੀ ਤਾਰੀਖ਼ ਜ਼ਰੂਰ ਜਾਂਚੋ।",
       homeTab: "🏠 ਹੋਮ",
-      homeEyebrow: "JOB MITRA",
+      homeEyebrow: "IndoJobAlert",
       homeHeading: "ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ",
       homeIntro: "ਨਵੀਆਂ ਭਰਤੀਆਂ, ਐਡਮਿਟ ਕਾਰਡ ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਜਾਣਕਾਰੀ ਇੱਕੋ ਥਾਂ ਲੱਭੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ official notification ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
       homeBrowseBtn: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਵੇਖੋ ↗",
@@ -438,7 +438,7 @@
       noticeText:
         "Independent job-information portal, not a government website. Always verify the official notification and deadline before applying.",
       homeTab: "🏠 Home",
-      homeEyebrow: "JOB MITRA",
+      homeEyebrow: "IndoJobAlert",
       homeHeading: "Your Government Jobs Portal",
       homeIntro: "Find recruitment updates, admit cards and results in one place. Always read the official notification before applying.",
       homeBrowseBtn: "Browse Latest Jobs ↗",
@@ -799,7 +799,7 @@
       job.deadline ? "ਆਖਰੀ ਮਿਤੀ: " + displayDate(job.deadline) : "",
       "Official details ਅਤੇ apply link ਇੱਥੇ ਵੇਖੋ:"
     ].filter(Boolean).join("\n");
-    const data = { title: job.title + " | Job Mitra", text, url: url.href };
+    const data = { title: job.title + " | IndoJobAlert", text, url: url.href };
     try {
       if (navigator.share) {
         await navigator.share(data);
@@ -1743,7 +1743,7 @@
   });
 
 
-  // Try opening the recruiting authority's application portal inside Job Mitra.
+  // Try opening the recruiting authority's application portal inside IndoJobAlert.
   // Many government portals prohibit iframe embedding; the official-site fallback remains available.
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a.apply-online-link");
