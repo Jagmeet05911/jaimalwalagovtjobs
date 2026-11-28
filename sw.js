@@ -7,7 +7,7 @@ const APP_SHELL = [
   "./icons/app-icon.svg",
   "./icons/jobmitra-logo.svg?v=4",
   "./assets/jobmitra-jaimalwala-banner.svg?v=20261128-tagline-rotator",
-  "./style.css?v=20261128-home-left-updates-right",
+  "./style.css?v=20261128-single-searchs-right",
   "./dashboard.js?v=20261122-categories-v3",
   "./bottom-nav.js?v=20261122-nav-fix",
   "./app.js?v=20261128-all-state-filters",
