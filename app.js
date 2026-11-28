@@ -362,7 +362,7 @@
       noticeText:
         "ਇਹ ਨੌਕਰੀਆਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਦੇਣ ਵਾਲਾ ਸੁਤੰਤਰ ਪੋਰਟਲ ਹੈ, ਸਰਕਾਰੀ ਵੈੱਬਸਾਈਟ ਨਹੀਂ। ਅਰਜ਼ੀ ਤੋਂ ਪਹਿਲਾਂ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਅਤੇ ਆਖ਼ਰੀ ਤਾਰੀਖ਼ ਜ਼ਰੂਰ ਜਾਂਚੋ।",
       homeTab: "🏠 ਹੋਮ",
-      homeEyebrow: "JAIMALWALA GOVT JOBS",
+      homeEyebrow: "JOB MITRA",
       homeHeading: "ਤੁਹਾਡਾ ਸਰਕਾਰੀ ਨੌਕਰੀ ਪੋਰਟਲ",
       homeIntro: "ਨਵੀਆਂ ਭਰਤੀਆਂ, ਐਡਮਿਟ ਕਾਰਡ ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਜਾਣਕਾਰੀ ਇੱਕੋ ਥਾਂ ਲੱਭੋ। ਅਰਜ਼ੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ official notification ਜ਼ਰੂਰ ਪੜ੍ਹੋ।",
       homeBrowseBtn: "ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਵੇਖੋ ↗",
@@ -438,7 +438,7 @@
       noticeText:
         "Independent job-information portal, not a government website. Always verify the official notification and deadline before applying.",
       homeTab: "🏠 Home",
-      homeEyebrow: "JAIMALWALA GOVT JOBS",
+      homeEyebrow: "JOB MITRA",
       homeHeading: "Your Government Jobs Portal",
       homeIntro: "Find recruitment updates, admit cards and results in one place. Always read the official notification before applying.",
       homeBrowseBtn: "Browse Latest Jobs ↗",
@@ -861,7 +861,7 @@
       job.deadline ? "ਆਖਰੀ ਮਿਤੀ: " + displayDate(job.deadline) : "",
       "Official details ਅਤੇ apply link ਇੱਥੇ ਵੇਖੋ:"
     ].filter(Boolean).join("\n");
-    const data = { title: job.title + " | Jaimalwala Govt Jobs", text, url: url.href };
+    const data = { title: job.title + " | Job Mitra", text, url: url.href };
     try {
       if (navigator.share) {
         await navigator.share(data);
@@ -1719,7 +1719,7 @@
   });
 
 
-  // Try opening the recruiting authority's application portal inside Jaimalwala.
+  // Try opening the recruiting authority's application portal inside Job Mitra.
   // Many government portals prohibit iframe embedding; the official-site fallback remains available.
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a.apply-online-link");
@@ -1812,7 +1812,7 @@ document.addEventListener("click", async function(event){
     const response = await fetch("https://kbebdetnhfkxnkpdiefd.supabase.co/functions/v1/watermark-notice", {method:"POST",headers:{"Content-Type":"application/json","apikey":"sb_publishable_51mCCN-NaaylwYSnLyFk2Q_Uovo2lY_"},body:JSON.stringify({url:sourceUrl})});
     if (!response.ok) throw new Error("Watermark unavailable");
     const blob = await response.blob(); if (blob.type !== "application/pdf") throw new Error("Not a PDF");
-    const objectUrl=URL.createObjectURL(blob), a=document.createElement("a"); a.href=objectUrl; a.download="Jaimalwala-Govt-Jobs-Notice.pdf"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);
+    const objectUrl=URL.createObjectURL(blob), a=document.createElement("a"); a.href=objectUrl; a.download="Job-Mitra-Notice.pdf"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);
   } catch (_) { window.open(sourceUrl,"_blank","noopener,noreferrer"); if(typeof toast==="function") toast("ਇਸ ਨੋਟੀਫਿਕੇਸ਼ਨ ਦੀ branded copy ਨਹੀਂ ਬਣ ਸਕੀ; ਅਸਲ ਨੋਟੀਫਿਕੇਸ਼ਨ ਖੋਲ੍ਹ ਦਿੱਤਾ ਹੈ।"); }
   finally { link.textContent=oldText; }
 }, true);
