@@ -612,3 +612,10 @@ main{padding:22px 18px 45px!important}
  .brand-banner img{max-height:100px!important}
 }
 @media(max-width:420px){.brand-banner img{max-height:88px!important}}
+
+
+/* Banner polish: full-width, neatly aligned, compact height without cropping text */
+.brand-banner{display:block!important;width:100%!important;max-width:none!important;height:clamp(92px,10vw,150px)!important;margin:0!important;padding:0!important;border-radius:0!important;overflow:hidden!important;background:#071b52!important;box-shadow:0 4px 16px rgba(8,35,92,.16)!important;line-height:0!important}
+.brand-banner img{display:block!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;object-fit:fill!important;object-position:center!important}
+@media(max-width:760px){.brand-banner{height:92px!important}.brand-banner img{height:100%!important}}
+@media(max-width:420px){.brand-banner{height:82px!important}}
