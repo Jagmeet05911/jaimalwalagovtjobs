@@ -856,3 +856,22 @@ body>.brand-banner>img{
 .portal-dashboard>#portalSearchForm{display:grid!important}
 .portal-search{max-width:900px;margin:10px auto 14px!important}
 @media(max-width:760px){.tabs{justify-content:flex-start!important;flex-wrap:wrap!important;padding:8px 10px 10px!important}.tabs .tab{font-size:12px!important;padding:8px 9px!important}.portal-search{margin:8px 0 12px!important}}
+
+
+/* One clear Home control at the upper left; latest updates sit at lower right */
+.header-actions .home-return-link{display:none!important}
+.tabs{justify-content:flex-start!important}
+.tabs #homeTab{order:-1!important;margin-right:auto!important}
+#homeView{display:flex!important;flex-direction:column!important}
+#homeView>.home-welcome{order:1!important;width:100%}
+#homeView>.home-vertical-notice{
+  order:2!important;align-self:flex-end!important;
+  width:min(340px,calc(100% - 24px))!important;
+  height:480px!important;margin:18px 18px 18px auto!important;
+}
+@media(max-width:1250px){
+ #homeView>.home-vertical-notice{height:220px!important;width:min(340px,calc(100% - 20px))!important;margin:12px 10px 16px auto!important}
+}
+@media(max-width:650px){
+ #homeView>.home-vertical-notice{width:calc(100% - 20px)!important;height:210px!important;margin:8px 10px 12px auto!important}
+}
