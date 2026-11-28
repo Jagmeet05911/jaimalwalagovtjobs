@@ -1,19 +1,19 @@
 "use strict";
-const CACHE_NAME = "job-mitra-portal-v31";
+const CACHE_NAME = "job-mitra-portal-v32";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./dashboard.js?v=20261122-hero-hidden-v1",
   "./manifest.json",
   "./icons/app-icon.svg",
-  "./icons/jobmitra-logo.svg",
-  "./assets/jobmitra-jaimalwala-banner.svg",
-  "./style.css?v=20261122-hero-hidden-v1",
-  "./app.js?v=20261122-watermark",
-  "./filters.js?v=20261122-hero-hidden-v1",
+  "./icons/jobmitra-logo.svg?v=1",
+  "./assets/jobmitra-jaimalwala-banner.svg?v=20261128d",
+  "./style.css?v=20261128-jobmitra-brand",
+  "./dashboard.js?v=20261122-categories-v3",
   "./bottom-nav.js?v=20261122-nav-fix",
-  "./growth-tools.js?v=20261122-cache-fix",
-  "./festival-greetings.js?v=20261107"
+  "./app.js?v=20261123-in-site-apply",
+  "./filters.js?v=20261122-categories-v3",
+  "./festival-greetings.js?v=20261107",
+  "./growth-tools.js?v=20261128-jobmitra-brand"
 ];
 
 self.addEventListener("install", event => {
