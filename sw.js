@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "indojobalert-portal-v64";
+const CACHE_NAME = "indojobalert-portal-v65";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,7 +7,7 @@ const APP_SHELL = [
   "./icons/app-icon.svg",
   "./icons/jobmitra-logo.svg?v=4",
   "./assets/jobmitra-jaimalwala-banner.svg?v=20261128-tagline-rotator",
-  "./style.css?v=20261128-updates-4in-up",
+  "./style.css?v=20261128-heading-updates-aligned",
   "./dashboard.js?v=20261122-categories-v3",
   "./bottom-nav.js?v=20261122-nav-fix",
   "./app.js?v=20261128-indojobalert-brand",
