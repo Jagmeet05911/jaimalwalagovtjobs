@@ -11,14 +11,14 @@
 <circle cx="800" cy="220" r="250" fill="none" stroke="#ffc83d" stroke-width="3" opacity=".18"/>
 <path d="M0 150Q400 75 800 130T1600 115" fill="none" stroke="#65b8ff" stroke-width="2" opacity=".3"/>
 <g font-family="'Noto Sans Gurmukhi','Arial',sans-serif" fill="url(#gold)" font-weight="700" filter="url(#shadow)">
- <text x="65" y="88" font-size="53">ਸਤਿਨਾਮ ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ</text>
+ <text x="65" y="88" font-size="53"><tspan>ਸਤਿਨਾਮ</tspan><tspan dx="22">ਸ੍ਰੀ</tspan><tspan dx="22">ਵਾਹਿਗੁਰੂ</tspan></text>
  <text x="1535" y="88" font-size="53" text-anchor="end">ॐ नमः शिवाय</text>
 </g>
 <g filter="url(#shadow)">
- <circle cx="685" cy="75" r="49" fill="#fff4c7" stroke="#e9a900" stroke-width="5"/><circle cx="685" cy="75" r="40" fill="#143b91"/>
- <text x="685" y="94" text-anchor="middle" font-family="serif" font-size="54" font-weight="bold" fill="url(#gold)">ੴ</text>
- <circle cx="915" cy="75" r="49" fill="#fff4c7" stroke="#e9a900" stroke-width="5"/><circle cx="915" cy="75" r="40" fill="#143b91"/>
- <text x="915" y="94" text-anchor="middle" font-family="serif" font-size="59" font-weight="bold" fill="url(#gold)">ॐ</text>
+ <circle cx="710" cy="75" r="35" fill="#fff4c7" stroke="#e9a900" stroke-width="4"/><circle cx="710" cy="75" r="29" fill="#143b91"/>
+ <text x="710" y="88" text-anchor="middle" font-family="serif" font-size="39" font-weight="bold" fill="url(#gold)">ੴ</text>
+ <circle cx="890" cy="75" r="35" fill="#fff4c7" stroke="#e9a900" stroke-width="4"/><circle cx="890" cy="75" r="29" fill="#143b91"/>
+ <text x="890" y="88" text-anchor="middle" font-family="serif" font-size="42" font-weight="bold" fill="url(#gold)">ॐ</text>
 </g>
 <path d="M70 145H1530" stroke="url(#gold)" stroke-width="3" opacity=".85"/>
 <g text-anchor="middle" filter="url(#shadow)">
