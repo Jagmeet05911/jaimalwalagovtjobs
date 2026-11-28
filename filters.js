@@ -3,6 +3,7 @@
 
   const textOf = node => (node?.textContent || "").trim().toLowerCase();
   const escapeAttr = value => String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  const INDIAN_STATES = ["All India","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"];
 
   function addStyles() {
     if (document.getElementById("simpleJobFilterStyles")) return;
@@ -60,7 +61,7 @@
     function cards() { return [...container.querySelectorAll(".job-card")]; }
     function fillOptions() {
       const stateKeep = state.value, deptKeep = department.value;
-      const states = [...new Set(cards().map(card => card.dataset.state).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+      const states = INDIAN_STATES;
       const depts = [...new Set(cards().map(card => card.dataset.department).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
       state.innerHTML = '<option value="">All States</option>' + states.map(v=>'<option value="' + escapeAttr(v) + '">' + v + '</option>').join("");
       department.innerHTML = '<option value="">All Fields</option>' + depts.map(v=>'<option value="' + escapeAttr(v) + '">' + v + '</option>').join("");
@@ -91,7 +92,7 @@
         const cardText = textOf(card);
         const textMatch = !q || (terms.length > 1 ? terms.some(term => cardText.includes(term)) : cardText.includes(q));
         const show = textMatch &&
-          (!state.value || card.dataset.state === state.value) &&
+          (!state.value || (String(card.dataset.states || card.dataset.state || "All India").split("|").includes(state.value)) || (state.value !== "All India" && String(card.dataset.states || "").split("|").includes("All India"))) &&
           (!department.value || card.dataset.department === department.value) &&
           matchesQualification(card);
         card.hidden = !show;
