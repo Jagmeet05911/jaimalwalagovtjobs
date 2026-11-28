@@ -6,7 +6,7 @@
   const hint = document.getElementById("growthHint");
   let installPrompt = null;
   const portalUrl = "https://jagmeet05911.github.io/jaimalwalagovtjobs/";
-  const shareText = "ਮੈਂ ਇਹ ਮੁਫ਼ਤ Jaimalwala Govt Jobs ਸਾਈਟ ਵੇਖੀ ਹੈ। ਪੰਜਾਬ ਅਤੇ ਪੂਰੇ ਭਾਰਤ ਦੀਆਂ ਸਰਕਾਰੀ ਤੇ ਪ੍ਰਾਈਵੇਟ ਨੌਕਰੀਆਂ, ਯੋਗਤਾ, ਉਮਰ ਹੱਦ, ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਤੇ Apply ਲਿੰਕ ਇੱਥੇ ਵੇਖੋ। ਆਪਣੇ 4 ਦੋਸਤਾਂ ਨਾਲ ਵੀ ਸਾਂਝੀ ਕਰੋ:";
+  const shareText = "ਮੈਂ ਇਹ ਮੁਫ਼ਤ Job Mitra ਸਾਈਟ ਵੇਖੀ ਹੈ। ਪੰਜਾਬ ਅਤੇ ਪੂਰੇ ਭਾਰਤ ਦੀਆਂ ਸਰਕਾਰੀ ਤੇ ਪ੍ਰਾਈਵੇਟ ਨੌਕਰੀਆਂ, ਯੋਗਤਾ, ਉਮਰ ਹੱਦ, ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਤੇ Apply ਲਿੰਕ ਇੱਥੇ ਵੇਖੋ। ਆਪਣੇ 4 ਦੋਸਤਾਂ ਨਾਲ ਵੀ ਸਾਂਝੀ ਕਰੋ:";
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => {
@@ -28,7 +28,7 @@
   window.addEventListener("appinstalled", () => {
     installPrompt = null;
     if (installButton) installButton.hidden = true;
-    if (hint) hint.textContent = "ਧੰਨਵਾਦ! ਹੁਣ Home Screen ਵਾਲੇ Jaimalwala Jobs ਆਈਕਨ ਤੋਂ ਸਾਈਟ ਖੋਲ੍ਹੋ।";
+    if (hint) hint.textContent = "ਧੰਨਵਾਦ! ਹੁਣ Home Screen ਵਾਲੇ Job Mitra ਆਈਕਨ ਤੋਂ ਸਾਈਟ ਖੋਲ੍ਹੋ।";
   });
 
   if (installButton) {
@@ -48,7 +48,7 @@
 
   if (shareButton) {
     shareButton.addEventListener("click", async () => {
-      const data = { title: "Jaimalwala Govt Jobs", text: shareText, url: portalUrl };
+      const data = { title: "Job Mitra", text: shareText, url: portalUrl };
       try {
         if (navigator.share) {
           await navigator.share(data);
