@@ -437,3 +437,10 @@ body.apply-modal-open{overflow:hidden}
   }
   .site-header{padding-left:12px;padding-right:12px}
 }
+
+
+/* JobMitra Jaimalwala devotional brand banner */
+.brand-banner{display:block;width:100%;margin:0 auto 12px;line-height:0;overflow:hidden;background:#071b52;border-radius:0 0 18px 18px;box-shadow:0 8px 24px rgba(8,35,92,.18)}
+.brand-banner img{display:block;width:100%;height:auto;max-height:310px;object-fit:cover;object-position:center}
+@media(max-width:760px){.brand-banner{margin-bottom:8px;border-radius:0 0 12px 12px}.brand-banner img{min-height:145px;max-height:210px;object-fit:cover}}
+@media(max-width:420px){.brand-banner img{min-height:125px;max-height:160px}}
