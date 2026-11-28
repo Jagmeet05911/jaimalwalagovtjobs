@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "JobMitra",
-  "short_name": "JobMitra",
-  "description": "JobMitra — find verified government and private job opportunities across Punjab and India.",
+  "name": "IndiaJobDesk",
+  "short_name": "IndiaJobDesk",
+  "description": "IndiaJobDesk — find verified government and private job opportunities across Punjab and all India.",
   "start_url": "./?source=installed",
   "scope": "./",
   "display": "standalone",
